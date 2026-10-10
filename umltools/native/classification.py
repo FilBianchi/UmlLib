@@ -82,8 +82,8 @@ def realized_interfaces(self):
 
 @query('Classifier.directlyUsedInterfaces')
 def used_interfaces(self):
-    dependencies = [dependency for dependency in instances(self, 'Usage') if self in dependency.supplier]
-    return unique(interface for dependency in dependencies if all(kind(self, client, 'Interface') for client in dependency.client) for interface in dependency.client)
+    dependencies = [dependency for dependency in instances(self, 'Usage') if self in dependency.client]
+    return unique(interface for dependency in dependencies if all(kind(self, supplier, 'Interface') for supplier in dependency.supplier) for interface in dependency.supplier)
 
 
 @query('Classifier.allRealizedInterfaces')

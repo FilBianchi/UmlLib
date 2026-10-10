@@ -122,6 +122,16 @@ class CompleteSemanticsTests(unittest.TestCase):
         self.assertEqual(port.required, [interface])
         self.assertIn(interface, component.required)
 
+    def test_usage_direction_and_inherited_required_interfaces(self):
+        interface, classifier = Uml.Interface(), Uml.Class()
+        dependency = Uml.Usage(client=[classifier], supplier=[interface])
+        child = Uml.Class(generalization=[Uml.Generalization(general=classifier)])
+        port = Uml.Port(type=child)
+        self.assertEqual(classifier.directlyUsedInterfaces(), [interface])
+        self.assertEqual(interface.directlyUsedInterfaces(), [])
+        self.assertEqual(child.allUsedInterfaces(), [interface])
+        self.assertEqual(port.required, [interface])
+
     def test_connector_end_order_and_inverse_roles(self):
         first, second = Uml.Class(), Uml.Class()
         a, b = Uml.Property(type=first), Uml.Property(type=second)

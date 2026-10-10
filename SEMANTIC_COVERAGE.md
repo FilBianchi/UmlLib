@@ -44,7 +44,7 @@ Unknown expression languages are never implicitly accepted or executed.
 
 ## Behavioral verification
 
-67 tests cover class/package inventories and inheritance; atomic collection edits,
+68 tests cover class/package inventories and inheritance; atomic collection edits,
 reversal, ownership and cycles; stored subsets and inverse associations;
 names, alias imports and reexports; classifier inheritance and property redefinition;
 multiplicities and unlimited values; state and protocol machines; call signatures;

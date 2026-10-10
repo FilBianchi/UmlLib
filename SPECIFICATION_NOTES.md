@@ -69,3 +69,8 @@ No Python evaluation path treats an untranslated definition as satisfied.
   rather than to the InformationFlow itself as the source's unqualified tests imply.
 - Prose-only runtime/layout rules are checked to the extent represented by core UML.
   Missing language facts or occurrence mappings remain explicit unsupported obligations.
+- `Classifier-directlyUsedInterfaces`: the formula traverses supplierDependency and
+  returns clients. Python follows the Usage definition (the client requires the supplier)
+  and traverses Usage dependencies whose client is the classifier, returning Interface
+  suppliers. See the Usage semantics and required-interface descriptions in the
+  [OMG specification](https://www.omg.org/spec/UML/2.5.1/PDF).
