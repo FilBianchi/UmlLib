@@ -1,0 +1,8 @@
+include generate_uml.py
+include semantic_report.py
+include semantic-report.json
+include SEMANTIC_COVERAGE.md
+include SPECIFICATION_NOTES.md
+include NOTICE.md
+recursive-include scripts *.py
+recursive-include tests *.py

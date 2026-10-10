@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "UmlLib"
+version = "0.1.0"
+description = "UML 2.5.1 metamodel and explicit Python model semantics"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Filippo Bianchi"}]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/FilBianchi/UmlLib"
+Issues = "https://github.com/FilBianchi/UmlLib/issues"
+Releases = "https://github.com/FilBianchi/UmlLib/releases"
+
+[tool.setuptools]
+py-modules = ["UML"]
+
+[tool.setuptools.packages.find]
+include = ["Uml", "Uml.*", "umltools", "umltools.*"]
+namespaces = false
+
+[tool.setuptools.package-data]
+umltools = ["data/*.xmi"]

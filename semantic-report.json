@@ -1,0 +1,5688 @@
+{
+  "meaning": "Inventory of registered Python definitions, not proof of complete semantic conformance. Opaque language expressions, domain collection types and decomposition mappings can require application-supplied semantic facts; validation reports unsupported obligations explicitly.",
+  "counts": {
+    "operation": {
+      "native Python": 203,
+      "abstract declaration": 2
+    },
+    "constraint": {
+      "native Python": 449
+    },
+    "derived property": {
+      "structural union": 18,
+      "native Python": 55
+    }
+  },
+  "definitions": [
+    {
+      "id": "Activity-maximum_one_parameter_node",
+      "name": "Activity.maximum_one_parameter_node",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "Activity-maximum_two_parameter_nodes",
+      "name": "Activity.maximum_two_parameter_nodes",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.inout_nodes"
+    },
+    {
+      "id": "ActivityEdge-isConsistentWith",
+      "name": "ActivityEdge.isConsistentWith",
+      "package": "Activities",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.consistent_node"
+    },
+    {
+      "id": "ActivityEdge-source_and_target",
+      "name": "ActivityEdge.source_and_target",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityEdge-inGroup",
+      "package": "Activities",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActivityGroup-containingActivity",
+      "name": "ActivityGroup.containingActivity",
+      "package": "Activities",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.group_activity"
+    },
+    {
+      "id": "ActivityGroup-nodes_and_edges",
+      "name": "ActivityGroup.nodes_and_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityGroup-not_contained",
+      "name": "ActivityGroup.not_contained",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.groups_disjoint"
+    },
+    {
+      "id": "ActivityGroup-containedEdge",
+      "package": "Activities",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActivityGroup-containedNode",
+      "package": "Activities",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActivityGroup-subgroup",
+      "package": "Activities",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActivityGroup-superGroup",
+      "package": "Activities",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActivityNode-containingActivity",
+      "name": "ActivityNode.containingActivity",
+      "package": "Activities",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.node_activity"
+    },
+    {
+      "id": "ActivityNode-isConsistentWith",
+      "name": "ActivityNode.isConsistentWith",
+      "package": "Activities",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.consistent_node"
+    },
+    {
+      "id": "ActivityNode-inGroup",
+      "package": "Activities",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActivityParameterNode-no_outgoing_edges",
+      "name": "ActivityParameterNode.no_outgoing_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityParameterNode-has_parameters",
+      "name": "ActivityParameterNode.has_parameters",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityParameterNode-same_type",
+      "name": "ActivityParameterNode.same_type",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityParameterNode-no_incoming_edges",
+      "name": "ActivityParameterNode.no_incoming_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityParameterNode-no_edges",
+      "name": "ActivityParameterNode.no_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityPartition-represents_classifier",
+      "name": "ActivityPartition.represents_classifier",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.represented_classifier"
+    },
+    {
+      "id": "ActivityPartition-represents_property_and_is_contained",
+      "name": "ActivityPartition.represents_property_and_is_contained",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityPartition-represents_property",
+      "name": "ActivityPartition.represents_property",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ActivityPartition-dimension_not_contained",
+      "name": "ActivityPartition.dimension_not_contained",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ControlFlow-object_nodes",
+      "name": "ControlFlow.object_nodes",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-zero_input_parameters",
+      "name": "DecisionNode.zero_input_parameters",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-edges",
+      "name": "DecisionNode.edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.decision_edges"
+    },
+    {
+      "id": "DecisionNode-decision_input_flow_incoming",
+      "name": "DecisionNode.decision_input_flow_incoming",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-two_input_parameters",
+      "name": "DecisionNode.two_input_parameters",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-incoming_outgoing_edges",
+      "name": "DecisionNode.incoming_outgoing_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-incoming_control_one_input_parameter",
+      "name": "DecisionNode.incoming_control_one_input_parameter",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-parameters",
+      "name": "DecisionNode.parameters",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "DecisionNode-incoming_object_one_input_parameter",
+      "name": "DecisionNode.incoming_object_one_input_parameter",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ExceptionHandler-handler_body_edges",
+      "name": "ExceptionHandler.handler_body_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ExceptionHandler-output_pins",
+      "name": "ExceptionHandler.output_pins",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ExceptionHandler-one_input",
+      "name": "ExceptionHandler.one_input",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ExceptionHandler-edge_source_target",
+      "name": "ExceptionHandler.edge_source_target",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ExceptionHandler-handler_body_owner",
+      "name": "ExceptionHandler.handler_body_owner",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ExceptionHandler-exception_input_type",
+      "name": "ExceptionHandler.exception_input_type",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "FinalNode-no_outgoing_edges",
+      "name": "FinalNode.no_outgoing_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ForkNode-edges",
+      "name": "ForkNode.edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.homogeneous"
+    },
+    {
+      "id": "ForkNode-one_incoming_edge",
+      "name": "ForkNode.one_incoming_edge",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "InitialNode-no_incoming_edges",
+      "name": "InitialNode.no_incoming_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "InitialNode-control_edges",
+      "name": "InitialNode.control_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "InterruptibleActivityRegion-interrupting_edges",
+      "name": "InterruptibleActivityRegion.interrupting_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "JoinNode-one_outgoing_edge",
+      "name": "JoinNode.one_outgoing_edge",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "JoinNode-incoming_object_flow",
+      "name": "JoinNode.incoming_object_flow",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "MergeNode-one_outgoing_edge",
+      "name": "MergeNode.one_outgoing_edge",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "MergeNode-edges",
+      "name": "MergeNode.edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.homogeneous"
+    },
+    {
+      "id": "ObjectFlow-input_and_output_parameter",
+      "name": "ObjectFlow.input_and_output_parameter",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectFlow-no_executable_nodes",
+      "name": "ObjectFlow.no_executable_nodes",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectFlow-transformation_behavior",
+      "name": "ObjectFlow.transformation_behavior",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectFlow-selection_behavior",
+      "name": "ObjectFlow.selection_behavior",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectFlow-compatible_types",
+      "name": "ObjectFlow.compatible_types",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.flow_types"
+    },
+    {
+      "id": "ObjectFlow-same_upper_bounds",
+      "name": "ObjectFlow.same_upper_bounds",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.flow_bounds"
+    },
+    {
+      "id": "ObjectFlow-target",
+      "name": "ObjectFlow.target",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.flow_weight"
+    },
+    {
+      "id": "ObjectFlow-is_multicast_or_is_multireceive",
+      "name": "ObjectFlow.is_multicast_or_is_multireceive",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectNode-input_output_parameter",
+      "name": "ObjectNode.input_output_parameter",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectNode-selection_behavior",
+      "name": "ObjectNode.selection_behavior",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "ObjectNode-object_flow_edges",
+      "name": "ObjectNode.object_flow_edges",
+      "package": "Activities",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_activities.<lambda>"
+    },
+    {
+      "id": "Variable-isAccessibleBy",
+      "name": "Variable.isAccessibleBy",
+      "package": "Activities",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.accessible"
+    },
+    {
+      "id": "Duration-no_expr_requires_observation",
+      "name": "Duration.no_expr_requires_observation",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DurationConstraint-first_event_multiplicity",
+      "name": "DurationConstraint.first_event_multiplicity",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DurationConstraint-has_one_or_two_constrainedElements",
+      "name": "DurationConstraint.has_one_or_two_constrainedElements",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DurationObservation-first_event_multiplicity",
+      "name": "DurationObservation.first_event_multiplicity",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "LiteralBoolean-booleanValue",
+      "name": "LiteralBoolean.booleanValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.literal_value"
+    },
+    {
+      "id": "LiteralBoolean-isComputable",
+      "name": "LiteralBoolean.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralInteger-integerValue",
+      "name": "LiteralInteger.integerValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.literal_value"
+    },
+    {
+      "id": "LiteralInteger-isComputable",
+      "name": "LiteralInteger.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralNull-isComputable",
+      "name": "LiteralNull.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralNull-isNull",
+      "name": "LiteralNull.isNull",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralReal-isComputable",
+      "name": "LiteralReal.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralReal-realValue",
+      "name": "LiteralReal.realValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.literal_value"
+    },
+    {
+      "id": "LiteralString-isComputable",
+      "name": "LiteralString.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralString-stringValue",
+      "name": "LiteralString.stringValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.literal_value"
+    },
+    {
+      "id": "LiteralUnlimitedNatural-isComputable",
+      "name": "LiteralUnlimitedNatural.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.computable"
+    },
+    {
+      "id": "LiteralUnlimitedNatural-unlimitedValue",
+      "name": "LiteralUnlimitedNatural.unlimitedValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.literal_value"
+    },
+    {
+      "id": "OpaqueExpression-isIntegral",
+      "name": "OpaqueExpression.isIntegral",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.opaque_integral"
+    },
+    {
+      "id": "OpaqueExpression-isNonNegative",
+      "name": "OpaqueExpression.isNonNegative",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.opaque_sign"
+    },
+    {
+      "id": "OpaqueExpression-isPositive",
+      "name": "OpaqueExpression.isPositive",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.opaque_sign"
+    },
+    {
+      "id": "OpaqueExpression-result.1",
+      "name": "OpaqueExpression.result",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.opaque_result"
+    },
+    {
+      "id": "OpaqueExpression-value",
+      "name": "OpaqueExpression.value",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.opaque_value"
+    },
+    {
+      "id": "OpaqueExpression-language_body_size",
+      "name": "OpaqueExpression.language_body_size",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "OpaqueExpression-one_return_result_parameter",
+      "name": "OpaqueExpression.one_return_result_parameter",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "OpaqueExpression-only_in_or_return_parameters",
+      "name": "OpaqueExpression.only_in_or_return_parameters",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "OpaqueExpression-result",
+      "package": "Values",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "StringExpression-stringValue",
+      "name": "StringExpression.stringValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.string_expression"
+    },
+    {
+      "id": "StringExpression-operands",
+      "name": "StringExpression.operands",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "StringExpression-subexpressions",
+      "name": "StringExpression.subexpressions",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TimeConstraint-has_one_constrainedElement",
+      "name": "TimeConstraint.has_one_constrainedElement",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TimeExpression-no_expr_requires_observation",
+      "name": "TimeExpression.no_expr_requires_observation",
+      "package": "Values",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ValueSpecification-booleanValue",
+      "name": "ValueSpecification.booleanValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.undefined_value"
+    },
+    {
+      "id": "ValueSpecification-integerValue",
+      "name": "ValueSpecification.integerValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.undefined_value"
+    },
+    {
+      "id": "ValueSpecification-isCompatibleWith",
+      "name": "ValueSpecification.isCompatibleWith",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.compatible_value"
+    },
+    {
+      "id": "ValueSpecification-isComputable",
+      "name": "ValueSpecification.isComputable",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.not_computable"
+    },
+    {
+      "id": "ValueSpecification-isNull",
+      "name": "ValueSpecification.isNull",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.not_computable"
+    },
+    {
+      "id": "ValueSpecification-realValue",
+      "name": "ValueSpecification.realValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.undefined_value"
+    },
+    {
+      "id": "ValueSpecification-stringValue",
+      "name": "ValueSpecification.stringValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.undefined_value"
+    },
+    {
+      "id": "ValueSpecification-unlimitedValue",
+      "name": "ValueSpecification.unlimitedValue",
+      "package": "Values",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.undefined_value"
+    },
+    {
+      "id": "Actor-associations",
+      "name": "Actor.associations",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.actor_associations"
+    },
+    {
+      "id": "Actor-must_have_name",
+      "name": "Actor.must_have_name",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Extend-extension_points",
+      "name": "Extend.extension_points",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ExtensionPoint-must_have_name",
+      "name": "ExtensionPoint.must_have_name",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "UseCase-allIncludedUseCases",
+      "name": "UseCase.allIncludedUseCases",
+      "package": "UseCases",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.included_cases"
+    },
+    {
+      "id": "UseCase-binary_associations",
+      "name": "UseCase.binary_associations",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "UseCase-no_association_to_use_case",
+      "name": "UseCase.no_association_to_use_case",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.use_case_subjects"
+    },
+    {
+      "id": "UseCase-cannot_include_self",
+      "name": "UseCase.cannot_include_self",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "UseCase-must_have_name",
+      "name": "UseCase.must_have_name",
+      "package": "UseCases",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Association-endType.1",
+      "name": "Association.endType",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.end_types"
+    },
+    {
+      "id": "Association-specialized_end_number",
+      "name": "Association.specialized_end_number",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.end_number"
+    },
+    {
+      "id": "Association-specialized_end_types",
+      "name": "Association.specialized_end_types",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.end_type_conformance"
+    },
+    {
+      "id": "Association-binary_associations",
+      "name": "Association.binary_associations",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.binary_associations"
+    },
+    {
+      "id": "Association-association_ends",
+      "name": "Association.association_ends",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.owned_ends"
+    },
+    {
+      "id": "Association-ends_must_be_typed",
+      "name": "Association.ends_must_be_typed",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.typed_ends"
+    },
+    {
+      "id": "Association-endType",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "AssociationClass-cannot_be_defined",
+      "name": "AssociationClass.cannot_be_defined",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "AssociationClass-disjoint_attributes_ends",
+      "name": "AssociationClass.disjoint_attributes_ends",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Class-extension.1",
+      "name": "Class.extension",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.extensions"
+    },
+    {
+      "id": "Class-superClass.1",
+      "name": "Class.superClass",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.super_classes"
+    },
+    {
+      "id": "Class-passive_class",
+      "name": "Class.passive_class",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Class-extension",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Class-superClass",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "CollaborationUse-client_elements",
+      "name": "CollaborationUse.client_elements",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.collaboration_clients"
+    },
+    {
+      "id": "CollaborationUse-every_role",
+      "name": "CollaborationUse.every_role",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "CollaborationUse-connectors",
+      "name": "CollaborationUse.connectors",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.collaboration_connectors"
+    },
+    {
+      "id": "Component-provided.1",
+      "name": "Component.provided",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.component_provided"
+    },
+    {
+      "id": "Component-required.1",
+      "name": "Component.required",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.component_required"
+    },
+    {
+      "id": "Component-no_nested_classifiers",
+      "name": "Component.no_nested_classifiers",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Component-no_packaged_elements",
+      "name": "Component.no_packaged_elements",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Component-provided",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Component-required",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ConnectableElement-end.1",
+      "name": "ConnectableElement.end",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.ends"
+    },
+    {
+      "id": "ConnectableElement-end",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Connector-kind.1",
+      "name": "Connector.kind",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.connector_kind"
+    },
+    {
+      "id": "Connector-types",
+      "name": "Connector.types",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.connector_types"
+    },
+    {
+      "id": "Connector-roles",
+      "name": "Connector.roles",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.connector_roles"
+    },
+    {
+      "id": "Connector-kind",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ConnectorEnd-definingEnd.1",
+      "name": "ConnectorEnd.definingEnd",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.defining_end"
+    },
+    {
+      "id": "ConnectorEnd-role_and_part_with_port",
+      "name": "ConnectorEnd.role_and_part_with_port",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ConnectorEnd-part_with_port_empty",
+      "name": "ConnectorEnd.part_with_port_empty",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ConnectorEnd-multiplicity",
+      "name": "ConnectorEnd.multiplicity",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ConnectorEnd-self_part_with_port",
+      "name": "ConnectorEnd.self_part_with_port",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ConnectorEnd-definingEnd",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "EncapsulatedClassifier-ownedPort.1",
+      "name": "EncapsulatedClassifier.ownedPort",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.owned_ports"
+    },
+    {
+      "id": "EncapsulatedClassifier-ownedPort",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Port-provided.1",
+      "name": "Port.provided",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.provided"
+    },
+    {
+      "id": "Port-required.1",
+      "name": "Port.required",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.required"
+    },
+    {
+      "id": "Port-basicProvided",
+      "name": "Port.basicProvided",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.basic_provided"
+    },
+    {
+      "id": "Port-basicRequired",
+      "name": "Port.basicRequired",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.basic_required"
+    },
+    {
+      "id": "Port-port_aggregation",
+      "name": "Port.port_aggregation",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Port-default_value",
+      "name": "Port.default_value",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Port-encapsulated_owner",
+      "name": "Port.encapsulated_owner",
+      "package": "StructuredClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Port-provided",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Port-required",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "StructuredClassifier-part.1",
+      "name": "StructuredClassifier.part",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.parts"
+    },
+    {
+      "id": "StructuredClassifier-allRoles",
+      "name": "StructuredClassifier.allRoles",
+      "package": "StructuredClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.roles"
+    },
+    {
+      "id": "StructuredClassifier-part",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "StructuredClassifier-role",
+      "package": "StructuredClassifiers",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ConnectionPointReference-isConsistentWith",
+      "name": "ConnectionPointReference.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.connection_consistency"
+    },
+    {
+      "id": "ConnectionPointReference-exit_pseudostates",
+      "name": "ConnectionPointReference.exit_pseudostates",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.connection_exits"
+    },
+    {
+      "id": "ConnectionPointReference-entry_pseudostates",
+      "name": "ConnectionPointReference.entry_pseudostates",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.connection_entries"
+    },
+    {
+      "id": "FinalState-isConsistentWith",
+      "name": "FinalState.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.final_consistency"
+    },
+    {
+      "id": "FinalState-no_exit_behavior",
+      "name": "FinalState.no_exit_behavior",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.no_exit"
+    },
+    {
+      "id": "FinalState-no_outgoing_transitions",
+      "name": "FinalState.no_outgoing_transitions",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.no_outgoing"
+    },
+    {
+      "id": "FinalState-no_regions",
+      "name": "FinalState.no_regions",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.no_regions"
+    },
+    {
+      "id": "FinalState-cannot_reference_submachine",
+      "name": "FinalState.cannot_reference_submachine",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.no_submachine"
+    },
+    {
+      "id": "FinalState-no_entry_behavior",
+      "name": "FinalState.no_entry_behavior",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.no_entry"
+    },
+    {
+      "id": "FinalState-no_state_behavior",
+      "name": "FinalState.no_state_behavior",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.no_activity"
+    },
+    {
+      "id": "ProtocolStateMachine-classifier_context",
+      "name": "ProtocolStateMachine.classifier_context",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolStateMachine-deep_or_shallow_history",
+      "name": "ProtocolStateMachine.deep_or_shallow_history",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolStateMachine-entry_exit_do",
+      "name": "ProtocolStateMachine.entry_exit_do",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolStateMachine-protocol_transitions",
+      "name": "ProtocolStateMachine.protocol_transitions",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolTransition-referred.1",
+      "name": "ProtocolTransition.referred",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.referred"
+    },
+    {
+      "id": "ProtocolTransition-refers_to_operation",
+      "name": "ProtocolTransition.refers_to_operation",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolTransition-associated_actions",
+      "name": "ProtocolTransition.associated_actions",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolTransition-belongs_to_psm",
+      "name": "ProtocolTransition.belongs_to_psm",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ProtocolTransition-referred",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Pseudostate-isConsistentWith",
+      "name": "Pseudostate.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.pseudostate_consistency"
+    },
+    {
+      "id": "Pseudostate-transitions_outgoing",
+      "name": "Pseudostate.transitions_outgoing",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.orthogonal_fork"
+    },
+    {
+      "id": "Pseudostate-choice_vertex",
+      "name": "Pseudostate.choice_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.choice"
+    },
+    {
+      "id": "Pseudostate-outgoing_from_initial",
+      "name": "Pseudostate.outgoing_from_initial",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.initial_outgoing"
+    },
+    {
+      "id": "Pseudostate-join_vertex",
+      "name": "Pseudostate.join_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.join"
+    },
+    {
+      "id": "Pseudostate-junction_vertex",
+      "name": "Pseudostate.junction_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.junction"
+    },
+    {
+      "id": "Pseudostate-history_vertices",
+      "name": "Pseudostate.history_vertices",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.history"
+    },
+    {
+      "id": "Pseudostate-initial_vertex",
+      "name": "Pseudostate.initial_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.initial"
+    },
+    {
+      "id": "Pseudostate-fork_vertex",
+      "name": "Pseudostate.fork_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.fork"
+    },
+    {
+      "id": "Pseudostate-transitions_incoming",
+      "name": "Pseudostate.transitions_incoming",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.orthogonal_join"
+    },
+    {
+      "id": "Region-belongsToPSM",
+      "name": "Region.belongsToPSM",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.protocol_region"
+    },
+    {
+      "id": "Region-containingStateMachine",
+      "name": "Region.containingStateMachine",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.region_machine"
+    },
+    {
+      "id": "Region-isConsistentWith",
+      "name": "Region.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.region_consistency"
+    },
+    {
+      "id": "Region-isRedefinitionContextValid",
+      "name": "Region.isRedefinitionContextValid",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.region_redefinition"
+    },
+    {
+      "id": "Region-redefinitionContext.1",
+      "name": "Region.redefinitionContext",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.redefinition_context"
+    },
+    {
+      "id": "Region-deep_history_vertex",
+      "name": "Region.deep_history_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.one_deep_history"
+    },
+    {
+      "id": "Region-shallow_history_vertex",
+      "name": "Region.shallow_history_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.one_shallow_history"
+    },
+    {
+      "id": "Region-owned",
+      "name": "Region.owned",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.exclusive_region_owner"
+    },
+    {
+      "id": "Region-initial_vertex",
+      "name": "Region.initial_vertex",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.one_initial"
+    },
+    {
+      "id": "Region-redefinitionContext",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "State-containingStateMachine",
+      "name": "State.containingStateMachine",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.contained_machine"
+    },
+    {
+      "id": "State-isComposite.1",
+      "name": "State.isComposite",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.composite"
+    },
+    {
+      "id": "State-isConsistentWith",
+      "name": "State.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.state_consistency"
+    },
+    {
+      "id": "State-isOrthogonal.1",
+      "name": "State.isOrthogonal",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.orthogonal"
+    },
+    {
+      "id": "State-isSimple.1",
+      "name": "State.isSimple",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.simple"
+    },
+    {
+      "id": "State-isSubmachineState.1",
+      "name": "State.isSubmachineState",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.submachine_state"
+    },
+    {
+      "id": "State-entry_or_exit",
+      "name": "State.entry_or_exit",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.entry_or_exit"
+    },
+    {
+      "id": "State-submachine_states",
+      "name": "State.submachine_states",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.submachine_connections"
+    },
+    {
+      "id": "State-composite_states",
+      "name": "State.composite_states",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.composite_connections"
+    },
+    {
+      "id": "State-destinations_or_sources_of_transitions",
+      "name": "State.destinations_or_sources_of_transitions",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.submachine_endpoints"
+    },
+    {
+      "id": "State-submachine_or_regions",
+      "name": "State.submachine_or_regions",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.submachine_or_regions"
+    },
+    {
+      "id": "State-isComposite",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "State-isOrthogonal",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "State-isSimple",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "State-isSubmachineState",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "StateMachine-LCA",
+      "name": "StateMachine.LCA",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.lca"
+    },
+    {
+      "id": "StateMachine-ancestor",
+      "name": "StateMachine.ancestor",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.ancestor"
+    },
+    {
+      "id": "StateMachine-isConsistentWith",
+      "name": "StateMachine.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.machine_consistency"
+    },
+    {
+      "id": "StateMachine-isRedefinitionContextValid",
+      "name": "StateMachine.isRedefinitionContextValid",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.machine_redefinition"
+    },
+    {
+      "id": "StateMachine-LCAState",
+      "name": "StateMachine.LCAState",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.lca_state"
+    },
+    {
+      "id": "StateMachine-connection_points",
+      "name": "StateMachine.connection_points",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.entry_or_exit"
+    },
+    {
+      "id": "StateMachine-classifier_context",
+      "name": "StateMachine.classifier_context",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.classifier_context"
+    },
+    {
+      "id": "StateMachine-method",
+      "name": "StateMachine.method",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.method_connections"
+    },
+    {
+      "id": "StateMachine-context_classifier",
+      "name": "StateMachine.context_classifier",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.context_classifier"
+    },
+    {
+      "id": "Transition-containingStateMachine",
+      "name": "Transition.containingStateMachine",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.contained_machine"
+    },
+    {
+      "id": "Transition-isConsistentWith",
+      "name": "Transition.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.transition_consistency"
+    },
+    {
+      "id": "Transition-redefinitionContext.1",
+      "name": "Transition.redefinitionContext",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.redefinition_context"
+    },
+    {
+      "id": "Transition-state_is_external",
+      "name": "Transition.state_is_external",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.external"
+    },
+    {
+      "id": "Transition-join_segment_guards",
+      "name": "Transition.join_segment_guards",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.join_guards"
+    },
+    {
+      "id": "Transition-state_is_internal",
+      "name": "Transition.state_is_internal",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.internal"
+    },
+    {
+      "id": "Transition-outgoing_pseudostates",
+      "name": "Transition.outgoing_pseudostates",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.pseudostate_triggers"
+    },
+    {
+      "id": "Transition-join_segment_state",
+      "name": "Transition.join_segment_state",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.join_source"
+    },
+    {
+      "id": "Transition-fork_segment_state",
+      "name": "Transition.fork_segment_state",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.fork_target"
+    },
+    {
+      "id": "Transition-state_is_local",
+      "name": "Transition.state_is_local",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.local"
+    },
+    {
+      "id": "Transition-initial_transition",
+      "name": "Transition.initial_transition",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.initial_trigger"
+    },
+    {
+      "id": "Transition-fork_segment_guards",
+      "name": "Transition.fork_segment_guards",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.fork_guards"
+    },
+    {
+      "id": "Transition-transition_vertices",
+      "name": "Transition.transition_vertices",
+      "package": "StateMachines",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.vertices_in_machine"
+    },
+    {
+      "id": "Transition-redefinitionContext",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Vertex-containingStateMachine",
+      "name": "Vertex.containingStateMachine",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.vertex_machine"
+    },
+    {
+      "id": "Vertex-incoming.1",
+      "name": "Vertex.incoming",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.incoming"
+    },
+    {
+      "id": "Vertex-outgoing.1",
+      "name": "Vertex.outgoing",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.outgoing"
+    },
+    {
+      "id": "Vertex-isContainedInState",
+      "name": "Vertex.isContainedInState",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.contained_in_state"
+    },
+    {
+      "id": "Vertex-isContainedInRegion",
+      "name": "Vertex.isContainedInRegion",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.contained_in_region"
+    },
+    {
+      "id": "State-redefinitionContext.1",
+      "name": "Vertex.redefinitionContext",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.state_machines.redefinition_context"
+    },
+    {
+      "id": "State-isConsistentWith",
+      "name": "Vertex.isConsistentWith",
+      "package": "StateMachines",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.structured_classifiers.vertex_consistency"
+    },
+    {
+      "id": "Vertex-incoming",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Vertex-outgoing",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "State-redefinitionContext",
+      "package": "StateMachines",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "BehavioredClassifier-class_behavior",
+      "name": "BehavioredClassifier.class_behavior",
+      "package": "SimpleClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Enumeration-immutable",
+      "name": "Enumeration.immutable",
+      "package": "SimpleClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "EnumerationLiteral-classifier.1",
+      "name": "EnumerationLiteral.classifier",
+      "package": "SimpleClassifiers",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.literal_classifier"
+    },
+    {
+      "id": "EnumerationLiteral-classifier",
+      "package": "SimpleClassifiers",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Interface-visibility",
+      "name": "Interface.visibility",
+      "package": "SimpleClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Reception-same_name_as_signal",
+      "name": "Reception.same_name_as_signal",
+      "package": "SimpleClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Reception-same_structure_as_signal",
+      "name": "Reception.same_structure_as_signal",
+      "package": "SimpleClassifiers",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.reception_parameters"
+    },
+    {
+      "id": "Extension-isRequired.1",
+      "name": "Extension.isRequired",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.extension_required"
+    },
+    {
+      "id": "Extension-metaclass.1",
+      "name": "Extension.metaclass",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.metaclass"
+    },
+    {
+      "id": "Extension-metaclassEnd",
+      "name": "Extension.metaclassEnd",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.metaclass_end"
+    },
+    {
+      "id": "Extension-non_owned_end",
+      "name": "Extension.non_owned_end",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Extension-is_binary",
+      "name": "Extension.is_binary",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Extension-isRequired",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Extension-metaclass",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ExtensionEnd-lowerBound",
+      "name": "ExtensionEnd.lowerBound",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.extension_lower_bound"
+    },
+    {
+      "id": "ExtensionEnd-multiplicity",
+      "name": "ExtensionEnd.multiplicity",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.values.extension_multiplicity"
+    },
+    {
+      "id": "ExtensionEnd-aggregation",
+      "name": "ExtensionEnd.aggregation",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.values.extension_aggregation"
+    },
+    {
+      "id": "ExtensionEnd-lower",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Package-allApplicableStereotypes",
+      "name": "Package.allApplicableStereotypes",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.applicable_stereotypes"
+    },
+    {
+      "id": "Package-containingProfile",
+      "name": "Package.containingProfile",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.containing_profile"
+    },
+    {
+      "id": "Package-makesVisible",
+      "name": "Package.makesVisible",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.makes_visible"
+    },
+    {
+      "id": "Package-mustBeOwned",
+      "name": "Package.mustBeOwned",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.package_must_be_owned"
+    },
+    {
+      "id": "Package-nestedPackage.1",
+      "name": "Package.nestedPackage",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.nested_packages"
+    },
+    {
+      "id": "Package-ownedStereotype.1",
+      "name": "Package.ownedStereotype",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.owned_stereotypes"
+    },
+    {
+      "id": "Package-ownedType.1",
+      "name": "Package.ownedType",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.owned_types"
+    },
+    {
+      "id": "Package-visibleMembers",
+      "name": "Package.visibleMembers",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.visible_members"
+    },
+    {
+      "id": "Package-elements_public_or_private",
+      "name": "Package.elements_public_or_private",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.package_visibility"
+    },
+    {
+      "id": "Package-nestedPackage",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Package-ownedStereotype",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Package-ownedType",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Profile-metaclass_reference_not_specialized",
+      "name": "Profile.metaclass_reference_not_specialized",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Profile-references_same_metamodel",
+      "name": "Profile.references_same_metamodel",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Stereotype-containingProfile",
+      "name": "Stereotype.containingProfile",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.stereotype_profile"
+    },
+    {
+      "id": "Stereotype-profile.1",
+      "name": "Stereotype.profile",
+      "package": "Packages",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.stereotype_profile"
+    },
+    {
+      "id": "Stereotype-binaryAssociationsOnly",
+      "name": "Stereotype.binaryAssociationsOnly",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Stereotype-generalize",
+      "name": "Stereotype.generalize",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Stereotype-name_not_clash",
+      "name": "Stereotype.name_not_clash",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.stereotype_keyword"
+    },
+    {
+      "id": "Stereotype-associationEndOwnership",
+      "name": "Stereotype.associationEndOwnership",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Stereotype-base_property_upper_bound",
+      "name": "Stereotype.base_property_upper_bound",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Stereotype-base_property_multiplicity_single_extension",
+      "name": "Stereotype.base_property_multiplicity_single_extension",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Stereotype-base_property_multiplicity_multiple_extension",
+      "name": "Stereotype.base_property_multiplicity_multiple_extension",
+      "package": "Packages",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Stereotype-profile",
+      "package": "Packages",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ActionExecutionSpecification-action_referenced",
+      "name": "ActionExecutionSpecification.action_referenced",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.execution_action"
+    },
+    {
+      "id": "CombinedFragment-break",
+      "name": "CombinedFragment.break",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "CombinedFragment-consider_and_ignore",
+      "name": "CombinedFragment.consider_and_ignore",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "CombinedFragment-opt_loop_break_neg",
+      "name": "CombinedFragment.opt_loop_break_neg",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "ConsiderIgnoreFragment-consider_or_ignore",
+      "name": "ConsiderIgnoreFragment.consider_or_ignore",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "ConsiderIgnoreFragment-type",
+      "name": "ConsiderIgnoreFragment.type",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Continuation-first_or_last_interaction_fragment",
+      "name": "Continuation.first_or_last_interaction_fragment",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Continuation-same_name",
+      "name": "Continuation.same_name",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.continuations"
+    },
+    {
+      "id": "Continuation-global",
+      "name": "Continuation.global",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "DestructionOccurrenceSpecification-no_occurrence_specifications_below",
+      "name": "DestructionOccurrenceSpecification.no_occurrence_specifications_below",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.destruction_last"
+    },
+    {
+      "id": "ExecutionSpecification-same_lifeline",
+      "name": "ExecutionSpecification.same_lifeline",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Gate-isOutsideCF",
+      "name": "Gate.isOutsideCF",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.outside"
+    },
+    {
+      "id": "Gate-isInsideCF",
+      "name": "Gate.isInsideCF",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.inside"
+    },
+    {
+      "id": "Gate-isActual",
+      "name": "Gate.isActual",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.actual"
+    },
+    {
+      "id": "Gate-isFormal",
+      "name": "Gate.isFormal",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.formal"
+    },
+    {
+      "id": "Gate-getName",
+      "name": "Gate.getName",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.gate_name"
+    },
+    {
+      "id": "Gate-matches",
+      "name": "Gate.matches",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.matches"
+    },
+    {
+      "id": "Gate-isDistinguishableFrom",
+      "name": "Gate.isDistinguishableFrom",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.distinguishable"
+    },
+    {
+      "id": "Gate-getOperand",
+      "name": "Gate.getOperand",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.operand"
+    },
+    {
+      "id": "Gate-actual_gate_matched",
+      "name": "Gate.actual_gate_matched",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Gate-inside_cf_matched",
+      "name": "Gate.inside_cf_matched",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Gate-outside_cf_matched",
+      "name": "Gate.outside_cf_matched",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.outside_gates"
+    },
+    {
+      "id": "Gate-formal_gate_distinguishable",
+      "name": "Gate.formal_gate_distinguishable",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Gate-actual_gate_distinguishable",
+      "name": "Gate.actual_gate_distinguishable",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Gate-outside_cf_gate_distinguishable",
+      "name": "Gate.outside_cf_gate_distinguishable",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Gate-inside_cf_gate_distinguishable",
+      "name": "Gate.inside_cf_gate_distinguishable",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "GeneralOrdering-irreflexive_transitive_closure",
+      "name": "GeneralOrdering.irreflexive_transitive_closure",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.ordering_acyclic"
+    },
+    {
+      "id": "Interaction-not_contained",
+      "name": "Interaction.not_contained",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionConstraint-minint_maxint",
+      "name": "InteractionConstraint.minint_maxint",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionConstraint-minint_non_negative",
+      "name": "InteractionConstraint.minint_non_negative",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionConstraint-maxint_positive",
+      "name": "InteractionConstraint.maxint_positive",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionConstraint-dynamic_variables",
+      "name": "InteractionConstraint.dynamic_variables",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.guard_references"
+    },
+    {
+      "id": "InteractionConstraint-global_data",
+      "name": "InteractionConstraint.global_data",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.guard_references"
+    },
+    {
+      "id": "InteractionConstraint-maxint_greater_equal_minint",
+      "name": "InteractionConstraint.maxint_greater_equal_minint",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionOperand-guard_contain_references",
+      "name": "InteractionOperand.guard_contain_references",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.operand_references"
+    },
+    {
+      "id": "InteractionOperand-guard_directly_prior",
+      "name": "InteractionOperand.guard_directly_prior",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.operand_guard_position"
+    },
+    {
+      "id": "InteractionUse-gates_match",
+      "name": "InteractionUse.gates_match",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionUse-arguments_are_constants",
+      "name": "InteractionUse.arguments_are_constants",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.use_arguments"
+    },
+    {
+      "id": "InteractionUse-returnValueRecipient_coverage",
+      "name": "InteractionUse.returnValueRecipient_coverage",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionUse-arguments_correspond_to_parameters",
+      "name": "InteractionUse.arguments_correspond_to_parameters",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.use_parameters"
+    },
+    {
+      "id": "InteractionUse-returnValue_type_recipient_correspondence",
+      "name": "InteractionUse.returnValue_type_recipient_correspondence",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InteractionUse-all_lifelines",
+      "name": "InteractionUse.all_lifelines",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.use_lifelines"
+    },
+    {
+      "id": "Lifeline-selector_specified",
+      "name": "Lifeline.selector_specified",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Lifeline-interaction_uses_share_lifeline",
+      "name": "Lifeline.interaction_uses_share_lifeline",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.shared_lifelines"
+    },
+    {
+      "id": "Lifeline-same_classifier",
+      "name": "Lifeline.same_classifier",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.lifeline_context"
+    },
+    {
+      "id": "Lifeline-selector_int_or_string",
+      "name": "Lifeline.selector_int_or_string",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Message-messageKind.1",
+      "name": "Message.messageKind",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.message_kind"
+    },
+    {
+      "id": "Message-isDistinguishableFrom",
+      "name": "Message.isDistinguishableFrom",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.distinguishable"
+    },
+    {
+      "id": "Message-sending_receiving_message_event",
+      "name": "Message.sending_receiving_message_event",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.message_order"
+    },
+    {
+      "id": "Message-arguments",
+      "name": "Message.arguments",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.message_arguments"
+    },
+    {
+      "id": "Message-cannot_cross_boundaries",
+      "name": "Message.cannot_cross_boundaries",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Message-signature_is_signal",
+      "name": "Message.signature_is_signal",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.signal_signature"
+    },
+    {
+      "id": "Message-occurrence_specifications",
+      "name": "Message.occurrence_specifications",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.message_connector"
+    },
+    {
+      "id": "Message-signature_refer_to",
+      "name": "Message.signature_refer_to",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "Message-signature_is_operation_request",
+      "name": "Message.signature_is_operation_request",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.request_signature"
+    },
+    {
+      "id": "Message-signature_is_operation_reply",
+      "name": "Message.signature_is_operation_reply",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.reply_signature"
+    },
+    {
+      "id": "Message-messageKind",
+      "package": "Interactions",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "MessageEnd-oppositeEnd",
+      "name": "MessageEnd.oppositeEnd",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.opposite"
+    },
+    {
+      "id": "MessageEnd-isSend",
+      "name": "MessageEnd.isSend",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.is_send"
+    },
+    {
+      "id": "MessageEnd-isReceive",
+      "name": "MessageEnd.isReceive",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.is_receive"
+    },
+    {
+      "id": "MessageEnd-enclosingFragment",
+      "name": "MessageEnd.enclosingFragment",
+      "package": "Interactions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.interactions.enclosing"
+    },
+    {
+      "id": "PartDecomposition-commutativity_of_decomposition",
+      "name": "PartDecomposition.commutativity_of_decomposition",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.decomposition_commutes"
+    },
+    {
+      "id": "PartDecomposition-assume",
+      "name": "PartDecomposition.assume",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.decomposition_structure"
+    },
+    {
+      "id": "PartDecomposition-parts_of_internal_structures",
+      "name": "PartDecomposition.parts_of_internal_structures",
+      "package": "Interactions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_interactions.<lambda>"
+    },
+    {
+      "id": "InformationFlow-must_conform",
+      "name": "InformationFlow.must_conform",
+      "package": "InformationFlows",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.realization_endpoints"
+    },
+    {
+      "id": "InformationFlow-sources_and_targets_kind",
+      "name": "InformationFlow.sources_and_targets_kind",
+      "package": "InformationFlows",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.flow_endpoint_kinds"
+    },
+    {
+      "id": "InformationFlow-convey_classifiers",
+      "name": "InformationFlow.convey_classifiers",
+      "package": "InformationFlows",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "InformationItem-sources_and_targets",
+      "name": "InformationItem.sources_and_targets",
+      "package": "InformationFlows",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.information_item_endpoints"
+    },
+    {
+      "id": "InformationItem-has_no",
+      "name": "InformationItem.has_no",
+      "package": "InformationFlows",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "InformationItem-not_instantiable",
+      "name": "InformationItem.not_instantiable",
+      "package": "InformationFlows",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "CommunicationPath-association_ends",
+      "name": "CommunicationPath.association_ends",
+      "package": "Deployments",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DeploymentSpecification-deployment_target",
+      "name": "DeploymentSpecification.deployment_target",
+      "package": "Deployments",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DeploymentSpecification-deployed_elements",
+      "name": "DeploymentSpecification.deployed_elements",
+      "package": "Deployments",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DeploymentTarget-deployedElement.1",
+      "name": "DeploymentTarget.deployedElement",
+      "package": "Deployments",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.deployed"
+    },
+    {
+      "id": "DeploymentTarget-deployedElement",
+      "package": "Deployments",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Node-internal_structure",
+      "name": "Node.internal_structure",
+      "package": "Deployments",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Constraint-boolean_value",
+      "name": "Constraint.boolean_value",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Constraint-no_side_effects",
+      "name": "Constraint.no_side_effects",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "Constraint-not_apply_to_self",
+      "name": "Constraint.not_apply_to_self",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "DirectedRelationship-source",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "DirectedRelationship-target",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "Element-allOwnedElements",
+      "name": "Element.allOwnedElements",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.all_owned_elements"
+    },
+    {
+      "id": "Element-mustBeOwned",
+      "name": "Element.mustBeOwned",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.must_be_owned"
+    },
+    {
+      "id": "Element-has_owner",
+      "name": "Element.has_owner",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.has_owner"
+    },
+    {
+      "id": "Element-not_own_self",
+      "name": "Element.not_own_self",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.not_own_self"
+    },
+    {
+      "id": "Element-ownedElement",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Element-owner",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ElementImport-getName",
+      "name": "ElementImport.getName",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.import_name"
+    },
+    {
+      "id": "ElementImport-imported_element_is_public",
+      "name": "ElementImport.imported_element_is_public",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.imported_is_public"
+    },
+    {
+      "id": "ElementImport-visibility_public_or_private",
+      "name": "ElementImport.visibility_public_or_private",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.import_visibility"
+    },
+    {
+      "id": "MultiplicityElement-compatibleWith",
+      "name": "MultiplicityElement.compatibleWith",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.compatible"
+    },
+    {
+      "id": "MultiplicityElement-includesMultiplicity",
+      "name": "MultiplicityElement.includesMultiplicity",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.includes"
+    },
+    {
+      "id": "MultiplicityElement-is",
+      "name": "MultiplicityElement.is",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.exact_bounds"
+    },
+    {
+      "id": "MultiplicityElement-isMultivalued",
+      "name": "MultiplicityElement.isMultivalued",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.multivalued"
+    },
+    {
+      "id": "MultiplicityElement-lower.1",
+      "name": "MultiplicityElement.lower",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.lower"
+    },
+    {
+      "id": "MultiplicityElement-lowerBound",
+      "name": "MultiplicityElement.lowerBound",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.lower_bound"
+    },
+    {
+      "id": "MultiplicityElement-upper.1",
+      "name": "MultiplicityElement.upper",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.upper"
+    },
+    {
+      "id": "MultiplicityElement-upperBound",
+      "name": "MultiplicityElement.upperBound",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.values.upper_bound"
+    },
+    {
+      "id": "MultiplicityElement-upper_ge_lower",
+      "name": "MultiplicityElement.upper_ge_lower",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.values.upper_ge_lower"
+    },
+    {
+      "id": "MultiplicityElement-lower_ge_0",
+      "name": "MultiplicityElement.lower_ge_0",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.values.lower_ge_zero"
+    },
+    {
+      "id": "MultiplicityElement-value_specification_no_side_effects",
+      "name": "MultiplicityElement.value_specification_no_side_effects",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "MultiplicityElement-value_specification_constant",
+      "name": "MultiplicityElement.value_specification_constant",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.<lambda>"
+    },
+    {
+      "id": "MultiplicityElement-lower_is_integer",
+      "name": "MultiplicityElement.lower_is_integer",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.values.integer_lower"
+    },
+    {
+      "id": "MultiplicityElement-upper_is_unlimitedNatural",
+      "name": "MultiplicityElement.upper_is_unlimitedNatural",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.values.natural_upper"
+    },
+    {
+      "id": "MultiplicityElement-lower",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "MultiplicityElement-upper",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "NamedElement-allNamespaces",
+      "name": "NamedElement.allNamespaces",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.all_namespaces"
+    },
+    {
+      "id": "NamedElement-allOwningPackages",
+      "name": "NamedElement.allOwningPackages",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.all_owning_packages"
+    },
+    {
+      "id": "NamedElement-isDistinguishableFrom",
+      "name": "NamedElement.isDistinguishableFrom",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.distinguishable"
+    },
+    {
+      "id": "NamedElement-qualifiedName.1",
+      "name": "NamedElement.qualifiedName",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.qualified_name"
+    },
+    {
+      "id": "NamedElement-separator",
+      "name": "NamedElement.separator",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.separator"
+    },
+    {
+      "id": "NamedElement-clientDependency.1",
+      "name": "NamedElement.clientDependency",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.client_dependency"
+    },
+    {
+      "id": "NamedElement-visibility_needs_ownership",
+      "name": "NamedElement.visibility_needs_ownership",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.visibility_needs_ownership"
+    },
+    {
+      "id": "NamedElement-has_qualified_name",
+      "name": "NamedElement.has_qualified_name",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.has_qualified_name"
+    },
+    {
+      "id": "NamedElement-has_no_qualified_name",
+      "name": "NamedElement.has_no_qualified_name",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.has_no_qualified_name"
+    },
+    {
+      "id": "NamedElement-clientDependency",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "NamedElement-namespace",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "NamedElement-qualifiedName",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Namespace-excludeCollisions",
+      "name": "Namespace.excludeCollisions",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.exclude_collisions"
+    },
+    {
+      "id": "Namespace-getNamesOfMember",
+      "name": "Namespace.getNamesOfMember",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.member_names"
+    },
+    {
+      "id": "Namespace-importMembers",
+      "name": "Namespace.importMembers",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.import_members"
+    },
+    {
+      "id": "Namespace-importedMember.1",
+      "name": "Namespace.importedMember",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.imported_members"
+    },
+    {
+      "id": "Namespace-membersAreDistinguishable",
+      "name": "Namespace.membersAreDistinguishable",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.distinguishable_members"
+    },
+    {
+      "id": "Namespace-members_distinguishable",
+      "name": "Namespace.members_distinguishable",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.members_distinguishable"
+    },
+    {
+      "id": "Namespace-cannot_import_self",
+      "name": "Namespace.cannot_import_self",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.cannot_import_self"
+    },
+    {
+      "id": "Namespace-cannot_import_ownedMembers",
+      "name": "Namespace.cannot_import_ownedMembers",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.cannot_import_owned"
+    },
+    {
+      "id": "Namespace-importedMember",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Namespace-member",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Namespace-ownedMember",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "PackageableElement-namespace_needs_visibility",
+      "name": "PackageableElement.namespace_needs_visibility",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "PackageImport-public_or_private",
+      "name": "PackageImport.public_or_private",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.import_visibility"
+    },
+    {
+      "id": "ParameterableElement-isCompatibleWith",
+      "name": "ParameterableElement.isCompatibleWith",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.compatible"
+    },
+    {
+      "id": "ParameterableElement-isTemplateParameter",
+      "name": "ParameterableElement.isTemplateParameter",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.template_parameter"
+    },
+    {
+      "id": "Relationship-relatedElement",
+      "package": "CommonStructure",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "TemplateableElement-isTemplate",
+      "name": "TemplateableElement.isTemplate",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.is_template"
+    },
+    {
+      "id": "TemplateableElement-parameterableElements",
+      "name": "TemplateableElement.parameterableElements",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.parameterable_elements"
+    },
+    {
+      "id": "TemplateBinding-parameter_substitution_formal",
+      "name": "TemplateBinding.parameter_substitution_formal",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TemplateBinding-one_parameter_substitution",
+      "name": "TemplateBinding.one_parameter_substitution",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TemplateParameter-must_be_compatible",
+      "name": "TemplateParameter.must_be_compatible",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TemplateParameterSubstitution-must_be_compatible",
+      "name": "TemplateParameterSubstitution.must_be_compatible",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TemplateSignature-own_elements",
+      "name": "TemplateSignature.own_elements",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TemplateSignature-unique_parameters",
+      "name": "TemplateSignature.unique_parameters",
+      "package": "CommonStructure",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.unique_parameters"
+    },
+    {
+      "id": "Type-conformsTo",
+      "name": "Type.conformsTo",
+      "package": "CommonStructure",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_structure.type_conforms"
+    },
+    {
+      "id": "Behavior-context.1",
+      "name": "Behavior.context",
+      "package": "CommonBehavior",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.context"
+    },
+    {
+      "id": "Behavior-behavioredClassifier",
+      "name": "Behavior.behavioredClassifier",
+      "package": "CommonBehavior",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.behaviored_classifier"
+    },
+    {
+      "id": "Behavior-inputParameters",
+      "name": "Behavior.inputParameters",
+      "package": "CommonBehavior",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.input_parameters"
+    },
+    {
+      "id": "Behavior-outputParameters",
+      "name": "Behavior.outputParameters",
+      "package": "CommonBehavior",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.output_parameters"
+    },
+    {
+      "id": "Behavior-most_one_behavior",
+      "name": "Behavior.most_one_behavior",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.one_method"
+    },
+    {
+      "id": "Behavior-parameters_match",
+      "name": "Behavior.parameters_match",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.matching_parameters"
+    },
+    {
+      "id": "Behavior-feature_of_context_classifier",
+      "name": "Behavior.feature_of_context_classifier",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.common_behavior.context_feature"
+    },
+    {
+      "id": "Behavior-context",
+      "package": "CommonBehavior",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "FunctionBehavior-hasAllDataTypeAttributes",
+      "name": "FunctionBehavior.hasAllDataTypeAttributes",
+      "package": "CommonBehavior",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.datatype_attributes"
+    },
+    {
+      "id": "FunctionBehavior-one_output_parameter",
+      "name": "FunctionBehavior.one_output_parameter",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "FunctionBehavior-types_of_parameters",
+      "name": "FunctionBehavior.types_of_parameters",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "TimeEvent-when_non_negative",
+      "name": "TimeEvent.when_non_negative",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Trigger-trigger_with_ports",
+      "name": "Trigger.trigger_with_ports",
+      "package": "CommonBehavior",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "BehavioralFeature-isDistinguishableFrom",
+      "name": "BehavioralFeature.isDistinguishableFrom",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.feature_distinguishable"
+    },
+    {
+      "id": "BehavioralFeature-inputParameters",
+      "name": "BehavioralFeature.inputParameters",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.feature_inputs"
+    },
+    {
+      "id": "BehavioralFeature-outputParameters",
+      "name": "BehavioralFeature.outputParameters",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.feature_outputs"
+    },
+    {
+      "id": "BehavioralFeature-abstract_no_method",
+      "name": "BehavioralFeature.abstract_no_method",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Classifier-allFeatures",
+      "name": "Classifier.allFeatures",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.all_features"
+    },
+    {
+      "id": "Classifier-allParents",
+      "name": "Classifier.allParents",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.all_parents"
+    },
+    {
+      "id": "Classifier-conformsTo",
+      "name": "Classifier.conformsTo",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.conforms"
+    },
+    {
+      "id": "Classifier-general.1",
+      "name": "Classifier.general",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.general"
+    },
+    {
+      "id": "Classifier-hasVisibilityOf",
+      "name": "Classifier.hasVisibilityOf",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.has_visibility"
+    },
+    {
+      "id": "Classifier-inherit",
+      "name": "Classifier.inherit",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.inherit"
+    },
+    {
+      "id": "Classifier-inheritableMembers",
+      "name": "Classifier.inheritableMembers",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.inheritable_members"
+    },
+    {
+      "id": "Classifier-inheritedMember.1",
+      "name": "Classifier.inheritedMember",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.inherited_members"
+    },
+    {
+      "id": "Classifier-isTemplate",
+      "name": "Classifier.isTemplate",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.is_template"
+    },
+    {
+      "id": "Classifier-maySpecializeType",
+      "name": "Classifier.maySpecializeType",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.may_specialize"
+    },
+    {
+      "id": "Classifier-parents",
+      "name": "Classifier.parents",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.parents"
+    },
+    {
+      "id": "Classifier-directlyRealizedInterfaces",
+      "name": "Classifier.directlyRealizedInterfaces",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.realized_interfaces"
+    },
+    {
+      "id": "Classifier-directlyUsedInterfaces",
+      "name": "Classifier.directlyUsedInterfaces",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.used_interfaces"
+    },
+    {
+      "id": "Classifier-allRealizedInterfaces",
+      "name": "Classifier.allRealizedInterfaces",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.all_realized_interfaces"
+    },
+    {
+      "id": "Classifier-allUsedInterfaces",
+      "name": "Classifier.allUsedInterfaces",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.all_used_interfaces"
+    },
+    {
+      "id": "Classifier-isSubstitutableFor",
+      "name": "Classifier.isSubstitutableFor",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.substitutable"
+    },
+    {
+      "id": "Classifier-allAttributes",
+      "name": "Classifier.allAttributes",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.all_attributes"
+    },
+    {
+      "id": "Classifier-allSlottableFeatures",
+      "name": "Classifier.allSlottableFeatures",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.slottable_features"
+    },
+    {
+      "id": "Classifier-specialize_type",
+      "name": "Classifier.specialize_type",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.specialize_type"
+    },
+    {
+      "id": "Classifier-maps_to_generalization_set",
+      "name": "Classifier.maps_to_generalization_set",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.maps_to_generalization_set"
+    },
+    {
+      "id": "Classifier-non_final_parents",
+      "name": "Classifier.non_final_parents",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.non_final_parents"
+    },
+    {
+      "id": "Classifier-no_cycles_in_generalization",
+      "name": "Classifier.no_cycles_in_generalization",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.no_cycles"
+    },
+    {
+      "id": "Classifier-attribute",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "Classifier-feature",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "Classifier-general",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Classifier-inheritedMember",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ClassifierTemplateParameter-has_constraining_classifier",
+      "name": "ClassifierTemplateParameter.has_constraining_classifier",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ClassifierTemplateParameter-parametered_element_no_features",
+      "name": "ClassifierTemplateParameter.parametered_element_no_features",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ClassifierTemplateParameter-matching_abstract",
+      "name": "ClassifierTemplateParameter.matching_abstract",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ClassifierTemplateParameter-actual_is_classifier",
+      "name": "ClassifierTemplateParameter.actual_is_classifier",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ClassifierTemplateParameter-constraining_classifiers_constrain_args",
+      "name": "ClassifierTemplateParameter.constraining_classifiers_constrain_args",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.constrained_arguments"
+    },
+    {
+      "id": "ClassifierTemplateParameter-constraining_classifiers_constrain_parametered_element",
+      "name": "ClassifierTemplateParameter.constraining_classifiers_constrain_parametered_element",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.constrained_arguments"
+    },
+    {
+      "id": "Feature-featuringClassifier",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "GeneralizationSet-generalization_same_classifier",
+      "name": "GeneralizationSet.generalization_same_classifier",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "GeneralizationSet-maps_to_generalization_set",
+      "name": "GeneralizationSet.maps_to_generalization_set",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "InstanceSpecification-deployment_artifact",
+      "name": "InstanceSpecification.deployment_artifact",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "InstanceSpecification-structural_feature",
+      "name": "InstanceSpecification.structural_feature",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "InstanceSpecification-defining_feature",
+      "name": "InstanceSpecification.defining_feature",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "InstanceSpecification-deployment_target",
+      "name": "InstanceSpecification.deployment_target",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Operation-isConsistentWith",
+      "name": "Operation.isConsistentWith",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.operation_consistency"
+    },
+    {
+      "id": "Operation-isOrdered.1",
+      "name": "Operation.isOrdered",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.ordered_result"
+    },
+    {
+      "id": "Operation-isUnique.1",
+      "name": "Operation.isUnique",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.unique_result"
+    },
+    {
+      "id": "Operation-lower.1",
+      "name": "Operation.lower",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.lower_result"
+    },
+    {
+      "id": "Operation-returnResult",
+      "name": "Operation.returnResult",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.return_parameters"
+    },
+    {
+      "id": "Operation-type.1",
+      "name": "Operation.type",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.result_type"
+    },
+    {
+      "id": "Operation-upper.1",
+      "name": "Operation.upper",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.upper_result"
+    },
+    {
+      "id": "Operation-at_most_one_return",
+      "name": "Operation.at_most_one_return",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Operation-only_body_for_query",
+      "name": "Operation.only_body_for_query",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Operation-isOrdered",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Operation-isUnique",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Operation-lower",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Operation-type",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Operation-upper",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "OperationTemplateParameter-match_default_signature",
+      "name": "OperationTemplateParameter.match_default_signature",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.default_signature"
+    },
+    {
+      "id": "Parameter-default.1",
+      "name": "Parameter.default",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.parameter_default"
+    },
+    {
+      "id": "Parameter-in_and_out",
+      "name": "Parameter.in_and_out",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Parameter-not_exception",
+      "name": "Parameter.not_exception",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Parameter-connector_end",
+      "name": "Parameter.connector_end",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Parameter-reentrant_behaviors",
+      "name": "Parameter.reentrant_behaviors",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Parameter-stream_and_exception",
+      "name": "Parameter.stream_and_exception",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Parameter-object_effect",
+      "name": "Parameter.object_effect",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Parameter-default",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ParameterSet-same_parameterized_entity",
+      "name": "ParameterSet.same_parameterized_entity",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "ParameterSet-input",
+      "name": "ParameterSet.input",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.parameter_set_inputs"
+    },
+    {
+      "id": "ParameterSet-two_parameter_sets",
+      "name": "ParameterSet.two_parameter_sets",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.different_parameter_sets"
+    },
+    {
+      "id": "Property-isAttribute",
+      "name": "Property.isAttribute",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.attribute"
+    },
+    {
+      "id": "Property-isCompatibleWith",
+      "name": "Property.isCompatibleWith",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.property_compatible"
+    },
+    {
+      "id": "Property-isComposite.1",
+      "name": "Property.isComposite",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.composite_property"
+    },
+    {
+      "id": "Property-isConsistentWith",
+      "name": "Property.isConsistentWith",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.property_consistency"
+    },
+    {
+      "id": "Property-isNavigable",
+      "name": "Property.isNavigable",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.navigable"
+    },
+    {
+      "id": "Property-opposite.1",
+      "name": "Property.opposite",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.opposite"
+    },
+    {
+      "id": "Property-subsettingContext",
+      "name": "Property.subsettingContext",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.subsetting_context"
+    },
+    {
+      "id": "Property-subsetting_context_conforms",
+      "name": "Property.subsetting_context_conforms",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.subsetting_contexts"
+    },
+    {
+      "id": "Property-derived_union_is_read_only",
+      "name": "Property.derived_union_is_read_only",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-multiplicity_of_composite",
+      "name": "Property.multiplicity_of_composite",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-redefined_property_inherited",
+      "name": "Property.redefined_property_inherited",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.inherited_redefinition"
+    },
+    {
+      "id": "Property-subsetting_rules",
+      "name": "Property.subsetting_rules",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-binding_to_attribute",
+      "name": "Property.binding_to_attribute",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-derived_union_is_derived",
+      "name": "Property.derived_union_is_derived",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-deployment_target",
+      "name": "Property.deployment_target",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-subsetted_property_names",
+      "name": "Property.subsetted_property_names",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-type_of_opposite_end",
+      "name": "Property.type_of_opposite_end",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-qualified_is_association_end",
+      "name": "Property.qualified_is_association_end",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.<lambda>"
+    },
+    {
+      "id": "Property-isComposite",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Property-opposite",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "RedefinableElement-isConsistentWith",
+      "name": "RedefinableElement.isConsistentWith",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.consistent"
+    },
+    {
+      "id": "RedefinableElement-isRedefinitionContextValid",
+      "name": "RedefinableElement.isRedefinitionContextValid",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.redefinition_context"
+    },
+    {
+      "id": "RedefinableElement-redefinition_consistent",
+      "name": "RedefinableElement.redefinition_consistent",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.redefinition_consistent"
+    },
+    {
+      "id": "RedefinableElement-non_leaf_redefinition",
+      "name": "RedefinableElement.non_leaf_redefinition",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.non_leaf"
+    },
+    {
+      "id": "RedefinableElement-redefinition_context_valid",
+      "name": "RedefinableElement.redefinition_context_valid",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.classification.redefinition_context_valid"
+    },
+    {
+      "id": "RedefinableElement-redefinedElement",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "RedefinableElement-redefinitionContext",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "RedefinableTemplateSignature-inheritedParameter.1",
+      "name": "RedefinableTemplateSignature.inheritedParameter",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.inherited_parameters"
+    },
+    {
+      "id": "RedefinableTemplateSignature-isConsistentWith",
+      "name": "RedefinableTemplateSignature.isConsistentWith",
+      "package": "Classification",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.additional_queries.template_consistency"
+    },
+    {
+      "id": "RedefinableTemplateSignature-redefines_parents",
+      "name": "RedefinableTemplateSignature.redefines_parents",
+      "package": "Classification",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_basic.signature_parents"
+    },
+    {
+      "id": "RedefinableTemplateSignature-inheritedParameter",
+      "package": "Classification",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "ValueSpecificationAction-multiplicity",
+      "name": "ValueSpecificationAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ValueSpecificationAction-compatible_type",
+      "name": "ValueSpecificationAction.compatible_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "VariableAction-scope_of_variable",
+      "name": "VariableAction.scope_of_variable",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "WriteLinkAction-allow_access",
+      "name": "WriteLinkAction.allow_access",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.write_access"
+    },
+    {
+      "id": "WriteStructuralFeatureAction-multiplicity_of_result",
+      "name": "WriteStructuralFeatureAction.multiplicity_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "WriteStructuralFeatureAction-type_of_value",
+      "name": "WriteStructuralFeatureAction.type_of_value",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "WriteStructuralFeatureAction-multiplicity_of_value",
+      "name": "WriteStructuralFeatureAction.multiplicity_of_value",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "WriteStructuralFeatureAction-type_of_result",
+      "name": "WriteStructuralFeatureAction.type_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "WriteVariableAction-value_type",
+      "name": "WriteVariableAction.value_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "WriteVariableAction-multiplicity",
+      "name": "WriteVariableAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptCallAction-result_pins",
+      "name": "AcceptCallAction.result_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptCallAction-trigger_call_event",
+      "name": "AcceptCallAction.trigger_call_event",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptCallAction-unmarshall",
+      "name": "AcceptCallAction.unmarshall",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptEventAction-one_output_pin",
+      "name": "AcceptEventAction.one_output_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptEventAction-no_input_pins",
+      "name": "AcceptEventAction.no_input_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptEventAction-no_output_pins",
+      "name": "AcceptEventAction.no_output_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AcceptEventAction-unmarshall_signal_events",
+      "name": "AcceptEventAction.unmarshall_signal_events",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.unmarshall_signal"
+    },
+    {
+      "id": "AcceptEventAction-conforming_type",
+      "name": "AcceptEventAction.conforming_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.accept_type"
+    },
+    {
+      "id": "Action-context.1",
+      "name": "Action.context",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.action_context"
+    },
+    {
+      "id": "Action-allActions",
+      "name": "Action.allActions",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.single_action"
+    },
+    {
+      "id": "Action-allOwnedNodes",
+      "name": "Action.allOwnedNodes",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.action_nodes"
+    },
+    {
+      "id": "Action-containingBehavior",
+      "name": "Action.containingBehavior",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.containing_behavior"
+    },
+    {
+      "id": "Action-context",
+      "package": "Actions",
+      "kind": "derived property",
+      "status": "native Python"
+    },
+    {
+      "id": "Action-input",
+      "package": "Actions",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "Action-output",
+      "package": "Actions",
+      "kind": "derived property",
+      "status": "structural union"
+    },
+    {
+      "id": "ActionInputPin-input_pin",
+      "name": "ActionInputPin.input_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ActionInputPin-one_output_pin",
+      "name": "ActionInputPin.one_output_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ActionInputPin-no_control_or_object_flow",
+      "name": "ActionInputPin.no_control_or_object_flow",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AddStructuralFeatureValueAction-required_value",
+      "name": "AddStructuralFeatureValueAction.required_value",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AddStructuralFeatureValueAction-insertAt_pin",
+      "name": "AddStructuralFeatureValueAction.insertAt_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.insert_pin"
+    },
+    {
+      "id": "AddVariableValueAction-required_value",
+      "name": "AddVariableValueAction.required_value",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "AddVariableValueAction-insertAt_pin",
+      "name": "AddVariableValueAction.insertAt_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.insert_pin"
+    },
+    {
+      "id": "BroadcastSignalAction-number_of_arguments",
+      "name": "BroadcastSignalAction.number_of_arguments",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "BroadcastSignalAction-type_ordering_multiplicity",
+      "name": "BroadcastSignalAction.type_ordering_multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "BroadcastSignalAction-no_onport",
+      "name": "BroadcastSignalAction.no_onport",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CallAction-inputParameters",
+      "name": "CallAction.inputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "abstract declaration",
+      "implementation": "umltools.native.activities_actions.abstract_parameters"
+    },
+    {
+      "id": "CallAction-outputParameters",
+      "name": "CallAction.outputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "abstract declaration",
+      "implementation": "umltools.native.activities_actions.abstract_parameters"
+    },
+    {
+      "id": "CallAction-argument_pins",
+      "name": "CallAction.argument_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CallAction-result_pins",
+      "name": "CallAction.result_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CallAction-synchronous_call",
+      "name": "CallAction.synchronous_call",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CallBehaviorAction-outputParameters",
+      "name": "CallBehaviorAction.outputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.behavior_outputs"
+    },
+    {
+      "id": "CallBehaviorAction-inputParameters",
+      "name": "CallBehaviorAction.inputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.behavior_inputs"
+    },
+    {
+      "id": "CallBehaviorAction-no_onport",
+      "name": "CallBehaviorAction.no_onport",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CallOperationAction-outputParameters",
+      "name": "CallOperationAction.outputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.operation_outputs"
+    },
+    {
+      "id": "CallOperationAction-inputParameters",
+      "name": "CallOperationAction.inputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.operation_inputs"
+    },
+    {
+      "id": "CallOperationAction-type_target_pin",
+      "name": "CallOperationAction.type_target_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.call_target"
+    },
+    {
+      "id": "Clause-body_output_pins",
+      "name": "Clause.body_output_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "Clause-decider_output",
+      "name": "Clause.decider_output",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "Clause-test_and_body",
+      "name": "Clause.test_and_body",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ClearAssociationAction-multiplicity",
+      "name": "ClearAssociationAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ClearAssociationAction-same_type",
+      "name": "ClearAssociationAction.same_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ClearStructuralFeatureAction-type_of_result",
+      "name": "ClearStructuralFeatureAction.type_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ClearStructuralFeatureAction-multiplicity_of_result",
+      "name": "ClearStructuralFeatureAction.multiplicity_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ConditionalNode-allActions",
+      "name": "ConditionalNode.allActions",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.single_action"
+    },
+    {
+      "id": "ConditionalNode-result_no_incoming",
+      "name": "ConditionalNode.result_no_incoming",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ConditionalNode-no_input_pins",
+      "name": "ConditionalNode.no_input_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ConditionalNode-one_clause_with_executable_node",
+      "name": "ConditionalNode.one_clause_with_executable_node",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ConditionalNode-matching_output_pins",
+      "name": "ConditionalNode.matching_output_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ConditionalNode-executable_nodes",
+      "name": "ConditionalNode.executable_nodes",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ConditionalNode-clause_no_predecessor",
+      "name": "ConditionalNode.clause_no_predecessor",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.clause_cycles"
+    },
+    {
+      "id": "CreateLinkAction-association_not_abstract",
+      "name": "CreateLinkAction.association_not_abstract",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateLinkObjectAction-multiplicity",
+      "name": "CreateLinkObjectAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateLinkObjectAction-type_of_result",
+      "name": "CreateLinkObjectAction.type_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateLinkObjectAction-association_class",
+      "name": "CreateLinkObjectAction.association_class",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateObjectAction-classifier_not_abstract",
+      "name": "CreateObjectAction.classifier_not_abstract",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateObjectAction-multiplicity",
+      "name": "CreateObjectAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateObjectAction-classifier_not_association_class",
+      "name": "CreateObjectAction.classifier_not_association_class",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "CreateObjectAction-same_type",
+      "name": "CreateObjectAction.same_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "DestroyObjectAction-multiplicity",
+      "name": "DestroyObjectAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "DestroyObjectAction-no_type",
+      "name": "DestroyObjectAction.no_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ExpansionNode-region_as_input_or_output",
+      "name": "ExpansionNode.region_as_input_or_output",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "InputPin-outgoing_edges_structured_only",
+      "name": "InputPin.outgoing_edges_structured_only",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkAction-association",
+      "name": "LinkAction.association",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.link_association"
+    },
+    {
+      "id": "LinkAction-same_pins",
+      "name": "LinkAction.same_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkAction-same_association",
+      "name": "LinkAction.same_association",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkAction-not_static",
+      "name": "LinkAction.not_static",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkEndCreationData-allPins",
+      "name": "LinkEndCreationData.allPins",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.creation_pins"
+    },
+    {
+      "id": "LinkEndCreationData-insertAt_pin",
+      "name": "LinkEndCreationData.insertAt_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.insert_pin"
+    },
+    {
+      "id": "LinkEndData-allPins",
+      "name": "LinkEndData.allPins",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.link_pins"
+    },
+    {
+      "id": "LinkEndData-same_type",
+      "name": "LinkEndData.same_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkEndData-multiplicity",
+      "name": "LinkEndData.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkEndData-end_object_input_pin",
+      "name": "LinkEndData.end_object_input_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkEndData-property_is_association_end",
+      "name": "LinkEndData.property_is_association_end",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkEndData-qualifiers",
+      "name": "LinkEndData.qualifiers",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LinkEndDestructionData-allPins",
+      "name": "LinkEndDestructionData.allPins",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.destruction_pins"
+    },
+    {
+      "id": "LinkEndDestructionData-destroyAt_pin",
+      "name": "LinkEndDestructionData.destroyAt_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-allActions",
+      "name": "LoopNode.allActions",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.single_action"
+    },
+    {
+      "id": "LoopNode-sourceNodes",
+      "name": "LoopNode.sourceNodes",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.loop_sources"
+    },
+    {
+      "id": "LoopNode-result_no_incoming",
+      "name": "LoopNode.result_no_incoming",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-input_edges",
+      "name": "LoopNode.input_edges",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-executable_nodes",
+      "name": "LoopNode.executable_nodes",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-body_output_pins",
+      "name": "LoopNode.body_output_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-setup_test_and_body",
+      "name": "LoopNode.setup_test_and_body",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-matching_output_pins",
+      "name": "LoopNode.matching_output_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "LoopNode-matching_loop_variables",
+      "name": "LoopNode.matching_loop_variables",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.loop_variables"
+    },
+    {
+      "id": "LoopNode-matching_result_pins",
+      "name": "LoopNode.matching_result_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.loop_results"
+    },
+    {
+      "id": "LoopNode-loop_variable_outgoing",
+      "name": "LoopNode.loop_variable_outgoing",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "OpaqueAction-language_body_size",
+      "name": "OpaqueAction.language_body_size",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "OutputPin-incoming_edges_structured_only",
+      "name": "OutputPin.incoming_edges_structured_only",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "Pin-control_pins",
+      "name": "Pin.control_pins",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "Pin-not_unique",
+      "name": "Pin.not_unique",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "QualifierValue-multiplicity_of_qualifier",
+      "name": "QualifierValue.multiplicity_of_qualifier",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "QualifierValue-type_of_qualifier",
+      "name": "QualifierValue.type_of_qualifier",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "QualifierValue-qualifier_attribute",
+      "name": "QualifierValue.qualifier_attribute",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadExtentAction-type_is_classifier",
+      "name": "ReadExtentAction.type_is_classifier",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadExtentAction-multiplicity_of_result",
+      "name": "ReadExtentAction.multiplicity_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadIsClassifiedObjectAction-no_type",
+      "name": "ReadIsClassifiedObjectAction.no_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadIsClassifiedObjectAction-multiplicity_of_output",
+      "name": "ReadIsClassifiedObjectAction.multiplicity_of_output",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadIsClassifiedObjectAction-boolean_result",
+      "name": "ReadIsClassifiedObjectAction.boolean_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadIsClassifiedObjectAction-multiplicity_of_input",
+      "name": "ReadIsClassifiedObjectAction.multiplicity_of_input",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkAction-openEnd",
+      "name": "ReadLinkAction.openEnd",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.open_ends"
+    },
+    {
+      "id": "ReadLinkAction-type_and_ordering",
+      "name": "ReadLinkAction.type_and_ordering",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkAction-compatible_multiplicity",
+      "name": "ReadLinkAction.compatible_multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkAction-visibility",
+      "name": "ReadLinkAction.visibility",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.read_access"
+    },
+    {
+      "id": "ReadLinkAction-one_open_end",
+      "name": "ReadLinkAction.one_open_end",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkAction-navigable_open_end",
+      "name": "ReadLinkAction.navigable_open_end",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-property",
+      "name": "ReadLinkObjectEndAction.property",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-multiplicity_of_object",
+      "name": "ReadLinkObjectEndAction.multiplicity_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-ends_of_association",
+      "name": "ReadLinkObjectEndAction.ends_of_association",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-type_of_result",
+      "name": "ReadLinkObjectEndAction.type_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-multiplicity_of_result",
+      "name": "ReadLinkObjectEndAction.multiplicity_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-type_of_object",
+      "name": "ReadLinkObjectEndAction.type_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndAction-association_of_association",
+      "name": "ReadLinkObjectEndAction.association_of_association",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-multiplicity_of_object",
+      "name": "ReadLinkObjectEndQualifierAction.multiplicity_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-type_of_object",
+      "name": "ReadLinkObjectEndQualifierAction.type_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-multiplicity_of_qualifier",
+      "name": "ReadLinkObjectEndQualifierAction.multiplicity_of_qualifier",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-ends_of_association",
+      "name": "ReadLinkObjectEndQualifierAction.ends_of_association",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-multiplicity_of_result",
+      "name": "ReadLinkObjectEndQualifierAction.multiplicity_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-same_type",
+      "name": "ReadLinkObjectEndQualifierAction.same_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-association_of_association",
+      "name": "ReadLinkObjectEndQualifierAction.association_of_association",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadLinkObjectEndQualifierAction-qualifier_attribute",
+      "name": "ReadLinkObjectEndQualifierAction.qualifier_attribute",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadSelfAction-contained",
+      "name": "ReadSelfAction.contained",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadSelfAction-multiplicity",
+      "name": "ReadSelfAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadSelfAction-not_static",
+      "name": "ReadSelfAction.not_static",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadSelfAction-type",
+      "name": "ReadSelfAction.type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadStructuralFeatureAction-multiplicity",
+      "name": "ReadStructuralFeatureAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadStructuralFeatureAction-type_and_ordering",
+      "name": "ReadStructuralFeatureAction.type_and_ordering",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadVariableAction-type_and_ordering",
+      "name": "ReadVariableAction.type_and_ordering",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReadVariableAction-compatible_multiplicity",
+      "name": "ReadVariableAction.compatible_multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReclassifyObjectAction-input_pin",
+      "name": "ReclassifyObjectAction.input_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReclassifyObjectAction-classifier_not_abstract",
+      "name": "ReclassifyObjectAction.classifier_not_abstract",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReclassifyObjectAction-multiplicity",
+      "name": "ReclassifyObjectAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReduceAction-reducer_inputs_output",
+      "name": "ReduceAction.reducer_inputs_output",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.reducer_parameters"
+    },
+    {
+      "id": "ReduceAction-input_type_is_collection",
+      "name": "ReduceAction.input_type_is_collection",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_remaining.collection_input"
+    },
+    {
+      "id": "ReduceAction-output_types_are_compatible",
+      "name": "ReduceAction.output_types_are_compatible",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "RemoveStructuralFeatureValueAction-removeAt_and_value",
+      "name": "RemoveStructuralFeatureValueAction.removeAt_and_value",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.remove_pin"
+    },
+    {
+      "id": "RemoveVariableValueAction-removeAt_and_value",
+      "name": "RemoveVariableValueAction.removeAt_and_value",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.remove_pin"
+    },
+    {
+      "id": "ReplyAction-pins_match_parameter",
+      "name": "ReplyAction.pins_match_parameter",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ReplyAction-event_on_reply_to_call_trigger",
+      "name": "ReplyAction.event_on_reply_to_call_trigger",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "SendObjectAction-type_target_pin",
+      "name": "SendObjectAction.type_target_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "SendSignalAction-type_ordering_multiplicity",
+      "name": "SendSignalAction.type_ordering_multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "SendSignalAction-number_order",
+      "name": "SendSignalAction.number_order",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "SendSignalAction-type_target_pin",
+      "name": "SendSignalAction.type_target_pin",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StartClassifierBehaviorAction-multiplicity",
+      "name": "StartClassifierBehaviorAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StartClassifierBehaviorAction-type_has_classifier",
+      "name": "StartClassifierBehaviorAction.type_has_classifier",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StartObjectBehaviorAction-outputParameters",
+      "name": "StartObjectBehaviorAction.outputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.object_outputs"
+    },
+    {
+      "id": "StartObjectBehaviorAction-inputParameters",
+      "name": "StartObjectBehaviorAction.inputParameters",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.object_inputs"
+    },
+    {
+      "id": "StartObjectBehaviorAction-behavior",
+      "name": "StartObjectBehaviorAction.behavior",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.object_behavior"
+    },
+    {
+      "id": "StartObjectBehaviorAction-multiplicity_of_object",
+      "name": "StartObjectBehaviorAction.multiplicity_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StartObjectBehaviorAction-type_of_object",
+      "name": "StartObjectBehaviorAction.type_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StartObjectBehaviorAction-no_onport",
+      "name": "StartObjectBehaviorAction.no_onport",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StructuralFeatureAction-multiplicity",
+      "name": "StructuralFeatureAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StructuralFeatureAction-object_type",
+      "name": "StructuralFeatureAction.object_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.structural_object"
+    },
+    {
+      "id": "StructuralFeatureAction-visibility",
+      "name": "StructuralFeatureAction.visibility",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.structural_visibility"
+    },
+    {
+      "id": "StructuralFeatureAction-not_static",
+      "name": "StructuralFeatureAction.not_static",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StructuralFeatureAction-one_featuring_classifier",
+      "name": "StructuralFeatureAction.one_featuring_classifier",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StructuredActivityNode-allActions",
+      "name": "StructuredActivityNode.allActions",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.structured_actions"
+    },
+    {
+      "id": "StructuredActivityNode-allOwnedNodes",
+      "name": "StructuredActivityNode.allOwnedNodes",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.structured_nodes"
+    },
+    {
+      "id": "StructuredActivityNode-sourceNodes",
+      "name": "StructuredActivityNode.sourceNodes",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.source_nodes"
+    },
+    {
+      "id": "StructuredActivityNode-targetNodes",
+      "name": "StructuredActivityNode.targetNodes",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.target_nodes"
+    },
+    {
+      "id": "StructuredActivityNode-containingActivity",
+      "name": "StructuredActivityNode.containingActivity",
+      "package": "Actions",
+      "kind": "operation",
+      "status": "native Python",
+      "implementation": "umltools.native.activities_actions.node_activity"
+    },
+    {
+      "id": "StructuredActivityNode-output_pin_edges",
+      "name": "StructuredActivityNode.output_pin_edges",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "StructuredActivityNode-edges",
+      "name": "StructuredActivityNode.edges",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.structured_edges"
+    },
+    {
+      "id": "StructuredActivityNode-input_pin_edges",
+      "name": "StructuredActivityNode.input_pin_edges",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "TestIdentityAction-multiplicity",
+      "name": "TestIdentityAction.multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "TestIdentityAction-no_type",
+      "name": "TestIdentityAction.no_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "TestIdentityAction-result_is_boolean",
+      "name": "TestIdentityAction.result_is_boolean",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "UnmarshallAction-structural_feature",
+      "name": "UnmarshallAction.structural_feature",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "UnmarshallAction-number_of_result",
+      "name": "UnmarshallAction.number_of_result",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "UnmarshallAction-type_ordering_and_multiplicity",
+      "name": "UnmarshallAction.type_ordering_and_multiplicity",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "UnmarshallAction-multiplicity_of_object",
+      "name": "UnmarshallAction.multiplicity_of_object",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "UnmarshallAction-object_type",
+      "name": "UnmarshallAction.object_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ValuePin-no_incoming_edges",
+      "name": "ValuePin.no_incoming_edges",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    },
+    {
+      "id": "ValuePin-compatible_type",
+      "name": "ValuePin.compatible_type",
+      "package": "Actions",
+      "kind": "constraint",
+      "status": "native Python",
+      "implementation": "umltools.native.constraints_actions.<lambda>"
+    }
+  ]
+}

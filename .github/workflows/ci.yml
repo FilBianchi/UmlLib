@@ -1,0 +1,30 @@
+name: Test and build
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12', '3.14']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install build
+      - run: python -m unittest discover -s tests -v
+      - run: python generate_uml.py && git diff --exit-code -- Uml UML.py
+      - run: python semantic_report.py && git diff --exit-code -- semantic-report.json
+      - run: python -m build
+      - run: python -m pip install dist/*.whl
+      - name: Verify installed wheel outside checkout
+        run: |
+          cp scripts/smoke_install.py "$RUNNER_TEMP/smoke_install.py"
+          cd "$RUNNER_TEMP"
+          python smoke_install.py
