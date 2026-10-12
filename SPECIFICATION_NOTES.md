@@ -98,6 +98,40 @@ ModelSession extents retain live elements; the default shared extent stays weak.
   with the complete stereotype tagged-value and user constraint API; this audit does
   not claim those requirements are implemented.
 
+## CommonBehavior and StateMachines audit (0.6.0)
+
+- Behavior.specification is optional. The unguarded feature_of_context_classifier
+  formula rejects unspecified behaviors. Python checks feature membership only when
+  a specification is represented; this is a project interpretation of the missing guard.
+- Behavior.behavioredClassifier references its finder body as a precondition. This
+  returns a classifier/null, not Boolean. The finder and argument contracts are
+  implemented; the malformed precondition is not claimed as a valid predicate.
+- FunctionBehavior parameter types use exact isTypeOf(DataType), while nested attribute
+  types use isKindOf(DataType). Python preserves the distinction even for PrimitiveType
+  parameters; the broader DataType prose remains a source conflict.
+- ProtocolStateMachine formulas inspect only top-level regions. Python follows the
+  machine-wide descriptions for history vertices, entry/exit/do behaviors and protocol
+  transition kinds through nested owned regions. Referenced submachines are separate.
+- Vertex.containingStateMachine omits entry/exit points owned by a composite State.
+  Python follows that State's represented containing machine when stateMachine is absent.
+- Region.isRedefinitionContextValid refers to State.redefinedState, which does not exist
+  in the supplied metamodel. Python uses redefinedVertex and requires a State target.
+- LCAState uses exact State tests; FinalState endpoints are excluded. Its mandatory
+  signature conflicts with an explicit null branch. The effective result is optional.
+- Vertex.isConsistentWith has State-prefixed identifiers duplicated by State's actual
+  declaration and uses an undeclared redefinedElement. Python follows the argument and
+  owner redefinition relation. The matrix preserves both local operation bodies and
+  reports eight ambiguous XMI IDs instead of overwriting one declaration with the other.
+- TimeExpression does not override integerValue, so the TimeEvent formula cannot read
+  even a represented integer expr directly. Python checks computable expr evidence;
+  observations and foreign expressions stay unsupported without numeric evaluation.
+  This does not execute languages, clocks or scheduling behavior.
+- Existing ancestor, region-containment and distinct fork/join-pair interpretations
+  are flagged in the review matrix. An unowned Region is not assumed protocol-owned
+  merely because the source implication is vacuously true.
+- ProtocolConformance links are structural data. Behavioral conformance proof and
+  general state-machine execution are not supplied by this static audit.
+
 ## Earlier project interpretations (continued)
 
 - `Namespace-excludeCollisions`: the formula compares each imported element to

@@ -1,5 +1,6 @@
 """Explicit Python predicates for value, classifier and use-case constraints."""
 from . import invariant, kind, instances, reverse, single, NativeNotImplemented
+from .state_machines import protocol_regions
 
 
 def enum(value): return None if value is None else value.value
@@ -58,12 +59,11 @@ predicates({
     'Node.internal_structure': lambda s: all(kind(s, p, 'Node') for p in s.part),
     'FunctionBehavior.one_output_parameter': lambda s: bool(s.outputParameters()),
     'FunctionBehavior.types_of_parameters': lambda s: all(type(p.type) is s.__registry__['DataType'] and s.hasAllDataTypeAttributes(p.type) for p in s.ownedParameter),
-    'TimeEvent.when_non_negative': lambda s: required(s.when).integerValue() >= 0,
     'Trigger.trigger_with_ports': lambda s: not s.port or kind(s, s.event, 'MessageEvent'),
     'ProtocolStateMachine.classifier_context': lambda s: s.context is not None and s.specification is None,
-    'ProtocolStateMachine.deep_or_shallow_history': lambda s: all(enum(v.kind) not in ('deepHistory', 'shallowHistory') for r in s.region for v in r.subvertex if kind(s, v, 'Pseudostate')),
-    'ProtocolStateMachine.entry_exit_do': lambda s: all(v.entry is None and v.exit is None and v.doActivity is None for r in s.region for v in r.subvertex if kind(s, v, 'State')),
-    'ProtocolStateMachine.protocol_transitions': lambda s: all(type(t) is s.__registry__['ProtocolTransition'] for r in s.region for t in r.transition),
+    'ProtocolStateMachine.deep_or_shallow_history': lambda s: all(enum(v.kind) not in ('deepHistory', 'shallowHistory') for r in protocol_regions(s) for v in r.subvertex if kind(s, v, 'Pseudostate')),
+    'ProtocolStateMachine.entry_exit_do': lambda s: all(v.entry is None and v.exit is None and v.doActivity is None for r in protocol_regions(s) for v in r.subvertex if kind(s, v, 'State')),
+    'ProtocolStateMachine.protocol_transitions': lambda s: all(type(t) is s.__registry__['ProtocolTransition'] for r in protocol_regions(s) for t in r.transition),
     'ProtocolTransition.refers_to_operation': lambda s: not s.referred or s.containingStateMachine().context is None or all(o in s.containingStateMachine().context.allFeatures() for o in s.referred),
     'ProtocolTransition.associated_actions': lambda s: s.effect is None,
     'ProtocolTransition.belongs_to_psm': lambda s: required(s.container).belongsToPSM(),
@@ -104,6 +104,20 @@ predicates({
     'Property.binding_to_attribute': lambda s: not s.isAttribute() or all(kind(s, ts.formal.parameteredElement, 'Property') and ts.formal.parameteredElement.isAttribute() for ts in reverse(s, 'TemplateParameterSubstitution', 'actual')),
     'Property.deployment_target': lambda s: not s.deployment or kind(s, s.owner, 'Node') and any(s in n.part for n in instances(s, 'Node')),
 })
+
+
+@invariant('TimeEvent.when_non_negative')
+def nonnegative_time(self):
+    expression = required(self.when)
+    value = expression.integerValue()
+    if value is None:
+        # TimeExpression has no integerValue override in the XMI. A represented
+        # computable expr supplies static evidence without executing a language.
+        expr = expression.expr
+        if expr is None or not expr.isComputable():
+            raise NativeNotImplemented('TimeExpression requires an integer evaluation or observation adapter')
+        value = expr.integerValue()
+    return value is not None and value >= 0
 
 
 @invariant('Actor.associations')

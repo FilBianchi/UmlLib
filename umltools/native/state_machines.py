@@ -6,6 +6,17 @@ def enum(value): return None if value is None else value.value
 def pseudostate(self, value, name): return kind(self, value, 'Pseudostate') and enum(value.kind) == name
 
 
+def protocol_regions(self):
+    """Owned regions only: a referenced submachine is a separate model."""
+    pending, seen = list(self.region), set()
+    while pending:
+        region = pending.pop()
+        if region in seen: continue
+        seen.add(region)
+        yield region
+        pending.extend(child for vertex in region.subvertex if kind(self, vertex, 'State') for child in vertex.region)
+
+
 @query('Vertex.incoming')
 def incoming(self): return [transition for transition in instances(self, 'Transition') if transition.target is self]
 
@@ -17,7 +28,10 @@ def outgoing(self): return [transition for transition in instances(self, 'Transi
 @query('Vertex.containingStateMachine')
 def vertex_machine(self):
     if self.container is not None: return self.container.containingStateMachine()
-    if kind(self, self, 'Pseudostate') and enum(self.kind) in ('entryPoint', 'exitPoint'): return self.stateMachine
+    if kind(self, self, 'Pseudostate') and enum(self.kind) in ('entryPoint', 'exitPoint'):
+        if self.stateMachine is not None: return self.stateMachine
+        if self.state is not None: return self.state.containingStateMachine()
+        return None
     if kind(self, self, 'ConnectionPointReference'):
         if self.state is None: raise ValueError('Connection point has no state')
         return self.state.containingStateMachine()
@@ -101,8 +115,8 @@ def lca(self, s1, s2):
 
 @query('StateMachine.LCAState')
 def lca_state(self, v1, v2):
-    first = ([v1] if kind(self, v1, 'State') else []) + enclosing_states(v1)
-    second = ([v2] if kind(self, v2, 'State') else []) + enclosing_states(v2)
+    first = ([v1] if type(v1) is self.__registry__['State'] else []) + enclosing_states(v1)
+    second = ([v2] if type(v2) is self.__registry__['State'] else []) + enclosing_states(v2)
     return next((state for state in first if state in second), None)
 
 
@@ -128,7 +142,7 @@ def machine_redefinition(self, redefinedElement):
 def region_redefinition(self, redefinedElement):
     if not kind(self, redefinedElement, 'Region'): return False
     if self.stateMachine is None:
-        return self.state is not None and self.state.redefinedState is not None and redefinedElement in self.state.redefinedState.region
+        return self.state is not None and kind(self, self.state.redefinedVertex, 'State') and redefinedElement in self.state.redefinedVertex.region
     return any(redefinedElement in machine.region for machine in self.stateMachine.extendedStateMachine)
 
 

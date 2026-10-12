@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.6.0
+
+CommonBehavior and StateMachines have linked examples for all 54 declared invariants,
+35 queries, 11 derivations and 8 precondition records. One finder-body reference is
+a malformed Boolean precondition in the XMI and remains a documented source conflict.
+
+Unspecified Behavior methods no longer fail the context-feature check. Protocol
+history, state behaviors and transition kinds are checked through nested owned regions.
+Composite-state entry/exit points resolve their containing machine. Nested region
+redefinition uses State.redefinedVertex instead of the nonexistent redefinedState.
+LCAState now respects exact State tests, excludes FinalState endpoints as declared,
+and permits the body's explicit null branch despite its conflicting return signature.
+
+TimeEvent validation checks represented computable TimeExpression.expr values;
+uninterpreted expressions and observations remain unsupported obligations. No clock,
+scheduler or state-machine execution engine is supplied. Source/prose differences,
+including stronger recursive protocol checks, are explicit project interpretations.
+
+224 tests pass; 433 definition records have linked examples. The matrix detects eight
+duplicated State/Vertex XMI identifiers and preserves operation-local bodies and
+conditions instead of silently looking up the other declaration. ProtocolConformance
+behavioral proof remains partial; static link modeling is supported.
+
 ## 0.5.0
 
 Packages and StructuredClassifiers now have linked examples for all 36 declared

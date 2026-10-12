@@ -57,7 +57,7 @@ Unknown expression languages are never implicitly accepted or executed.
 
 ## Behavioral verification
 
-206 tests cover class/package inventories and inheritance; atomic collection edits,
+224 tests cover class/package inventories and inheritance; atomic collection edits,
 reversal, ownership and cycles; stored subsets and inverse associations;
 names, alias imports and reexports; classifier inheritance and property redefinition;
 multiplicities and unlimited values; state and protocol machines; call signatures;
@@ -68,13 +68,17 @@ deployment manifestations, profiles and object flows through control nodes.
 The new audit adds valid, invalid and boundary examples for InformationFlow,
 InformationItem, PartDecomposition, Stereotype and Profile checks, plus runtime
 application lifecycle tests. Explicit `@verifies(...)` annotations link examples to
-325 definition records in the JSON report, including properties and preconditions.
+433 definition records in the JSON report, including properties and preconditions.
 All 27 CommonStructure invariants and 11 Values invariants, and their declared
 queries/derivations, have examples. Classification adds 44 invariants, 40 queries,
 16 derivations and 6 preconditions; SimpleClassifiers adds 5 invariants, 1 query and
 1 derivation with examples. Packages adds 14 invariants, 14 queries, 7 derivations
 and 1 precondition; StructuredClassifiers adds 22 invariants, 15 queries and 13
-derivations with examples. Other invariants still need review and links;
+derivations with examples. CommonBehavior adds 7 invariants, 5 queries, 1 derivation
+and 1 precondition record; StateMachines adds 47 invariants, 30 queries, 10 derivations
+and 7 precondition records. The malformed finder-body precondition is flagged as a
+source conflict rather than asserted as enforced Boolean semantics.
+Other invariants still need review and links;
 older tests cover some of them. Neither a test count nor
 these links constitute certification or exhaustive verification of each rule.
 
@@ -133,6 +137,17 @@ CI runs Python 3.10, 3.12 and 3.14, checks reproducible generation and the inven
 builds distributions and imports an installed wheel from outside the checkout.
 
 ## Scope and future conformance work
+
+CommonBehavior/StateMachines examples cover optional specifications and method
+duplication, nested behavior contexts and parameter directions; recursive datatype
+attributes, time expression evidence and event ports; state/region containment,
+orthogonal fork/join endpoints, transition kinds and guards, final-state restrictions,
+submachine connection points, redefinition and nested protocol regions. Mutation and
+deletion examples check recalculated incoming/outgoing links and validation outcomes.
+ProtocolConformance's behavioral proof, clocks/scheduling and general state-machine
+execution are not implemented. This audit verifies represented static semantics.
+The matrix disambiguates duplicate State/Vertex operation/rule IDs by declaration
+name and preserves operation-local bodies; a raw XMI ID alone is not a unique key.
 
 This package covers the core UML 2.5.1 metamodel XMI, not StandardProfile or UMLDI.
 Those are separate specifications and would need their own modules and tests.

@@ -27,6 +27,23 @@ AUDIT_LIMITS = {
     'ConnectorEnd.multiplicity': 'The unconditional formula passes an absent definingEnd to compatibleWith. Python follows the prose: an untyped connector has no association-end bound to constrain it.',
     'Port.encapsulated_owner': 'The null=null formula admits unowned ports. Python follows the ownership description and requires an EncapsulatedClassifier owner.',
     'CollaborationUse.connectors': 'The XMI chooses an arbitrary structuredClassifier association end. Python prefers the owning CollaborationUse classifier when represented, otherwise requires one shared context; ambiguous unowned uses remain unsupported.',
+    'Behavior.feature_of_context_classifier': 'The unguarded formula rejects absent specifications although the reference is optional. Python checks context membership only for specified methods.',
+    'Behavior.behavioredClassifier.precondition': 'The precondition references the classifier-finding body rather than a Boolean predicate. Python implements the finder and its argument contract; the malformed precondition is not treated as a Boolean proof.',
+    'FunctionBehavior.types_of_parameters': 'The source requires exact DataType parameters, excluding PrimitiveType/Enumeration despite broader DataType wording. Python preserves isTypeOf; nested attributes use isKindOf as declared.',
+    'ProtocolStateMachine.deep_or_shallow_history': 'The source checks top-level regions only. Python applies the machine-wide prohibition in the prose to nested owned regions as well.',
+    'ProtocolStateMachine.entry_exit_do': 'The source checks top-level states only. Python checks states in every nested owned region according to the machine-wide prose.',
+    'ProtocolStateMachine.protocol_transitions': 'The source checks top-level regions only. Python checks exact ProtocolTransition types in every nested owned region.',
+    'Vertex.containingStateMachine': 'The source omits entry/exit points owned by composite States. Python follows the represented State owner to its containing machine.',
+    'Region.isRedefinitionContextValid': 'The source references nonexistent State.redefinedState. Python uses the inherited redefinedVertex link and checks that its target is a State.',
+    'Vertex.isConsistentWith': 'The operation has duplicate State-prefixed XMI identifiers and refers to an undeclared redefinedElement. Python uses the redefiningElement argument and the represented owner redefinition relation.',
+    'StateMachine.ancestor': 'The source top-level branch reverses the direction described in prose. Python tests whether s2 encloses s1, including equality.',
+    'Vertex.isContainedInRegion': 'The source recursion tests the queried region instead of progressing through the vertex containers. Python walks the actual enclosing regions.',
+    'Pseudostate.transitions_outgoing': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
+    'Pseudostate.transitions_incoming': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
+    'Region.belongsToPSM': 'An unowned region vacuously satisfies the implication in the body. Python requires a represented containing machine; missing ownership remains invalid.',
+}
+CONTEXT_LIMITS = {
+    'TimeEvent.when_non_negative': 'TimeExpression has no integerValue override in the XMI. Python checks represented computable expr values; foreign expressions/observations require numeric evaluation evidence and remain unsupported. No clock or scheduler is executed.',
 }
 CONTEXTUAL = {
     'Constraint.no_side_effects', 'MultiplicityElement.value_specification_no_side_effects',
@@ -36,6 +53,7 @@ PARTIAL = {
     'PackageMerge': 'The model represents receiving/merged Package links. The normative reconciliation/merge algorithm is not implemented.',
     'ProfileApplication-isStrict': 'The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.',
     'Stereotype': 'Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.',
+    'ProtocolConformance': 'Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.',
 }
 
 
@@ -73,6 +91,7 @@ def report():
     with files('umltools.data').joinpath('UML.xmi').open('rb') as stream:
         root = ET.parse(stream).getroot()
     source = {n.get(XMI+'id'): n for n in root.iter() if n.get(XMI+'id')}
+    source_id_counts = Counter(n.get(XMI+'id') for n in root.iter() if n.get(XMI+'id'))
     parents = {child: parent for parent in root.iter() for child in parent}
     records = []
     for spec in SPECIFICATIONS.values():
@@ -84,7 +103,7 @@ def report():
                 status = 'abstract declaration' if abstract else 'native Python' if function else 'not translated'
                 xmi_id = ET.fromstring(definition).get(XMI+'id') if category == 'operation' else f'{spec.name}-{name}'
                 record = {'id': xmi_id, 'name': identifier, 'package': spec.package, 'kind': category, 'status': status}
-                node = source[xmi_id]
+                node = ET.fromstring(definition) if category == 'operation' else source[xmi_id]
                 record.update(source_text(node))
                 if category == 'operation':
                     record['signature'] = [parameter_signature(p) for p in node.findall('ownedParameter')]
@@ -99,7 +118,7 @@ def report():
                             condition_id = condition.get(XMI+'idref')
                             records.append({'id': condition_id, 'name': identifier + '.' + condition_kind,
                                             'operation': identifier, 'package': spec.package, 'kind': condition_kind,
-                                            'status': 'query obligation', **source_text(source[condition_id])})
+                                            'status': 'query obligation', **source_text(next((r for r in node.findall('ownedRule') if r.get(XMI+'id') == condition_id), source[condition_id]))})
         for prop in spec.properties.values():
             derived = prop.flags.get('isDerived') == 'true'
             if not derived: status = 'runtime structural contract'
@@ -157,9 +176,14 @@ def report():
             record['limitation'] = 'Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.'
         if record['id'] in PARTIAL:
             record['review'], record['limitation'] = 'partial', PARTIAL[record['id']]
+        if name in CONTEXT_LIMITS:
+            record['review'], record['limitation'] = 'context dependent', CONTEXT_LIMITS[name]
         record['source'] = 'umltools/data/UML.xmi#' + record['id']
+        if source_id_counts.get(record['id'], 0) > 1:
+            record['source_id_ambiguous'] = True
+            record['source_disambiguation'] = record.get('name')
     package_audit = {}
-    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers'):
+    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines'):
         definitions = [r for r in records if r['package'] == package]
         counts_by_kind = {category: {'declared': sum(r['kind'] == category for r in definitions),
                                     'with_examples': sum(r['kind'] == category and bool(r['tests']) for r in definitions)}
@@ -171,6 +195,7 @@ def report():
             'scope': 'Declared core class/property/operation metadata, enumerations, association-owned ends, class invariants, pre/postconditions and XMI descriptions. Additional normative PDF prose still needs separate requirement decomposition; this is not a complete census of every normative UML requirement.',
             'counts': counts, 'verification_counts': dict(Counter(record.get('verification', 'no linked behavioral examples') for record in records)),
             'review_counts': dict(Counter(record['review'] for record in records)), 'package_audit': package_audit,
+            'duplicate_source_ids': {identifier: count for identifier, count in source_id_counts.items() if count > 1},
             'definitions': records}
 
 

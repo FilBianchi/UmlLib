@@ -30,15 +30,15 @@
     }
   },
   "verification_counts": {
-    "no linked behavioral examples": 1557,
-    "linked behavioral examples": 325
+    "no linked behavioral examples": 1449,
+    "linked behavioral examples": 433
   },
   "review_counts": {
-    "needs review": 1552,
-    "verified in linked examples": 295,
-    "source inconsistency": 28,
-    "partial": 3,
-    "context dependent": 4
+    "needs review": 1443,
+    "verified in linked examples": 387,
+    "source inconsistency": 43,
+    "partial": 4,
+    "context dependent": 5
   },
   "package_audit": {
     "CommonStructure": {
@@ -172,7 +172,61 @@
           "with_examples": 0
         }
       }
+    },
+    "CommonBehavior": {
+      "invariants": 7,
+      "invariants_with_examples": 7,
+      "definitions": {
+        "constraint": {
+          "declared": 7,
+          "with_examples": 7
+        },
+        "operation": {
+          "declared": 5,
+          "with_examples": 5
+        },
+        "derived property": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "precondition": {
+          "declared": 1,
+          "with_examples": 1
+        }
+      }
+    },
+    "StateMachines": {
+      "invariants": 47,
+      "invariants_with_examples": 47,
+      "definitions": {
+        "constraint": {
+          "declared": 47,
+          "with_examples": 47
+        },
+        "operation": {
+          "declared": 30,
+          "with_examples": 30
+        },
+        "derived property": {
+          "declared": 10,
+          "with_examples": 10
+        },
+        "precondition": {
+          "declared": 7,
+          "with_examples": 7
+        }
+      }
     }
+  },
+  "duplicate_source_ids": {
+    "State-isConsistentWith": 2,
+    "State-isConsistentWith-_ownedComment.0": 2,
+    "State-isConsistentWith-spec": 2,
+    "State-isConsistentWith-spec-_specification": 2,
+    "State-isConsistentWith-pre": 2,
+    "State-isConsistentWith-pre-_specification": 2,
+    "State-isConsistentWith-result": 2,
+    "State-isConsistentWith-redefiningElement": 2
   },
   "definitions": [
     {
@@ -9350,9 +9404,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.connection_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_vertex_specializations_check_kind_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectionPointReference-isConsistentWith"
     },
     {
@@ -9369,9 +9425,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_vertex_specializations_check_kind_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectionPointReference-isConsistentWith-pre"
     },
     {
@@ -9390,9 +9448,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.connection_exits",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectionPointReference-exit_pseudostates"
     },
     {
@@ -9411,9 +9471,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.connection_entries",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectionPointReference-entry_pseudostates"
     },
     {
@@ -9556,9 +9618,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.final_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_vertex_specializations_check_kind_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-isConsistentWith"
     },
     {
@@ -9575,9 +9639,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_vertex_specializations_check_kind_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-isConsistentWith-pre"
     },
     {
@@ -9596,9 +9662,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.no_exit",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_final_state_has_no_behaviors_regions_submachine_or_outgoing_edges"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-no_exit_behavior"
     },
     {
@@ -9617,9 +9685,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.no_outgoing",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_final_state_has_no_behaviors_regions_submachine_or_outgoing_edges"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-no_outgoing_transitions"
     },
     {
@@ -9638,9 +9708,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.no_regions",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_final_state_has_no_behaviors_regions_submachine_or_outgoing_edges"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-no_regions"
     },
     {
@@ -9659,9 +9731,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.no_submachine",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_final_state_has_no_behaviors_regions_submachine_or_outgoing_edges"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-cannot_reference_submachine"
     },
     {
@@ -9680,9 +9754,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.no_entry",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_final_state_has_no_behaviors_regions_submachine_or_outgoing_edges"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-no_entry_behavior"
     },
     {
@@ -9701,9 +9777,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.no_activity",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_final_state_has_no_behaviors_regions_submachine_or_outgoing_edges"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalState-no_state_behavior"
     },
     {
@@ -9790,7 +9868,8 @@
       "expressions": [],
       "tests": [],
       "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "review": "partial",
+      "limitation": "Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.",
       "source": "umltools/data/UML.xmi#ProtocolConformance"
     },
     {
@@ -9809,9 +9888,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProtocolStateMachine-classifier_context"
     },
     {
@@ -9830,9 +9911,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source checks top-level regions only. Python applies the machine-wide prohibition in the prose to nested owned regions as well.",
       "source": "umltools/data/UML.xmi#ProtocolStateMachine-deep_or_shallow_history"
     },
     {
@@ -9851,9 +9935,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source checks top-level states only. Python checks states in every nested owned region according to the machine-wide prose.",
       "source": "umltools/data/UML.xmi#ProtocolStateMachine-entry_exit_do"
     },
     {
@@ -9872,9 +9959,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source checks top-level regions only. Python checks exact ProtocolTransition types in every nested owned region.",
       "source": "umltools/data/UML.xmi#ProtocolStateMachine-protocol_transitions"
     },
     {
@@ -9956,9 +10046,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.referred",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProtocolTransition-referred.1"
     },
     {
@@ -9977,9 +10069,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProtocolTransition-refers_to_operation"
     },
     {
@@ -9998,9 +10092,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProtocolTransition-associated_actions"
     },
     {
@@ -10019,9 +10115,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProtocolTransition-belongs_to_psm"
     },
     {
@@ -10101,9 +10199,11 @@
         "This association refers to the associated Operation. It is derived from the Operation of the CallEvent Trigger when applicable."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProtocolTransition-referred"
     },
     {
@@ -10166,9 +10266,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.pseudostate_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_vertex_specializations_check_kind_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-isConsistentWith"
     },
     {
@@ -10185,9 +10287,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_vertex_specializations_check_kind_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-isConsistentWith-pre"
     },
     {
@@ -10206,9 +10310,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.orthogonal_fork",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_fork_join_distinct_endpoints_and_orthogonal_regions"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.",
       "source": "umltools/data/UML.xmi#Pseudostate-transitions_outgoing"
     },
     {
@@ -10227,9 +10334,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.choice",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_pseudostate_degree_rules_and_initial_guard_trigger_restrictions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-choice_vertex"
     },
     {
@@ -10248,9 +10357,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.initial_outgoing",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_pseudostate_degree_rules_and_initial_guard_trigger_restrictions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-outgoing_from_initial"
     },
     {
@@ -10269,9 +10380,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.join",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_fork_join_distinct_endpoints_and_orthogonal_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-join_vertex"
     },
     {
@@ -10290,9 +10403,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.junction",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_pseudostate_degree_rules_and_initial_guard_trigger_restrictions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-junction_vertex"
     },
     {
@@ -10311,9 +10426,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.history",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_pseudostate_degree_rules_and_initial_guard_trigger_restrictions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-history_vertices"
     },
     {
@@ -10332,9 +10449,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.initial",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_pseudostate_degree_rules_and_initial_guard_trigger_restrictions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-initial_vertex"
     },
     {
@@ -10353,9 +10472,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.fork",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_fork_join_distinct_endpoints_and_orthogonal_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pseudostate-fork_vertex"
     },
     {
@@ -10374,9 +10495,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.orthogonal_join",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_fork_join_distinct_endpoints_and_orthogonal_regions"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.",
       "source": "umltools/data/UML.xmi#Pseudostate-transitions_incoming"
     },
     {
@@ -10511,9 +10635,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.protocol_region",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_protocol_rules_include_nested_owned_regions_and_operation_references"
+      ],
+      "review": "source inconsistency",
+      "limitation": "An unowned region vacuously satisfies the implication in the body. Python requires a represented containing machine; missing ownership remains invalid.",
       "source": "umltools/data/UML.xmi#Region-belongsToPSM"
     },
     {
@@ -10551,9 +10678,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.region_machine",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-containingStateMachine"
     },
     {
@@ -10601,9 +10730,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.region_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_machine_and_region_redefinitions_with_and_without_classifier_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-isConsistentWith"
     },
     {
@@ -10620,9 +10751,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_machine_and_region_redefinitions_with_and_without_classifier_contexts"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-isConsistentWith-pre"
     },
     {
@@ -10670,9 +10803,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.region_redefinition",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_machine_and_region_redefinitions_with_and_without_classifier_contexts"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source references nonexistent State.redefinedState. Python uses the inherited redefinedVertex link and checks that its target is a State.",
       "source": "umltools/data/UML.xmi#Region-isRedefinitionContextValid"
     },
     {
@@ -10710,9 +10846,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.redefinition_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-redefinitionContext.1"
     },
     {
@@ -10731,9 +10869,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.one_deep_history",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_region_singletons_and_composite_owner_exclusivity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-deep_history_vertex"
     },
     {
@@ -10752,9 +10892,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.one_shallow_history",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_region_singletons_and_composite_owner_exclusivity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-shallow_history_vertex"
     },
     {
@@ -10773,9 +10915,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.exclusive_region_owner",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_region_singletons_and_composite_owner_exclusivity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-owned"
     },
     {
@@ -10794,9 +10938,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.one_initial",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_region_singletons_and_composite_owner_exclusivity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-initial_vertex"
     },
     {
@@ -10850,9 +10996,11 @@
         "References the Classifier in which context this element may be redefined."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Region-redefinitionContext"
     },
     {
@@ -11017,9 +11165,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.contained_machine",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-containingStateMachine"
     },
     {
@@ -11057,9 +11207,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.composite",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isComposite.1"
     },
     {
@@ -11069,7 +11221,7 @@
       "kind": "operation",
       "status": "native Python",
       "descriptions": [
-        "The query isRedefinitionContextValid specifies that the redefinition context of a redefining Vertex is properly related to the redefinition context of the redefined Vertex if the owner of the redefining Vertex is a redefinition of the owner of the redefined Vertex. Note that the owner of a Vertex may be a Region, a StateMachine (for a connectionPoint Pseudostate), or a State (for a connectionPoint Pseudostate or a connection ConnectionPointReference), all of which are RedefinableElements."
+        "The query isConsistentWith specifies that a non-final State can only be redefined by a non-final State (this is overridden by FinalState to allow a FinalState to be redefined by a FinalState) and, if the redefined State is a submachine State, then the redefining State must be a submachine state whose submachine is a redefinition of the submachine of the redefined State. Note that consistency requirements for the redefinition of Regions and connectionPoint Pseudostates within a composite State and connection ConnectionPoints of a submachine State are specified by the isConsistentWith and isRedefinitionContextValid operations for Region and Vertex (and its subclasses, Pseudostate and ConnectionPointReference)."
       ],
       "expressions": [],
       "signature": [
@@ -11101,16 +11253,20 @@
           "expressions": [
             {
               "language": "OCL",
-              "body": "result = (redefinedElement.oclIsKindOf(Vertex) and\n  owner.oclAsType(RedefinableElement).redefinedElement->includes(redefinedElement.owner))"
+              "body": "result = (redefiningElement.oclIsTypeOf(State) and \n  let redefiningState : State = redefiningElement.oclAsType(State) in\n    submachine <> null implies (redefiningState.submachine <> null and\n      redefiningState.submachine.extendedStateMachine->includes(submachine)))"
             }
           ]
         }
       ],
       "implementation": "umltools.native.state_machines.state_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
-      "source": "umltools/data/UML.xmi#State-isConsistentWith"
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_states_submachines_vertex_interpretation_and_redefined_nested_regions"
+      ],
+      "review": "verified in linked examples",
+      "source": "umltools/data/UML.xmi#State-isConsistentWith",
+      "source_id_ambiguous": true,
+      "source_disambiguation": "State.isConsistentWith"
     },
     {
       "id": "State-isConsistentWith-pre",
@@ -11126,10 +11282,14 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
-      "source": "umltools/data/UML.xmi#State-isConsistentWith-pre"
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_states_submachines_vertex_interpretation_and_redefined_nested_regions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
+      "source": "umltools/data/UML.xmi#State-isConsistentWith-pre",
+      "source_id_ambiguous": true,
+      "source_disambiguation": "State.isConsistentWith.precondition"
     },
     {
       "id": "State-isOrthogonal.1",
@@ -11166,9 +11326,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.orthogonal",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isOrthogonal.1"
     },
     {
@@ -11206,9 +11368,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.simple",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isSimple.1"
     },
     {
@@ -11246,9 +11410,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.submachine_state",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isSubmachineState.1"
     },
     {
@@ -11267,9 +11433,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.entry_or_exit",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-entry_or_exit"
     },
     {
@@ -11288,9 +11456,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.submachine_connections",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-submachine_states"
     },
     {
@@ -11309,9 +11479,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.composite_connections",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-composite_states"
     },
     {
@@ -11330,9 +11502,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.submachine_endpoints",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-destinations_or_sources_of_transitions"
     },
     {
@@ -11351,9 +11525,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.submachine_or_regions",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_state_connection_points_submachine_references_and_exclusive_regions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-submachine_or_regions"
     },
     {
@@ -11545,9 +11721,11 @@
         "A state with isComposite=true is said to be a composite State. A composite State is a State that contains at least one Region."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isComposite"
     },
     {
@@ -11571,9 +11749,11 @@
         "A State with isOrthogonal=true is said to be an orthogonal composite State An orthogonal composite State contains two or more Regions."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isOrthogonal"
     },
     {
@@ -11597,9 +11777,11 @@
         "A State with isSimple=true is said to be a simple State A simple State does not have any Regions and it does not refer to any submachine StateMachine."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isSimple"
     },
     {
@@ -11623,9 +11805,11 @@
         "A State with isSubmachineState=true is said to be a submachine State Such a State refers to another StateMachine(submachine)."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-isSubmachineState"
     },
     {
@@ -11780,9 +11964,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.lca",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-LCA"
     },
     {
@@ -11840,9 +12026,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.ancestor",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source top-level branch reverses the direction described in prose. Python tests whether s2 encloses s1, including equality.",
       "source": "umltools/data/UML.xmi#StateMachine-ancestor"
     },
     {
@@ -11890,9 +12079,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.machine_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_machine_and_region_redefinitions_with_and_without_classifier_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-isConsistentWith"
     },
     {
@@ -11940,9 +12131,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.machine_redefinition",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_machine_and_region_redefinitions_with_and_without_classifier_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-isRedefinitionContextValid"
     },
     {
@@ -12000,9 +12193,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.lca_state",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The body explicitly returns null when no common enclosing State exists, despite a mandatory result signature.",
       "source": "umltools/data/UML.xmi#StateMachine-LCAState"
     },
     {
@@ -12021,9 +12217,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.entry_or_exit",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_machine_method_context_and_connection_point_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-connection_points"
     },
     {
@@ -12042,9 +12240,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.classifier_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_machine_method_context_and_connection_point_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-classifier_context"
     },
     {
@@ -12063,9 +12263,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.method_connections",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_machine_method_context_and_connection_point_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-method"
     },
     {
@@ -12084,9 +12286,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.context_classifier",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_machine_method_context_and_connection_point_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StateMachine-context_classifier"
     },
     {
@@ -12249,9 +12453,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.contained_machine",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-containingStateMachine"
     },
     {
@@ -12299,9 +12505,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.transition_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_transition_redefinition_checks_redefined_source_vertex"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-isConsistentWith"
     },
     {
@@ -12318,9 +12526,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_transition_redefinition_checks_redefined_source_vertex"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-isConsistentWith-pre"
     },
     {
@@ -12358,9 +12568,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.redefinition_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-redefinitionContext.1"
     },
     {
@@ -12379,9 +12591,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.external",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-state_is_external"
     },
     {
@@ -12400,9 +12614,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.join_guards",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-join_segment_guards"
     },
     {
@@ -12421,9 +12637,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.internal",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-state_is_internal"
     },
     {
@@ -12442,9 +12660,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.pseudostate_triggers",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-outgoing_pseudostates"
     },
     {
@@ -12463,9 +12683,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.join_source",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-join_segment_state"
     },
     {
@@ -12484,9 +12706,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.fork_target",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-fork_segment_state"
     },
     {
@@ -12505,9 +12729,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.local",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-state_is_local"
     },
     {
@@ -12526,9 +12752,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.initial_trigger",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-initial_transition"
     },
     {
@@ -12547,9 +12775,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.fork_guards",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_kinds_and_pseudostate_segments"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-fork_segment_guards"
     },
     {
@@ -12568,9 +12798,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.vertices_in_machine",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-transition_vertices"
     },
     {
@@ -12734,9 +12966,11 @@
         "References the Classifier in which context this element may be redefined."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Transition-redefinitionContext"
     },
     {
@@ -12869,9 +13103,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.vertex_machine",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source omits entry/exit points owned by composite States. Python follows the represented State owner to its containing machine.",
       "source": "umltools/data/UML.xmi#Vertex-containingStateMachine"
     },
     {
@@ -12909,9 +13146,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.incoming",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Vertex-incoming.1"
     },
     {
@@ -12949,9 +13188,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.outgoing",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Vertex-outgoing.1"
     },
     {
@@ -12999,9 +13240,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.contained_in_state",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Vertex-isContainedInState"
     },
     {
@@ -13049,9 +13292,12 @@
         }
       ],
       "implementation": "umltools.native.state_machines.contained_in_region",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_hierarchical_containment_lcas_and_exact_state_endpoint_types"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source recursion tests the queried region instead of progressing through the vertex containers. Python walks the actual enclosing regions.",
       "source": "umltools/data/UML.xmi#Vertex-isContainedInRegion"
     },
     {
@@ -13089,9 +13335,11 @@
         }
       ],
       "implementation": "umltools.native.state_machines.redefinition_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-redefinitionContext.1"
     },
     {
@@ -13139,10 +13387,15 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.vertex_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
-      "source": "umltools/data/UML.xmi#State-isConsistentWith"
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_states_submachines_vertex_interpretation_and_redefined_nested_regions"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The operation has duplicate State-prefixed XMI identifiers and refers to an undeclared redefinedElement. Python uses the redefiningElement argument and the represented owner redefinition relation.",
+      "source": "umltools/data/UML.xmi#State-isConsistentWith",
+      "source_id_ambiguous": true,
+      "source_disambiguation": "Vertex.isConsistentWith"
     },
     {
       "id": "State-isConsistentWith-pre",
@@ -13158,10 +13411,14 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
-      "source": "umltools/data/UML.xmi#State-isConsistentWith-pre"
+      "tests": [
+        "test_machine_redefinition_audit.RedefinitionCases.test_states_submachines_vertex_interpretation_and_redefined_nested_regions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
+      "source": "umltools/data/UML.xmi#State-isConsistentWith-pre",
+      "source_id_ambiguous": true,
+      "source_disambiguation": "Vertex.isConsistentWith.precondition"
     },
     {
       "id": "Vertex-container",
@@ -13212,9 +13469,11 @@
         "Specifies the Transitions entering this Vertex."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Vertex-incoming"
     },
     {
@@ -13238,9 +13497,11 @@
         "Specifies the Transitions departing from this Vertex."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Vertex-outgoing"
     },
     {
@@ -13266,9 +13527,11 @@
         "References the Classifier in which context this element may be redefined."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_state_machines_audit.MachineCases.test_transition_navigation_updates_and_rejects_other_machines"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#State-redefinitionContext"
     },
     {
@@ -24429,9 +24692,12 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_context_through_nested_behavior_and_parameter_directions",
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-context.1"
     },
     {
@@ -24479,9 +24745,11 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.behaviored_classifier",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-behavioredClassifier"
     },
     {
@@ -24498,9 +24766,12 @@
           "body": "if from.oclIsKindOf(BehavioredClassifier) then\n    from.oclAsType(BehavioredClassifier)\nelse if from.owner = null then\n    null\nelse\n    self.behavioredClassifier(from.owner)\nendif\nendif\n    "
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "source inconsistency",
+      "limitation": "The precondition references the classifier-finding body rather than a Boolean predicate. Python implements the finder and its argument contract; the malformed precondition is not treated as a Boolean proof.",
       "source": "umltools/data/UML.xmi#Behavior-behavioredClassifier-spec"
     },
     {
@@ -24538,9 +24809,11 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.input_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_context_through_nested_behavior_and_parameter_directions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-inputParameters"
     },
     {
@@ -24578,9 +24851,11 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.output_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_context_through_nested_behavior_and_parameter_directions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-outputParameters"
     },
     {
@@ -24599,9 +24874,11 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.one_method",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-most_one_behavior"
     },
     {
@@ -24620,9 +24897,11 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.matching_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-parameters_match"
     },
     {
@@ -24641,9 +24920,12 @@
         }
       ],
       "implementation": "umltools.native.common_behavior.context_feature",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The unguarded formula rejects absent specifications although the reference is optional. Python checks context membership only for specified methods.",
       "source": "umltools/data/UML.xmi#Behavior-feature_of_context_classifier"
     },
     {
@@ -24669,9 +24951,12 @@
         "The BehavioredClassifier that is the context for the execution of the Behavior. A Behavior that is directly owned as a nestedClassifier does not have a context. Otherwise, to determine the context of a Behavior, find the first BehavioredClassifier reached by following the chain of owner relationships from the Behavior, if any. If there is such a BehavioredClassifier, then it is the context, unless it is itself a Behavior with a non-empty context, in which case that is also the context for the original Behavior. For example, following this algorithm, the context of an entry Behavior in a StateMachine is the BehavioredClassifier that owns the StateMachine. The features of the context BehavioredClassifier as well as the Elements visible to the context Classifier are visible to the Behavior."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_context_through_nested_behavior_and_parameter_directions",
+        "test_common_behavior_audit.CommonBehaviorCases.test_optional_specification_method_context_and_duplicate_implementations"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Behavior-context"
     },
     {
@@ -25025,9 +25310,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.datatype_attributes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_function_datatype_graphs_cycles_and_exact_parameter_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FunctionBehavior-hasAllDataTypeAttributes"
     },
     {
@@ -25046,9 +25333,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_function_datatype_graphs_cycles_and_exact_parameter_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FunctionBehavior-one_output_parameter"
     },
     {
@@ -25067,9 +25356,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_function_datatype_graphs_cycles_and_exact_parameter_type"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source requires exact DataType parameters, excluding PrimitiveType/Enumeration despite broader DataType wording. Python preserves isTypeOf; nested attributes use isKindOf as declared.",
       "source": "umltools/data/UML.xmi#FunctionBehavior-types_of_parameters"
     },
     {
@@ -25225,10 +25517,13 @@
           "body": "when.integerValue() >= 0"
         }
       ],
-      "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "implementation": "umltools.native.constraints_basic.nonnegative_time",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_time_literal_evidence_unknown_observations_and_message_event_ports"
+      ],
+      "review": "context dependent",
+      "limitation": "TimeExpression has no integerValue override in the XMI. Python checks represented computable expr values; foreign expressions/observations require numeric evaluation evidence and remain unsupported. No clock or scheduler is executed.",
       "source": "umltools/data/UML.xmi#TimeEvent-when_non_negative"
     },
     {
@@ -25316,9 +25611,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_common_behavior_audit.CommonBehaviorCases.test_time_literal_evidence_unknown_observations_and_message_event_ports"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Trigger-trigger_with_ports"
     },
     {

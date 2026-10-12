@@ -13,7 +13,11 @@ class ReportCases(unittest.TestCase):
         self.assertEqual(records['OpaqueExpression-result.1']['review'], 'source inconsistency')
         self.assertEqual(records['PackageMerge']['review'], 'partial')
         self.assertEqual(records['ProfileApplication-isStrict']['review'], 'partial')
-        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers'):
+        self.assertEqual(result['duplicate_source_ids']['State-isConsistentWith'], 2)
+        vertex = next(r for r in result['definitions'] if r.get('name') == 'Vertex.isConsistentWith')
+        self.assertTrue(vertex['source_id_ambiguous'])
+        self.assertIn('redefinedElement.oclIsKindOf(Vertex)', vertex['body_conditions'][0]['expressions'][0]['body'])
+        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines'):
             self.assertEqual(result['package_audit'][package]['invariants'], result['package_audit'][package]['invariants_with_examples'])
             for category in ('operation', 'derived property', 'precondition'):
                 counts = result['package_audit'][package]['definitions'][category]

@@ -248,3 +248,21 @@ di PackageMerge, le restrizioni di ProfileApplication.isStrict e l'API completa 
 tagged value/vincoli degli stereotipi. Questi obblighi restano nel lavoro necessario
 al completamento; l'audit dei vincoli XMI non li considera automaticamente soddisfatti.
 Il prossimo audit nella sequenza della fase 3 è CommonBehavior e StateMachines.
+
+## Quarto incremento: versione 0.6.0
+
+CommonBehavior e StateMachines hanno esempi per 54 invarianti, 35 query, 11 derivazioni
+e 8 record di precondizione. La precondizione del finder Behavior è una formula non
+booleana nella fonte: è delimitata come incongruenza, non dichiarata risolta.
+224 test passano e 433 voci della matrice hanno esempi collegati.
+
+Correzioni: Behavior senza metodo, controlli protocollari nelle regioni annidate,
+punti entry/exit posseduti dai composite State, riferimento alla proprietà corretta
+nelle ridefinizioni delle regioni e trattamento dei FinalState/null in LCAState.
+TimeEvent distingue evidenze numeriche rappresentate da valutazioni/osservazioni
+esterne unsupported. Il rapporto rileva gli otto ID duplicati di State/Vertex e conserva
+i corpi locali delle operazioni. Le divergenze fonte/prosa sono documentate.
+
+ProtocolConformance resta parziale sul piano della prova comportamentale; esecuzione
+generale, clock e scheduler sono fuori dall'audit statico. La fase 3 prosegue con
+Activities e Actions, mantenendo aperti gli obblighi già delimitati nei package precedenti.

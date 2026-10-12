@@ -42,5 +42,6 @@ def one_method(self):
 
 @invariant('Behavior.feature_of_context_classifier')
 def context_feature(self):
+    if self.specification is None: return True
     if self.context is None: raise ValueError('Behavior has no context classifier')
     return self.specification in self.context.feature
