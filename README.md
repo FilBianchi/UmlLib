@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.8.0/umllib-0.8.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.9.0/umllib-0.9.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -68,7 +68,10 @@ language analyser; validation reports missing facts instead of assuming success.
 Activities and Actions now have explicitly linked examples for their 205 invariants,
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
-three preconditions. The 0.8.0 suite has 262 tests. These audits check static model semantics: they supply
+three preconditions. UseCases, Deployments and InformationFlows add 18 audited
+invariants, two queries and one derivation. The 0.9.0 suite has 273 tests.
+All 14 core packages have a first audit with explicitly linked examples for every
+declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
 token-type requirements from the prose remain partial and are listed in
 `semantic-report.json` and `SPECIFICATION_NOTES.md`. A successful invariant check
@@ -76,6 +79,9 @@ proves only its implemented predicate, not every related prose requirement.
 Interaction ordering currently follows represented fragment containment; complete
 parallel/alternative trace semantics, graphical guard placement and arbitrary domain
 global/write-once storage semantics remain open obligations.
+Artifact-instance deployment semantics remains partial: the deployedElement query
+preserves the XMI's Artifact-only filter. Additional prose/structural requirements,
+source divergences, profiles, XMI model exchange and UMLDI remain separate conformance work.
 
 `validate()` returns `(category, specification_id)` issues: `multiplicity`,
 `constraint`, `invalid constraint`, `unsupported constraint`, `invalid derivation`,

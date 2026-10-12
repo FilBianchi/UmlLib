@@ -30,15 +30,15 @@
     }
   },
   "verification_counts": {
-    "linked behavioral examples": 742,
-    "no linked behavioral examples": 1140
+    "linked behavioral examples": 757,
+    "no linked behavioral examples": 1125
   },
   "review_counts": {
-    "verified in linked examples": 657,
-    "needs review": 1134,
-    "source inconsistency": 61,
-    "partial": 17,
-    "context dependent": 13
+    "verified in linked examples": 662,
+    "needs review": 1119,
+    "source inconsistency": 68,
+    "partial": 19,
+    "context dependent": 14
   },
   "package_audit": {
     "CommonStructure": {
@@ -280,6 +280,72 @@
         "precondition": {
           "declared": 3,
           "with_examples": 3
+        }
+      }
+    },
+    "UseCases": {
+      "invariants": 8,
+      "invariants_with_examples": 8,
+      "definitions": {
+        "constraint": {
+          "declared": 8,
+          "with_examples": 8
+        },
+        "operation": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "derived property": {
+          "declared": 0,
+          "with_examples": 0
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
+        }
+      }
+    },
+    "Deployments": {
+      "invariants": 4,
+      "invariants_with_examples": 4,
+      "definitions": {
+        "constraint": {
+          "declared": 4,
+          "with_examples": 4
+        },
+        "operation": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "derived property": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
+        }
+      }
+    },
+    "InformationFlows": {
+      "invariants": 6,
+      "invariants_with_examples": 6,
+      "definitions": {
+        "constraint": {
+          "declared": 6,
+          "with_examples": 6
+        },
+        "operation": {
+          "declared": 0,
+          "with_examples": 0
+        },
+        "derived property": {
+          "declared": 0,
+          "with_examples": 0
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
         }
       }
     }
@@ -6350,9 +6416,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.actor_associations",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_actor_association_end_types_binary_and_session_extent"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source uses the opposite Property.class attribute owner rather than its endpoint type. Python checks the opposite end type and preserves the source prohibition on Behavior endpoints.",
       "source": "umltools/data/UML.xmi#Actor-associations"
     },
     {
@@ -6371,9 +6440,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_include_diamond_cycles_deletion_and_optional_names"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Actor-must_have_name"
     },
     {
@@ -6407,9 +6478,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_extension_points_belong_to_extended_case_and_inverse_rebinding"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extend-extension_points"
     },
     {
@@ -6554,9 +6627,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_include_diamond_cycles_deletion_and_optional_names"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExtensionPoint-must_have_name"
     },
     {
@@ -6709,9 +6784,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.included_cases",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_include_diamond_cycles_deletion_and_optional_names"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UseCase-allIncludedUseCases"
     },
     {
@@ -6730,9 +6807,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_actor_association_end_types_binary_and_session_extent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UseCase-binary_associations"
     },
     {
@@ -6751,9 +6830,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.use_case_subjects",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_subject_intersections_not_subject_union_cardinality"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source subject cardinality does not rule out overlapping subject sets. Python rejects associations between distinct UseCases sharing any subject, according to the prose; cases with no subjects share none.",
       "source": "umltools/data/UML.xmi#UseCase-no_association_to_use_case"
     },
     {
@@ -6772,9 +6854,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_include_diamond_cycles_deletion_and_optional_names"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UseCase-cannot_include_self"
     },
     {
@@ -6793,9 +6877,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_include_diamond_cycles_deletion_and_optional_names"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UseCase-must_have_name"
     },
     {
@@ -19958,6 +20044,8 @@
       "implementation": "umltools.native.information_flows.realization_endpoints",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_information_flow_audit.InformationFlowAuditCases.test_every_realizing_channel_must_conform_and_absent_channels_are_vacuous",
+        "test_information_flow_audit.InformationFlowAuditCases.test_gate_mapping_cleanup_and_message_endpoint_replacement",
         "test_information_flows.InformationFlowCases.test_activity_edge_preserves_its_direction",
         "test_information_flows.InformationFlowCases.test_association_channels_accept_parts_typed_by_end_classifiers",
         "test_information_flows.InformationFlowCases.test_connector_needs_distinct_ends_and_exact_part_references",
@@ -19968,7 +20056,8 @@
         "test_information_flows.InformationFlowCases.test_nary_association_can_realize_multiple_source_participants",
         "test_information_flows.InformationFlowCases.test_reflexive_association_uses_two_distinct_ends_of_the_same_type"
       ],
-      "review": "verified in linked examples",
+      "review": "context dependent",
+      "limitation": "Nominal endpoint conformance, distinct undirected channel sides and directed activity/message channels are checked as a project interpretation of the prose-only rule. Gate endpoints require explicit mappings; external lost/found endpoints remain unsupported. Runtime delivery is not proved.",
       "source": "umltools/data/UML.xmi#InformationFlow-must_conform"
     },
     {
@@ -19989,9 +20078,11 @@
       "implementation": "umltools.native.constraints_remaining.flow_endpoint_kinds",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_information_flow_audit.InformationFlowAuditCases.test_allowed_endpoint_families_and_independent_conveyed_classifier_kinds",
         "test_information_flows.InformationFlowCases.test_relationship_instances_are_not_flow_participants"
       ],
-      "review": "verified in linked examples",
+      "review": "source inconsistency",
+      "limitation": "The unqualified kind tests in the source refer to the flow instead of the endpoint. Python tests each endpoint and excludes InstanceSpecifications classified by Relationships.",
       "source": "umltools/data/UML.xmi#InformationFlow-sources_and_targets_kind"
     },
     {
@@ -20012,6 +20103,7 @@
       "implementation": "umltools.native.constraints_remaining.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_information_flow_audit.InformationFlowAuditCases.test_allowed_endpoint_families_and_independent_conveyed_classifier_kinds",
         "test_information_flows.InformationFlowCases.test_relationship_instances_are_not_flow_participants"
       ],
       "review": "verified in linked examples",
@@ -20236,9 +20328,11 @@
       "implementation": "umltools.native.constraints_remaining.information_item_endpoints",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_information_flow_audit.InformationFlowAuditCases.test_representation_target_subsets_and_deletion_of_associations_instances",
         "test_information_flows.InformationFlowCases.test_represented_item_endpoints_must_be_subsets"
       ],
-      "review": "verified in linked examples",
+      "review": "source inconsistency",
+      "limitation": "Python preserves the source direction: flows conveying a represented InformationItem must use subsets of the sources/targets of flows conveying self. The representation wording in the description is ambiguous and remains a source interpretation to resolve.",
       "source": "umltools/data/UML.xmi#InformationItem-sources_and_targets"
     },
     {
@@ -20259,9 +20353,11 @@
       "implementation": "umltools.native.information_flows.information_item_structure",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_information_flow_audit.InformationFlowAuditCases.test_representation_target_subsets_and_deletion_of_associations_instances",
         "test_information_flows.InformationFlowCases.test_abstract_information_items_cannot_have_associations_or_instances"
       ],
-      "review": "verified in linked examples",
+      "review": "source inconsistency",
+      "limitation": "The source checks features/generalizations but omits associations. Python also checks Association end types in the model extent according to the prose.",
       "source": "umltools/data/UML.xmi#InformationItem-has_no"
     },
     {
@@ -20282,9 +20378,11 @@
       "implementation": "umltools.native.information_flows.information_item_instances",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_information_flow_audit.InformationFlowAuditCases.test_representation_target_subsets_and_deletion_of_associations_instances",
         "test_information_flows.InformationFlowCases.test_abstract_information_items_cannot_have_associations_or_instances"
       ],
-      "review": "verified in linked examples",
+      "review": "source inconsistency",
+      "limitation": "The source checks isAbstract only. Python additionally rejects represented InstanceSpecifications classified by this item, according to the prose.",
       "source": "umltools/data/UML.xmi#InformationItem-not_instantiable"
     },
     {
@@ -20501,9 +20599,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_node_parts_are_typed_by_nodes_and_path_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CommunicationPath-association_ends"
     },
     {
@@ -20652,9 +20752,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_manifestations_deployed_elements_configuration_and_cleanup"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DeploymentSpecification-deployment_target"
     },
     {
@@ -20673,9 +20775,13 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_deployment_derivation_preserves_source_artifact_only_filter",
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_manifestations_deployed_elements_configuration_and_cleanup"
+      ],
+      "review": "partial",
+      "limitation": "The declared predicate checks the target deployedElement derivation. Its Artifact-only source filter can make configured artifact-instance deployments vacuously pass; complete runtime artifact-instance semantics remains open.",
       "source": "umltools/data/UML.xmi#DeploymentSpecification-deployed_elements"
     },
     {
@@ -20808,9 +20914,12 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.deployed",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_deployment_derivation_preserves_source_artifact_only_filter",
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_manifestations_deployed_elements_configuration_and_cleanup"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DeploymentTarget-deployedElement.1"
     },
     {
@@ -20834,9 +20943,13 @@
         "The set of elements that are manifested in an Artifact that is involved in Deployment to a DeploymentTarget."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_deployment_derivation_preserves_source_artifact_only_filter",
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_manifestations_deployed_elements_configuration_and_cleanup"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "partial",
+      "limitation": "The XMI selects Artifact objects and their direct manifestations only. Instances classified by Artifacts and nested-artifact deployment interpretation are not expanded; the query is not proof of all deployed runtime elements.",
       "source": "umltools/data/UML.xmi#DeploymentTarget-deployedElement"
     },
     {
@@ -20972,9 +21085,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_usecases_deployments_audit.UseCaseDeploymentCases.test_node_parts_are_typed_by_nodes_and_path_targets"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source tests Property parts as Node objects, which rejects every actual part. Python checks part.type according to the Node internal-structure description.",
       "source": "umltools/data/UML.xmi#Node-internal_structure"
     },
     {

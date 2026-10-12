@@ -10,6 +10,38 @@ therefore remains a divergence to resolve, not an assertion of normative equival
 The expanded report preserves source descriptions and bodies so these choices can be
 reviewed independently; a complete decomposition of additional PDF prose is pending.
 
+## UseCases, Deployments and InformationFlows audit (0.9.0)
+
+18 invariants, two queries and one derivation have linked examples. All 14 packages
+now have a first audit of their declared semantic definitions; this does not close
+additional prose, structural, runtime, profile or exchange requirements.
+
+- `Node.internal_structure` tests each part's type as Node (including subclasses),
+  following the prose. The XMI instead tests the Property itself as Node, rejecting
+  every actual part. Non-composite attributes are outside the derived part collection.
+- `UseCase.no_association_to_use_case` rejects distinct associated cases that share
+  any subject, including partially overlapping multi-subject sets. Source cardinality
+  does not prove that property; this is a documented project interpretation. No
+  subjects means no shared subject; a self association is outside this distinct-case rule.
+- `Actor.associations` checks the opposite end type rather than its Property.class
+  owner. The source prohibition on Behavior endpoints is preserved. Components are
+  accepted as Class subtypes; associations must be binary.
+- `DeploymentTarget.deployedElement` preserves the explicit Artifact-only XMI filter
+  and direct manifestations. Artifact instances and nested-artifact expansion are not
+  inferred. Consequently DeploymentSpecification.deployed_elements can pass vacuously
+  for configured artifact-instance deployments; both are marked partial in the matrix.
+- `InformationItem.sources_and_targets` preserves the XMI direction: flows conveying
+  represented InformationItems must use subsets of the endpoints of flows conveying
+  self. The wording concerning representation in the description needs resolution.
+- InformationFlow endpoint kind tests apply to each endpoint, correcting unqualified
+  source tests. InformationItem structure/instantiability checks also examine modeled
+  Associations/InstanceSpecifications in the session extent, as their prose requires.
+- InformationFlow.must_conform remains a static project interpretation of a prose-only
+  rule. Directed relationships may be reversed; activity/message channels retain their
+  direction; undirected ends have disjoint source/target sides. Gate endpoints need
+  explicit mappings; missing external lost/found ends remain unsupported. No channels
+  is a vacuous predicate, not evidence of realized transport or runtime delivery.
+
 ## Interactions audit (0.8.0)
 
 49 invariants, 14 queries, one derivation and three preconditions have linked examples,

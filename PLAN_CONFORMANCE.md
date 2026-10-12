@@ -303,3 +303,23 @@ generale di dati globali/write-once, la collocazione grafica dei guard e le inco
 della fonte delimitate nel rapporto. Il controllo XMI delle reply non vincola tutti
 i tipi degli argomenti: questa lacuna è esplicita, non dichiarata risolta.
 La fase 3 prosegue con UseCases, Deployments e InformationFlows.
+
+## Settimo incremento: versione 0.9.0
+
+UseCases, Deployments e InformationFlows hanno esempi per 18 invarianti, due query
+e una derivazione. 273 test passano; 757 voci della matrice hanno esempi espliciti.
+Correzioni: tipo dei part di Node e intersezioni dei subject dei UseCase associati.
+Sono verificati include con diamanti/cicli, ownership degli extension point, tipi
+degli estremi associativi, deployment e manifestazioni, comunicazioni, subset degli
+InformationItem e cleanup dei riferimenti e delle mappature dopo cancellazione.
+
+Tutti i 14 package hanno ora un primo audit delle definizioni semantiche dichiarate:
+449 invarianti, 205 operazioni (incluse due astratte), 73 derivazioni e 23 precondizioni.
+Questo chiude il primo giro di esempi della fase 3, non la piena conformità del core.
+Restano requisiti di prosa/struttura da censire, divergenze fonte/prosa da risolvere,
+obblighi contestuali e le altre fasi del piano. deployedElement conserva il filtro
+Artifact della fonte: l'espansione delle istanze e dei nested artifact resta parziale.
+
+Prossimo lavoro P0: decomporre i requisiti residui di prosa e contratti strutturali,
+poi chiudere le lacune statiche del core in ordine verificabile; le fasi di profili
+completi, adattatori, scambio XMI e UMLDI rimangono distinte e aperte.

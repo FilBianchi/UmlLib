@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.9.0
+
+UseCases, Deployments and InformationFlows have examples for 18 invariants, two
+queries and one derivation. 273 tests pass; 757 definition records have examples.
+All 14 packages now have a first audit of the 449 declared invariants, 205 operation
+declarations, 73 derivations and 23 preconditions. This is not full UML certification.
+
+Node.internal_structure checks each part's type rather than testing Property as Node.
+UseCase subject checks reject shared subjects even when both cases have additional
+distinct subjects. Source/prose divergences are preserved in the report.
+
+New cases cover include diamonds/cycles, extension-point ownership, association
+endpoint types, overlapping subjects, communication paths, deployment configuration,
+manifestation deduplication, represented information-item target subsets and cleanup
+after deleting artifacts, instances, associations and mapped gate endpoints.
+The Artifact-only deployment derivation and its vacuous instance-deployment checks
+remain explicitly partial; endpoint mappings and unsupported external channels stay explicit.
+
 ## 0.8.0
 
 Interactions has linked examples for all 49 declared invariants, 14 queries,

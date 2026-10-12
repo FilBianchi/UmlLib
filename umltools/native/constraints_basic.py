@@ -56,7 +56,7 @@ predicates({
     'CommunicationPath.association_ends': lambda s: all(kind(s, t, 'DeploymentTarget') for t in s.endType),
     'DeploymentSpecification.deployment_target': lambda s: all(kind(s, d.location, 'ExecutionEnvironment') for d in reverse(s, 'Deployment', 'configuration')),
     'DeploymentSpecification.deployed_elements': lambda s: all(kind(s, e, 'Component') for d in reverse(s, 'Deployment', 'configuration') for e in required(d.location).deployedElement),
-    'Node.internal_structure': lambda s: all(kind(s, p, 'Node') for p in s.part),
+    'Node.internal_structure': lambda s: all(kind(s, p.type, 'Node') for p in s.part),
     'FunctionBehavior.one_output_parameter': lambda s: bool(s.outputParameters()),
     'FunctionBehavior.types_of_parameters': lambda s: all(type(p.type) is s.__registry__['DataType'] and s.hasAllDataTypeAttributes(p.type) for p in s.ownedParameter),
     'Trigger.trigger_with_ports': lambda s: not s.port or kind(s, s.event, 'MessageEvent'),
@@ -135,7 +135,7 @@ def use_case_subjects(self):
     for association in instances(self, 'Association'):
         if self not in [e.type for e in association.memberEnd]: continue
         cases = set(e.type for e in association.memberEnd if kind(self, e.type, 'UseCase'))
-        if len(cases) > 1 and len(set(subject for case in cases for subject in case.subject)) <= 1: return False
+        if any(set(a.subject) & set(b.subject) for a in cases for b in cases if a is not b): return False
     return True
 
 

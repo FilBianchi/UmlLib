@@ -41,6 +41,13 @@ AUDIT_LIMITS = {
     'Pseudostate.transitions_outgoing': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
     'Pseudostate.transitions_incoming': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
     'Region.belongsToPSM': 'An unowned region vacuously satisfies the implication in the body. Python requires a represented containing machine; missing ownership remains invalid.',
+    'Node.internal_structure': 'The source tests Property parts as Node objects, which rejects every actual part. Python checks part.type according to the Node internal-structure description.',
+    'UseCase.no_association_to_use_case': 'The source subject cardinality does not rule out overlapping subject sets. Python rejects associations between distinct UseCases sharing any subject, according to the prose; cases with no subjects share none.',
+    'Actor.associations': 'The source uses the opposite Property.class attribute owner rather than its endpoint type. Python checks the opposite end type and preserves the source prohibition on Behavior endpoints.',
+    'InformationFlow.sources_and_targets_kind': 'The unqualified kind tests in the source refer to the flow instead of the endpoint. Python tests each endpoint and excludes InstanceSpecifications classified by Relationships.',
+    'InformationItem.has_no': 'The source checks features/generalizations but omits associations. Python also checks Association end types in the model extent according to the prose.',
+    'InformationItem.not_instantiable': 'The source checks isAbstract only. Python additionally rejects represented InstanceSpecifications classified by this item, according to the prose.',
+    'InformationItem.sources_and_targets': 'Python preserves the source direction: flows conveying a represented InformationItem must use subsets of the sources/targets of flows conveying self. The representation wording in the description is ambiguous and remains a source interpretation to resolve.',
     'Gate.isInsideCF': 'The source implication vacuously returns true without an opposite end or CombinedFragment. Python follows the query description and returns false when these prerequisites are absent.',
     'Gate.isOutsideCF': 'The source implication vacuously returns true without an opposite end or CombinedFragment. Python requires both and represented surrounding ownership, according to the query description.',
     'Gate.matches': 'Python parenthesizes the directional implications so that all name, message-sort and signature checks apply together, according to the query description.',
@@ -60,6 +67,7 @@ AUDIT_LIMITS = {
     'LinkEndDestructionData.allPins': 'The source including(destroyAt) includes null when the optional destruction pin is absent. Python omits absent pins, matching the description and non-null result element contract.',
 }
 CONTEXT_LIMITS = {
+    'InformationFlow.must_conform': 'Nominal endpoint conformance, distinct undirected channel sides and directed activity/message channels are checked as a project interpretation of the prose-only rule. Gate endpoints require explicit mappings; external lost/found endpoints remain unsupported. Runtime delivery is not proved.',
     'InteractionConstraint.minint_non_negative': 'Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.',
     'InteractionConstraint.maxint_positive': 'Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.',
     'InteractionConstraint.maxint_greater_equal_minint': 'Represented Integer bounds are compared. Unknown numeric expressions require an evaluator and remain unsupported.',
@@ -79,6 +87,8 @@ PARTIAL = {
     'ProfileApplication-isStrict': 'The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.',
     'Stereotype': 'Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.',
     'ProtocolConformance': 'Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.',
+    'DeploymentTarget-deployedElement': 'The XMI selects Artifact objects and their direct manifestations only. Instances classified by Artifacts and nested-artifact deployment interpretation are not expanded; the query is not proof of all deployed runtime elements.',
+    'DeploymentSpecification-deployed_elements': 'The declared predicate checks the target deployedElement derivation. Its Artifact-only source filter can make configured artifact-instance deployments vacuously pass; complete runtime artifact-instance semantics remains open.',
     'Continuation-same_name': 'Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.',
     'Message-signature_is_operation_reply': 'The XMI checks the first operand only for nonempty Expression arguments; direct values pass vacuously. Python preserves this body, which does not prove all argument types in the broader prose.',
     'Message-sending_receiving_message_event': 'The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented.',
@@ -221,7 +231,7 @@ def report():
             record['source_id_ambiguous'] = True
             record['source_disambiguation'] = record.get('name')
     package_audit = {}
-    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions', 'Interactions'):
+    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions', 'Interactions', 'UseCases', 'Deployments', 'InformationFlows'):
         definitions = [r for r in records if r['package'] == package]
         counts_by_kind = {category: {'declared': sum(r['kind'] == category for r in definitions),
                                     'with_examples': sum(r['kind'] == category and bool(r['tests']) for r in definitions)}

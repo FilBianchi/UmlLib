@@ -82,4 +82,17 @@ with ModelSession():
     assert check(guard, 'InteractionConstraint.dynamic_variables')
     guard.maxint = Uml.OpaqueExpression(body=['limit'], language=['custom'])
     assert ('unsupported constraint', 'InteractionConstraint.maxint_positive') in guard.validate()
+with ModelSession():
+    part = Uml.Property(type=Uml.ExecutionEnvironment(), aggregation=Uml.AggregationKind.composite)
+    node = Uml.Device(ownedAttribute=[part])
+    assert check(node, 'Node.internal_structure')
+    shared = Uml.Class()
+    first = Uml.UseCase(subject=[shared, Uml.Class()])
+    second = Uml.UseCase(subject=[shared, Uml.Class()])
+    Uml.Association(ownedEnd=[Uml.Property(type=first), Uml.Property(type=second)])
+    assert not check(first, 'UseCase.no_association_to_use_case')
+    component = Uml.Component()
+    artifact = Uml.Artifact(manifestation=[Uml.Manifestation(utilizedElement=component)])
+    environment = Uml.ExecutionEnvironment(deployment=[Uml.Deployment(deployedArtifact=[artifact])])
+    assert environment.deployedElement == [component]
 print('Installed UmlLib', version('UmlLib'))
