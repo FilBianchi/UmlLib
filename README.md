@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.7.0/umllib-0.7.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.8.0/umllib-0.8.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -67,11 +67,15 @@ language analyser; validation reports missing facts instead of assuming success.
 
 Activities and Actions now have explicitly linked examples for their 205 invariants,
 31 query declarations (including two abstract queries) and 9 derived properties.
-The 0.7.0 suite has 250 tests. This audit checks static model semantics: it supplies
+Interactions has linked examples for 49 invariants, 14 queries, one derivation and
+three preconditions. The 0.8.0 suite has 262 tests. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
 token-type requirements from the prose remain partial and are listed in
 `semantic-report.json` and `SPECIFICATION_NOTES.md`. A successful invariant check
 proves only its implemented predicate, not every related prose requirement.
+Interaction ordering currently follows represented fragment containment; complete
+parallel/alternative trace semantics, graphical guard placement and arbitrary domain
+global/write-once storage semantics remain open obligations.
 
 `validate()` returns `(category, specification_id)` issues: `multiplicity`,
 `constraint`, `invalid constraint`, `unsupported constraint`, `invalid derivation`,

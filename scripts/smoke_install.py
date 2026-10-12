@@ -70,4 +70,16 @@ with ModelSession():
     flow = Uml.ObjectFlow(source=source, target=target, weight=Uml.LiteralInteger(value=4))
     assert not check(flow, 'ObjectFlow.same_upper_bounds')
     assert not check(flow, 'ObjectFlow.target')
+with ModelSession():
+    assert Uml.Gate(name='explicit').getOperand() is None
+    line = Uml.Lifeline()
+    send, receive = Uml.MessageOccurrenceSpecification(covered=line), Uml.MessageOccurrenceSpecification(covered=line)
+    operand = Uml.InteractionOperand(fragment=[send])
+    interaction = Uml.Interaction(lifeline=[line], fragment=[Uml.CombinedFragment(operand=[operand]), receive])
+    assert check(Uml.Message(sendEvent=send, receiveEvent=receive), 'Message.sending_receiving_message_event')
+    guard = Uml.InteractionConstraint(specification=Uml.LiteralBoolean(value=True))
+    operand.guard = guard
+    assert check(guard, 'InteractionConstraint.dynamic_variables')
+    guard.maxint = Uml.OpaqueExpression(body=['limit'], language=['custom'])
+    assert ('unsupported constraint', 'InteractionConstraint.maxint_positive') in guard.validate()
 print('Installed UmlLib', version('UmlLib'))

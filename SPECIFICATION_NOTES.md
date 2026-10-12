@@ -10,6 +10,38 @@ therefore remains a divergence to resolve, not an assertion of normative equival
 The expanded report preserves source descriptions and bodies so these choices can be
 reviewed independently; a complete decomposition of additional PDF prose is pending.
 
+## Interactions audit (0.8.0)
+
+49 invariants, 14 queries, one derivation and three preconditions have linked examples,
+including the existing recursive PartDecomposition scenarios. This is a static audit.
+
+- `Gate.getOperand` has an explicit null branch but a mandatory return signature.
+  Its result contract now permits null only for this named query.
+- `Gate.isInsideCF` / `isOutsideCF` return false without the represented prerequisite
+  fragment/opposite end, rather than the true yielded by the source's implication.
+  The outside query also requires represented surrounding containment.
+- `Gate.outside_cf_gate_distinguishable` compares outside gates only; the source
+  counts inside matches as duplicates. Python follows the prose. The alt branch of
+  `outside_cf_matched` matches one inside gate for each operand, while the source
+  fails to use the operand variable. Both remain explicit source divergences.
+- `Message.sending_receiving_message_event` now visits nested operands before the
+  following parent-level fragment, fixing a breadth-first order inversion. This
+  structural traversal does not implement a full partial order for parallel/alternative
+  traces or integrate every GeneralOrdering relation into execution semantics.
+- `InteractionOperand` guard context traversal now follows its owning CombinedFragment
+  before climbing toward the Interaction; the earlier traversal lost that context.
+- Loop-bound checks require represented Integer values. Opaque minint/maxint remain
+  unsupported without an evaluator; computable values of the wrong kind remain invalid.
+- `Message.signature_is_operation_reply` preserves the XMI implication: only the first
+  operand of a nonempty Expression is type-checked. Direct literals pass vacuously.
+  This differs from the broader parameter-correspondence prose and is marked partial.
+- Guard reference checks use trusted analyzer facts and represented coverage/context.
+  General runtime global/write-once state is not proved. Guard ownership is checked;
+  graphical placement belongs to UMLDI/layout and remains partial.
+- Common lifelines use represented role identity and literal selector kind/value.
+  Continuation peer checks currently traverse interactions owned by the context classifier;
+  equivalence of all domain selectors and a broader context/trace census remain open.
+
 ## Activities and Actions audit (0.7.0)
 
 205 invariants, 31 query declarations and 9 derived properties have explicitly linked

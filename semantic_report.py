@@ -41,6 +41,14 @@ AUDIT_LIMITS = {
     'Pseudostate.transitions_outgoing': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
     'Pseudostate.transitions_incoming': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
     'Region.belongsToPSM': 'An unowned region vacuously satisfies the implication in the body. Python requires a represented containing machine; missing ownership remains invalid.',
+    'Gate.isInsideCF': 'The source implication vacuously returns true without an opposite end or CombinedFragment. Python follows the query description and returns false when these prerequisites are absent.',
+    'Gate.isOutsideCF': 'The source implication vacuously returns true without an opposite end or CombinedFragment. Python requires both and represented surrounding ownership, according to the query description.',
+    'Gate.matches': 'Python parenthesizes the directional implications so that all name, message-sort and signature checks apply together, according to the query description.',
+    'Gate.outside_cf_gate_distinguishable': 'The source counts inside gates as well. Python compares outside gates only, as the prose requires; inside/outside pairs may share the matching name.',
+    'Gate.outside_cf_matched': 'The alt branch does not use its operand variable and tests an enclosing-fragment relation that misses the operand. Python requires one matching inside gate per operand as the prose specifies.',
+    'Message.messageKind': 'The source body recursively returns the property itself. Python derives complete/lost/found/unknown from represented send and receive ends.',
+    'Message.signature_is_signal': 'The source selects inheritedMember only. Python matches allAttributes including owned attributes according to the signal-signature description.',
+    'MessageEnd.enclosingFragment': 'The source returns null for an unclassified Gate. Python returns an empty collection matching the result signature.',
     'ActionInputPin.no_control_or_object_flow': 'The source unions fromAction.incoming with the receiving pin outgoing. Python checks fromAction.outgoing as the producer-isolation prose requires.',
     'ObjectNode.input_output_parameter': 'The source repeats inputParameters in its final type check. Python checks output type conformance toward the ObjectNode type as required by the prose; this remains a source divergence.',
     'DecisionNode.parameters': 'The source counts non-return parameters. Python requires exactly one return parameter according to the prose.',
@@ -52,6 +60,11 @@ AUDIT_LIMITS = {
     'LinkEndDestructionData.allPins': 'The source including(destroyAt) includes null when the optional destruction pin is absent. Python omits absent pins, matching the description and non-null result element contract.',
 }
 CONTEXT_LIMITS = {
+    'InteractionConstraint.minint_non_negative': 'Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.',
+    'InteractionConstraint.maxint_positive': 'Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.',
+    'InteractionConstraint.maxint_greater_equal_minint': 'Represented Integer bounds are compared. Unknown numeric expressions require an evaluator and remain unsupported.',
+    'Message.arguments': 'Constants and represented wildcard values are checked. Foreign expression constancy/references require trusted analyzer facts.',
+    'InteractionUse.arguments_are_constants': 'Foreign expression constancy/references require trusted analyzer facts; no arbitrary language execution is supplied.',
     'ObjectFlow.same_upper_bounds': 'Represented UnlimitedNatural bounds are compared along object-flow paths through ControlNodes. Unknown numeric expressions require an evaluator; invalid computable literal kinds are diagnosed.',
     'ObjectFlow.target': 'Constant Integer weights are compared with downstream bounds. Unknown constancy requires analyzer facts; known nonconstant weights are outside this rule, while unevaluated constants remain unsupported.',
     'ReduceAction.input_type_is_collection': 'Multivalued pins represent token collections. A single token needs a registered domain collection type; missing collection-type evidence remains unsupported.',
@@ -66,6 +79,13 @@ PARTIAL = {
     'ProfileApplication-isStrict': 'The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.',
     'Stereotype': 'Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.',
     'ProtocolConformance': 'Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.',
+    'Continuation-same_name': 'Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.',
+    'Message-signature_is_operation_reply': 'The XMI checks the first operand only for nonempty Expression arguments; direct values pass vacuously. Python preserves this body, which does not prove all argument types in the broader prose.',
+    'Message-sending_receiving_message_event': 'The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented.',
+    'InteractionConstraint-dynamic_variables': 'Trusted reference facts are checked against represented covered lifeline roles/types, interaction parameters/context attributes and read-only Properties. Full runtime ownership/global/write-once semantics remains a project approximation.',
+    'InteractionConstraint-global_data': 'Trusted reference facts and represented read-only Properties are supported. Arbitrary domain global/write-once storage semantics is not represented by core UML and is not proved.',
+    'InteractionOperand-guard_contain_references': 'Trusted guard reference facts are checked against represented operand coverage/context. General domain-global and write-once facts remain incomplete.',
+    'InteractionOperand-guard_directly_prior': 'Guard composite ownership is checked. Graphical placement immediately above a fragment requires UMLDI/layout semantics and is not proved.',
     'ObjectNode-input_output_parameter': 'Input/output counts, multiplicities and nominal type variance are checked (with a documented source-body correction). Absence of side effects of the selection Behavior is not proved.',
     'ObjectFlow-input_and_output_parameter': 'The declared OCL parameter counts and input bounds are checked. Additional prose requirements for selection parameter types and absence of side effects remain open.',
     'ObjectFlow-transformation_behavior': 'The declared OCL parameter counts are checked. Additional prose requirements for transformation input/output types and absence of side effects remain open.',
@@ -201,7 +221,7 @@ def report():
             record['source_id_ambiguous'] = True
             record['source_disambiguation'] = record.get('name')
     package_audit = {}
-    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions'):
+    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions', 'Interactions'):
         definitions = [r for r in records if r['package'] == package]
         counts_by_kind = {category: {'declared': sum(r['kind'] == category for r in definitions),
                                     'with_examples': sum(r['kind'] == category and bool(r['tests']) for r in definitions)}

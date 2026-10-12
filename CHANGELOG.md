@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.8.0
+
+Interactions has linked examples for all 49 declared invariants, 14 queries,
+one derived property and three precondition records. Existing part-decomposition
+projection/mapping cases remain included. 262 tests pass; 742 records have examples.
+
+Nested fragments are visited before following siblings when checking occurrence order.
+Guard context traversal now handles InteractionOperand ownership. Outside gate name
+uniqueness excludes matching inside gates. Gate.getOperand permits the body's explicit
+null branch despite the source's mandatory return signature. Interaction loop bounds
+report unknown numeric expressions as unsupported and wrong literal kinds as invalid.
+
+Source differences and preserved reply-argument loopholes are documented. Structural
+order checks do not prove full parallel/alternative trace semantics; general global/
+write-once state, expression execution and graphical guard placement remain partial.
+
 ## 0.7.0
 
 Activities and Actions have linked examples for all 205 declared invariants,

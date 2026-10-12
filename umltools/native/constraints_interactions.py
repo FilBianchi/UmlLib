@@ -1,5 +1,5 @@
 """Interaction constraints using explicit graph traversal and message signatures."""
-from . import invariant, kind, reverse, single, instances
+from . import invariant, kind, reverse, single, instances, NativeNotImplemented
 from .constraints_basic import predicates, required, enum
 from .constraints_actions import conforms, primitive
 from .interactions import combined_fragment, operand_fragment, surrounding
@@ -11,18 +11,18 @@ def interaction_of(fragment):
         if fragment in seen: raise ValueError('Cyclic interaction nesting')
         seen.add(fragment)
         if fragment.enclosingInteraction is not None: return fragment.enclosingInteraction
-        fragment = operand_fragment(fragment.enclosingOperand)
+        fragment = operand_fragment(fragment) if kind(fragment, fragment, 'InteractionOperand') else operand_fragment(fragment.enclosingOperand)
     return None
 
 
 def fragments(interaction):
-    result, pending = [], list(interaction.fragment)
+    result, pending = [], list(reversed(interaction.fragment))
     while pending:
-        fragment = pending.pop(0)
+        fragment = pending.pop()
         if fragment in result: continue
         result.append(fragment)
         if kind(interaction, fragment, 'CombinedFragment'):
-            pending.extend(f for op in fragment.operand for f in op.fragment)
+            pending.extend(reversed([f for op in fragment.operand for f in op.fragment]))
     return result
 
 
@@ -34,6 +34,14 @@ def lifeline_equal(a, b):
 
 def operand_of_constraint(self): return single(reverse(self, 'InteractionOperand', 'guard'))
 def gate_parent(self, class_, field): return required(single(reverse(self, class_, field)))
+
+
+def integer_expression(value):
+    value = required(value)
+    number = value.integerValue()
+    if number is not None: return number
+    if value.isComputable(): raise ValueError('Interaction bound must denote Integer')
+    raise NativeNotImplemented('Interaction bound requires a numeric expression evaluator')
 
 
 predicates({
@@ -49,13 +57,13 @@ predicates({
     'Gate.inside_cf_matched': lambda s: not s.isInsideCF() or sum(g.isOutsideCF() and g.matches(s) for g in required(combined_fragment(s)).cfragmentGate) == 1,
     'Gate.formal_gate_distinguishable': lambda s: not s.isFormal() or sum(g.getName() == s.getName() for g in gate_parent(s, 'Interaction', 'formalGate').formalGate) == 1,
     'Gate.actual_gate_distinguishable': lambda s: not s.isActual() or sum(g.getName() == s.getName() for g in gate_parent(s, 'InteractionUse', 'actualGate').actualGate) == 1,
-    'Gate.outside_cf_gate_distinguishable': lambda s: not s.isOutsideCF() or sum(g.getName() == s.getName() for g in required(combined_fragment(s)).cfragmentGate) == 1,
+    'Gate.outside_cf_gate_distinguishable': lambda s: not s.isOutsideCF() or sum(g.isOutsideCF() and g.getName() == s.getName() for g in required(combined_fragment(s)).cfragmentGate) == 1,
     'Gate.inside_cf_gate_distinguishable': lambda s: not s.isInsideCF() or sum(g.isInsideCF() and g.getName() == s.getName() and g.getOperand() is s.getOperand() for g in required(combined_fragment(s)).cfragmentGate) == 1,
     'Interaction.not_contained': lambda s: s.enclosingInteraction is None,
     'InteractionConstraint.minint_maxint': lambda s: s.maxint is None and s.minint is None or enum(required(operand_fragment(operand_of_constraint(s))).interactionOperator) == 'loop',
-    'InteractionConstraint.minint_non_negative': lambda s: s.minint is None or s.minint.integerValue() >= 0,
-    'InteractionConstraint.maxint_positive': lambda s: s.maxint is None or s.maxint.integerValue() > 0,
-    'InteractionConstraint.maxint_greater_equal_minint': lambda s: s.maxint is None or s.minint is not None and s.maxint.integerValue() >= s.minint.integerValue(),
+    'InteractionConstraint.minint_non_negative': lambda s: s.minint is None or integer_expression(s.minint) >= 0,
+    'InteractionConstraint.maxint_positive': lambda s: s.maxint is None or integer_expression(s.maxint) > 0,
+    'InteractionConstraint.maxint_greater_equal_minint': lambda s: s.maxint is None or s.minint is not None and integer_expression(s.maxint) >= integer_expression(s.minint),
     'InteractionUse.gates_match': lambda s: not s.actualGate or all(sum(g.matches(f) for g in s.actualGate) == 1 for f in required(s.refersTo).formalGate) and all(sum(f.matches(g) for f in s.refersTo.formalGate) == 1 for g in s.actualGate),
     'InteractionUse.returnValueRecipient_coverage': lambda s: s.returnValueRecipient is None or any(s.returnValueRecipient in c.allAttributes() for l in s.covered if l.represents is not None for c in s._items(l.represents.type) if kind(s, c, 'Classifier')),
     'InteractionUse.returnValue_type_recipient_correspondence': lambda s: s.returnValue is None or s.returnValue.type is None or s.returnValue.type is required(s.returnValueRecipient).type,

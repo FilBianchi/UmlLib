@@ -285,3 +285,21 @@ tipi dei token per decisionInput e selezioni/trasformazioni, prova di assenza di
 collaterali, esecuzione dei token. L'audit degli invarianti dichiarati non completa
 questi obblighi. La fase 3 prosegue con Interactions, poi UseCases, Deployments e
 InformationFlows; restano aperti gli obblighi delle altre fasi e dei package precedenti.
+
+## Sesto incremento: versione 0.8.0
+
+Interactions ha esempi collegati a tutti i 49 invarianti dichiarati, 14 query,
+una derivazione e tre precondizioni. I casi di PartDecomposition già presenti restano
+inclusi. 262 test passano; 742 voci della matrice hanno esempi espliciti.
+
+Correzioni: ordine di visita dei frammenti annidati, risalita del contesto dei guard
+dagli InteractionOperand, unicità dei soli gate esterni, risultato nullo di getOperand
+e diagnostiche dei limiti numerici opachi. Sono verificati confini e matching dei gate,
+firme e wildcard dei messaggi, direzioni dei parametri, lifeline/selector, continuazioni,
+esecuzioni, distruzione, cicli di GeneralOrdering e fatti contestuali delle espressioni.
+
+Restano aperti l'ordine parziale completo delle tracce alternative/parallele, la semantica
+generale di dati globali/write-once, la collocazione grafica dei guard e le incongruenze
+della fonte delimitate nel rapporto. Il controllo XMI delle reply non vincola tutti
+i tipi degli argomenti: questa lacuna è esplicita, non dichiarata risolta.
+La fase 3 prosegue con UseCases, Deployments e InformationFlows.

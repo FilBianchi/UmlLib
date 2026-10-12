@@ -17,7 +17,7 @@ class ReportCases(unittest.TestCase):
         vertex = next(r for r in result['definitions'] if r.get('name') == 'Vertex.isConsistentWith')
         self.assertTrue(vertex['source_id_ambiguous'])
         self.assertIn('redefinedElement.oclIsKindOf(Vertex)', vertex['body_conditions'][0]['expressions'][0]['body'])
-        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions'):
+        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions', 'Interactions'):
             self.assertEqual(result['package_audit'][package]['invariants'], result['package_audit'][package]['invariants_with_examples'])
             for category in ('operation', 'derived property', 'precondition'):
                 counts = result['package_audit'][package]['definitions'][category]
@@ -37,3 +37,5 @@ class ReportCases(unittest.TestCase):
         self.assertEqual(records['ObjectFlow.target']['review'], 'context dependent')
         self.assertEqual(records['ObjectFlow.transformation_behavior']['review'], 'partial')
         self.assertEqual(records['ActionInputPin.no_control_or_object_flow']['review'], 'source inconsistency')
+        self.assertEqual(records['Gate.getOperand']['review'], 'source inconsistency')
+        self.assertEqual(records['Message.signature_is_operation_reply']['review'], 'partial')

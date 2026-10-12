@@ -22,6 +22,7 @@ SIGNATURE_INTERPRETATIONS = {
     'Operation.upper': 'The property is optional and the query returns null without a return parameter.',
     'Operation.type': 'The property is optional and the query returns null without a return parameter or its type.',
     'StateMachine.LCAState': 'The body explicitly returns null when no common enclosing State exists, despite a mandatory result signature.',
+    'Gate.getOperand': 'The body explicitly returns null for gates that are not inside a CombinedFragment, despite a mandatory result signature.',
 }
 
 
@@ -52,7 +53,7 @@ def validate_item(self, value, type_name):
 def validate_parameter(self, parameter, value, *, operation_id, result=False):
     low, high = multiplicity(parameter)
     if result and operation_id in ('NamedElement.qualifiedName', 'LiteralString.stringValue', 'ElementImport.getName',
-                                   'Property.opposite', 'Operation.lower', 'Operation.upper', 'Operation.type', 'StateMachine.LCAState'): low = 0
+                                   'Property.opposite', 'Operation.lower', 'Operation.upper', 'Operation.type', 'StateMachine.LCAState', 'Gate.getOperand'): low = 0
     many = high is None or high > 1
     ordered = parameter.get('isOrdered', 'false') == 'true'
     collections = (list, tuple, UmlCollection) if ordered else (list, tuple, UmlCollection, set, frozenset)

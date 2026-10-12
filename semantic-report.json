@@ -30,15 +30,15 @@
     }
   },
   "verification_counts": {
-    "linked behavioral examples": 678,
-    "no linked behavioral examples": 1204
+    "linked behavioral examples": 742,
+    "no linked behavioral examples": 1140
   },
   "review_counts": {
-    "verified in linked examples": 615,
-    "needs review": 1198,
-    "source inconsistency": 51,
-    "partial": 10,
-    "context dependent": 8
+    "verified in linked examples": 657,
+    "needs review": 1134,
+    "source inconsistency": 61,
+    "partial": 17,
+    "context dependent": 13
   },
   "package_audit": {
     "CommonStructure": {
@@ -258,6 +258,28 @@
         "precondition": {
           "declared": 0,
           "with_examples": 0
+        }
+      }
+    },
+    "Interactions": {
+      "invariants": 49,
+      "invariants_with_examples": 49,
+      "definitions": {
+        "constraint": {
+          "declared": 49,
+          "with_examples": 49
+        },
+        "operation": {
+          "declared": 14,
+          "with_examples": 14
+        },
+        "derived property": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "precondition": {
+          "declared": 3,
+          "with_examples": 3
         }
       }
     }
@@ -16406,9 +16428,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.execution_action",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_nested_event_order_execution_ownership_and_ordering_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActionExecutionSpecification-action_referenced"
     },
     {
@@ -16509,9 +16533,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_combined_fragment_operators_coverage_and_signature_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CombinedFragment-break"
     },
     {
@@ -16530,9 +16556,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_combined_fragment_operators_coverage_and_signature_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CombinedFragment-consider_and_ignore"
     },
     {
@@ -16551,9 +16579,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_combined_fragment_operators_coverage_and_signature_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CombinedFragment-opt_loop_break_neg"
     },
     {
@@ -16669,9 +16699,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_combined_fragment_operators_coverage_and_signature_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConsiderIgnoreFragment-consider_or_ignore"
     },
     {
@@ -16690,9 +16722,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_combined_fragment_operators_coverage_and_signature_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConsiderIgnoreFragment-type"
     },
     {
@@ -16752,9 +16786,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_continuations_common_lifelines_and_operand_end_positions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Continuation-first_or_last_interaction_fragment"
     },
     {
@@ -16773,9 +16809,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.continuations",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_continuations_common_lifelines_and_operand_end_positions"
+      ],
+      "review": "partial",
+      "limitation": "Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.",
       "source": "umltools/data/UML.xmi#Continuation-same_name"
     },
     {
@@ -16794,9 +16833,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_continuations_common_lifelines_and_operand_end_positions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Continuation-global"
     },
     {
@@ -16856,9 +16897,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.destruction_last",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_nested_event_order_execution_ownership_and_ordering_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DestructionOccurrenceSpecification-no_occurrence_specifications_below"
     },
     {
@@ -16933,9 +16976,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_nested_event_order_execution_ownership_and_ordering_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExecutionSpecification-same_lifeline"
     },
     {
@@ -17040,9 +17085,13 @@
         }
       ],
       "implementation": "umltools.native.interactions.outside",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides",
+        "test_interactions_audit.InteractionCases.test_gate_to_gate_nested_fragment_context_and_matching_direction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source implication vacuously returns true without an opposite end or CombinedFragment. Python requires both and represented surrounding ownership, according to the query description.",
       "source": "umltools/data/UML.xmi#Gate-isOutsideCF"
     },
     {
@@ -17080,9 +17129,13 @@
         }
       ],
       "implementation": "umltools.native.interactions.inside",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides",
+        "test_interactions_audit.InteractionCases.test_gate_to_gate_nested_fragment_context_and_matching_direction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source implication vacuously returns true without an opposite end or CombinedFragment. Python follows the query description and returns false when these prerequisites are absent.",
       "source": "umltools/data/UML.xmi#Gate-isInsideCF"
     },
     {
@@ -17120,9 +17173,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.actual",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-isActual"
     },
     {
@@ -17162,9 +17217,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.formal",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-isFormal"
     },
     {
@@ -17202,9 +17259,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.gate_name",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-getName"
     },
     {
@@ -17252,9 +17311,13 @@
         }
       ],
       "implementation": "umltools.native.interactions.matches",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides",
+        "test_interactions_audit.InteractionCases.test_gate_to_gate_nested_fragment_context_and_matching_direction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "Python parenthesizes the directional implications so that all name, message-sort and signature checks apply together, according to the query description.",
       "source": "umltools/data/UML.xmi#Gate-matches"
     },
     {
@@ -17312,9 +17375,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.distinguishable",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-isDistinguishableFrom"
     },
     {
@@ -17352,9 +17417,13 @@
         }
       ],
       "implementation": "umltools.native.interactions.operand",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides",
+        "test_interactions_audit.InteractionCases.test_gate_to_gate_nested_fragment_context_and_matching_direction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The body explicitly returns null for gates that are not inside a CombinedFragment, despite a mandatory result signature.",
       "source": "umltools/data/UML.xmi#Gate-getOperand"
     },
     {
@@ -17373,9 +17442,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-actual_gate_matched"
     },
     {
@@ -17394,9 +17465,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-inside_cf_matched"
     },
     {
@@ -17415,9 +17488,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.outside_gates",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The alt branch does not use its operand variable and tests an enclosing-fragment relation that misses the operand. Python requires one matching inside gate per operand as the prose specifies.",
       "source": "umltools/data/UML.xmi#Gate-outside_cf_matched"
     },
     {
@@ -17436,9 +17512,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-formal_gate_distinguishable"
     },
     {
@@ -17457,9 +17535,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-actual_gate_distinguishable"
     },
     {
@@ -17478,9 +17558,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source counts inside gates as well. Python compares outside gates only, as the prose requires; inside/outside pairs may share the matching name.",
       "source": "umltools/data/UML.xmi#Gate-outside_cf_gate_distinguishable"
     },
     {
@@ -17499,9 +17582,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Gate-inside_cf_gate_distinguishable"
     },
     {
@@ -17535,9 +17620,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.ordering_acyclic",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_nested_event_order_execution_ownership_and_ordering_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#GeneralOrdering-irreflexive_transitive_closure"
     },
     {
@@ -17623,9 +17710,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_combined_fragment_operators_coverage_and_signature_kinds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Interaction-not_contained"
     },
     {
@@ -17799,9 +17888,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_loop_bounds_invalid_literals_and_missing_numeric_evaluator"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InteractionConstraint-minint_maxint"
     },
     {
@@ -17820,9 +17911,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_loop_bounds_invalid_literals_and_missing_numeric_evaluator"
+      ],
+      "review": "context dependent",
+      "limitation": "Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.",
       "source": "umltools/data/UML.xmi#InteractionConstraint-minint_non_negative"
     },
     {
@@ -17841,9 +17935,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_loop_bounds_invalid_literals_and_missing_numeric_evaluator"
+      ],
+      "review": "context dependent",
+      "limitation": "Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.",
       "source": "umltools/data/UML.xmi#InteractionConstraint-maxint_positive"
     },
     {
@@ -17862,9 +17959,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.guard_references",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "partial",
+      "limitation": "Trusted reference facts are checked against represented covered lifeline roles/types, interaction parameters/context attributes and read-only Properties. Full runtime ownership/global/write-once semantics remains a project approximation.",
       "source": "umltools/data/UML.xmi#InteractionConstraint-dynamic_variables"
     },
     {
@@ -17883,9 +17983,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.guard_references",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "partial",
+      "limitation": "Trusted reference facts and represented read-only Properties are supported. Arbitrary domain global/write-once storage semantics is not represented by core UML and is not proved.",
       "source": "umltools/data/UML.xmi#InteractionConstraint-global_data"
     },
     {
@@ -17904,9 +18007,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_loop_bounds_invalid_literals_and_missing_numeric_evaluator"
+      ],
+      "review": "context dependent",
+      "limitation": "Represented Integer bounds are compared. Unknown numeric expressions require an evaluator and remain unsupported.",
       "source": "umltools/data/UML.xmi#InteractionConstraint-maxint_greater_equal_minint"
     },
     {
@@ -18121,9 +18227,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.operand_references",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "partial",
+      "limitation": "Trusted guard reference facts are checked against represented operand coverage/context. General domain-global and write-once facts remain incomplete.",
       "source": "umltools/data/UML.xmi#InteractionOperand-guard_contain_references"
     },
     {
@@ -18142,9 +18251,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.operand_guard_position",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "partial",
+      "limitation": "Guard composite ownership is checked. Graphical placement immediately above a fragment requires UMLDI/layout semantics and is not proved.",
       "source": "umltools/data/UML.xmi#InteractionOperand-guard_directly_prior"
     },
     {
@@ -18234,9 +18346,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_actual_formal_gate_names_signatures_and_duplicate_matches"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InteractionUse-gates_match"
     },
     {
@@ -18255,9 +18369,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.use_arguments",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "context dependent",
+      "limitation": "Foreign expression constancy/references require trusted analyzer facts; no arbitrary language execution is supplied.",
       "source": "umltools/data/UML.xmi#InteractionUse-arguments_are_constants"
     },
     {
@@ -18276,9 +18393,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InteractionUse-returnValueRecipient_coverage"
     },
     {
@@ -18297,9 +18416,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.use_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InteractionUse-arguments_correspond_to_parameters"
     },
     {
@@ -18318,9 +18439,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InteractionUse-returnValue_type_recipient_correspondence"
     },
     {
@@ -18339,9 +18462,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.use_lifelines",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_lifeline_selectors_common_use_coverage_and_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InteractionUse-all_lifelines"
     },
     {
@@ -18511,9 +18636,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_lifeline_selectors_common_use_coverage_and_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Lifeline-selector_specified"
     },
     {
@@ -18532,9 +18659,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.shared_lifelines",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_lifeline_selectors_common_use_coverage_and_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Lifeline-interaction_uses_share_lifeline"
     },
     {
@@ -18553,9 +18682,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.lifeline_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_lifeline_selectors_common_use_coverage_and_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Lifeline-same_classifier"
     },
     {
@@ -18574,9 +18705,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_lifeline_selectors_common_use_coverage_and_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Lifeline-selector_int_or_string"
     },
     {
@@ -18763,9 +18896,12 @@
         }
       ],
       "implementation": "umltools.native.interactions.message_kind",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source body recursively returns the property itself. Python derives complete/lost/found/unknown from represented send and receive ends.",
       "source": "umltools/data/UML.xmi#Message-messageKind.1"
     },
     {
@@ -18823,9 +18959,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.distinguishable",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Message-isDistinguishableFrom"
     },
     {
@@ -18844,9 +18982,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.message_order",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_nested_event_order_execution_ownership_and_ordering_cycles"
+      ],
+      "review": "partial",
+      "limitation": "The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented.",
       "source": "umltools/data/UML.xmi#Message-sending_receiving_message_event"
     },
     {
@@ -18865,9 +19006,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.message_arguments",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_arguments_guard_references_and_return_recipient_evidence"
+      ],
+      "review": "context dependent",
+      "limitation": "Constants and represented wildcard values are checked. Foreign expression constancy/references require trusted analyzer facts.",
       "source": "umltools/data/UML.xmi#Message-arguments"
     },
     {
@@ -18886,9 +19030,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_alt_gate_matches_per_operand_and_distinct_boundary_sides"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Message-cannot_cross_boundaries"
     },
     {
@@ -18907,9 +19053,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.signal_signature",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_signature_directions_wildcards_and_connector_roles"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source selects inheritedMember only. Python matches allAttributes including owned attributes according to the signal-signature description.",
       "source": "umltools/data/UML.xmi#Message-signature_is_signal"
     },
     {
@@ -18928,9 +19077,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.message_connector",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_signature_directions_wildcards_and_connector_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Message-occurrence_specifications"
     },
     {
@@ -18949,9 +19100,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_signature_directions_wildcards_and_connector_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Message-signature_refer_to"
     },
     {
@@ -18970,9 +19123,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.request_signature",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_signature_directions_wildcards_and_connector_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Message-signature_is_operation_request"
     },
     {
@@ -18991,9 +19146,13 @@
         }
       ],
       "implementation": "umltools.native.constraints_interactions.reply_signature",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_signature_directions_wildcards_and_connector_roles",
+        "test_interactions_audit.InteractionCases.test_reply_source_only_checks_the_first_expression_operand"
+      ],
+      "review": "partial",
+      "limitation": "The XMI checks the first operand only for nonempty Expression arguments; direct values pass vacuously. Python preserves this body, which does not prove all argument types in the broader prose.",
       "source": "umltools/data/UML.xmi#Message-signature_is_operation_reply"
     },
     {
@@ -19099,9 +19258,12 @@
         "The derived kind of the Message (complete, lost, found, or unknown)."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "source inconsistency",
+      "limitation": "The source body recursively returns the property itself. Python derives complete/lost/found/unknown from represented send and receive ends.",
       "source": "umltools/data/UML.xmi#Message-messageKind"
     },
     {
@@ -19262,9 +19424,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.opposite",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MessageEnd-oppositeEnd"
     },
     {
@@ -19281,9 +19445,11 @@
           "body": "message->notEmpty()\n"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MessageEnd-oppositeEnd-pre"
     },
     {
@@ -19321,9 +19487,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.is_send",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MessageEnd-isSend"
     },
     {
@@ -19340,9 +19508,11 @@
           "body": "message->notEmpty()\n"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MessageEnd-isSend-pre"
     },
     {
@@ -19380,9 +19550,11 @@
         }
       ],
       "implementation": "umltools.native.interactions.is_receive",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MessageEnd-isReceive"
     },
     {
@@ -19401,9 +19573,11 @@
           "body": "message->notEmpty()\n"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MessageEnd-isReceive-pre"
     },
     {
@@ -19441,9 +19615,12 @@
         }
       ],
       "implementation": "umltools.native.interactions.enclosing",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_interactions_audit.InteractionCases.test_message_kinds_end_navigation_and_preconditions"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source returns null for an unclassified Gate. Python returns an empty collection matching the result signature.",
       "source": "umltools/data/UML.xmi#MessageEnd-enclosingFragment"
     },
     {
