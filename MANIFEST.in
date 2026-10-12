@@ -4,5 +4,6 @@ include semantic-report.json
 include SEMANTIC_COVERAGE.md
 include SPECIFICATION_NOTES.md
 include NOTICE.md
+include CHANGELOG.md
 recursive-include scripts *.py
 recursive-include tests *.py

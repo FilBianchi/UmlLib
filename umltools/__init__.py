@@ -215,6 +215,12 @@ class UmlElement:
                         issues.append(('unsupported constraint', identifier))
                     except (TypeError, ValueError, AttributeError, IndexError, ZeroDivisionError):
                         issues.append(('invalid constraint', identifier))
+        from .stereotypes import validate_applications
+        try: issues.extend(validate_applications(self))
+        except (NativeNotImplemented, UnsupportedSemanticsError):
+            issues.append(('unsupported stereotype application', 'Stereotype.application'))
+        except (ValueError, TypeError, AttributeError):
+            issues.append(('invalid stereotype application', 'Stereotype.application'))
         if recursive:
             for child in self.ownedElement:
                 issues.extend(child.validate(recursive=True))

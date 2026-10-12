@@ -67,6 +67,33 @@ No Python evaluation path treats an untranslated definition as satisfied.
   Ownership validation still reports the missing owner.
 - `InformationFlow-sources_and_targets_kind`: kind tests apply to each endpoint,
   rather than to the InformationFlow itself as the source's unqualified tests imply.
+- `InformationFlow-must_conform` (20.2.1.5): classifier ends use nominal UML
+  conformance; a typed part can conform to a classifier end. Different parts with
+  the same type remain distinct references. Directed Relationship realizations may
+  be reversed as stated in the prose. Undirected associations/connectors partition
+  distinct ends between source and target groups; directional activity edges and
+  messages preserve their direction. This is an explicit project interpretation of
+  the prose-only constraint, with valid/invalid tests rather than an OMG certification.
+- `InformationItem-has_no` / `not_instantiable` (20.2.2.5): Python follows the prose
+  as well as the formula, checking associations and actual InstanceSpecifications
+  in the current extent, not only feature/generalization flags and isAbstract.
+- `PartDecomposition-assume` / `commutativity_of_decomposition` (17.12.24.4):
+  projection recursively matches operands, preserves positions of occurrences relative
+  to global constructs, and checks nested InteractionUses. Partial internal constructs
+  are not required counterparts. Extra-global status and non-message gate mappings
+  are explicit facts because core UML does not encode them as properties. The
+  correspondence does not use graphical coordinates or assume status from coverage.
+- `Profile-references_same_metamodel` (12.4.7.5): the OCL formula only checks a
+  nonempty union. Python enforces the prose's shared base metamodel using identity
+  of the outermost owning Package, rejecting unowned references or different roots.
+- `Stereotype-name_not_clash`: matching is case-insensitive, consistent with the
+  stereotype-name matching convention in 12.3.4. Standard keywords currently derive
+  from extended metaclass names, not every optional vendor-specific diagram keyword.
+- Runtime stereotype applications implement the mutually exclusive base links of
+  12.3.3.4 and the required/duplicate application rules of 12.3.3.6. Required
+  applications are created by `apply_profile`; incremental manual profile construction
+  reports omissions during validation. Direct edits to profileApplication collections
+  do not run the removal API's lifecycle cleanup; `unapply_profile` performs cleanup.
 - Prose-only runtime/layout rules are checked to the extent represented by core UML.
   Missing language facts or occurrence mappings remain explicit unsupported obligations.
 - `Classifier-directlyUsedInterfaces`: the formula traverses supplierDependency and

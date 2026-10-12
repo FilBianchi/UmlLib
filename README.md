@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.1.0/umllib-0.1.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.2.0/umllib-0.2.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -67,7 +67,9 @@ language analyser; validation reports missing facts instead of assuming success.
 
 `validate()` returns `(category, specification_id)` issues: `multiplicity`,
 `constraint`, `invalid constraint`, `unsupported constraint`, `invalid derivation`,
-and `unsupported`. Successful rules are omitted. `float('inf')` represents UML's
+and `unsupported`. Runtime stereotype checks additionally report `stereotype application`,
+`invalid stereotype application`, or `unsupported stereotype application`.
+Successful rules are omitted. `float('inf')` represents UML's
 unlimited natural value `*`.
 
 Use separate extents when working on independent models:
@@ -98,9 +100,61 @@ register_expression_facts(expression, references=(property_used,), constant=Fals
 are collections. These declarations are trusted application input. They do not analyse
 arbitrary expression strings or prove correctness of executable application behavior.
 
+## Runtime stereotype applications
+
+The Stereotype metaclass describes a classifier; a runtime application links an
+instance of that classifier to one model element:
+
+```python
+from umltools.stereotypes import apply_profile, apply_stereotype, unapply_profile
+
+apply_profile(model, profile)
+application = apply_stereotype(customer, stereotype, base_property="base_Class")
+assert application.element is customer
+print(application.base_slots)  # Read-only Property -> element/None mapping.
+print(application.validate())
+```
+
+The profile must define the stereotype and its Extension/base properties. Applying
+a profile creates required applications; an ambiguous abstract required stereotype
+raises an error and rolls back newly created applications. A stereotype with several
+extensions always binds exactly one base property. Rebinding checks the new element
+before changing the old link. Applying the same stereotype or its subtypes twice is
+rejected. `unapply_profile` removes inaccessible applications while preserving model
+elements and applications still available through another applied profile.
+
+Applications modeled explicitly with `InstanceSpecification`, `Slot` and
+`InstanceValue` also receive base-binding and duplicate checks. The runtime API covers
+base links and profile availability; it does not execute stereotype OCL bodies or
+provide a generated Python class for each user-defined stereotype's tagged values.
+
+## Interaction boundary mappings
+
+Core UML omits some facts required by its prose-only constraints. Explicit annotations
+allow validation without guessing:
+
+```python
+from umltools.interaction_mapping import (
+    bind_gate_endpoint, mark_extra_global, map_occurrence_gate,
+)
+
+bind_gate_endpoint(message, boundary_gate, participating_part)
+mark_extra_global(decomposition, fragment)
+map_occurrence_gate(decomposition, occurrence, actual_gate,
+                    internal_occurrence=internal_occurrence)
+```
+
+Gate bindings identify an InformationFlow participant. Extra-global status describes
+a CombinedFragment spanning the decomposition boundary; covering all internal lifelines
+alone does not establish that status. Non-message occurrences need an explicit mapping;
+message occurrences can infer a unique matching formal gate and its internal anchor.
+Mappings are rechecked when models change. They are runtime annotations and are not
+currently serialized to XMI.
+
 See [SEMANTIC_COVERAGE.md](SEMANTIC_COVERAGE.md) for remaining requirements.
 [semantic-report.json](semantic-report.json) inventories Python translations and
-outstanding definitions. Registration counts are not conformance guarantees.
+explicit rule/test links. Registration counts are not conformance guarantees; a
+definition without linked examples may still have older tests not yet annotated.
 [SPECIFICATION_NOTES.md](SPECIFICATION_NOTES.md) records interpretations of ambiguous XMI.
 
 UmlLib was extracted from [UmlTools](https://github.com/FilBianchi/UmlTools);

@@ -33,5 +33,5 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
-          sha256sum dist/* > dist/SHA256SUMS.txt
+          (cd dist && sha256sum *.whl *.tar.gz > SHA256SUMS.txt)
           gh release create "$RELEASE_TAG" dist/* --verify-tag --generate-notes --title "UmlLib $RELEASE_TAG"

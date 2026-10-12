@@ -73,3 +73,5 @@ from . import constraints_actions
 from . import constraints_activities
 from . import constraints_interactions
 from . import constraints_remaining
+from . import information_flows
+from . import part_decomposition

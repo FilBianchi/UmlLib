@@ -32,25 +32,43 @@ always be established from a static core UML model.
 - A single-token domain collection type needs `register_collection_type`. A
   multivalued pin directly represents a token collection.
 - Part decomposition handles structural correspondence and message gates. A
-  non-message occurrence whose actual-gate mapping is absent remains an unsupported
-  obligation. The core metamodel has no explicit mapping for this case.
+  non-message occurrence needs `map_occurrence_gate`; a fragment's extra-global
+  status needs `mark_extra_global`. A gate-order anchor must be represented or
+  explicitly mapped. Missing information remains an unsupported obligation.
+- InformationFlow gate endpoints need `bind_gate_endpoint`. Lost/found messages
+  whose external end is not modeled remain unsupported as complete channels.
 - Guard placement is checked at the core model level (ownership by its operand).
   Pixel coordinates and layout belong to UMLDI and are outside this distribution.
-- The runtime condition that only one stereotype base slot is populated requires
-  stereotype application instances; metamodel base-property multiplicities are checked.
+- Stereotype base-binding exclusivity, duplicates, abstract instances, required
+  extensions and profile availability are checked by `umltools.stereotypes`, and
+  for applications modeled with InstanceSpecification/Slot. User-defined tagged-value
+  classes, arbitrary executable stereotype constraints and XMI serialization of
+  runtime applications are not implemented by this API.
 
 Models with unsupported or invalid obligations must not be described as fully validated.
 Unknown expression languages are never implicitly accepted or executed.
 
 ## Behavioral verification
 
-68 tests cover class/package inventories and inheritance; atomic collection edits,
+117 tests cover class/package inventories and inheritance; atomic collection edits,
 reversal, ownership and cycles; stored subsets and inverse associations;
 names, alias imports and reexports; classifier inheritance and property redefinition;
 multiplicities and unlimited values; state and protocol machines; call signatures;
 variable scope and nested actions; use-case inclusion cycles; component interfaces,
 conjugated ports and ordered connector ends; message kinds and gates; expressions,
 deployment manifestations, profiles and object flows through control nodes.
+
+The new audit adds valid, invalid and boundary examples for InformationFlow,
+InformationItem, PartDecomposition, Stereotype and Profile checks, plus runtime
+application lifecycle tests. Explicit `@verifies(...)` annotations link examples to
+18 specification rules in the JSON report. The other 431 class invariants do not
+yet have explicit links; older tests cover some of them. Neither a test count nor
+these links constitute certification or exhaustive verification of each rule.
+
+The audit now checks classifier conformance and disjoint channel ends (including
+n-ary and reflexive associations), exact part references, message/edge direction,
+ordered recursive operand projections, gate uniqueness, nested commutativity,
+base-slot exclusivity, transactional profile application and common metamodel roots.
 
 Tests distinguish valid and invalid models and make the OCL evaluator fail if called.
 CI runs Python 3.10, 3.12 and 3.14, checks reproducible generation and the inventory,
