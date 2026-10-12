@@ -149,10 +149,17 @@ def unique_parameters(self):
     return len([p.name for p in named]) == len(set(p.name for p in named))
 
 
-@invariant('ClassifierTemplateParameter.constraining_classifiers_constrain_args', 'ClassifierTemplateParameter.constraining_classifiers_constrain_parametered_element')
+@invariant('ClassifierTemplateParameter.constraining_classifiers_constrain_args')
 def constrained_arguments(self):
-    values = [required(self.parameteredElement)] + [ts.actual for ts in reverse(self, 'TemplateParameterSubstitution', 'formal')]
+    values = [ts.actual for ts in reverse(self, 'TemplateParameterSubstitution', 'formal')]
     return all(arg is cc or arg.conformsTo(cc) or self.allowSubstitutable and arg.isSubstitutableFor(cc) for arg in values for cc in self.constrainingClassifier)
+
+
+@invariant('ClassifierTemplateParameter.constraining_classifiers_constrain_parametered_element')
+def constrained_formal(self):
+    formal = required(self.parameteredElement)
+    return all(formal is cc or formal.conformsTo(cc) or self.allowSubstitutable and formal.isSubstitutableFor(cc)
+               for cc in self.constrainingClassifier)
 
 
 @invariant('OperationTemplateParameter.match_default_signature')

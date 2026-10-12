@@ -6,6 +6,7 @@ from .contracts import validate_parameter, validate_result
 
 
 def operation(self, owner, name, args=(), kwargs=None):
+    self._ensure_alive()
     kwargs = kwargs or {}
     spec = next(base.__dict__['__spec__'] for base in type(self).__mro__ if '__spec__' in base.__dict__ and base.__dict__['__spec__'].name == owner)
     node = ET.fromstring(spec.operations[name])

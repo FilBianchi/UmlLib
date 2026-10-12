@@ -57,7 +57,7 @@ Unknown expression languages are never implicitly accepted or executed.
 
 ## Behavioral verification
 
-150 tests cover class/package inventories and inheritance; atomic collection edits,
+187 tests cover class/package inventories and inheritance; atomic collection edits,
 reversal, ownership and cycles; stored subsets and inverse associations;
 names, alias imports and reexports; classifier inheritance and property redefinition;
 multiplicities and unlimited values; state and protocol machines; call signatures;
@@ -68,9 +68,11 @@ deployment manifestations, profiles and object flows through control nodes.
 The new audit adds valid, invalid and boundary examples for InformationFlow,
 InformationItem, PartDecomposition, Stereotype and Profile checks, plus runtime
 application lifecycle tests. Explicit `@verifies(...)` annotations link examples to
-136 definition records in the JSON report, including properties and preconditions.
+244 definition records in the JSON report, including properties and preconditions.
 All 27 CommonStructure invariants and 11 Values invariants, and their declared
-queries/derivations, have examples. Other invariants still need review and links;
+queries/derivations, have examples. Classification adds 44 invariants, 40 queries,
+16 derivations and 6 preconditions; SimpleClassifiers adds 5 invariants, 1 query and
+1 derivation with examples. Other invariants still need review and links;
 older tests cover some of them. Neither a test count nor
 these links constitute certification or exhaustive verification of each rule.
 
@@ -78,7 +80,7 @@ Version 0.3.0 checks operation results and argument collections against UML
 signatures. A result violating type, bounds, ordering or uniqueness raises
 `OperationResultError`. Models may still be temporarily incomplete during
 construction; structural validation reports missing required properties. This
-increment does not add logical deletion or complete the remaining package audits.
+increment added result contracts; 0.4.0 adds logical deletion and the next two audits.
 
 The CommonStructure/Values audit includes ownership changes, namespace/name absence,
 import collisions, redefined template subsets, multiplicity defaults and infinity,
@@ -87,6 +89,22 @@ Foreign expression purity and constancy require analyzer facts. OpaqueExpression
 generic integer queries retain the XMI's false body and reject unsatisfied
 preconditions; they do not execute Python/OCL text. Source issues are listed in
 SPECIFICATION_NOTES.md and flagged in the report.
+
+The Classification audit covers generalization cycles and visibility, redefinition
+contexts and variance of parameter multiplicities, template formal/actual separation,
+subset contexts and bounds, association navigation, slots, deployment roles,
+stream/exception parameters, parameter-set alternatives and inherited signatures.
+SimpleClassifiers covers classifier behaviors, immutable enumerations, literal owners,
+public interface features and ordered signal/reception signatures. Source conflicts
+remain limitations, even when examples verify the documented project interpretation.
+
+Deletion tests keep ordinary Python references to tombstones, exercise atomic refusal
+and rollback (including application cleanup failure), check shared composite subsets,
+cross-session cleanup, retained collection handles and required dangling references.
+Persistent ModelSession extents retain live objects; the default shared extent remains
+weak. Ordinary referring objects survive and may require model repairs. Adapter facts
+and official mapping entries that reference tombstones are discarded, not treated as
+valid evidence. Arbitrary external application metadata is outside this lifecycle API.
 
 The audit now checks classifier conformance and disjoint channel ends (including
 n-ary and reflexive associations), exact part references, message/edge direction,

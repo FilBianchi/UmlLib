@@ -170,9 +170,11 @@ class StereotypeCases(unittest.TestCase):
         stereotype, _ = self.define(required=True)
         stereotype.isAbstract = True
         self.model.profileApplication.clear()
+        before = set(self.scope.elements)
         with self.assertRaises(ValueError): apply_profile(self.model, self.profile)
         self.assertEqual(self.model.profileApplication, [])
         self.assertEqual(applications(self.element), ())
+        self.assertEqual(self.scope.elements, before)
 
     def test_late_profile_application_failure_also_removes_earlier_created_instances(self):
         first, _ = self.define(required=True, name='A')
@@ -280,11 +282,32 @@ class StereotypeCases(unittest.TestCase):
         app = Uml.InstanceSpecification(classifier=[stereotype], slot=[
             Uml.Slot(definingFeature=props[0], value=[Uml.InstanceValue(instance=target)])])
         self.model.packagedElement.extend([target, app])
+        slot, value = app.slot[0], app.slot[0].value[0]
         unapply_profile(self.model, self.profile)
         self.assertIn(target, self.model.packagedElement)
         self.assertNotIn(app, self.model.packagedElement)
-        self.assertEqual(app.classifier, [])
-        self.assertEqual(app.slot, [])
+        self.assertTrue(app.is_deleted)
+        self.assertTrue(slot.is_deleted)
+        self.assertTrue(value.is_deleted)
+        self.assertNotIn(app, self.scope.elements)
+
+    def test_profile_removal_preserves_other_classifiers_and_deletes_only_profile_slots(self):
+        stereotype, props = self.define()
+        ordinary_feature = Uml.Property()
+        ordinary = Uml.Class(ownedAttribute=[ordinary_feature])
+        target = Uml.InstanceSpecification(classifier=[props[0].type])
+        base_value = Uml.InstanceValue(instance=target)
+        base_slot = Uml.Slot(definingFeature=props[0], value=[base_value])
+        ordinary_slot = Uml.Slot(definingFeature=ordinary_feature, value=[Uml.LiteralInteger(value=1)])
+        app = Uml.InstanceSpecification(classifier=[stereotype, ordinary], slot=[base_slot, ordinary_slot])
+        self.model.packagedElement.extend([target, app])
+        unapply_profile(self.model, self.profile)
+        self.assertFalse(app.is_deleted)
+        self.assertEqual(list(app.classifier), [ordinary])
+        self.assertEqual(list(app.slot), [ordinary_slot])
+        self.assertTrue(base_slot.is_deleted)
+        self.assertTrue(base_value.is_deleted)
+        self.assertFalse(ordinary_slot.is_deleted)
 
     @verifies('Profile.metaclass_reference_not_specialized')
     def test_imported_metaclasses_cannot_be_specialized_in_a_profile(self):

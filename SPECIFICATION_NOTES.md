@@ -40,7 +40,37 @@ reviewed independently; a complete decomposition of additional PDF prose is pend
   Invalid literal kinds are reported by lower_is_integer/upper_is_unlimitedNatural;
   replacing that fallback would diverge from the current XMI bodies.
 
-## Earlier project interpretations
+## Classification and SimpleClassifiers audit (0.4.0)
+
+- `Property.opposite`, `Operation.lower`, `Operation.upper` and `Operation.type`
+  can return null according to their bodies and optional derived properties, despite
+  mandatory query result signatures. Contracts use optional results only for these
+  named queries, as for the earlier nullable source conflicts.
+- The two ClassifierTemplateParameter conformance constraints quantify different
+  objects: one checks substitution actuals, the other checks parameteredElement.
+  Their Python implementations are now separate; an invalid formal does not change
+  the result of the actual-only rule and vice versa.
+- `Property.binding_to_attribute` casts ts.formal to Property, but formal is a
+  TemplateParameter. Python follows the attribute-binding description by inspecting
+  formal.parameteredElement. This remains a project interpretation of the source.
+- `ParameterSet.two_parameter_sets` includes self pairs and compares size on the set
+  object rather than its parameters. Python checks distinct ParameterSets for equal
+  parameter memberships. The project correction remains flagged as a source conflict.
+- `Classifier.allSlottableFeatures` includes inherited attributes through allParents,
+  in addition to StructuralFeature members; this can include private parent attributes.
+  The audit preserves that explicit XMI body rather than silently filtering visibility.
+- Existing corrections for Property.isCompatibleWith (TypeElement/TypedElement),
+  Property.isConsistentWith (upper-bound clause), and Classifier.directlyUsedInterfaces
+  are now also flagged in the review matrix.
+- SimpleClassifiers invariants are tested as declared. General execution of methods,
+  signal delivery and primitive domain definitions is not supplied by this audit.
+
+Logical deletion is a Python lifecycle API, not a fabricated metamodel operation.
+Cleanup detaches references and leaves ordinary referrers alive; it does not infer
+semantic repairs or cascading deletion of every dependent relationship. Persistent
+ModelSession extents retain live elements; the default shared extent stays weak.
+
+## Earlier project interpretations (continued)
 
 - `Namespace-excludeCollisions`: the formula compares each imported element to
   itself and therefore rejects all of them. The prose describes collisions between

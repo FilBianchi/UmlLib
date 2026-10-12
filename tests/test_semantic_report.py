@@ -11,8 +11,11 @@ class ReportCases(unittest.TestCase):
         self.assertEqual(records['OpaqueExpression-isPositive-pre']['kind'], 'precondition')
         self.assertTrue(records['OpaqueExpression-isPositive-pre']['expressions'])
         self.assertEqual(records['OpaqueExpression-result.1']['review'], 'source inconsistency')
-        for package in ('CommonStructure', 'Values'):
+        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers'):
             self.assertEqual(result['package_audit'][package]['invariants'], result['package_audit'][package]['invariants_with_examples'])
+            for category in ('operation', 'derived property', 'precondition'):
+                counts = result['package_audit'][package]['definitions'][category]
+                self.assertEqual(counts['declared'], counts['with_examples'])
 
     def test_linked_examples_resolve_to_existing_rules_and_test_methods(self):
         records = {r.get('name'): r for r in report()['definitions']}

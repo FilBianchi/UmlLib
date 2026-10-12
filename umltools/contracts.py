@@ -17,6 +17,10 @@ SIGNATURE_INTERPRETATIONS = {
     'LiteralString.stringValue': 'LiteralString.value is optional; its direct-value query may return null.',
     'ElementImport.getName': 'Alias and the imported element name can both be absent; the body then returns null.',
     'Namespace.getNamesOfMember': 'The body creates Set{element.name}, which can contain an undefined name.',
+    'Property.opposite': 'The property is optional and the query returns null for a non-binary or absent association.',
+    'Operation.lower': 'The property is optional and the query returns null without a return parameter.',
+    'Operation.upper': 'The property is optional and the query returns null without a return parameter.',
+    'Operation.type': 'The property is optional and the query returns null without a return parameter or its type.',
 }
 
 
@@ -28,6 +32,7 @@ def multiplicity(node):
 
 
 def validate_item(self, value, type_name):
+    if hasattr(value, '_ensure_alive'): value._ensure_alive()
     primitives = {'Boolean': bool, 'String': str, 'Integer': int,
                   'Real': (int, float), 'UnlimitedNatural': (int, float)}
     expected = self.__registry__.get(type_name) or primitives.get(type_name)
@@ -45,7 +50,8 @@ def validate_item(self, value, type_name):
 
 def validate_parameter(self, parameter, value, *, operation_id, result=False):
     low, high = multiplicity(parameter)
-    if result and operation_id in ('NamedElement.qualifiedName', 'LiteralString.stringValue', 'ElementImport.getName'): low = 0
+    if result and operation_id in ('NamedElement.qualifiedName', 'LiteralString.stringValue', 'ElementImport.getName',
+                                   'Property.opposite', 'Operation.lower', 'Operation.upper', 'Operation.type'): low = 0
     many = high is None or high > 1
     ordered = parameter.get('isOrdered', 'false') == 'true'
     collections = (list, tuple, UmlCollection) if ordered else (list, tuple, UmlCollection, set, frozenset)

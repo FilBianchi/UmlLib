@@ -6,8 +6,12 @@ class UmlCollection(MutableSequence):
     def __init__(self, owner, name, values=()):
         self.owner, self.name, self._data = owner, name, list(values)
 
-    def __len__(self): return len(self._data)
-    def __getitem__(self, index): return self._data[index]
+    def __len__(self):
+        self.owner._ensure_alive()
+        return len(self._data)
+    def __getitem__(self, index):
+        self.owner._ensure_alive()
+        return self._data[index]
 
     def __setitem__(self, index, value):
         values = list(self._data)

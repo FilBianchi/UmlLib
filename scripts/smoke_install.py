@@ -1,6 +1,7 @@
 """Run from outside the checkout after installing its distribution."""
 import Uml
-from umltools import OperationResultError
+from umltools import OperationResultError, ModelSession, DeletedElementError
+from umltools.native import instances
 from umltools.native import check
 from umltools.stereotypes import apply_profile, apply_stereotype
 from umltools.interaction_mapping import bind_gate_endpoint, mark_extra_global, map_occurrence_gate
@@ -27,4 +28,17 @@ except OperationResultError:
     pass
 else:
     raise AssertionError('Required operation result was not checked')
+with ModelSession():
+    survivor, deleted = Uml.Class(), Uml.Class(ownedAttribute=[Uml.Property()])
+    user = Uml.Property(type=deleted)
+    removed = deleted.delete()
+    assert len(removed) == 2 and deleted.is_deleted and user.type is None
+    assert deleted not in instances(survivor, 'Class')
+    try:
+        deleted.allParents()
+    except DeletedElementError:
+        pass
+    else:
+        raise AssertionError('A tombstone remained queryable')
+assert Uml.LiteralUnlimitedNatural().unlimitedValue() == 0
 print('Installed UmlLib', version('UmlLib'))

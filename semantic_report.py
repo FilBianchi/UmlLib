@@ -17,6 +17,11 @@ AUDIT_LIMITS = {
     'OpaqueExpression.result': 'The XMI body selects the first parameter, even if it is not the return parameter. This differs from the property description; XMI behavior is preserved.',
     'DurationConstraint-firstEvent': 'The source defaults to unordered and unique Boolean values. Repeated first-event flags collapse; ordered event-pair interpretation is unresolved.',
     'DurationObservation-firstEvent': 'The source defaults to unordered and unique Boolean values. Repeated first-event flags collapse; ordered event-pair interpretation is unresolved.',
+    'Classifier.directlyUsedInterfaces': 'The XMI traverses supplierDependency/clients; Python follows the Usage description and selects client Usage dependencies and Interface suppliers. Project interpretation remains a source divergence.',
+    'Property.binding_to_attribute': 'The XMI casts ts.formal itself to Property although formal is a TemplateParameter. Python checks formal.parameteredElement against the attribute requirement.',
+    'Property.isCompatibleWith': 'The source refers to the nonexistent TypeElement; Python uses TypedElement.',
+    'Property.isConsistentWith': 'The source upper-bound clause repeats lowerBound; Python uses upperBound according to the description.',
+    'ParameterSet.two_parameter_sets': 'The formula compares every pair including a set to itself and uses size on the object. Python compares distinct sets and their parameter memberships according to the description.',
 }
 CONTEXTUAL = {
     'Constraint.no_side_effects', 'MultiplicityElement.value_specification_no_side_effects',
@@ -141,9 +146,15 @@ def report():
             record['review'] = 'context dependent'
             record['limitation'] = 'Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.'
         record['source'] = 'umltools/data/UML.xmi#' + record['id']
-    package_audit = {package: {'invariants': sum(r['kind'] == 'constraint' and r['package'] == package for r in records),
-                               'invariants_with_examples': sum(r['kind'] == 'constraint' and r['package'] == package and bool(r['tests']) for r in records)}
-                     for package in ('CommonStructure', 'Values')}
+    package_audit = {}
+    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers'):
+        definitions = [r for r in records if r['package'] == package]
+        counts_by_kind = {category: {'declared': sum(r['kind'] == category for r in definitions),
+                                    'with_examples': sum(r['kind'] == category and bool(r['tests']) for r in definitions)}
+                          for category in ('constraint', 'operation', 'derived property', 'precondition')}
+        package_audit[package] = {'invariants': counts_by_kind['constraint']['declared'],
+                                  'invariants_with_examples': counts_by_kind['constraint']['with_examples'],
+                                  'definitions': counts_by_kind}
     return {'meaning': 'Implementation inventory and explicitly linked behavioral examples, not proof of complete semantic conformance. No linked examples does not mean no tests exist; earlier tests have not all been linked. Opaque expressions and facts absent from core UML remain explicit validation obligations.',
             'scope': 'Declared core class/property/operation metadata, enumerations, association-owned ends, class invariants, pre/postconditions and XMI descriptions. Additional normative PDF prose still needs separate requirement decomposition; this is not a complete census of every normative UML requirement.',
             'counts': counts, 'verification_counts': dict(Counter(record.get('verification', 'no linked behavioral examples') for record in records)),

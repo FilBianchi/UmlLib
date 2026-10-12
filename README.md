@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.3.0/umllib-0.3.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.4.0/umllib-0.4.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -82,8 +82,33 @@ with ModelSession() as session:
 ```
 
 Queries on these objects continue to use that session after leaving the context.
-The default extent is shared for compatibility. Stored subset properties synchronize
+The session retains its live elements until explicit deletion or disposal of the
+whole session. The default extent remains shared and weak for compatibility;
+use ModelSession for a persistent logical extent. Stored subset properties synchronize
 their supersets transactionally, and derived unions remove duplicate elements.
+
+Delete model elements independently of Python variable lifetime:
+
+```python
+removed = customer.delete()  # Includes composite descendants.
+assert customer.is_deleted
+```
+
+`delete()` clears incoming and outgoing UML references, cleans inverse links,
+removes modeled stereotype applications of the deleted base, detaches runtime
+applications and removes deleted elements from extents. Cleanup covers live references
+in other sessions. Surviving required references may become absent: validate those
+elements to find the resulting incomplete model. Deletion does not repair the meaning
+of surviving constraints or automatically delete ordinary referring relationships.
+
+Use `delete(on_references="restrict")` to refuse external UML references, or
+`delete(cascade=False)` to refuse composite children. The composite parent link is
+allowed in restrict mode. Refused/failed deletion rolls back model edits and
+application links. The returned tuple contains removed elements in unspecified order;
+repeating deletion returns an empty tuple. Tombstones reject model reads, writes,
+queries, validation and reuse with `DeletedElementError`. `is_deleted` remains readable.
+Official gate mappings and analyzer facts referencing deleted objects are discarded;
+Python variables and arbitrary application metadata remain the application's responsibility.
 
 `Pin.upperBound` is the ObjectNode property; the identically named multiplicity query
 is available explicitly as `pin.uml_operation("MultiplicityElement", "upperBound")`.

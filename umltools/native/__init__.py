@@ -30,6 +30,7 @@ def derived(*identifiers): return register(DERIVATIONS, *identifiers)
 
 
 def invoke(self, identifier, variables):
+    self._ensure_alive()
     function = OPERATIONS.get(identifier)
     if function is None: raise NativeNotImplemented(f'Python operation not implemented: {identifier}')
     key = (id(self), identifier)
@@ -41,6 +42,7 @@ def invoke(self, identifier, variables):
 
 
 def check(self, identifier):
+    self._ensure_alive()
     function = CONSTRAINTS.get(identifier)
     if function is None: raise NativeNotImplemented(f'Python invariant not implemented: {identifier}')
     result = function(self)
@@ -51,8 +53,9 @@ def check(self, identifier):
 def unique(values): return list(dict.fromkeys(values))
 def kind(self, value, name): return isinstance(value, self.__registry__[name])
 def instances(self, name):
+    self._ensure_alive()
     extent = self.__instances__ if self._extent is None else self._extent.elements
-    return [value for value in extent if value._extent is self._extent and value.__registry__ is self.__registry__ and kind(self, value, name)]
+    return [value for value in extent if not value.is_deleted and value._extent is self._extent and value.__registry__ is self.__registry__ and kind(self, value, name)]
 
 
 def reverse(self, name, field):

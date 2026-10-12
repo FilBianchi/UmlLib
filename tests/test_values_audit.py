@@ -7,6 +7,17 @@ from semantic_cases import verifies
 
 
 class ValuesCases(unittest.TestCase):
+    @verifies('LiteralUnlimitedNatural-value', 'LiteralReal-value')
+    def test_numeric_defaults_and_nonfinite_real_assignments(self):
+        literal = Uml.LiteralUnlimitedNatural()
+        self.assertEqual(literal.value, 0)
+        self.assertIs(type(literal.value), int)
+        self.assertEqual(literal.unlimitedValue(), 0)
+        real = Uml.LiteralReal(value=2.0)
+        for value in (float('inf'), float('-inf'), float('nan')):
+            with self.assertRaises(ValueError): real.value = value
+            self.assertEqual(real.value, 2.0)
+
     @verifies('LiteralBoolean.booleanValue', 'LiteralInteger.integerValue', 'LiteralReal.realValue',
               'LiteralString.stringValue', 'LiteralUnlimitedNatural.unlimitedValue',
               'LiteralBoolean.isComputable', 'LiteralInteger.isComputable', 'LiteralReal.isComputable',

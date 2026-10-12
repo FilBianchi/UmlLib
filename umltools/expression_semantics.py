@@ -22,6 +22,7 @@ _collection_types = WeakSet()
 def register_collection_type(classifier):
     """Declare a domain type whose individual instances are collections."""
     if not kind(classifier, classifier, 'Classifier'): raise TypeError('Expected a UML Classifier')
+    classifier._ensure_alive()
     _collection_types.add(classifier)
 
 
@@ -30,6 +31,10 @@ def is_collection_type(classifier): return classifier in _collection_types
 
 def register_expression_facts(expression, *, references=None, constant=None, pure=None):
     if not kind(expression, expression, 'ValueSpecification'): raise TypeError('Expected a UML ValueSpecification')
+    expression._ensure_alive()
+    references = None if references is None else tuple(references)
+    for reference in references or ():
+        if hasattr(reference, '_ensure_alive'): reference._ensure_alive()
     if constant is not None and type(constant) is not bool: raise TypeError('constant must be Boolean')
     if pure is not None and type(pure) is not bool: raise TypeError('pure must be Boolean')
     _facts[expression] = ExpressionFacts(None if references is None else tuple(references), constant, pure)
@@ -37,6 +42,7 @@ def register_expression_facts(expression, *, references=None, constant=None, pur
 
 def expression_fact(expression, name):
     if expression is None: raise ValueError('Missing expression')
+    expression._ensure_alive()
     explicit = _facts.get(expression)
     if explicit is not None and getattr(explicit, name) is not None: return getattr(explicit, name)
     if kind(expression, expression, 'LiteralSpecification'):

@@ -30,23 +30,103 @@
     }
   },
   "verification_counts": {
-    "no linked behavioral examples": 1746,
-    "linked behavioral examples": 136
+    "no linked behavioral examples": 1638,
+    "linked behavioral examples": 244
   },
   "review_counts": {
-    "needs review": 1744,
-    "verified in linked examples": 124,
-    "source inconsistency": 10,
+    "needs review": 1636,
+    "verified in linked examples": 219,
+    "source inconsistency": 23,
     "context dependent": 4
   },
   "package_audit": {
     "CommonStructure": {
       "invariants": 27,
-      "invariants_with_examples": 27
+      "invariants_with_examples": 27,
+      "definitions": {
+        "constraint": {
+          "declared": 27,
+          "with_examples": 27
+        },
+        "operation": {
+          "declared": 27,
+          "with_examples": 27
+        },
+        "derived property": {
+          "declared": 13,
+          "with_examples": 13
+        },
+        "precondition": {
+          "declared": 2,
+          "with_examples": 2
+        }
+      }
     },
     "Values": {
       "invariants": 11,
-      "invariants_with_examples": 11
+      "invariants_with_examples": 11,
+      "definitions": {
+        "constraint": {
+          "declared": 11,
+          "with_examples": 11
+        },
+        "operation": {
+          "declared": 26,
+          "with_examples": 26
+        },
+        "derived property": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "precondition": {
+          "declared": 3,
+          "with_examples": 3
+        }
+      }
+    },
+    "Classification": {
+      "invariants": 44,
+      "invariants_with_examples": 44,
+      "definitions": {
+        "constraint": {
+          "declared": 44,
+          "with_examples": 44
+        },
+        "operation": {
+          "declared": 40,
+          "with_examples": 40
+        },
+        "derived property": {
+          "declared": 16,
+          "with_examples": 16
+        },
+        "precondition": {
+          "declared": 6,
+          "with_examples": 6
+        }
+      }
+    },
+    "SimpleClassifiers": {
+      "invariants": 5,
+      "invariants_with_examples": 5,
+      "definitions": {
+        "constraint": {
+          "declared": 5,
+          "with_examples": 5
+        },
+        "operation": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "derived property": {
+          "declared": 1,
+          "with_examples": 1
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
+        }
+      }
     }
   },
   "definitions": [
@@ -4340,9 +4420,11 @@
         "The specified Real value."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_values_audit.ValuesCases.test_numeric_defaults_and_nonfinite_real_assignments"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LiteralReal-value"
     },
     {
@@ -4607,9 +4689,11 @@
         "The specified UnlimitedNatural value."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_values_audit.ValuesCases.test_numeric_defaults_and_nonfinite_real_assignments"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LiteralUnlimitedNatural-value"
     },
     {
@@ -13097,9 +13181,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_classifier_behavior_must_not_implement_a_behavioral_feature"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BehavioredClassifier-class_behavior"
     },
     {
@@ -13290,9 +13376,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_enumeration_literals_and_readonly_attributes"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Enumeration-immutable"
     },
     {
@@ -13373,9 +13461,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.literal_classifier",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_enumeration_literals_and_readonly_attributes"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#EnumerationLiteral-classifier.1"
     },
     {
@@ -13401,9 +13491,11 @@
         "The classifier of this EnumerationLiteral derived to be equal to its Enumeration."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_enumeration_literals_and_readonly_attributes"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#EnumerationLiteral-classifier"
     },
     {
@@ -13465,9 +13557,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_interface_features_have_public_visibility"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Interface-visibility"
     },
     {
@@ -13761,9 +13855,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_reception_matches_signal_attribute_order_names_types_and_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Reception-same_name_as_signal"
     },
     {
@@ -13782,9 +13878,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.reception_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_simple_classifiers_audit.SimpleClassifierCases.test_reception_matches_signal_attribute_order_names_types_and_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Reception-same_structure_as_signal"
     },
     {
@@ -20682,7 +20780,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_common_structure_audit.CommonStructureCases.test_composite_ownership_transitive_members_and_cycle_rejection"
+        "test_common_structure_audit.CommonStructureCases.test_composite_ownership_transitive_members_and_cycle_rejection",
+        "test_lifecycle.DeletionCases.test_subtree_removal_clears_external_references_and_extents"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -20710,7 +20809,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_common_structure_audit.CommonStructureCases.test_composite_ownership_transitive_members_and_cycle_rejection"
+        "test_common_structure_audit.CommonStructureCases.test_composite_ownership_transitive_members_and_cycle_rejection",
+        "test_lifecycle.DeletionCases.test_subtree_removal_clears_external_references_and_extents"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -21954,7 +22054,8 @@
       "implementation": "umltools.native.common_structure.client_dependency",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_common_structure_audit.CommonStructureCases.test_dependency_extent_and_changes_are_reflected_in_the_derived_property"
+        "test_common_structure_audit.CommonStructureCases.test_dependency_extent_and_changes_are_reflected_in_the_derived_property",
+        "test_lifecycle.DeletionCases.test_subtree_removal_clears_external_references_and_extents"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#NamedElement-clientDependency.1"
@@ -22052,7 +22153,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_common_structure_audit.CommonStructureCases.test_dependency_extent_and_changes_are_reflected_in_the_derived_property"
+        "test_common_structure_audit.CommonStructureCases.test_dependency_extent_and_changes_are_reflected_in_the_derived_property",
+        "test_lifecycle.DeletionCases.test_subtree_removal_clears_external_references_and_extents"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -25188,9 +25290,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.feature_distinguishable",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BehavioralFeature-isDistinguishableFrom"
     },
     {
@@ -25228,9 +25332,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.feature_inputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BehavioralFeature-inputParameters"
     },
     {
@@ -25268,9 +25374,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.feature_outputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BehavioralFeature-outputParameters"
     },
     {
@@ -25289,9 +25397,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BehavioralFeature-abstract_no_method"
     },
     {
@@ -25504,9 +25614,11 @@
         }
       ],
       "implementation": "umltools.native.classification.all_features",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-allFeatures"
     },
     {
@@ -25546,6 +25658,7 @@
       "implementation": "umltools.native.classification.all_parents",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
         "test_native.NativeInheritanceTests.test_cycles_terminate_and_fail_invariant",
         "test_native.NativeInheritanceTests.test_diamond_inheritance_and_visibility"
       ],
@@ -25639,9 +25752,11 @@
         }
       ],
       "implementation": "umltools.native.classification.general",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-general.1"
     },
     {
@@ -25689,9 +25804,11 @@
         }
       ],
       "implementation": "umltools.native.classification.has_visibility",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-hasVisibilityOf"
     },
     {
@@ -25708,9 +25825,11 @@
           "body": "allParents()->including(self)->collect(member)->includes(n)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-hasVisibilityOf-pre"
     },
     {
@@ -25758,9 +25877,11 @@
         }
       ],
       "implementation": "umltools.native.classification.inherit",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-inherit"
     },
     {
@@ -25808,9 +25929,11 @@
         }
       ],
       "implementation": "umltools.native.classification.inheritable_members",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-inheritableMembers"
     },
     {
@@ -25827,9 +25950,11 @@
           "body": "c.allParents()->includes(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-inheritableMembers-pre"
     },
     {
@@ -25867,9 +25992,11 @@
         }
       ],
       "implementation": "umltools.native.classification.inherited_members",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-inheritedMember.1"
     },
     {
@@ -25907,9 +26034,11 @@
         }
       ],
       "implementation": "umltools.native.classification.is_template",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-isTemplate"
     },
     {
@@ -25957,9 +26086,11 @@
         }
       ],
       "implementation": "umltools.native.classification.may_specialize",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-maySpecializeType"
     },
     {
@@ -25997,9 +26128,11 @@
         }
       ],
       "implementation": "umltools.native.classification.parents",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-parents"
     },
     {
@@ -26037,9 +26170,11 @@
         }
       ],
       "implementation": "umltools.native.classification.realized_interfaces",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_realized_used_interfaces_and_substitution_are_distinct"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-directlyRealizedInterfaces"
     },
     {
@@ -26077,9 +26212,12 @@
         }
       ],
       "implementation": "umltools.native.classification.used_interfaces",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_realized_used_interfaces_and_substitution_are_distinct"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The XMI traverses supplierDependency/clients; Python follows the Usage description and selects client Usage dependencies and Interface suppliers. Project interpretation remains a source divergence.",
       "source": "umltools/data/UML.xmi#Classifier-directlyUsedInterfaces"
     },
     {
@@ -26117,9 +26255,11 @@
         }
       ],
       "implementation": "umltools.native.classification.all_realized_interfaces",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_realized_used_interfaces_and_substitution_are_distinct"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-allRealizedInterfaces"
     },
     {
@@ -26157,9 +26297,11 @@
         }
       ],
       "implementation": "umltools.native.classification.all_used_interfaces",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_realized_used_interfaces_and_substitution_are_distinct"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-allUsedInterfaces"
     },
     {
@@ -26205,9 +26347,11 @@
         }
       ],
       "implementation": "umltools.native.classification.substitutable",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_realized_used_interfaces_and_substitution_are_distinct"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-isSubstitutableFor"
     },
     {
@@ -26247,6 +26391,7 @@
       "implementation": "umltools.native.classification.all_attributes",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
         "test_native.NativeInheritanceTests.test_diamond_inheritance_and_visibility"
       ],
       "review": "verified in linked examples",
@@ -26287,9 +26432,11 @@
         }
       ],
       "implementation": "umltools.native.classification.slottable_features",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-allSlottableFeatures"
     },
     {
@@ -26308,9 +26455,11 @@
         }
       ],
       "implementation": "umltools.native.classification.specialize_type",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-specialize_type"
     },
     {
@@ -26329,9 +26478,11 @@
         }
       ],
       "implementation": "umltools.native.classification.maps_to_generalization_set",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_generalization_sets_share_one_general_and_exclude_powertype_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-maps_to_generalization_set"
     },
     {
@@ -26352,6 +26503,7 @@
       "implementation": "umltools.native.classification.non_final_parents",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
         "test_native.NativeInheritanceTests.test_final_parent_and_redefinition_bounds"
       ],
       "review": "verified in linked examples",
@@ -26375,6 +26527,7 @@
       "implementation": "umltools.native.classification.no_cycles",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
         "test_native.NativeInheritanceTests.test_cycles_terminate_and_fail_invariant"
       ],
       "review": "verified in linked examples",
@@ -26404,9 +26557,11 @@
         "All of the Properties that are direct (i.e., not inherited or imported) attributes of the Classifier."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_lifecycle.DeletionCases.test_subtree_removal_clears_external_references_and_extents"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-attribute"
     },
     {
@@ -26460,9 +26615,11 @@
         "Specifies each Feature directly defined in the classifier. Note that there may be members of the Classifier that are of the type Feature but are not included, e.g., inherited features."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-feature"
     },
     {
@@ -26486,9 +26643,11 @@
         "The generalizing Classifiers for this Classifier."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-general"
     },
     {
@@ -26543,9 +26702,11 @@
         "All elements inherited by this Classifier from its general Classifiers."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-inheritedMember"
     },
     {
@@ -26854,9 +27015,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_classifier_template_formal_and_actual_constraints_are_independent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClassifierTemplateParameter-has_constraining_classifier"
     },
     {
@@ -26875,9 +27038,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_classifier_template_formal_and_actual_constraints_are_independent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClassifierTemplateParameter-parametered_element_no_features"
     },
     {
@@ -26896,9 +27061,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_classifier_template_formal_and_actual_constraints_are_independent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClassifierTemplateParameter-matching_abstract"
     },
     {
@@ -26917,9 +27084,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_classifier_template_formal_and_actual_constraints_are_independent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClassifierTemplateParameter-actual_is_classifier"
     },
     {
@@ -26938,9 +27107,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.constrained_arguments",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_classifier_template_formal_and_actual_constraints_are_independent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClassifierTemplateParameter-constraining_classifiers_constrain_args"
     },
     {
@@ -26958,10 +27129,12 @@
           "body": "constrainingClassifier->forAll(\n     cc |  parameteredElement = cc or parameteredElement.conformsTo(cc) or (allowSubstitutable and parameteredElement.isSubstitutableFor(cc))\n)\n"
         }
       ],
-      "implementation": "umltools.native.constraints_basic.constrained_arguments",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "implementation": "umltools.native.constraints_basic.constrained_formal",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_classifier_template_formal_and_actual_constraints_are_independent"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClassifierTemplateParameter-constraining_classifiers_constrain_parametered_element"
     },
     {
@@ -27270,9 +27443,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_generalization_sets_share_one_general_and_exclude_powertype_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#GeneralizationSet-generalization_same_classifier"
     },
     {
@@ -27291,9 +27466,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_generalization_sets_share_one_general_and_exclude_powertype_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#GeneralizationSet-maps_to_generalization_set"
     },
     {
@@ -27431,9 +27608,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_deployment_roles_require_part_nodes_and_artifact_classifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InstanceSpecification-deployment_artifact"
     },
     {
@@ -27452,9 +27631,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_slots_are_unique_and_belong_to_classifier_features"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InstanceSpecification-structural_feature"
     },
     {
@@ -27473,9 +27654,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_slots_are_unique_and_belong_to_classifier_features"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InstanceSpecification-defining_feature"
     },
     {
@@ -27494,9 +27677,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_deployment_roles_require_part_nodes_and_artifact_classifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InstanceSpecification-deployment_target"
     },
     {
@@ -27682,9 +27867,11 @@
         }
       ],
       "implementation": "umltools.native.classification.operation_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_redefinition_input_output_and_inout_multiplicities"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isConsistentWith"
     },
     {
@@ -27701,9 +27888,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_redefinition_input_output_and_inout_multiplicities"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isConsistentWith-pre"
     },
     {
@@ -27741,9 +27930,11 @@
         }
       ],
       "implementation": "umltools.native.classification.ordered_result",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isOrdered.1"
     },
     {
@@ -27781,9 +27972,11 @@
         }
       ],
       "implementation": "umltools.native.classification.unique_result",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isUnique.1"
     },
     {
@@ -27821,9 +28014,12 @@
         }
       ],
       "implementation": "umltools.native.classification.lower_result",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
       "source": "umltools/data/UML.xmi#Operation-lower.1"
     },
     {
@@ -27861,9 +28057,11 @@
         }
       ],
       "implementation": "umltools.native.classification.return_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-returnResult"
     },
     {
@@ -27901,9 +28099,12 @@
         }
       ],
       "implementation": "umltools.native.classification.result_type",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter or its type.",
       "source": "umltools/data/UML.xmi#Operation-type.1"
     },
     {
@@ -27941,9 +28142,12 @@
         }
       ],
       "implementation": "umltools.native.classification.upper_result",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
       "source": "umltools/data/UML.xmi#Operation-upper.1"
     },
     {
@@ -27962,9 +28166,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-at_most_one_return"
     },
     {
@@ -27983,9 +28189,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-only_body_for_query"
     },
     {
@@ -28127,9 +28335,11 @@
         "Specifies whether the return parameter is ordered or not, if present.  This information is derived from the return result for this Operation."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isOrdered"
     },
     {
@@ -28179,9 +28389,11 @@
         "Specifies whether the return parameter is unique or not, if present. This information is derived from the return result for this Operation."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isUnique"
     },
     {
@@ -28205,9 +28417,12 @@
         "Specifies the lower multiplicity of the return parameter, if present. This information is derived from the return result for this Operation."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
       "source": "umltools/data/UML.xmi#Operation-lower"
     },
     {
@@ -28399,9 +28614,12 @@
         "The return type of the operation, if present. This information is derived from the return result for this Operation."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter or its type.",
       "source": "umltools/data/UML.xmi#Operation-type"
     },
     {
@@ -28425,9 +28643,12 @@
         "The upper multiplicity of the return parameter, if present. This information is derived from the return result for this Operation."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
       "source": "umltools/data/UML.xmi#Operation-upper"
     },
     {
@@ -28459,9 +28680,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.default_signature",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_template_defaults_and_inherited_signatures"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#OperationTemplateParameter-match_default_signature"
     },
     {
@@ -28542,9 +28765,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.parameter_default",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-default.1"
     },
     {
@@ -28563,9 +28788,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-in_and_out"
     },
     {
@@ -28584,9 +28811,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-not_exception"
     },
     {
@@ -28605,9 +28834,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-connector_end"
     },
     {
@@ -28626,9 +28857,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-reentrant_behaviors"
     },
     {
@@ -28647,9 +28880,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-stream_and_exception"
     },
     {
@@ -28668,9 +28903,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-object_effect"
     },
     {
@@ -28694,9 +28931,11 @@
         "A String that represents a value to be used when no argument is supplied for the Parameter."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_defaults_effects_streaming_and_connector_context"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Parameter-default"
     },
     {
@@ -28916,9 +29155,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_sets_same_owner_direction_streaming_and_distinct_alternatives"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ParameterSet-same_parameterized_entity"
     },
     {
@@ -28937,9 +29178,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_remaining.parameter_set_inputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_sets_same_owner_direction_streaming_and_distinct_alternatives"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ParameterSet-input"
     },
     {
@@ -28958,9 +29201,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_remaining.different_parameter_sets",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_parameter_sets_same_owner_direction_streaming_and_distinct_alternatives"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The formula compares every pair including a set to itself and uses size on the object. Python compares distinct sets and their parameter memberships according to the description.",
       "source": "umltools/data/UML.xmi#ParameterSet-two_parameter_sets"
     },
     {
@@ -29067,9 +29313,11 @@
         }
       ],
       "implementation": "umltools.native.classification.attribute",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-isAttribute"
     },
     {
@@ -29117,9 +29365,12 @@
         }
       ],
       "implementation": "umltools.native.classification.property_compatible",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source refers to the nonexistent TypeElement; Python uses TypedElement.",
       "source": "umltools/data/UML.xmi#Property-isCompatibleWith"
     },
     {
@@ -29157,9 +29408,11 @@
         }
       ],
       "implementation": "umltools.native.classification.composite_property",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-isComposite.1"
     },
     {
@@ -29209,9 +29462,11 @@
       "implementation": "umltools.native.classification.property_consistency",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds",
         "test_native.NativeInheritanceTests.test_final_parent_and_redefinition_bounds"
       ],
-      "review": "verified in linked examples",
+      "review": "source inconsistency",
+      "limitation": "The source upper-bound clause repeats lowerBound; Python uses upperBound according to the description.",
       "source": "umltools/data/UML.xmi#Property-isConsistentWith"
     },
     {
@@ -29228,9 +29483,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-isConsistentWith-pre"
     },
     {
@@ -29268,9 +29525,11 @@
         }
       ],
       "implementation": "umltools.native.classification.navigable",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-isNavigable"
     },
     {
@@ -29308,9 +29567,12 @@
         }
       ],
       "implementation": "umltools.native.classification.opposite",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null for a non-binary or absent association.",
       "source": "umltools/data/UML.xmi#Property-opposite.1"
     },
     {
@@ -29348,9 +29610,11 @@
         }
       ],
       "implementation": "umltools.native.classification.subsetting_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsettingContext"
     },
     {
@@ -29369,9 +29633,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.subsetting_contexts",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsetting_context_conforms"
     },
     {
@@ -29390,9 +29656,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-derived_union_is_read_only"
     },
     {
@@ -29411,9 +29679,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-multiplicity_of_composite"
     },
     {
@@ -29432,9 +29702,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.inherited_redefinition",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-redefined_property_inherited"
     },
     {
@@ -29453,9 +29725,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsetting_rules"
     },
     {
@@ -29474,9 +29748,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The XMI casts ts.formal itself to Property although formal is a TemplateParameter. Python checks formal.parameteredElement against the attribute requirement.",
       "source": "umltools/data/UML.xmi#Property-binding_to_attribute"
     },
     {
@@ -29495,9 +29772,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-derived_union_is_derived"
     },
     {
@@ -29516,9 +29795,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_deployment_roles_require_part_nodes_and_artifact_classifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-deployment_target"
     },
     {
@@ -29537,9 +29818,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsetted_property_names"
     },
     {
@@ -29558,9 +29841,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-type_of_opposite_end"
     },
     {
@@ -29579,9 +29864,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-qualified_is_association_end"
     },
     {
@@ -29803,9 +30090,11 @@
         "If isComposite is true, the object containing the attribute is a container for the object or value contained in the attribute. This is a derived value, indicating whether the aggregation of the Property is composite or not."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-isComposite"
     },
     {
@@ -29907,9 +30196,12 @@
         "In the case where the Property is one end of a binary association this gives the other end."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "source inconsistency",
+      "limitation": "The property is optional and the query returns null for a non-binary or absent association.",
       "source": "umltools/data/UML.xmi#Property-opposite"
     },
     {
@@ -30085,9 +30377,11 @@
         }
       ],
       "implementation": "umltools.native.classification.consistent",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-isConsistentWith"
     },
     {
@@ -30104,9 +30398,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-isConsistentWith-pre"
     },
     {
@@ -30154,9 +30450,11 @@
         }
       ],
       "implementation": "umltools.native.classification.redefinition_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-isRedefinitionContextValid"
     },
     {
@@ -30175,9 +30473,11 @@
         }
       ],
       "implementation": "umltools.native.classification.redefinition_consistent",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-redefinition_consistent"
     },
     {
@@ -30196,9 +30496,11 @@
         }
       ],
       "implementation": "umltools.native.classification.non_leaf",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-non_leaf_redefinition"
     },
     {
@@ -30217,9 +30519,11 @@
         }
       ],
       "implementation": "umltools.native.classification.redefinition_context_valid",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-redefinition_context_valid"
     },
     {
@@ -30269,9 +30573,11 @@
         "The RedefinableElement that is being redefined by this element."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-redefinedElement"
     },
     {
@@ -30295,9 +30601,11 @@
         "The contexts that this element may be redefined from."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableElement-redefinitionContext"
     },
     {
@@ -30350,9 +30658,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.inherited_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_template_defaults_and_inherited_signatures"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableTemplateSignature-inheritedParameter.1"
     },
     {
@@ -30400,9 +30710,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.template_consistency",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_template_defaults_and_inherited_signatures"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableTemplateSignature-isConsistentWith"
     },
     {
@@ -30419,9 +30731,11 @@
           "body": "redefiningElement.isRedefinitionContextValid(self)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_template_defaults_and_inherited_signatures"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableTemplateSignature-isConsistentWith-pre"
     },
     {
@@ -30440,9 +30754,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.signature_parents",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_template_defaults_and_inherited_signatures"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableTemplateSignature-redefines_parents"
     },
     {
@@ -30526,9 +30842,11 @@
         "The formal template parameters of the extended signatures."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_classification_audit.ClassificationCases.test_template_defaults_and_inherited_signatures"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RedefinableTemplateSignature-inheritedParameter"
     },
     {

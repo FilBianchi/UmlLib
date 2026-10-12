@@ -8,6 +8,7 @@ Message or PartDecomposition. All mapped objects are rechecked during validation
 def _require_kind(obj, name):
     if not hasattr(obj, '__registry__') or not isinstance(obj, obj.__registry__[name]):
         raise TypeError(f'Expected a UML {name}')
+    obj._ensure_alive()
 
 
 def bind_gate_endpoint(message, gate, endpoint):

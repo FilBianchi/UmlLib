@@ -95,7 +95,9 @@ def apply_profile(package, profile, *, create_required=True):
                         created.append(apply_stereotype(element, concrete, base_property=props[0]))
     except Exception:
         for app in created: app.detach()
-        if existing is None: package.profileApplication.remove(application)
+        if existing is None:
+            package.profileApplication.remove(application)
+            application.delete()
         raise
     return application
 
@@ -106,12 +108,15 @@ def unapply_profile(package, profile):
     elements = [package] + package.allOwnedElements()
     modeled = {instance for element in elements for instance, _ in _modeled_applications(element)}
     modeled.update(e for e in elements if kind(package, e, 'InstanceSpecification'))
-    package.profileApplication = [a for a in package.profileApplication if a.appliedProfile is not profile]
+    for application in list(package.profileApplication):
+        if application.appliedProfile is profile: application.delete()
+    elements = [element for element in elements if not element.is_deleted]
     for element in elements:
         available = available_profiles(element)
         for app in applications(element):
             if app.stereotype.profile not in available: app.detach()
     for instance in modeled:
+        if instance.is_deleted: continue
         available = available_profiles(instance)
         if instance.owner is None:
             for slot in instance.slot:
@@ -128,18 +133,13 @@ def unapply_profile(package, profile):
             return None
         remaining = [c for c in instance.classifier if defining_profile(c) is None or defining_profile(c) in available]
         if len(remaining) == len(instance.classifier): continue
+        if not remaining:
+            instance.delete()
+            continue
         instance.classifier = remaining
-        instance.slot = [s for s in instance.slot if s.definingFeature is not None and
-                         (defining_profile(s.definingFeature) is None or defining_profile(s.definingFeature) in available)]
-        if remaining: continue
-        owner = instance.owner
-        if owner is not None:
-            for name, prop in owner.properties().items():
-                if prop.flags.get('aggregation') != 'composite' or prop.flags.get('isDerived') == 'true': continue
-                values = owner._items(getattr(owner, name))
-                if instance not in values: continue
-                values.remove(instance)
-                setattr(owner, name, values if prop.upper is None or prop.upper > 1 else (values[0] if values else None))
+        for slot in list(instance.slot):
+            if slot.definingFeature is None or (defining_profile(slot.definingFeature) is not None and defining_profile(slot.definingFeature) not in available):
+                slot.delete()
 
 
 class StereotypeApplication:
@@ -163,6 +163,8 @@ class StereotypeApplication:
     def rebind(self, element, *, base_property=None):
         stereotype = self.stereotype
         if not hasattr(element, '__spec__'): raise TypeError('Expected a UML model element')
+        stereotype._ensure_alive()
+        element._ensure_alive()
         if stereotype.isAbstract: raise ValueError('An abstract stereotype cannot be instantiated')
         if stereotype.profile not in available_profiles(element):
             raise ValueError('Apply the containing profile to this element\'s package first')

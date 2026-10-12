@@ -213,3 +213,22 @@ gli audit degli altri package. Prossimo incremento: cancellazione logica e relat
 associazioni inverse, seguito da Classification e SimpleClassifiers. Le incongruenze
 di OpaqueExpression::result e dei flag firstEvent sono delimitate nel rapporto;
 non sono considerate risolte per dichiarare piena conformità.
+
+## Secondo incremento: versione 0.4.0
+
+Cancellazione logica implementata con cascade dei figli composti, pulizia dei riferimenti
+UML e degli estremi inversi, rimozione dalle estensioni, cleanup degli stereotipi e
+invalidazione delle mappature/fatti ufficiali. La sessione trattiene gli elementi vivi
+fino alla cancellazione. Politiche restrict/no-cascade e rollback hanno regressioni;
+i riferimenti obbligatori rimasti assenti sono segnalati dalla validazione.
+
+Classification e SimpleClassifiers ricevono il primo audit con esempi collegati a
+49 invarianti, 41 query, 17 derivazioni e 6 precondizioni. Sono corretti i vincoli
+dei parametri template, la sincronizzazione delle associazioni ereditate e il default
+UnlimitedNatural. 187 test passano; 244 voci della matrice hanno esempi collegati.
+
+La fase 2 rimane aperta per diagnostiche con percorsi, revisione completa di subset/
+ridefinizioni e politica esplicita dei riferimenti tra sessioni oltre al cleanup.
+La fase 3 prosegue con Packages e StructuredClassifiers. Restano da scomporre la
+prosa normativa e da risolvere/delimitare le incongruenze documentate; l'audit dei
+package non equivale a certificazione di ogni proprietà o requisito UML.
