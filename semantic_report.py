@@ -22,10 +22,20 @@ AUDIT_LIMITS = {
     'Property.isCompatibleWith': 'The source refers to the nonexistent TypeElement; Python uses TypedElement.',
     'Property.isConsistentWith': 'The source upper-bound clause repeats lowerBound; Python uses upperBound according to the description.',
     'ParameterSet.two_parameter_sets': 'The formula compares every pair including a set to itself and uses size on the object. Python compares distinct sets and their parameter memberships according to the description.',
+    'Package.makesVisible': 'The source compares importedElement to a VisibilityKind and uses notEmpty on Booleans. Python follows the prose and explicit public-import visibility; private imports are not reexported.',
+    'Package.containingProfile': 'The recursive XMI body has no root/null guard. Python returns null at an unowned non-Profile Package, matching the optional result signature.',
+    'ConnectorEnd.multiplicity': 'The unconditional formula passes an absent definingEnd to compatibleWith. Python follows the prose: an untyped connector has no association-end bound to constrain it.',
+    'Port.encapsulated_owner': 'The null=null formula admits unowned ports. Python follows the ownership description and requires an EncapsulatedClassifier owner.',
+    'CollaborationUse.connectors': 'The XMI chooses an arbitrary structuredClassifier association end. Python prefers the owning CollaborationUse classifier when represented, otherwise requires one shared context; ambiguous unowned uses remain unsupported.',
 }
 CONTEXTUAL = {
     'Constraint.no_side_effects', 'MultiplicityElement.value_specification_no_side_effects',
     'MultiplicityElement.value_specification_constant', 'Constraint.boolean_value',
+}
+PARTIAL = {
+    'PackageMerge': 'The model represents receiving/merged Package links. The normative reconciliation/merge algorithm is not implemented.',
+    'ProfileApplication-isStrict': 'The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.',
+    'Stereotype': 'Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.',
 }
 
 
@@ -145,9 +155,11 @@ def report():
         if name in CONTEXTUAL:
             record['review'] = 'context dependent'
             record['limitation'] = 'Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.'
+        if record['id'] in PARTIAL:
+            record['review'], record['limitation'] = 'partial', PARTIAL[record['id']]
         record['source'] = 'umltools/data/UML.xmi#' + record['id']
     package_audit = {}
-    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers'):
+    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers'):
         definitions = [r for r in records if r['package'] == package]
         counts_by_kind = {category: {'declared': sum(r['kind'] == category for r in definitions),
                                     'with_examples': sum(r['kind'] == category and bool(r['tests']) for r in definitions)}

@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.5.0
+
+Packages and StructuredClassifiers now have linked examples for all 36 declared
+invariants, 29 queries, 20 derivations and the Package.makesVisible precondition.
+The audit covers import/reexport visibility, nested profiles, extensions, association
+arity and ordered specialization, AssociationClass ownership, component realizers,
+conjugated ports, connector bounds and collaboration role correspondence.
+
+CollaborationUse.client_elements now navigates the structuredClassifier/collaboration
+association ends instead of using Element.owner. This accepts externally declared
+formal roles and rejects mismatched association context sets. Connector correspondence
+uses the represented owning classifier for inherited roles; unowned uses with multiple
+possible binding contexts remain unsupported instead of selecting an arbitrary one.
+This context selection is an explicit interpretation of the XMI's any(true) expression.
+
+206 tests pass; 325 definition records have linked examples. The report includes the
+new package audits and flags source conflicts separately from partial prose semantics:
+PackageMerge reconciliation, ProfileApplication.isStrict enforcement and the complete
+tagged-value/constraint API remain incomplete. This is not full UML certification.
+
 ## 0.4.0
 
 `UmlElement.delete()` performs logical deletion with composite cascade, cleanup of

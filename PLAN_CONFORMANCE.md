@@ -232,3 +232,19 @@ ridefinizioni e politica esplicita dei riferimenti tra sessioni oltre al cleanup
 La fase 3 prosegue con Packages e StructuredClassifiers. Restano da scomporre la
 prosa normativa e da risolvere/delimitare le incongruenze documentate; l'audit dei
 package non equivale a certificazione di ogni proprietà o requisito UML.
+
+## Terzo incremento: versione 0.5.0
+
+Primo audit di Packages e StructuredClassifiers: esempi collegati a tutti i 36
+invarianti, 29 query, 20 derivazioni e alla precondizione dichiarata. Sono verificati
+import/reexport, profili/estensioni, associazioni e specializzazioni ordinate,
+componenti/porte e connettori. I role binding usano ora le associazioni di contesto;
+la corrispondenza dei connettori considera i ruoli ereditati del classificatore
+che possiede il CollaborationUse. Senza contesto univoco l'obbligo resta unsupported.
+206 test passano; 325 voci della matrice hanno esempi collegati.
+
+La matrice delimita le interpretazioni divergenti e marca come parziali l'algoritmo
+di PackageMerge, le restrizioni di ProfileApplication.isStrict e l'API completa dei
+tagged value/vincoli degli stereotipi. Questi obblighi restano nel lavoro necessario
+al completamento; l'audit dei vincoli XMI non li considera automaticamente soddisfatti.
+Il prossimo audit nella sequenza della fase 3 è CommonBehavior e StateMachines.

@@ -86,9 +86,12 @@ def collaboration_clients(self):
     clients = [c for b in self.roleBinding for c in b.client]
     suppliers = [c for b in self.roleBinding for c in b.supplier]
     if not all(kind(self, c, 'ConnectableElement') for c in clients + suppliers): return False
-    client_owners = {c.owner for c in clients}
-    supplier_owners = {c.owner for c in suppliers}
-    return len(client_owners) <= 1 and len(supplier_owners) <= 1 and all(kind(self, c, 'StructuredClassifier') for c in client_owners) and all(kind(self, c, 'Collaboration') for c in supplier_owners)
+    # These association-owned ends are sets, not Element::owner. Roles can be
+    # declared outside the Collaboration and participate in several contexts.
+    client_contexts = [set(reverse(c, 'StructuredClassifier', 'role')) for c in clients]
+    supplier_contexts = [set(reverse(c, 'Collaboration', 'collaborationRole')) for c in suppliers]
+    return (all(context == client_contexts[0] for context in client_contexts) and
+            all(context == supplier_contexts[0] for context in supplier_contexts))
 
 
 @invariant('CollaborationUse.connectors')
@@ -98,11 +101,16 @@ def collaboration_connectors(self):
         bindings = [b for b in self.roleBinding if roles & set(b.supplier)]
         bound = {c for b in bindings for c in b.client}
         if not bound: return False
-        owners = {c.owner for c in bound}
-        if len(owners) != 1: return False
-        owner = required(next(iter(owners)))
-        if not kind(self, owner, 'StructuredClassifier'): return False
-        if not any(all(e.role in bound for e in c.end) and (connector.type is None or c.type is None or connector.type.conformsTo(c.type)) for c in owner.ownedConnector): return False
+        contexts = [context for context in instances(self, 'StructuredClassifier') if all(c in context.role for c in bound)]
+        if kind(self, self.owner, 'StructuredClassifier') and all(c in self.owner.allRoles() for c in bound):
+            context = self.owner
+        elif len(contexts) == 1:
+            context = contexts[0]
+        elif not contexts:
+            raise ValueError('Bound roles have no shared StructuredClassifier context')
+        else:
+            raise NativeNotImplemented('Multiple binding contexts require an owning CollaborationUse context')
+        if not any(all(e.role in bound for e in c.end) and (connector.type is None or c.type is None or connector.type.conformsTo(c.type)) for c in context.ownedConnector): return False
     return True
 
 

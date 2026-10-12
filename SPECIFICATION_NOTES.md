@@ -70,6 +70,34 @@ Cleanup detaches references and leaves ordinary referrers alive; it does not inf
 semantic repairs or cascading deletion of every dependent relationship. Persistent
 ModelSession extents retain live elements; the default shared extent stays weak.
 
+## Packages and StructuredClassifiers audit (0.5.0)
+
+- `CollaborationUse.client_elements` compares sets at association-owned opposite ends:
+  ConnectableElement::structuredClassifier and ::collaboration. Python now navigates
+  the associations via declared role membership. A role's Element.owner is a different
+  concept; suppliers may be declared outside their Collaboration. Empty opposite sets
+  compare equal as in the OCL body; separate ownership/role constraints still apply.
+- `CollaborationUse.connectors` chooses a context with any(true) in the source, which
+  can select a declaration owner even when an inherited role is bound in a subclass.
+  Python prefers the represented CollaborationUse owner when allRoles contains the
+  bound roles. Otherwise it requires one shared association context; ambiguous unowned
+  uses remain unsupported. This is a documented source interpretation, not OMG errata.
+- `ConnectorEnd.multiplicity` unconditionally invokes compatibleWith(definingEnd),
+  although definingEnd is null for untyped Connectors. Python follows the prose's
+  conditional "if any": there is no association-end restriction in that case.
+- `Port.encapsulated_owner` compares owner to encapsulatedClassifier, so two absent
+  ends compare equal. Python requires an actual EncapsulatedClassifier owner according
+  to the ownership description; unowned ports remain incomplete models.
+- `Package.containingProfile` recursively navigates namespace with no root guard in
+  its body. Python returns null at an unowned non-Profile Package, consistent with
+  the optional result signature. An unowned Stereotype has no valid containing profile.
+- The makesVisible formula's enum comparison/Boolean-collection conflict remains
+  a project correction, with explicit private-import and alias-reexport examples.
+- PackageMerge reconciliation and ProfileApplication.isStrict restrictions are prose
+  semantics beyond the represented links/Boolean. They are flagged partial, together
+  with the complete stereotype tagged-value and user constraint API; this audit does
+  not claim those requirements are implemented.
+
 ## Earlier project interpretations (continued)
 
 - `Namespace-excludeCollisions`: the formula compares each imported element to

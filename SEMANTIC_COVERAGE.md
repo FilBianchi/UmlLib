@@ -57,7 +57,7 @@ Unknown expression languages are never implicitly accepted or executed.
 
 ## Behavioral verification
 
-187 tests cover class/package inventories and inheritance; atomic collection edits,
+206 tests cover class/package inventories and inheritance; atomic collection edits,
 reversal, ownership and cycles; stored subsets and inverse associations;
 names, alias imports and reexports; classifier inheritance and property redefinition;
 multiplicities and unlimited values; state and protocol machines; call signatures;
@@ -68,11 +68,13 @@ deployment manifestations, profiles and object flows through control nodes.
 The new audit adds valid, invalid and boundary examples for InformationFlow,
 InformationItem, PartDecomposition, Stereotype and Profile checks, plus runtime
 application lifecycle tests. Explicit `@verifies(...)` annotations link examples to
-244 definition records in the JSON report, including properties and preconditions.
+325 definition records in the JSON report, including properties and preconditions.
 All 27 CommonStructure invariants and 11 Values invariants, and their declared
 queries/derivations, have examples. Classification adds 44 invariants, 40 queries,
 16 derivations and 6 preconditions; SimpleClassifiers adds 5 invariants, 1 query and
-1 derivation with examples. Other invariants still need review and links;
+1 derivation with examples. Packages adds 14 invariants, 14 queries, 7 derivations
+and 1 precondition; StructuredClassifiers adds 22 invariants, 15 queries and 13
+derivations with examples. Other invariants still need review and links;
 older tests cover some of them. Neither a test count nor
 these links constitute certification or exhaustive verification of each rule.
 
@@ -98,6 +100,21 @@ SimpleClassifiers covers classifier behaviors, immutable enumerations, literal o
 public interface features and ordered signal/reception signatures. Source conflicts
 remain limitations, even when examples verify the documented project interpretation.
 
+The Packages/StructuredClassifiers audit checks public/private imports and alias
+reexports, nearest profile containment, extension ends and required flags, stereotype
+base multiplicities and metamodel roots; ordered association specialization and
+n-ary ends; composite attribute/end exclusivity; direct and inherited parts/roles;
+component realization interfaces and conjugated ports; connector kind, types and
+multiplicity; and collaboration bindings/corresponding connector types.
+AssociationClass's disjoint composite roles are additionally enforced during mutation.
+
+CollaborationUse.client_elements compares opposite association context sets, including
+externally declared formal roles, rather than physical ownership. Connector correspondence
+prefers a represented owner whose allRoles includes the bound roles (including inherited
+ones); absent ownership requires one shared association context. Multiple unowned
+contexts remain an unsupported obligation. The choice resolves the source's arbitrary
+any(true) traversal by project interpretation; it is not a published normative erratum.
+
 Deletion tests keep ordinary Python references to tombstones, exercise atomic refusal
 and rollback (including application cleanup failure), check shared composite subsets,
 cross-session cleanup, retained collection handles and required dangling references.
@@ -119,6 +136,11 @@ builds distributions and imports an installed wheel from outside the checkout.
 
 This package covers the core UML 2.5.1 metamodel XMI, not StandardProfile or UMLDI.
 Those are separate specifications and would need their own modules and tests.
+PackageMerge links are represented, but the normative merge/reconciliation algorithm
+is not implemented. ProfileApplication.isStrict is stored but its semantic restrictions
+are not enforced. A complete typed tagged-value API and arbitrary user-defined stereotype
+constraint execution remain missing. The report marks these requirements as partial;
+passing the declared XMI invariants does not discharge these prose requirements.
 Further conformance work should broaden independent examples for every individual
 rule, formalize language-adapter and decomposition mappings, and compare behavior
 against additional UML implementations. An inventory of translated functions alone

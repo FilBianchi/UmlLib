@@ -30,13 +30,14 @@
     }
   },
   "verification_counts": {
-    "no linked behavioral examples": 1638,
-    "linked behavioral examples": 244
+    "no linked behavioral examples": 1557,
+    "linked behavioral examples": 325
   },
   "review_counts": {
-    "needs review": 1636,
-    "verified in linked examples": 219,
-    "source inconsistency": 23,
+    "needs review": 1552,
+    "verified in linked examples": 295,
+    "source inconsistency": 28,
+    "partial": 3,
     "context dependent": 4
   },
   "package_audit": {
@@ -121,6 +122,50 @@
         "derived property": {
           "declared": 1,
           "with_examples": 1
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
+        }
+      }
+    },
+    "Packages": {
+      "invariants": 14,
+      "invariants_with_examples": 14,
+      "definitions": {
+        "constraint": {
+          "declared": 14,
+          "with_examples": 14
+        },
+        "operation": {
+          "declared": 14,
+          "with_examples": 14
+        },
+        "derived property": {
+          "declared": 7,
+          "with_examples": 7
+        },
+        "precondition": {
+          "declared": 1,
+          "with_examples": 1
+        }
+      }
+    },
+    "StructuredClassifiers": {
+      "invariants": 22,
+      "invariants_with_examples": 22,
+      "definitions": {
+        "constraint": {
+          "declared": 22,
+          "with_examples": 22
+        },
+        "operation": {
+          "declared": 15,
+          "with_examples": 15
+        },
+        "derived property": {
+          "declared": 13,
+          "with_examples": 13
         },
         "precondition": {
           "declared": 0,
@@ -6659,9 +6704,11 @@
         }
       ],
       "implementation": "umltools.native.classification.end_types",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-endType.1"
     },
     {
@@ -6680,9 +6727,11 @@
         }
       ],
       "implementation": "umltools.native.classification.end_number",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-specialized_end_number"
     },
     {
@@ -6701,9 +6750,11 @@
         }
       ],
       "implementation": "umltools.native.classification.end_type_conformance",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-specialized_end_types"
     },
     {
@@ -6722,9 +6773,11 @@
         }
       ],
       "implementation": "umltools.native.classification.binary_associations",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-binary_associations"
     },
     {
@@ -6743,9 +6796,11 @@
         }
       ],
       "implementation": "umltools.native.classification.owned_ends",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-association_ends"
     },
     {
@@ -6762,9 +6817,11 @@
         }
       ],
       "implementation": "umltools.native.classification.typed_ends",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-ends_must_be_typed"
     },
     {
@@ -6790,9 +6847,11 @@
         "The Classifiers that are used as types of the ends of the Association."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_ordered_association_specialization_arity_types_and_aggregation"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Association-endType"
     },
     {
@@ -6939,9 +6998,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_association_class_end_types_and_composite_attribute_end_exclusivity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AssociationClass-cannot_be_defined"
     },
     {
@@ -6960,9 +7021,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_association_class_end_types_and_composite_attribute_end_exclusivity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AssociationClass-disjoint_attributes_ends"
     },
     {
@@ -7015,9 +7078,11 @@
         }
       ],
       "implementation": "umltools.native.classification.extensions",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_passive_class_superclasses_and_extension_on_a_subtype"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Class-extension.1"
     },
     {
@@ -7055,9 +7120,11 @@
         }
       ],
       "implementation": "umltools.native.classification.super_classes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_passive_class_superclasses_and_extension_on_a_subtype"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Class-superClass.1"
     },
     {
@@ -7076,9 +7143,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_passive_class_superclasses_and_extension_on_a_subtype"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Class-passive_class"
     },
     {
@@ -7102,9 +7171,11 @@
         "This property is used when the Class is acting as a metaclass. It references the Extensions that specify additional properties of the metaclass. The property is derived from the Extensions whose memberEnds are typed by the Class."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_passive_class_superclasses_and_extension_on_a_subtype"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Class-extension"
     },
     {
@@ -7303,9 +7374,11 @@
         "The superclasses of a Class, derived from its Generalizations."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_passive_class_superclasses_and_extension_on_a_subtype"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Class-superClass"
     },
     {
@@ -7382,9 +7455,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_remaining.collaboration_clients",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_role_binding_context_uses_membership_not_physical_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CollaborationUse-client_elements"
     },
     {
@@ -7403,9 +7478,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_remaining.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_role_binding_context_uses_membership_not_physical_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CollaborationUse-every_role"
     },
     {
@@ -7424,9 +7501,13 @@
         }
       ],
       "implementation": "umltools.native.constraints_remaining.collaboration_connectors",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_binding_context_can_be_a_classifier_using_inherited_role_declarations",
+        "test_structured_classifiers_audit.StructuredCases.test_collaboration_connectors_correspond_by_binding_and_type_conformance"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The XMI chooses an arbitrary structuredClassifier association end. Python prefers the owning CollaborationUse classifier when represented, otherwise requires one shared context; ambiguous unowned uses remain unsupported.",
       "source": "umltools/data/UML.xmi#CollaborationUse-connectors"
     },
     {
@@ -7533,9 +7614,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.component_provided",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_component_interfaces_union_realizers_parents_and_conjugated_ports"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Component-provided.1"
     },
     {
@@ -7573,9 +7656,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.component_required",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_component_interfaces_union_realizers_parents_and_conjugated_ports"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Component-required.1"
     },
     {
@@ -7594,9 +7679,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_component_interfaces_union_realizers_parents_and_conjugated_ports"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Component-no_nested_classifiers"
     },
     {
@@ -7615,9 +7702,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_component_interfaces_union_realizers_parents_and_conjugated_ports"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Component-no_packaged_elements"
     },
     {
@@ -7695,9 +7784,11 @@
         "The Interfaces that the Component exposes to its environment. These Interfaces may be Realized by the Component or any of its realizingClassifiers, or they may be the Interfaces that are provided by its public Ports."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_component_interfaces_union_realizers_parents_and_conjugated_ports"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Component-provided"
     },
     {
@@ -7750,9 +7841,11 @@
         "The Interfaces that the Component requires from other Components in its environment in order to be able to offer its full set of provided functionality. These Interfaces may be used by the Component or any of its realizingClassifiers, or they may be the Interfaces that are required by its public Ports."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_component_interfaces_union_realizers_parents_and_conjugated_ports"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Component-required"
     },
     {
@@ -7877,9 +7970,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.ends",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectableElement-end.1"
     },
     {
@@ -7903,9 +7998,11 @@
         "A set of ConnectorEnds that attach to this ConnectableElement."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectableElement-end"
     },
     {
@@ -8029,9 +8126,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.connector_kind",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Connector-kind.1"
     },
     {
@@ -8050,9 +8149,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.connector_types",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Connector-types"
     },
     {
@@ -8071,9 +8172,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.connector_roles",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Connector-roles"
     },
     {
@@ -8151,9 +8254,11 @@
         "Indicates the kind of Connector. This is derived: a Connector with one or more ends connected to a Port which is not on a Part and which is not a behavior port is a delegation; otherwise it is an assembly."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Connector-kind"
     },
     {
@@ -8260,9 +8365,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.defining_end",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectorEnd-definingEnd.1"
     },
     {
@@ -8281,9 +8388,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectorEnd-role_and_part_with_port"
     },
     {
@@ -8302,9 +8411,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectorEnd-part_with_port_empty"
     },
     {
@@ -8323,9 +8434,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The unconditional formula passes an absent definingEnd to compatibleWith. Python follows the prose: an untyped connector has no association-end bound to constrain it.",
       "source": "umltools/data/UML.xmi#ConnectorEnd-multiplicity"
     },
     {
@@ -8344,9 +8458,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectorEnd-self_part_with_port"
     },
     {
@@ -8370,9 +8486,11 @@
         "A derived property referencing the corresponding end on the Association which types the Connector owing this ConnectorEnd, if any. It is derived by selecting the end at the same place in the ordering of Association ends as this ConnectorEnd."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConnectorEnd-definingEnd"
     },
     {
@@ -8477,9 +8595,11 @@
         }
       ],
       "implementation": "umltools.native.classification.owned_ports",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_parts_ports_and_inherited_roles_recompute_after_edits"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#EncapsulatedClassifier-ownedPort.1"
     },
     {
@@ -8505,9 +8625,11 @@
         "The Ports owned by the EncapsulatedClassifier."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_parts_ports_and_inherited_roles_recompute_after_edits"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#EncapsulatedClassifier-ownedPort"
     },
     {
@@ -8560,9 +8682,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.provided",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-provided.1"
     },
     {
@@ -8600,9 +8724,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.required",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-required.1"
     },
     {
@@ -8640,9 +8766,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.basic_provided",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-basicProvided"
     },
     {
@@ -8680,9 +8808,11 @@
         }
       ],
       "implementation": "umltools.native.structured_classifiers.basic_required",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-basicRequired"
     },
     {
@@ -8701,9 +8831,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-port_aggregation"
     },
     {
@@ -8722,9 +8854,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-default_value"
     },
     {
@@ -8743,9 +8877,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The null=null formula admits unowned ports. Python follows the ownership description and requires an EncapsulatedClassifier owner.",
       "source": "umltools/data/UML.xmi#Port-encapsulated_owner"
     },
     {
@@ -8873,9 +9010,11 @@
         "The Interfaces specifying the set of Operations and Receptions that the EncapsulatedCclassifier offers to its environment via this Port, and which it will handle either directly or by forwarding it to a part of its internal structure. This association is derived according to the value of isConjugated. If isConjugated is false, provided is derived as the union of the sets of Interfaces realized by the type of the port and its supertypes, or directly from the type of the Port if the Port is typed by an Interface. If isConjugated is true, it is derived as the union of the sets of Interfaces used by the type of the Port and its supertypes."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-provided"
     },
     {
@@ -8927,9 +9066,11 @@
         "The Interfaces specifying the set of Operations and Receptions that the EncapsulatedCassifier expects its environment to handle via this port. This association is derived according to the value of isConjugated. If isConjugated is false, required is derived as the union of the sets of Interfaces used by the type of the Port and its supertypes. If isConjugated is true, it is derived as the union of the sets of Interfaces realized by the type of the Port and its supertypes, or directly from the type of the Port if the Port is typed by an Interface."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Port-required"
     },
     {
@@ -8982,9 +9123,11 @@
         }
       ],
       "implementation": "umltools.native.classification.parts",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_parts_ports_and_inherited_roles_recompute_after_edits"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredClassifier-part.1"
     },
     {
@@ -9022,9 +9165,11 @@
         }
       ],
       "implementation": "umltools.native.classification.roles",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_parts_ports_and_inherited_roles_recompute_after_edits"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredClassifier-allRoles"
     },
     {
@@ -9108,9 +9253,11 @@
         "The Properties specifying instances that the StructuredClassifier owns by composition. This collection is derived, selecting those owned Properties where isComposite is true."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_parts_ports_and_inherited_roles_recompute_after_edits"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredClassifier-part"
     },
     {
@@ -9136,9 +9283,11 @@
         "The roles that instances may play in this StructuredClassifier."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_structured_classifiers_audit.StructuredCases.test_parts_ports_and_inherited_roles_recompute_after_edits"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredClassifier-role"
     },
     {
@@ -14005,9 +14154,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.extension_required",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-isRequired.1"
     },
     {
@@ -14045,9 +14196,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.metaclass",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-metaclass.1"
     },
     {
@@ -14085,9 +14238,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.metaclass_end",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-metaclassEnd"
     },
     {
@@ -14106,9 +14261,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-non_owned_end"
     },
     {
@@ -14127,9 +14284,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_basic.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-is_binary"
     },
     {
@@ -14153,9 +14312,11 @@
         "Indicates whether an instance of the extending stereotype must be created when an instance of the extended class is created. The attribute value is derived from the value of the lower property of the ExtensionEnd referenced by Extension::ownedEnd; a lower value of 1 means that isRequired is true, but otherwise it is false. Since the default value of ExtensionEnd::lower is 0, the default value of isRequired is false."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-isRequired"
     },
     {
@@ -14179,9 +14340,11 @@
         "References the Class that is extended through an Extension. The property is derived from the type of the memberEnd that is not the ownedEnd."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Extension-metaclass"
     },
     {
@@ -14262,9 +14425,11 @@
         }
       ],
       "implementation": "umltools.native.values.extension_lower_bound",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExtensionEnd-lowerBound"
     },
     {
@@ -14283,9 +14448,11 @@
         }
       ],
       "implementation": "umltools.native.values.extension_multiplicity",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExtensionEnd-multiplicity"
     },
     {
@@ -14304,9 +14471,11 @@
         }
       ],
       "implementation": "umltools.native.values.extension_aggregation",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExtensionEnd-aggregation"
     },
     {
@@ -14332,9 +14501,11 @@
         "This redefinition changes the default multiplicity of association ends, since model elements are usually extended by 0 or 1 instance of the extension stereotype."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_extension_end_roles_required_flag_defaults_and_invalid_arity"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExtensionEnd-lower"
     },
     {
@@ -14549,9 +14720,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.applicable_stereotypes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-allApplicableStereotypes"
     },
     {
@@ -14589,9 +14762,12 @@
         }
       ],
       "implementation": "umltools.native.common_structure.containing_profile",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_nearest_profile_and_containment_changes"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The recursive XMI body has no root/null guard. Python returns null at an unowned non-Profile Package, matching the optional result signature.",
       "source": "umltools/data/UML.xmi#Package-containingProfile"
     },
     {
@@ -14639,9 +14815,12 @@
         }
       ],
       "implementation": "umltools.native.common_structure.makes_visible",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_visible_members_public_private_imports_aliases_and_reexport"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source compares importedElement to a VisibilityKind and uses notEmpty on Booleans. Python follows the prose and explicit public-import visibility; private imports are not reexported.",
       "source": "umltools/data/UML.xmi#Package-makesVisible"
     },
     {
@@ -14658,9 +14837,11 @@
           "body": "member->includes(el)"
         }
       ],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_visible_members_public_private_imports_aliases_and_reexport"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-makesVisible-pre"
     },
     {
@@ -14698,9 +14879,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.package_must_be_owned",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-mustBeOwned"
     },
     {
@@ -14738,9 +14921,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.nested_packages",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-nestedPackage.1"
     },
     {
@@ -14778,9 +14963,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.owned_stereotypes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-ownedStereotype.1"
     },
     {
@@ -14818,9 +15005,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.owned_types",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-ownedType.1"
     },
     {
@@ -14858,9 +15047,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.visible_members",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_visible_members_public_private_imports_aliases_and_reexport"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-visibleMembers"
     },
     {
@@ -14879,9 +15070,11 @@
         }
       ],
       "implementation": "umltools.native.common_structure.package_visibility",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_visible_members_public_private_imports_aliases_and_reexport"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-elements_public_or_private"
     },
     {
@@ -14933,9 +15126,11 @@
         "References the packaged elements that are Packages."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-nestedPackage"
     },
     {
@@ -14989,9 +15184,11 @@
         "References the Stereotypes that are owned by the Package."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-ownedStereotype"
     },
     {
@@ -15017,9 +15214,11 @@
         "References the packaged elements that are Types."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_owned_package_type_and_stereotype_filters_and_recursive_collection"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Package-ownedType"
     },
     {
@@ -15146,9 +15345,11 @@
         "References the Package that is to be merged with the receiving package of the PackageMerge."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_merge_and_profile_application_links_preserve_identity_and_ownership"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#PackageMerge-mergedPackage"
     },
     {
@@ -15175,9 +15376,11 @@
         "References the Package that is being extended with the contents of the merged package of the PackageMerge."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_merge_and_profile_application_links_preserve_identity_and_ownership"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#PackageMerge-receivingPackage"
     },
     {
@@ -15192,7 +15395,8 @@
       "expressions": [],
       "tests": [],
       "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "review": "partial",
+      "limitation": "The model represents receiving/merged Package links. The normative reconciliation/merge algorithm is not implemented.",
       "source": "umltools/data/UML.xmi#PackageMerge"
     },
     {
@@ -15213,6 +15417,7 @@
       "implementation": "umltools.native.constraints_remaining.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_profile_references_need_one_root_and_no_specialization_across_the_boundary",
         "test_stereotype_applications.StereotypeCases.test_imported_metaclasses_cannot_be_specialized_in_a_profile"
       ],
       "review": "verified in linked examples",
@@ -15236,6 +15441,7 @@
       "implementation": "umltools.native.constraints_remaining.same_reference_metamodel",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_profile_references_need_one_root_and_no_specialization_across_the_boundary",
         "test_stereotype_applications.StereotypeCases.test_references_to_two_different_base_metamodels_are_rejected"
       ],
       "review": "verified in linked examples",
@@ -15335,9 +15541,11 @@
         "References the Profiles that are applied to a Package through this ProfileApplication."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_merge_and_profile_application_links_preserve_identity_and_ownership"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProfileApplication-appliedProfile"
     },
     {
@@ -15364,9 +15572,11 @@
         "The package that owns the profile application."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_merge_and_profile_application_links_preserve_identity_and_ownership"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ProfileApplication-applyingPackage"
     },
     {
@@ -15392,7 +15602,8 @@
       "expressions": [],
       "tests": [],
       "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "review": "partial",
+      "limitation": "The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.",
       "source": "umltools/data/UML.xmi#ProfileApplication-isStrict"
     },
     {
@@ -15445,9 +15656,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.stereotype_profile",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_nearest_profile_and_containment_changes"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Stereotype-containingProfile"
     },
     {
@@ -15485,9 +15698,11 @@
         }
       ],
       "implementation": "umltools.native.additional_queries.stereotype_profile",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_packages_audit.PackageCases.test_nearest_profile_and_containment_changes"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Stereotype-profile.1"
     },
     {
@@ -15508,6 +15723,7 @@
       "implementation": "umltools.native.constraints_basic.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_stereotype_generalization_keywords_and_association_end_ownership",
         "test_stereotype_applications.StereotypeCases.test_binary_associations_and_ownership_of_the_other_end"
       ],
       "review": "verified in linked examples",
@@ -15531,6 +15747,7 @@
       "implementation": "umltools.native.constraints_basic.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_stereotype_generalization_keywords_and_association_end_ownership",
         "test_stereotype_applications.StereotypeCases.test_stereotype_generalizations_do_not_cross_metaclass_boundaries"
       ],
       "review": "verified in linked examples",
@@ -15554,6 +15771,7 @@
       "implementation": "umltools.native.constraints_remaining.stereotype_keyword",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_stereotype_generalization_keywords_and_association_end_ownership",
         "test_stereotype_applications.StereotypeCases.test_keyword_clashes_are_case_insensitive"
       ],
       "review": "verified in linked examples",
@@ -15577,6 +15795,7 @@
       "implementation": "umltools.native.constraints_basic.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_stereotype_generalization_keywords_and_association_end_ownership",
         "test_stereotype_applications.StereotypeCases.test_binary_associations_and_ownership_of_the_other_end"
       ],
       "review": "verified in linked examples",
@@ -15600,6 +15819,7 @@
       "implementation": "umltools.native.constraints_remaining.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_one_vs_multiple_extension_base_multiplicities",
         "test_stereotype_applications.StereotypeCases.test_generic_instance_slots_cannot_bind_two_metaclass_instances",
         "test_stereotype_applications.StereotypeCases.test_single_extension_definition_and_runtime_base_link"
       ],
@@ -15624,6 +15844,7 @@
       "implementation": "umltools.native.constraints_remaining.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_one_vs_multiple_extension_base_multiplicities",
         "test_stereotype_applications.StereotypeCases.test_single_extension_definition_and_runtime_base_link"
       ],
       "review": "verified in linked examples",
@@ -15647,6 +15868,7 @@
       "implementation": "umltools.native.constraints_remaining.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_packages_audit.PackageCases.test_one_vs_multiple_extension_base_multiplicities",
         "test_stereotype_applications.StereotypeCases.test_generic_instance_slots_cannot_bind_two_metaclass_instances",
         "test_stereotype_applications.StereotypeCases.test_multiple_extensions_have_exactly_one_read_only_runtime_base"
       ],
@@ -15702,9 +15924,11 @@
         "The profile that directly or indirectly contains this stereotype."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_packages_audit.PackageCases.test_nearest_profile_and_containment_changes"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Stereotype-profile"
     },
     {
@@ -15719,7 +15943,8 @@
       "expressions": [],
       "tests": [],
       "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "review": "partial",
+      "limitation": "Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.",
       "source": "umltools/data/UML.xmi#Stereotype"
     },
     {

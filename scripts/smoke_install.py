@@ -41,4 +41,13 @@ with ModelSession():
     else:
         raise AssertionError('A tombstone remained queryable')
 assert Uml.LiteralUnlimitedNatural().unlimitedValue() == 0
+with ModelSession():
+    owner, declarations, collaboration = Uml.Class(), Uml.Class(), Uml.Collaboration()
+    actual, formal_role = Uml.Property(), Uml.Property()
+    owner.ownedAttribute.append(actual)
+    declarations.ownedAttribute.append(formal_role)
+    collaboration.collaborationRole.append(formal_role)
+    use = Uml.CollaborationUse(type=collaboration, roleBinding=[Uml.Dependency(client=[actual], supplier=[formal_role])])
+    assert check(use, 'CollaborationUse.client_elements')
+    assert check(use, 'CollaborationUse.every_role')
 print('Installed UmlLib', version('UmlLib'))
