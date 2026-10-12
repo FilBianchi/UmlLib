@@ -10,6 +10,30 @@ therefore remains a divergence to resolve, not an assertion of normative equival
 The expanded report preserves source descriptions and bodies so these choices can be
 reviewed independently; a complete decomposition of additional PDF prose is pending.
 
+## Structural contract audit (0.11.0)
+
+The structural inventory contains all 950 property/end records. Metadata type,
+subset/redefinition reference and bounds checks are separate from default/type/setter
+sweeps for all 549 stored declarations, and from representative family scenarios.
+The 328 association-owned ends have no generated direct setters; they are not counted
+as exercised stored properties. The report does not equate family membership to proof
+of every end's semantics or every normative relationship requirement.
+
+- Unique values are normalized before upper-bound checks; [a, a, b] fits a unique
+  upper bound of two. Nonunique String bodies retain duplicate occurrences.
+- Inverse writes process the direct association before inherited ends, so a structuredNode
+  membership can witness its legitimate shared node/group composite subsets.
+- Differently named stored redefinitions use replacement and route ancestor writes
+  through the effective end. Pending alias synchronization follows primary opposite
+  removal, preventing old owners/aliases from blocking or contaminating rebinding.
+- Composite collection addition to an already-owned child is rejected. A scalar
+  navigable inverse can detach and rebind the previous owner within one transaction;
+  these public mutation paths have different ownership transitions by design.
+- Cached collection repr/equality, indexing, iteration and writes reject deleted owners.
+- Cross-session stored references are allowed and cleaned on logical deletion. validate
+  reports cross session reference because reverse queries based on allInstances remain
+  local to each extent. This project diagnostic does not itself imply a UML violation.
+
 ## Supplemental static requirements (0.10.0)
 
 The new `prose:` checks run in validate() alongside the preserved XMI predicates.

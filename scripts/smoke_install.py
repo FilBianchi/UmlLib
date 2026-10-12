@@ -109,4 +109,26 @@ with ModelSession():
     reply = Uml.Message(signature=signature, messageSort=Uml.MessageSort.reply, argument=[Uml.LiteralInteger(type=Uml.Class())])
     assert check(reply, 'Message.signature_is_operation_reply')
     assert ('constraint', 'prose:Message.reply_argument_types') in reply.validate()
+with ModelSession():
+    a, b = Uml.Class(), Uml.Class()
+    observation = Uml.DurationObservation(event=[a, a, b], firstEvent=[True, True, False])
+    assert list(observation.event) == [a, b]
+    node = Uml.StructuredActivityNode()
+    first, second = Uml.Activity(), Uml.Activity()
+    node.activity = first
+    node.inActivity = second
+    assert node.activity is second and node.owner is second and node.inActivity is second
+    assert not first.node and list(second.structuredNode) == [node]
+    cache = second.node
+    second.delete()
+    try:
+        repr(cache)
+    except DeletedElementError:
+        pass
+    else:
+        raise AssertionError('Cached collection repr accepted a tombstone owner')
+foreign = Uml.Class()
+with ModelSession():
+    dependency = Uml.Dependency(client=[foreign])
+assert ('cross session reference', 'Dependency-client') in dependency.validate()
 print('Installed UmlLib', version('UmlLib'))

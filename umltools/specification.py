@@ -6,6 +6,7 @@ import xml.etree.ElementTree as ET
 
 XMI = '{http://www.omg.org/spec/XMI/20131001}'
 PROPERTY_RELATIONS = {}
+PROPERTY_REDEFINITIONS = {}
 PROPERTY_ASSOCIATIONS = {}
 
 
@@ -15,6 +16,13 @@ def property_refines(identifier, target, visited=None):
     if identifier in visited: return False
     visited = visited | {identifier}
     return any(property_refines(parent, target, visited) for parent in PROPERTY_RELATIONS.get(identifier, ()))
+
+
+def property_redefines(identifier, target, visited=None):
+    if identifier == target: return True
+    visited = set() if visited is None else visited
+    if identifier in visited: return False
+    return any(property_redefines(parent, target, visited | {identifier}) for parent in PROPERTY_REDEFINITIONS.get(identifier, ()))
 
 
 def property_associations(identifier, visited=None):
@@ -59,6 +67,8 @@ def load(path=None):
         root = ET.parse(stream).getroot()
     PROPERTY_RELATIONS.clear()
     PROPERTY_RELATIONS.update({node.get(XMI+'id'): tuple(child.get(XMI+'idref') for child in node if child.tag in ('subsettedProperty', 'redefinedProperty')) for node in root.iter() if node.get(XMI+'type') == 'uml:Property'})
+    PROPERTY_REDEFINITIONS.clear()
+    PROPERTY_REDEFINITIONS.update({node.get(XMI+'id'): tuple(child.get(XMI+'idref') for child in node.findall('redefinedProperty')) for node in root.iter() if node.get(XMI+'type') == 'uml:Property'})
     PROPERTY_ASSOCIATIONS.clear()
     PROPERTY_ASSOCIATIONS.update({node.get(XMI+'id'): node.get('association') for node in root.iter() if node.get(XMI+'type') == 'uml:Property'})
     parents = {child: parent for parent in root.iter() for child in parent}

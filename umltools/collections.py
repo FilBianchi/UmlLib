@@ -37,5 +37,9 @@ class UmlCollection(MutableSequence):
     def sort(self, *, key=None, reverse=False):
         setattr(self.owner, self.name, sorted(self._data, key=key, reverse=reverse))
 
-    def __repr__(self): return repr(self._data)
-    def __eq__(self, other): return self._data == list(other) if isinstance(other, (list, tuple, UmlCollection)) else False
+    def __repr__(self):
+        self.owner._ensure_alive()
+        return repr(self._data)
+    def __eq__(self, other):
+        self.owner._ensure_alive()
+        return self._data == list(other) if isinstance(other, (list, tuple, UmlCollection)) else False

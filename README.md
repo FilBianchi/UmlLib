@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.10.0/umllib-0.10.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.11.0/umllib-0.11.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -50,8 +50,10 @@ python semantic_report.py
 ```
 
 Collections validate edits, maintain navigable opposite associations and composite
-ownership, and prevent containment cycles. Detach an element before assigning it
-to another composite owner. Lower multiplicities are checked by validation, allowing
+ownership, and prevent containment cycles. Adding to another owner's composite
+collection requires explicit detachment. Assigning a navigable scalar inverse can
+transfer ownership atomically by removing the previous owner's link first.
+Lower multiplicities are checked by validation, allowing
 incremental model construction.
 
 Operations, derived properties and invariants use explicit Python translations in
@@ -69,7 +71,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.10.0 suite has 280 tests.
+invariants, two queries and one derivation. The 0.11.0 suite has 291 tests.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -105,12 +107,24 @@ inherited manifestations, slot overrides or runtime copies. The source-derived
 priorities and next actions. Regenerate them with `python conformance_backlog.py`;
 CI verifies reproducibility. This census does not replace decomposition of all normative prose.
 
+`STRUCTURAL_AUDIT.md` and `structural-audit.json` inventory 549 stored properties,
+73 derived properties and 328 association-owned ends. Every stored declaration has
+default/wrong-type and declared-type assignment sweeps; relationship family scenarios
+have separately scoped evidence. This does not certify every end's full semantics.
+Regenerate with `python structural_audit.py`; CI checks the saved report.
+
 `validate()` returns `(category, specification_id)` issues: `multiplicity`,
 `constraint`, `invalid constraint`, `unsupported constraint`, `invalid derivation`,
 and `unsupported`. Runtime stereotype checks additionally report `stereotype application`,
 `invalid stereotype application`, or `unsupported stereotype application`.
 Successful rules are omitted. `float('inf')` represents UML's
 unlimited natural value `*`.
+
+`cross session reference` identifies stored references to another ModelSession or
+between a session and the default extent. Such references remain allowed and deletion
+cleans them; this diagnostic indicates an incomplete local allInstances view, not
+an automatic UML semantic violation. Keep a connected model in one session when its
+queries require complete reverse/non-navigable association extents.
 
 Use separate extents when working on independent models:
 

@@ -37,7 +37,7 @@ def backlog():
                 priorities=dict(Counter(r['priority'] for r in entries)), known_limitations=entries,
                 supplemental_checks=supplemental,
                 remaining_workstreams=[
-                    dict(priority='P0', area='structural contracts', action='Audit the 549 stored properties and 328 association-owned ends by subset/redefinition/ownership families, including mutation, rollback, deletion and session boundaries.'),
+                    dict(priority='P0', area='structural contracts', action='Extend STRUCTURAL_AUDIT.md declaration sweeps/family scenarios to per-association/end semantics, subtype combinations and broader mutation sequences; cross-session references are allowed but diagnosed.'),
                     dict(priority='P0', area='additional prose', action='Decompose the 242 class descriptions and additional normative prose into atomic requirements; counts of XMI definitions alone cannot close this scope.'),
                     dict(priority='P1', area='profiles', action='Complete typed tagged values, strict profile restrictions and user constraint integration.'),
                     dict(priority='P1', area='exchange', action='Implement model XMI import/export after profile and adapter contracts stabilize.'),

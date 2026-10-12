@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.11.0
+
+The structural audit inventories 950 property/end declarations (549 stored, 73 derived,
+328 association-owned). Every stored declaration has default/wrong-type and declared-type
+setter sweeps. Relationship family scenarios and per-definition evidence are scoped
+separately; metadata type/reference/bounds checks report no unresolved declarations.
+CI/release verify structural-audit.json and STRUCTURAL_AUDIT.md reproducibility.
+
+Unique collections deduplicate before enforcing upper bounds. StructuredActivityNode
+inverse assignment establishes the direct opposite before inherited composite ends.
+Stored redefinitions use replacement rather than subset union, and differently named
+ancestor setters route through the effective redefined end. Rebinding/clear operations
+preserve alias values, ownership, cached collections and transactional rollback.
+Cached collection repr/equality reject logically deleted owners.
+
+Cross-session references remain supported but validate reports cross session reference
+for stored links, exposing the incomplete local allInstances view. Scalar inverse
+rebinding can transfer ownership atomically; adding directly to another composite
+collection still requires detachment. 291 tests pass. Per-end semantic proof and
+arbitrary mutation/prose coverage remain open, distinct from declaration sweeps.
+
 ## 0.10.0
 
 Five supplemental static prose requirements are integrated into validate(), preserving

@@ -221,6 +221,10 @@ def report():
         name = record.get('name')
         tests = sorted(set(examples.get(name, []) + examples.get(record['id'], [])))
         record['tests'] = tests
+        if record['kind'] == 'structural property':
+            record['structural_sweeps'] = [
+                'test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types',
+                'test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type']
         record['verification'] = 'linked behavioral examples' if tests else 'no linked behavioral examples'
         record['review'] = 'verified in linked examples' if tests else 'needs review'
         key = record['id'] if record['id'] in AUDIT_LIMITS else name

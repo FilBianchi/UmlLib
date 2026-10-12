@@ -1289,7 +1289,7 @@
     {
       "priority": "P0",
       "area": "structural contracts",
-      "action": "Audit the 549 stored properties and 328 association-owned ends by subset/redefinition/ownership families, including mutation, rollback, deletion and session boundaries."
+      "action": "Extend STRUCTURAL_AUDIT.md declaration sweeps/family scenarios to per-association/end semantics, subtype combinations and broader mutation sequences; cross-session references are allowed but diagnosed."
     },
     {
       "priority": "P0",

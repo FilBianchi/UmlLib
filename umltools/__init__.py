@@ -2,7 +2,7 @@
 from enum import Enum
 from contextvars import ContextVar
 from weakref import WeakSet
-from .specification import load, property_refines, property_associations
+from .specification import load, property_refines, property_redefines, property_associations
 from .collections import UmlCollection
 from .contracts import OperationResultError, validate_item
 from .lifecycle import DeletedElementError, DeletionRestrictedError
@@ -113,6 +113,22 @@ class UmlElement:
         prop = self.properties().get(name)
         if prop is None:
             raise AttributeError(f'Unknown UML property: {name}')
+        # A differently named stored ancestor is an alias of its effective
+        # redefinition. Route its public setter through the most specific end.
+        if prop.flags.get('isDerived') != 'true':
+            candidates = [p for n, p in self.properties().items() if n != name and p.flags.get('isDerived') != 'true' and property_redefines(p.id, prop.id)]
+            candidates = [p for p in candidates if not any(q.id != p.id and property_redefines(q.id, p.id) for q in candidates)]
+            if len(candidates) > 1: raise UnsupportedSemanticsError('Ambiguous stored property redefinition: '+prop.id)
+            if candidates and (id(self), candidates[0].name) not in _mutation.get()['active']:
+                effective = candidates[0]
+                setattr(self, effective.name, value)
+                resolved = getattr(self, effective.name)
+                if prop.upper is None or prop.upper > 1:
+                    existing = self._values.get(name)
+                    if isinstance(existing, UmlCollection): existing._data[:] = self._items(resolved)
+                    else: self._values[name] = UmlCollection(self, name, self._items(resolved))
+                else: self._values[name] = resolved
+                return
         if prop.flags.get('isDerived') == 'true' or prop.flags.get('isReadOnly') == 'true':
             raise UnsupportedSemanticsError(f'Write to {prop.id} requires semantic support')
         many = prop.upper is None or prop.upper > 1
@@ -122,11 +138,11 @@ class UmlElement:
             if many and item is None:
                 raise TypeError(f'{name} cannot contain null')
             if item is not None: validate_item(self, item, prop.type)
-        if many and prop.upper is not None and len(value) > prop.upper:
-            raise ValueError(f'{name} exceeds upper multiplicity')
         values = list(value) if many else self._items(value)
         if many and prop.flags.get('isUnique', 'true') == 'true':
             values = list(dict.fromkeys(values))
+        if many and prop.upper is not None and len(values) > prop.upper:
+            raise ValueError(f'{name} exceeds upper multiplicity')
         previous = self._items(self._values.get(name))
         if prop.flags.get('aggregation') == 'composite':
             for child in values:
@@ -149,10 +165,15 @@ class UmlElement:
         else:
             self._values[name] = value
         # Synchronize stored supersets. Derived unions compute their members on read.
+        # Differently named redefinitions are aliases, not additive subsets. Delay
+        # them until primary opposite removal has released prior composite ownership.
+        aliases = []
         for other_name, other_prop in self.properties().items():
             if other_name == name or other_prop.flags.get('isDerived') == 'true': continue
             current = self._items(getattr(self, other_name))
-            if property_refines(prop.id, other_prop.id) or any(property_refines(prop.id, ancestor) for ancestor in other_prop.redefines):
+            if property_redefines(prop.id, other_prop.id) or property_redefines(other_prop.id, prop.id):
+                updated = values
+            elif property_refines(prop.id, other_prop.id) or any(property_refines(prop.id, ancestor) for ancestor in other_prop.redefines):
                 updated = list(dict.fromkeys(current + values))
             elif property_refines(other_prop.id, prop.id) or any(property_refines(other_prop.id, ancestor) for ancestor in prop.redefines):
                 updated = [item for item in current if item in values]
@@ -160,7 +181,10 @@ class UmlElement:
             if updated != current:
                 other_many = other_prop.upper is None or other_prop.upper > 1
                 if not other_many and len(updated) > 1: raise ValueError('Subset exceeds superset multiplicity')
-                setattr(self, other_name, updated if other_many else (updated[0] if updated else None))
+                assignment = updated if other_many else (updated[0] if updated else None)
+                if property_redefines(prop.id, other_prop.id) or property_redefines(other_prop.id, prop.id):
+                    aliases.append((other_name, assignment))
+                else: setattr(self, other_name, assignment)
         if prop.flags.get('aggregation') == 'composite':
             for child in previous:
                 if child not in values and not any(p.flags.get('aggregation') == 'composite' and child in self._items(self._values.get(n)) for n, p in self.properties().items()):
@@ -170,15 +194,23 @@ class UmlElement:
         if associations:
             for target in previous + [v for v in values if v not in previous]:
                 if not isinstance(target, UmlElement): continue
-                for opposite in target.properties().values():
+                # Establish the directly declared opposite before inherited ends.
+                # Its subset memberships can witness legitimate shared composites.
+                opposites = sorted(target.properties().values(), key=lambda p: p.flags.get('association') != prop.flags.get('association'))
+                for opposite in opposites:
                     if property_refines(prop.id, opposite.id) or property_refines(opposite.id, prop.id) or opposite.flags.get('association') not in associations or opposite.flags.get('isDerived') == 'true': continue
                     inverse_many = opposite.upper is None or opposite.upper > 1
                     current = self._items(getattr(target, opposite.name))
-                    if target not in values and any(target in self._items(self._values.get(n)) and opposite.flags.get('association') in property_associations(p.id) for n, p in self.properties().items()): continue
+                    if target not in values and any(target in self._items(self._values.get(n))
+                            and opposite.flags.get('association') in property_associations(p.id)
+                            and not (property_redefines(prop.id, p.id) or property_redefines(p.id, prop.id))
+                            for n, p in self.properties().items()): continue
                     if target not in values and target._container is self and property_refines(opposite.id, 'Element-owner'): continue
                     updated = [x for x in current if x is not self]
                     if target in values: updated.append(self)
                     setattr(target, opposite.name, updated if inverse_many else (updated[-1] if updated else None))
+        for alias_name, assignment in aliases:
+            if self._items(getattr(self, alias_name)) != self._items(assignment): setattr(self, alias_name, assignment)
 
     @staticmethod
     def _rollback(transaction):
@@ -211,6 +243,8 @@ class UmlElement:
                     issues.append(('invalid derivation', prop.id))
                     continue
             else: value = getattr(self, name)
+            if prop.flags.get('isDerived') != 'true' and any(isinstance(target, UmlElement) and target._extent is not self._extent for target in self._items(value)):
+                issues.append(('cross session reference', prop.id))
             size = len(value) if isinstance(value, (list, tuple, UmlCollection)) else int(value is not None)
             if size < prop.lower or prop.upper is not None and size > prop.upper:
                 issues.append(('multiplicity', prop.id))

@@ -342,3 +342,25 @@ Le evidenze mancanti sui tipi dei token restano unsupported. La purity dei Behav
 gli Artifact annidati/ereditati, gli slot e le copie runtime non sono provati da questi
 controlli. Prossimo P0: audit per famiglie dei contratti strutturali e decomposizione
 dei requisiti di prosa residui; le interpretazioni XMI/prosa restano da riconciliare.
+
+## Nono incremento: versione 0.11.0
+
+Audit strutturale delle 950 dichiarazioni: 549 proprietà memorizzate, 73 derivate e
+328 estremi associativi. Tutte le 549 dichiarazioni ricevono verifiche di default,
+rifiuto dei tipi errati e assegnazione di un valore del tipo dichiarato. Metadati di
+tipi, riferimenti subset/redefines e bounds senza riferimenti irrisolti. I casi per
+famiglie e i collegamenti puntuali restano distinti da queste verifiche di dichiarazione.
+STRUCTURAL_AUDIT.md e structural-audit.json sono rigenerati e verificati dalla CI.
+
+Correzioni: deduplicazione prima dell'upper bound, ordine degli estremi inversi,
+semantica di sostituzione delle proprietà ridefinite, alias verso l'estremo più
+specifico e protezione delle letture di collezioni di elementi cancellati. Sono
+verificati inverse many-to-many, trasferimenti via estremi scalari, rollback di
+costruzione/modifica, subset multipli e riferimenti tra sessioni. 291 test passano.
+
+I riferimenti cross-session restano consentiti ma validate segnala cross session
+reference: le query allInstances mantengono un'estensione locale. Non è automaticamente
+una violazione UML. Restano aperti la prova semantica per ogni estremo associativo,
+combinazioni complete di sottotipi/default, sequenze arbitrarie di mutazioni e prosa.
+Prossimo lavoro P0: decomporre e chiudere i requisiti normativi residui con evidenze
+puntuali, mantenendo distinti contratti dichiarativi, interpretazioni e obblighi esterni.
