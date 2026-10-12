@@ -4,6 +4,7 @@ from contextvars import ContextVar
 from weakref import WeakSet
 from .specification import load, property_refines, property_associations
 from .collections import UmlCollection
+from .contracts import OperationResultError
 from .model_session import ModelSession, current_session
 from .native import NativeNotImplemented, check
 from .semantics import derive, operation
@@ -143,9 +144,9 @@ class UmlElement:
         for other_name, other_prop in self.properties().items():
             if other_name == name or other_prop.flags.get('isDerived') == 'true': continue
             current = self._items(getattr(self, other_name))
-            if property_refines(prop.id, other_prop.id):
+            if property_refines(prop.id, other_prop.id) or any(property_refines(prop.id, ancestor) for ancestor in other_prop.redefines):
                 updated = list(dict.fromkeys(current + values))
-            elif property_refines(other_prop.id, prop.id):
+            elif property_refines(other_prop.id, prop.id) or any(property_refines(other_prop.id, ancestor) for ancestor in prop.redefines):
                 updated = [item for item in current if item in values]
             else: continue
             if updated != current:
@@ -258,4 +259,4 @@ def build(name):
 for name in SPECIFICATIONS:
     build(name)
 globals().update(REGISTRY)
-__all__ = list(REGISTRY) + ['UnsupportedSemanticsError', 'SPECIFICATIONS']
+__all__ = list(REGISTRY) + ['UnsupportedSemanticsError', 'OperationResultError', 'SPECIFICATIONS']

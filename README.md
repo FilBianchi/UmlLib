@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.2.0/umllib-0.2.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.3.0/umllib-0.3.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at

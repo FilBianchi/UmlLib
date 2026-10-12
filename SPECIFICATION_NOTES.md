@@ -4,6 +4,44 @@ Python translations preserve the source formula's intent. When the XMI's formula
 conflicts with its prose or references a nonexistent metaclass, the choice is
 recorded here. These choices are project interpretations, not published OMG errata.
 
+The specification's conformance chapter gives machine-readable artifacts precedence
+when they conflict with the PDF. A project interpretation that changes an XMI body
+therefore remains a divergence to resolve, not an assertion of normative equivalence.
+The expanded report preserves source descriptions and bodies so these choices can be
+reviewed independently; a complete decomposition of additional PDF prose is pending.
+
+## CommonStructure and Values audit (0.3.0)
+
+- `NamedElement.qualifiedName`, `ElementImport.getName` and `LiteralString.stringValue`
+  declare mandatory returns, although their bodies can return an absent optional name
+  or string value. Result contracts use an optional lower bound only for these queries.
+- `Namespace.getNamesOfMember` constructs a set containing element.name. An unnamed
+  member therefore produces a null entry; the result contract preserves that entry
+  only for this query. Other collections reject null elements.
+- `NamedElement.allOwningPackages` returns null when the namespace is not a Package,
+  despite its collection signature. Python represents that branch as an empty list.
+  It does not search through non-Package namespaces to find outer Packages.
+- `OpaqueExpression.result` uses behavior.ownedParameter->first() in XMI. The property
+  description calls it the return parameter. Python keeps the explicit source body;
+  selecting the first input parameter is a documented inconsistency, not a resolved
+  implementation of the prose requirement.
+- `OpaqueExpression.isIntegral` is explicitly false in the generic source body.
+  Its sign/value queries require isIntegral; calls fail that precondition by default.
+  This library does not infer executable behavior from an arbitrary language string.
+- `DurationConstraint.firstEvent` and `DurationObservation.firstEvent` have no
+  isOrdered/isUnique overrides in XMI: they default to an unordered unique collection
+  of Booleans. Repeated flags are deduplicated. The pair-of-event interpretation needs
+  a normative source resolution before it can be considered fully implemented.
+- `Constraint.boolean_value` accepts a computable specification only if its Boolean
+  query is defined (false is valid). A LiteralString annotated with a Boolean type
+  is rejected. Foreign expressions use declared static Boolean type evidence;
+  that evidence does not prove runtime execution or absence of side effects.
+- Multiplicity bound queries explicitly default to 1 when the bound query is undefined.
+  Invalid literal kinds are reported by lower_is_integer/upper_is_unlimitedNatural;
+  replacing that fallback would diverge from the current XMI bodies.
+
+## Earlier project interpretations
+
 - `Namespace-excludeCollisions`: the formula compares each imported element to
   itself and therefore rejects all of them. The prose describes collisions between
   different elements. Python excludes self comparisons. Alias and collision tests

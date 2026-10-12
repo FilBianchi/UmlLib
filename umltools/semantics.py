@@ -1,8 +1,8 @@
 """Dispatch explicitly translated Python operations and derived properties."""
 import xml.etree.ElementTree as ET
-from .specification import PROPERTY_RELATIONS, reference
-from .collections import UmlCollection
+from .specification import PROPERTY_RELATIONS
 from .native import invoke, DERIVATIONS, NativeNotImplemented, unique
+from .contracts import validate_parameter, validate_result
 
 
 def operation(self, owner, name, args=(), kwargs=None):
@@ -21,21 +21,9 @@ def operation(self, owner, name, args=(), kwargs=None):
         if parameter.get('direction', 'in') == 'return': continue
         parameter_name = parameter.get('name')
         value = variables[parameter_name]
-        upper = parameter.find('upperValue')
-        high = '1' if upper is None else upper.get('value', '0')
-        lower = parameter.find('lowerValue')
-        low = 1 if lower is None else int(lower.get('value', '0'))
-        many = high == '*' or int(high) > 1
-        if many and not isinstance(value, (list, tuple, UmlCollection)): raise TypeError(f'{owner}.{name} requires a collection')
-        values = list(value) if many else [] if value is None else [value]
-        if len(values) < low or high != '*' and len(values) > int(high): raise ValueError(f'Argument multiplicity violated: {owner}.{name}')
-        type_name = reference(parameter, 'type')
-        expected = self.__registry__.get(type_name) or {'Boolean': bool, 'String': str, 'Integer': int, 'Real': (int, float), 'UnlimitedNatural': (int, float)}.get(type_name)
-        for item in values:
-            if expected and not isinstance(item, expected): raise TypeError(f'{owner}.{name} requires {type_name}')
-            if type_name in ('Integer', 'Real', 'UnlimitedNatural') and isinstance(item, bool): raise TypeError(f'{owner}.{name} requires a number')
-            if type_name == 'UnlimitedNatural' and not (type(item) is int and item >= 0 or type(item) is float and item == float('inf')): raise ValueError('Invalid UnlimitedNatural argument')
-    return invoke(self, f'{owner}.{name}', variables)
+        validate_parameter(self, parameter, value, operation_id=f'{owner}.{name}')
+    result = invoke(self, f'{owner}.{name}', variables)
+    return validate_result(self, node, result, f'{owner}.{name}')
 
 
 def derive(self, prop):

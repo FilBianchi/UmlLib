@@ -21,11 +21,18 @@ predicates({
     'Stereotype.base_property_multiplicity_single_extension': lambda s: len(base_properties(s)) != 1 or base_properties(s)[0].is_(1, 1),
     'Stereotype.base_property_multiplicity_multiple_extension': lambda s: len(base_properties(s)) <= 1 or all(p.is_(0, 1) for p in base_properties(s)),
     'InformationFlow.convey_classifiers': lambda s: all(any(kind(s, c, name) for name in ('Class', 'Interface', 'InformationItem', 'Signal', 'Component')) for c in s.conveyed),
-    'Constraint.boolean_value': lambda s: kind(s, s.specification, 'LiteralBoolean') or primitive(required(s.specification).type, 'Boolean'),
     'Constraint.no_side_effects': lambda s: expression_fact(required(s.specification), 'pure'),
     'MultiplicityElement.value_specification_no_side_effects': lambda s: all(expression_fact(v, 'pure') for v in (s.lowerValue, s.upperValue) if v is not None),
     'MultiplicityElement.value_specification_constant': lambda s: all(expression_fact(v, 'constant') for v in (s.lowerValue, s.upperValue) if v is not None),
 })
+
+
+@invariant('Constraint.boolean_value')
+def boolean_constraint(self):
+    specification = required(self.specification)
+    if specification.isComputable(): return specification.booleanValue() is not None
+    # Static type evidence for a foreign expression does not execute its language.
+    return primitive(specification.type, 'Boolean')
 
 
 @invariant('Profile.references_same_metamodel')

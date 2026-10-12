@@ -1,0 +1,215 @@
+# Piano di completamento di UmlLib
+
+Stato di riferimento: versione 0.2.0, 12 ottobre 2026.
+
+## Obiettivo e ambiti
+
+La priorità è una libreria Python affidabile per creare, leggere, modificare,
+cancellare e validare modelli del core UML 2.5.1, con semantica implementata in Python.
+Il completamento viene dichiarato per ambiti verificabili:
+
+1. Core: sintassi astratta, proprietà, associazioni, operazioni del metamodel e
+   validazione dei modelli.
+2. Profili: definizione e applicazione degli stereotipi e gestione delle loro proprietà.
+3. Scambio dei modelli: importazione/esportazione XMI, compresi i profili.
+4. Diagrammi: modello UMLDI e scambio delle informazioni dei diagrammi.
+
+Un editor grafico e un motore di esecuzione generale di attività/state machine
+sono progetti ulteriori. La libreria deve preservare e analizzare quei modelli;
+eseguire tutte le azioni UML non è un prerequisito della prima milestone del core.
+Le dichiarazioni di conformità devono distinguere gli ambiti del capitolo 2 della
+specifica, anziché usare una sola etichetta «UML completo».
+
+## Punto di partenza
+
+- 242 metaclassi e 13 enumerazioni, suddivise in 14 package.
+- 203 operazioni concrete, 2 dichiarazioni astratte e 73 proprietà derivate registrate.
+- 449 invarianti registrati: registrazione non equivale a verifica della semantica.
+- 117 test; 18 regole con collegamenti espliciti agli esempi comportamentali.
+- Wheel, archivio sorgente, CI su Python 3.10/3.12/3.14 e pubblicazione già funzionanti.
+- InformationFlow, decomposizioni e stereotipi hanno ricevuto un primo audit mirato;
+  non vanno trattati come aree definitivamente certificate.
+
+## Sequenza di lavoro
+
+| Fase | Priorità | Dipendenze | Risultato verificabile |
+| --- | --- | --- | --- |
+| 1. Inventario e tracciabilità | P0 | Stato attuale | Matrice completa dei requisiti e delle lacune |
+| 2. Contratti e ciclo di vita | P0 | 1 | Runtime coerente anche dopo modifiche e cancellazioni |
+| 3. Audit dei package core | P0 | 1, runtime di 2 | Regole e query verificate con esempi indipendenti |
+| 4. Profili completi | P1 | 2, package fondazionali di 3 | Applicazioni e valori degli stereotipi gestiti coerentemente |
+| 5. Obblighi contestuali | P1 | 3, 4 | Adattatori e mappature con contratti e limiti espliciti |
+| 6. XMI | P1 | Runtime stabile, 4; fatti di 5 ove necessari | Scambio dei modelli senza perdita dei dati supportati |
+| 7. StandardProfile e UMLDI | P2 | 4, 6 | Copertura degli artefatti standard aggiuntivi |
+| 8. Chiusura e stabilizzazione | P0 per il core | Milestone dell'ambito dichiarato | Release stabile con evidenze e limiti controllati |
+
+La fase 8 ha un primo gate al completamento del core, poi gate separati per
+profili, XMI e diagrammi. Non richiede di attendere un editor grafico.
+
+## 1. Inventario e tracciabilità
+
+- Estendere il rapporto oltre i 449 invarianti: proprietà strutturali, firme,
+  precondizioni, eventuali postcondizioni, derivazioni e requisiti descritti in prosa.
+- Collegare i test esistenti alle rispettive definizioni; i 431 invarianti senza
+  collegamenti espliciti non sono automaticamente 431 invarianti senza test.
+- Distinguere gli stati «da verificare», «verificato nei casi dichiarati»,
+  «parziale», «dipendente dal contesto» e «incongruenza della fonte».
+- Per ogni voce registrare fonte/XMI ID, implementazione, esempi, limiti e lavoro residuo.
+- Rivedere SPECIFICATION_NOTES.md: una correzione personale di un refuso non è
+  automaticamente una correzione normativa. Registrare la precedenza delle fonti,
+  eventuali errata ufficiali e l'effetto della scelta sulla dichiarazione di conformità.
+
+**Completamento:** tutti i requisiti del core sono censiti; il rapporto rende visibili
+le parti parziali e non presenta il numero di funzioni registrate come percentuale
+di conformità. I collegamenti ai test risolvono a esempi realmente eseguibili.
+
+## 2. Contratti delle operazioni e ciclo di vita
+
+- Controllare tipo, molteplicità, ordinamento e unicità dei risultati delle operazioni,
+  oltre agli argomenti già controllati.
+- Verificare precondizioni e dispatch delle ridefinizioni, inclusi i conflitti di nome
+  fra proprietà e query nell'ereditarietà multipla.
+- Definire una cancellazione logica esplicita, con politica per figli composti,
+  riferimenti esterni, associazioni inverse e applicazioni di stereotipi.
+- Rendere la cancellazione indipendente dal momento in cui Python libera l'oggetto:
+  l'estensione usata da allInstances deve riflettere lo stato logico del modello.
+- Verificare subset, ridefinizioni, derivazioni, proprietà in sola lettura,
+  reparenting e rollback di mutazioni che coinvolgono più oggetti.
+- Precisare gestione dei riferimenti fra sessioni e di metamodel condivisi.
+- Rendere le diagnostiche localizzabili: elemento, proprietà/regola, causa e percorso
+  del modello, preservando la compatibilità dell'API di validazione esistente.
+
+**Completamento:** scenari di creazione/modifica/cancellazione non lasciano riferimenti
+incoerenti; un'operazione con risultato illegale viene segnalata; ogni operazione
+fallita lascia il modello nello stato precedente previsto dal contratto.
+
+## 3. Audit della semantica, package per package
+
+Ordine basato sulle dipendenze:
+
+1. CommonStructure e Values.
+2. Classification e SimpleClassifiers.
+3. Packages e StructuredClassifiers.
+4. CommonBehavior e StateMachines.
+5. Activities e Actions.
+6. Interactions.
+7. UseCases, Deployments e InformationFlows.
+
+Per ogni operazione, derivazione e vincolo:
+
+- Confrontare codice, firma, formula e descrizione normativa.
+- Preparare modelli con risultati attesi derivati dalla specifica, non dal codice.
+- Coprire casi validi, invalidi e limiti pertinenti: null opzionale, collezione vuota,
+  infinito, ereditarietà, cicli, riferimenti esterni e combinazioni fra package.
+- Usare scenari condivisi solo quando verificano davvero più regole, con tutti i
+  collegamenti dichiarati; non creare centinaia di test che ripetono la funzione.
+- Correggere l'implementazione e aggiungere una regressione per ogni difetto trovato.
+- Verificare l'effetto delle mutazioni su regole e proprietà derivate già controllate.
+
+**Completamento per package:** ogni requisito è revisionato e collegato alle evidenze
+pertinenti; ogni limite o incongruenza residua è esplicito. Il gate del core richiede
+che non rimangano obblighi applicabili ignorati o considerati validi per default.
+
+## 4. Profili e stereotipi
+
+- Gestire valori delle proprietà degli stereotipi: tipi, default, molteplicità,
+  enumerazioni, ereditarietà, ridefinizioni e riferimenti.
+- Gestire proprietà composite e loro ciclo di vita durante rimozione dei profili.
+- Implementare e verificare isStrict, visibilità e disponibilità delle metaclassi.
+- Verificare applicazione di profili annidati/importati, coesistenza di profili e
+  proprietà ereditate da stereotipi in altri profili.
+- Allineare API runtime e rappresentazione InstanceSpecification/Slot.
+- Fornire un contratto per vincoli personalizzati implementati in Python; dichiarare
+  il trattamento dei vincoli espressi in altri linguaggi.
+
+**Completamento:** gli esempi di profili supportati attraversano definizione,
+applicazione, aggiornamento e rimozione senza perdere dati ordinari del modello;
+valori illegali, duplicati e applicazioni richieste mancanti vengono diagnosticati.
+
+## 5. Espressioni e informazioni dipendenti dal contesto
+
+- Definire il contratto degli adattatori per riferimenti, costanza, effetti collaterali,
+  tipi di collezione e valori delle espressioni nei linguaggi dichiarati supportati.
+- Distinguere fatti analizzati, fatti dichiarati dall'applicazione e fatti mancanti.
+- Completare contratti, invalidazione e controllo delle mappature di gate, occorrenze
+  e frammenti extra-globali quando gli oggetti vengono modificati o cancellati.
+- Definire il trattamento degli estremi esterni dei messaggi lost/found.
+- Stabilire quali fatti sono desumibili dal core UML e quali richiedono dati
+  aggiuntivi; non promettere di dedurre informazioni assenti dal modello.
+
+**Completamento:** un caso determinabile è verificato; un fatto mancante viene
+segnalato come non valutabile. Nessun linguaggio sconosciuto viene eseguito o
+considerato valido implicitamente. I casi dipendenti dal contesto hanno esempi sia
+con informazione sufficiente sia senza.
+
+## 6. Importazione ed esportazione XMI
+
+- Gestire identità stabili, riferimenti locali/esterni, namespace, enum e valori.
+- Importare i modelli in più passaggi e ricostruire proprietà, oppositi e ownership.
+- Gestire profili, applicazioni e valori degli stereotipi.
+- Preservare o segnalare esplicitamente informazioni aggiuntive non standard;
+  scegliere un formato di estensione per le annotazioni runtime necessarie.
+- Verificare round trip sull'identità e sul significato dei modelli, non sull'ordine
+  dei caratteri XML.
+- Verificare gli obblighi di compatibilità delle versioni XMI indicati dalla specifica
+  prima di dichiarare conformità allo scambio dei modelli.
+- Confrontare fixture indipendenti, incluse esportazioni di altri strumenti quando
+  disponibili, documentando le differenze e senza assumere che un altro tool sia infallibile.
+
+**Completamento:** ogni classe concreta e forma di valore supportata compare in una
+suite di scambio; i modelli verificati sopravvivono a import/export senza perdere dati
+o cambiare il risultato delle validazioni applicabili.
+
+## 7. StandardProfile e UMLDI
+
+- Distribuire e verificare gli stereotipi del StandardProfile mediante il runtime dei profili.
+- Aggiungere le classi UMLDI e i relativi riferimenti agli elementi del core.
+- Verificare import/export dei diagrammi con forme, collegamenti, etichette e geometria.
+- Tenere il modello dei diagrammi separato dal rendering e dall'editor grafico.
+
+**Completamento:** fixture standard di profili e diagrammi sono importabili,
+modificabili e riesportabili; gli ambiti supportati sono dichiarati separatamente.
+
+## 8. Gate di release e criterio di fine
+
+Per ciascuna milestone pubblicare codice, regressioni, rapporto aggiornato,
+compatibilità/API e note sui cambiamenti. La pipeline esistente deve verificare
+generazione riproducibile, test, build e installazione del wheel fuori dal checkout.
+
+La milestone del core è completa quando:
+
+- Tutte le definizioni e tutti i requisiti applicabili sono censiti e revisionati.
+- CRUD, associazioni, operazioni, derivazioni e validazione hanno evidenze indipendenti.
+- Non rimangono fallimenti noti o implementazioni parziali nascosti nella dichiarazione.
+- I requisiti contestuali hanno un contratto utilizzabile e non producono falsi successi.
+- Le interpretazioni divergenti della fonte sono risolte oppure delimitano esplicitamente
+  l'ambito che si può dichiarare conforme.
+- Documentazione e rapporto distinguono il core da scambio, diagrammi ed esecuzione.
+
+I gate successivi aggiungono i requisiti di profili, XMI e UMLDI. La scelta della
+licenza di distribuzione rimane una decisione da risolvere per il riuso del progetto;
+non è una misura della conformità UML.
+
+## Primo incremento: versione 0.3.0
+
+1. Estendere la matrice e collegare i test esistenti (fase 1).
+2. Aggiungere il controllo dei risultati delle operazioni (fase 2).
+3. Completare il primo audit di CommonStructure e Values (fase 3).
+4. Pubblicare una release con queste evidenze prima di passare ai package dipendenti.
+
+Le stime di durata dei package si ricavano dal primo audit, mantenendo separati
+tempo di implementazione, verifica e risoluzione delle incongruenze della fonte.
+
+Il primo incremento aggiunge contratti sui risultati, estende la matrice ai metadati
+dell'XMI e collega esempi a tutti i 38 invarianti e alle query/derivazioni dichiarate
+in CommonStructure e Values. Sono corretti la sincronizzazione dei subset verso
+proprietà ridefinite e il controllo dei valori booleani computabili dei Constraint.
+150 test passano; il rapporto distingue verifiche nei casi dichiarati, incongruenze
+della fonte, obblighi contestuali e requisiti ancora da revisionare.
+
+Le fasi 1–3 restano aperte: mancano la scomposizione della prosa normativa aggiuntiva,
+la revisione degli estremi associativi, il ciclo di vita con cancellazione logica e
+gli audit degli altri package. Prossimo incremento: cancellazione logica e relative
+associazioni inverse, seguito da Classification e SimpleClassifiers. Le incongruenze
+di OpaqueExpression::result e dei flag firstEvent sono delimitate nel rapporto;
+non sono considerate risolte per dichiarare piena conformità.

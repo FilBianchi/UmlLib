@@ -18,6 +18,13 @@ Inherited definitions are counted once, at the declaring metaclass. Operation
 preconditions are implemented in the query functions. Abstract CallAction operations
 require a concrete override; they do not contain a fabricated body.
 
+The expanded matrix also records 549 stored class properties, 328 association-owned
+properties, 23 preconditions, 13 enumerations and 242 class descriptions. Signatures,
+property bounds/defaults/subsets/redefinitions, source bodies and comments are
+preserved. Review status is separate from registration and example linkage.
+No postconditions are declared in this core XMI. Additional normative PDF prose
+still needs decomposition into individual requirements; phase 1 is not closed.
+
 Registration coverage is not a correctness score. Predicates translated from prose
 and corrections to inconsistent formulas are project interpretations documented in
 SPECIFICATION_NOTES.md. In particular, runtime behavior and diagram placement cannot
@@ -50,7 +57,7 @@ Unknown expression languages are never implicitly accepted or executed.
 
 ## Behavioral verification
 
-117 tests cover class/package inventories and inheritance; atomic collection edits,
+150 tests cover class/package inventories and inheritance; atomic collection edits,
 reversal, ownership and cycles; stored subsets and inverse associations;
 names, alias imports and reexports; classifier inheritance and property redefinition;
 multiplicities and unlimited values; state and protocol machines; call signatures;
@@ -61,9 +68,25 @@ deployment manifestations, profiles and object flows through control nodes.
 The new audit adds valid, invalid and boundary examples for InformationFlow,
 InformationItem, PartDecomposition, Stereotype and Profile checks, plus runtime
 application lifecycle tests. Explicit `@verifies(...)` annotations link examples to
-18 specification rules in the JSON report. The other 431 class invariants do not
-yet have explicit links; older tests cover some of them. Neither a test count nor
+136 definition records in the JSON report, including properties and preconditions.
+All 27 CommonStructure invariants and 11 Values invariants, and their declared
+queries/derivations, have examples. Other invariants still need review and links;
+older tests cover some of them. Neither a test count nor
 these links constitute certification or exhaustive verification of each rule.
+
+Version 0.3.0 checks operation results and argument collections against UML
+signatures. A result violating type, bounds, ordering or uniqueness raises
+`OperationResultError`. Models may still be temporarily incomplete during
+construction; structural validation reports missing required properties. This
+increment does not add logical deletion or complete the remaining package audits.
+
+The CommonStructure/Values audit includes ownership changes, namespace/name absence,
+import collisions, redefined template subsets, multiplicity defaults and infinity,
+literal domains, ordered string concatenation and observation cardinalities.
+Foreign expression purity and constancy require analyzer facts. OpaqueExpression's
+generic integer queries retain the XMI's false body and reject unsatisfied
+preconditions; they do not execute Python/OCL text. Source issues are listed in
+SPECIFICATION_NOTES.md and flagged in the report.
 
 The audit now checks classifier conformance and disjoint channel ends (including
 n-ary and reflexive associations), exact part references, message/edge direction,

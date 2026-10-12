@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.3.0
+
+Native operation results now enforce declared types, multiplicity, ordering and
+uniqueness. Invalid results raise `umltools.OperationResultError`; arguments also
+enforce collection contracts before dispatch. Four nullable XMI signature/body
+inconsistencies have narrow, documented interpretations.
+
+Stored subsets now synchronize properties that redefine their declared supersets.
+This repairs classifier template parameters whose owned formal classifier previously
+had no effective templateParameter link. Constraint.boolean_value checks the actual
+Boolean query for computable values instead of accepting a misleading type annotation.
+
+The requirements report includes 549 stored properties, 328 association-owned
+properties, 23 preconditions, 13 enumerations, signatures, descriptions and review
+states in addition to operations, invariants and derivations. Additional normative
+PDF prose remains to be decomposed; the inventory is not a full conformance proof.
+
+150 tests pass. All 38 CommonStructure/Values invariants and their declared queries
+and derivations have linked examples, including invalid and boundary cases. The
+report has 136 records with behavioral examples, including links to earlier tests.
+Opaque execution, contradictory source definitions and future audit work remain
+explicit limitations. See SEMANTIC_COVERAGE.md and PLAN_CONFORMANCE.md.
+
 ## 0.2.0
 
 InformationFlow validation now checks classifier conformance, typed association ends,

@@ -5,6 +5,7 @@ from unittest.mock import patch
 import Uml
 from umltools import SPECIFICATIONS, UnsupportedSemanticsError
 from umltools.native import OPERATIONS, CONSTRAINTS
+from semantic_cases import verifies
 
 
 class NativeRuntimeTests(unittest.TestCase):
@@ -46,6 +47,7 @@ class NativeRuntimeTests(unittest.TestCase):
 
 
 class NativeNamingTests(unittest.TestCase):
+    @verifies('Namespace.members_distinguishable', 'NamedElement.qualifiedName', 'NamedElement.allNamespaces')
     def test_missing_names_and_duplicate_members(self):
         package = Uml.Package(name='P')
         one, two = Uml.Class(name='C'), Uml.Class(name='C')
@@ -57,6 +59,7 @@ class NativeNamingTests(unittest.TestCase):
         self.assertIsNone(one.qualifiedName)
         self.assertEqual(one.allNamespaces(), [package])
 
+    @verifies('ElementImport.getName', 'Namespace.importedMember', 'Namespace.getNamesOfMember')
     def test_import_alias_and_collision(self):
         source, destination = Uml.Package(name='Source'), Uml.Package(name='Destination')
         one, two = Uml.Class(name='C'), Uml.Class(name='C')
@@ -82,6 +85,7 @@ class NativeNamingTests(unittest.TestCase):
 
 
 class NativeInheritanceTests(unittest.TestCase):
+    @verifies('Classifier.allParents', 'Classifier.conformsTo', 'Classifier.allAttributes', 'Feature-featuringClassifier')
     def test_diamond_inheritance_and_visibility(self):
         base, left, right, leaf = [Uml.Class(name=name) for name in ('Base', 'Left', 'Right', 'Leaf')]
         left.generalization.append(Uml.Generalization(general=base))
@@ -98,6 +102,7 @@ class NativeInheritanceTests(unittest.TestCase):
         self.assertEqual(leaf.allAttributes(), [public])
         self.assertIs(public.featuringClassifier, base)
 
+    @verifies('Classifier.allParents', 'Classifier.no_cycles_in_generalization')
     def test_cycles_terminate_and_fail_invariant(self):
         one, two = Uml.Class(), Uml.Class()
         one.generalization.append(Uml.Generalization(general=two))
@@ -105,6 +110,7 @@ class NativeInheritanceTests(unittest.TestCase):
         self.assertIn(one, one.allParents())
         self.assertIn(('constraint', 'Classifier.no_cycles_in_generalization'), one.validate())
 
+    @verifies('Classifier.non_final_parents', 'Property.isConsistentWith')
     def test_final_parent_and_redefinition_bounds(self):
         base, child = Uml.Class(isFinalSpecialization=True), Uml.Class()
         child.generalization.append(Uml.Generalization(general=base))

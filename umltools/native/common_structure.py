@@ -51,7 +51,7 @@ def all_namespaces(self):
 @query('NamedElement.allOwningPackages')
 def all_owning_packages(self):
     # The specification follows consecutive enclosing Packages, not all namespaces.
-    if not kind(self, self.namespace, 'Package'): return None
+    if not kind(self, self.namespace, 'Package'): return []
     result, current = [], self.namespace
     while kind(self, current, 'Package'):
         result.append(current)
