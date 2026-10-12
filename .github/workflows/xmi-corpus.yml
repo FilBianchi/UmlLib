@@ -1,0 +1,20 @@
+name: Public XMI corpus
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  corpus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m scripts.verify_xmi_corpus --fetch --complex
+      - uses: actions/upload-artifact@v6
+        if: always()
+        with:
+          name: xmi-corpus-report
+          path: .build-tmp/xmi-corpus/report.json

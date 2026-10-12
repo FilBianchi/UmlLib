@@ -1304,7 +1304,7 @@
     {
       "priority": "P1",
       "area": "exchange",
-      "action": "Implement model XMI import/export after profile and adapter contracts stabilize."
+      "action": "Core/profile graph XMI exchange is implemented in the declared round-trip scenarios. Extend pinned integration samples and implement EMF URI fragments, custom value adapters, CMOF and vendor reference/layout adapters; keep decoding distinct from UML validation."
     },
     {
       "priority": "P2",

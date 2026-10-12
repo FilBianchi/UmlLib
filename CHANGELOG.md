@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.13.0
+
+UML XMI load/loads and dump/dumps support isolated graph import, resource-scoped IDs,
+forward/cyclic references, explicit offline resource maps, URI aliases and relative
+local files. Stored features, subset/redefined composite ends, typed profile values,
+inline Class composition and explicit empty/default distinctions round-trip.
+UmlLib profile namespace/context information is carried in an explicit XMI extension.
+Derived/readonly serialized features are checked; failed imports roll back external
+opposites, new objects and runtime application registries. DTD/entity declarations
+and configured resource limits are enforced.
+
+Strict/permissive decoding separates errors from retained opaque vendor XML and
+unsupported profile values. Queries are memoized only during stable exchange phases.
+336 unit tests pass, including 23 exchange scenarios. Pinned public Spring/Eclipse
+samples and an optional integration workflow record graph counts and diagnostics.
+Full XMI conformance, CMOF, EMF URI fragments, vendor layout/reference semantics and
+custom value adapters remain open. Parsing is separate from UML semantic validation.
+
 ## 0.12.0
 
 Runtime stereotype applications now expose typed tagged values with inherited/redefined

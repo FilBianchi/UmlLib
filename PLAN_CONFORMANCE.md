@@ -381,3 +381,19 @@ personalizzati, derivazioni/default non letterali, navigazione runtime non navig
 identità dei link ripetuti e interoperabilità CMOF. La fase profili è avanzata ma
 non dichiarata esaustiva. Prossimo incremento: contratto di scambio XMI con round-trip
 del core e dei valori runtime supportati, mantenendo esplicite le estensioni non gestite.
+
+## Undicesimo incremento: versione 0.13.0
+
+Import/export UML XMI: sessioni isolate, ID per risorsa, riferimenti avanti/ciclici,
+file locali e mappe esterne esplicite, alias di URI e rollback. Proprietà memorizzate,
+estremi compositi effettivi, profili e valori runtime supportati superano il round-trip.
+Un'estensione XMI UmlLib descrive binding dei namespace e contesti dei valori runtime.
+336 test passano, con 23 scenari di scambio. Il corpus pubblico è fissato a revisioni
+e checksum, con verifiche distinte dei modelli Spring e delle limitazioni Ecore/Eclipse.
+
+Lo scambio è un ambito implementato nei casi dichiarati, non una certificazione XMI.
+Restano frammenti URI EMF/XPointer, CMOF, adattatori di primitive/espressioni e layout
+vendor/UMLDI. Le estensioni opache conservate non ricevono una riscrittura generica dei
+riferimenti proprietari. I callback Python non sono trasportati. La validazione UML
+rimane separata dalla decodifica XML. Prossimo lavoro: adattatori Ecore mirati e ulteriori
+fixture MIWG per consolidare l'interoperabilità prima dell'ambito UMLDI.

@@ -17585,7 +17585,8 @@
         "test_profile_values.ProfileValueCases.test_explicit_references_override_metamodel_and_disjoint_strict_filters_roll_back",
         "test_profile_values.ProfileValueCases.test_invalid_strict_argument_leaves_no_application_or_extent_leak",
         "test_profile_values.ProfileValueCases.test_metamodel_and_imported_stereotype_references_and_extended_subtypes",
-        "test_profile_values.ProfileValueCases.test_strict_view_does_not_delete_existing_elements_and_factory_rejects_hidden_types"
+        "test_profile_values.ProfileValueCases.test_strict_view_does_not_delete_existing_elements_and_factory_rejects_hidden_types",
+        "test_xmi.XmiCases.test_profile_definitions_typed_runtime_values_composition_and_strictness_roundtrip"
       ],
       "structural_sweeps": [
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
@@ -17966,7 +17967,13 @@
         "test_profile_values.ProfileValueCases.test_runtime_reference_cleanup_after_base_and_schema_deletion",
         "test_profile_values.ProfileValueCases.test_scalar_defaults_types_required_values_and_atomic_bulk_update",
         "test_profile_values.ProfileValueCases.test_schema_deletion_invalidates_runtime_values_without_losing_model",
-        "test_profile_values.ProfileValueCases.test_user_constraints_callbacks_boolean_contract_and_mutation_guard"
+        "test_profile_values.ProfileValueCases.test_user_constraints_callbacks_boolean_contract_and_mutation_guard",
+        "test_xmi.XmiCases.test_explicit_empty_tags_override_literal_defaults",
+        "test_xmi.XmiCases.test_failed_runtime_import_restores_external_base_application_registry",
+        "test_xmi.XmiCases.test_inline_composite_profile_value_and_readonly_construction_tag",
+        "test_xmi.XmiCases.test_profile_definitions_typed_runtime_values_composition_and_strictness_roundtrip",
+        "test_xmi.XmiCases.test_unsupported_custom_primitive_tag_is_retained_in_permissive_mode",
+        "test_xmi.XmiCases.test_user_constraint_text_survives_but_python_callbacks_are_not_serialized"
       ],
       "verification": "linked behavioral examples",
       "review": "partial",

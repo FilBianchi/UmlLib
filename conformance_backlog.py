@@ -42,7 +42,7 @@ def backlog():
                     dict(priority='P0', area='structural contracts', action='Extend STRUCTURAL_AUDIT.md declaration sweeps/family scenarios to per-association/end semantics, subtype combinations and broader mutation sequences; cross-session references are allowed but diagnosed.'),
                     dict(priority='P0', area='additional prose', action='Decompose the 242 class descriptions and additional normative prose into atomic requirements; counts of XMI definitions alone cannot close this scope.'),
                     dict(priority='P1', area='profiles', action='Typed tags, binary navigable associations, strict views and trusted user-constraint integration are implemented. Complete custom value/expression adapters, non-navigable navigation, non-UML metaclasses and CMOF/exchange semantics.'),
-                    dict(priority='P1', area='exchange', action='Implement model XMI import/export after profile and adapter contracts stabilize.'),
+                    dict(priority='P1', area='exchange', action='Core/profile graph XMI exchange is implemented in the declared round-trip scenarios. Extend pinned integration samples and implement EMF URI fragments, custom value adapters, CMOF and vendor reference/layout adapters; keep decoding distinct from UML validation.'),
                     dict(priority='P2', area='diagram exchange', action='Implement StandardProfile/UMLDI and preserve diagram metadata separately from core model semantics.')])
 
 

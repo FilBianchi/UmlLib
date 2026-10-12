@@ -1,11 +1,34 @@
 """Dispatch explicitly translated Python operations and derived properties."""
 import xml.etree.ElementTree as ET
+from contextvars import ContextVar
 from .specification import PROPERTY_RELATIONS
 from .native import invoke, DERIVATIONS, NativeNotImplemented, unique
 from .contracts import validate_parameter, validate_result
 
+# Import-only memoization after the core graph is linked. Normal mutable model
+# queries are never cached. The XMI reader suspends/clears this on late resource loads.
+_exchange_query_cache = ContextVar('uml_exchange_query_cache', default=None)
+
+
+def _cached_query(key, function):
+    cache = _exchange_query_cache.get()
+    try: hash(key)
+    except TypeError: cache = None
+    if cache is not None and key in cache:
+        result = cache[key]
+        return list(result) if isinstance(result, list) else result
+    result = function()
+    if cache is not None: cache[key] = list(result) if isinstance(result, list) else result
+    return result
+
 
 def operation(self, owner, name, args=(), kwargs=None):
+    self._ensure_alive()
+    return _cached_query(('operation', self, owner, name, tuple(args), tuple(sorted((kwargs or {}).items()))),
+                         lambda: _operation(self, owner, name, args, kwargs))
+
+
+def _operation(self, owner, name, args=(), kwargs=None):
     self._ensure_alive()
     kwargs = kwargs or {}
     spec = next(base.__dict__['__spec__'] for base in type(self).__mro__ if '__spec__' in base.__dict__ and base.__dict__['__spec__'].name == owner)
@@ -28,6 +51,11 @@ def operation(self, owner, name, args=(), kwargs=None):
 
 
 def derive(self, prop):
+    self._ensure_alive()
+    return _cached_query(('derive', self, prop.id), lambda: _derive(self, prop))
+
+
+def _derive(self, prop):
     if prop.id in DERIVATIONS: return DERIVATIONS[prop.id](self)
     if prop.id == 'Element-owner': return self._container
     if prop.id == 'Element-ownedElement':

@@ -391,6 +391,16 @@ No Python evaluation path treats an untranslated definition as satisfied.
   Unknown OCL/default/derived expressions remain unsupported rather than guessed.
 - Prose-only runtime/layout rules are checked to the extent represented by core UML.
   Missing language facts or occurrence mappings remain explicit unsupported obligations.
+- Model exchange implements the represented UML subset of XMI 2.5.1 sections 7.6,
+  7.8 and 7.10: resource-local IDs, QName types, attribute/element values, containment
+  and reference links. Readonly/derived assertions are verified after reconstruction.
+  This does not implement every XMI optional compliance point or CMOF mapping.
+  Source namespace aliases are compatibility inputs, not metamodel migration proofs.
+- Runtime profile namespace/context bindings are recorded in an explicit UmlLib
+  XMI Extension. This extension supports Class/DataType instance lifecycle on reload;
+  it is not claimed to be a portable substitute for every tool's profile machinery.
+  Opaque XML is retained without understanding vendor references/layout. Generic
+  reference remapping inside unknown extensions remains an external adapter obligation.
 - `Classifier-directlyUsedInterfaces`: the formula traverses supplierDependency and
   returns clients. Python follows the Usage definition (the client requires the supplier)
   and traverses Usage dependencies whose client is the classifier, returning Interface

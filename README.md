@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.12.0/umllib-0.12.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.13.0/umllib-0.13.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -71,7 +71,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.12.0 suite has 313 tests.
+invariants, two queries and one derivation. The 0.13.0 suite has 336 tests.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -271,9 +271,9 @@ absence of external side effects. Arbitrary OCL text is never executed.
 
 Custom primitive types, derived tags and nonliteral defaults require future explicit
 value evaluators and report unsupported. Association-owned non-navigable runtime
-navigation, repeated links requiring distinct link identities, CMOF interoperability
-and runtime value serialization remain open; these examples do not prove exhaustive
-profile conformance.
+navigation, repeated links requiring distinct link identities and CMOF interoperability
+remain open. XMI exchange covers supported runtime values as described below;
+these examples do not prove exhaustive profile conformance.
 
 ### Strict profile views
 
@@ -286,6 +286,90 @@ are preserved. Explicit metaclass references override metamodel references; impo
 profiles and extended metaclass subtypes contribute to availability. Disjoint strict
 views are rejected by `apply_profile` and diagnosed by validation after direct edits.
 Public imports govern stereotype visibility. Non-UML metaclasses need an adapter.
+
+## XMI import and export
+
+```python
+from umltools.xmi import load, loads, dump, dumps
+
+document = load("model.uml")
+model = document.roots[0]
+print(document.complete, document.diagnostics)
+print(model.validate(recursive=True))
+
+model.name = "Updated"
+dump(document, "updated.xmi")
+restored = loads(dumps(document))
+```
+
+The filename extension can be `.uml` or `.xmi`. Imports allocate all UML objects
+before linking references, use an isolated ModelSession and retain resource-local
+`xmi:id` identities. `document.resolve("id")` retrieves a local object;
+`document.resolve("other.uml#id")` resolves a resource-qualified reference.
+`resource_roots` contains roots of all loaded files; `roots` contains the entry file's
+roots. Forward/cyclic links, containment, scalar/collection values, enumeration values,
+UUID metadata and stored subset/redefined ends are supported. Serialized derived and
+readonly features are checked against the reconstructed graph rather than overwritten.
+Incomplete UML models are allowed; decoding successfully does not mean validate passes.
+
+`load` resolves relative local files beneath the entry file's directory. Network,
+`pathmap://` and other external resources require explicit mappings:
+
+```python
+from pathlib import Path
+
+document = load("model.uml", resources={
+    "pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml":
+        Path("libraries/UMLPrimitiveTypes.library.uml"),
+})
+```
+
+`loads` resolves no local files automatically. Its `resources` values can be XML
+bytes/text or Paths; `external_objects` maps absolute `URI#id` references to existing
+UML objects. URI aliases mapped to the same physical Path share object identities.
+Namespaces are resolved from XML declarations, including QName-valued `xmi:type`
+and `xsi:type` and nested prefix rebinding. Common OMG UML and Eclipse UML2 namespace
+forms are accepted for features represented by the 2.5.1 metadata; this is not a
+general migration guarantee for older metamodels. EMF positional/named URI fragments,
+XPointer, CMOF documents and arbitrary non-UML metamodels remain unsupported.
+
+Strict mode is the default: unknown classes/features, missing references, illegal
+values and conflicting explicit links raise XmiError (with reference/unsupported
+subclasses). A failed import rolls back changes to existing external objects and
+removes new UML/runtime instances. `strict=False` permits partial decoding with
+resource/ID/feature diagnostics. Unsupported profile values and unknown XML/vendor
+extensions are retained as opaque XML when exporting the **document**, not merely
+its roots. Opaque vendor semantics, their custom reference encodings and layout are
+not interpreted or remapped. Structurally invalid inputs are not automatically repaired.
+`complete` indicates no recorded decoding/extension gaps, not UML/XMI certification.
+
+Export bundles the closure of stored references, composite descendants, owners and
+supported runtime profile values into one file. IDs remain stable when unique and
+are remapped on collisions between source files. Export omits derived caches and
+chooses one effective composite containment feature per child. With `bundle=False`,
+external targets need imported identities or `external_references={object: "URI#id"}`.
+This preserves external links; it is not an automatic rewrite of a multi-file project.
+
+Profile applications use namespaced stereotype elements with base links and typed
+tags; inline profile Class composition and separate shared runtime instances are
+supported. Explicit empty values preserve the distinction from literal defaults.
+An XMI Extension named UmlLib records profile namespace bindings and package contexts
+for runtime Class/DataType objects. Other tools may need an adapter for this metadata.
+User-defined Python callbacks and analyzer/gate mappings are not serialized. OCL text
+is retained as text and never executed. Custom primitive adapters such as Ecore EString,
+derived runtime tags and arbitrary default evaluators remain explicit limitations.
+
+The reader rejects DTD/entity declarations and has configurable byte, element and
+depth limits. Model queries are memoized only during stable exchange phases; ordinary
+mutable model queries keep their existing behavior.
+
+Public integration samples have pinned URLs and SHA-256 hashes in
+[scripts/xmi-corpus.json](scripts/xmi-corpus.json). Run the offline cache verification
+with `python -m scripts.verify_xmi_corpus`; add `--fetch` to download sources explicitly,
+and `--complex` to include Eclipse with its external profiles/libraries. The separate
+Public XMI corpus workflow publishes a detailed diagnostic report. Small authored
+graph/profile/failure cases run in ordinary CI without network access.
+See [XMI_CORPUS.md](XMI_CORPUS.md) for the verified counts and their scope.
 
 ## Interaction boundary mappings
 

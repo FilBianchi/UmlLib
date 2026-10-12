@@ -163,6 +163,15 @@ with ModelSession():
     constraint=Uml.Constraint(name='positive'); stereotype.ownedRule.append(constraint)
     register_profile_constraint(constraint,lambda app:app.get_value('count')>0)
     assert application.validate()==[]
+    from umltools.xmi import loads,dumps
+    from umltools.stereotypes import applications
+    exchanged=loads(dumps(model))
+    restored_model=next(root for root in exchanged.roots if root.__spec__.name=='Model' and root.profileApplication)
+    restored_application=applications(restored_model.packagedElement[0])[0]
+    assert restored_application.get_value('count')==3
+    assert restored_application.get_value('child').classifier.name=='Payload'
+    assert restored_model.profileApplication[0].isStrict
+    assert any(category=='unsupported stereotype application' for category,_ in restored_application.validate())
     unapply_profile(model,profile)
     assert application.is_deleted and value.is_deleted
     assert not model.packagedElement[0].is_deleted

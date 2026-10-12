@@ -1,0 +1,100 @@
+[
+  {
+    "name": "simple-machine.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/docs/src/reference/asciidoc/samples/simple-machine.uml",
+    "sha256": "d3281692ddc59330b46c28efe6cb1411c89bd8e2b304d38f07bf025c8ff998bb",
+    "bytes": 1339,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "ShowcaseMachine.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/spring-statemachine-build-tests/src/test/resources/org/springframework/statemachine/buildtests/tck/uml/ShowcaseMachine.uml",
+    "sha256": "5f9f454520c106e2597cf7f724a10c2636e8631f9a8456f9ae27bfbdf5578acf",
+    "bytes": 13245,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "simple-submachine.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/spring-statemachine-uml/src/test/resources/org/springframework/statemachine/uml/simple-submachine.uml",
+    "sha256": "772b3e64b24a1ea14dfe928c87c042002eb3b4c4692b7d48785b613a34762e60",
+    "bytes": 2372,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "simple-submachineref.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/spring-statemachine-uml/src/test/resources/org/springframework/statemachine/uml/simple-submachineref.uml",
+    "sha256": "1a3641e69ffad0feecbe0c69467b1fc2ca6b99317f36dacefed9735d4525a222",
+    "bytes": 4170,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "Bug497359.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/tests/org.eclipse.uml2.uml.tests/src/org/eclipse/uml2/uml/bug/tests/Bug497359.uml",
+    "sha256": "109028599c82e9dc731387a98bd4ed05878a870ea106c8748efbc89a770174b3",
+    "bytes": 75371,
+    "repository": "eclipse-uml2/uml2"
+  },
+  {
+    "name": "UML.metamodel.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/plugins/org.eclipse.uml2.uml.resources/metamodels/UML.metamodel.uml",
+    "sha256": "b6bdb65bc091e48b62c65eb582d80e09919beaf6184390d0beeaaead8ccbf790",
+    "bytes": 1645097,
+    "repository": "eclipse-uml2/uml2"
+  },
+  {
+    "name": "UMLPrimitiveTypes.library.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/plugins/org.eclipse.uml2.uml.resources/libraries/UMLPrimitiveTypes.library.uml",
+    "sha256": "b0ef5a2c04e118a25120e7f64fc9a0efe25754de10f702f3cb91e873154509d0",
+    "bytes": 4024,
+    "repository": "eclipse-uml2/uml2"
+  },
+  {
+    "name": "Standard.profile.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/plugins/org.eclipse.uml2.uml.resources/profiles/Standard.profile.uml",
+    "sha256": "85825e72ee2ff95c48ebb1eb6adbf2fb51b03521d69cac39c64a752acad234f7",
+    "bytes": 51293,
+    "repository": "eclipse-uml2/uml2"
+  },
+  {
+    "name": "Ecore.metamodel.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/plugins/org.eclipse.uml2.uml.resources/metamodels/Ecore.metamodel.uml",
+    "sha256": "a303c8833c716948202a35fda0ca5f1135e10f7f81fcb23013ba1941620f6ac4",
+    "bytes": 100007,
+    "repository": "eclipse-uml2/uml2"
+  },
+  {
+    "name": "Ecore.profile.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/plugins/org.eclipse.uml2.uml.resources/profiles/Ecore.profile.uml",
+    "sha256": "327c2c73e07a1ddeff172e0ad167c2224accb46d5b16942a57e329ae8c171ac9",
+    "bytes": 133988,
+    "repository": "eclipse-uml2/uml2"
+  },
+  {
+    "name": "ordershipping.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/spring-statemachine-samples/ordershipping/src/main/resources/ordershipping.uml",
+    "sha256": "734fc6a50e7d30d7c8494783fb9994b0961d3251cff103cd4b063a7985c14125",
+    "bytes": 11125,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "multijoin-forkjoin.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/spring-statemachine-uml/src/test/resources/org/springframework/statemachine/uml/multijoin-forkjoin.uml",
+    "sha256": "29e992ef55412356eac33a57d71ae5a6b9c917f45c5941de30c079d7d2a79293",
+    "bytes": 5375,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "linked-regions.uml",
+    "url": "https://raw.githubusercontent.com/spring-attic/spring-statemachine/b78817dd691c70760fa428db5ae1bb133ea73380/spring-statemachine-build-tests/src/test/resources/org/springframework/statemachine/buildtests/linked-regions.uml",
+    "sha256": "5d237b71d5aa3ebe61b27c6683921db3bbd196c515b9d43c7d4fddc00ca72cff",
+    "bytes": 9178,
+    "repository": "spring-attic/spring-statemachine"
+  },
+  {
+    "name": "EcorePrimitiveTypes.library.uml",
+    "url": "https://raw.githubusercontent.com/eclipse-uml2/uml2/94fcae32ce92207a4930b75dbc847b2c88d5d775/plugins/org.eclipse.uml2.uml.resources/libraries/EcorePrimitiveTypes.library.uml",
+    "sha256": "788b295e17c7609431280dff321fb4aa215480be476df15ee8e3440c2540b88d",
+    "bytes": 7045,
+    "repository": "eclipse-uml2/uml2"
+  }
+]
