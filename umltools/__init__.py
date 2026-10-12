@@ -225,6 +225,8 @@ class UmlElement:
                         issues.append(('unsupported constraint', identifier))
                     except (TypeError, ValueError, AttributeError, IndexError, ZeroDivisionError):
                         issues.append(('invalid constraint', identifier))
+        from .static_requirements import validate_static
+        issues.extend(validate_static(self))
         from .stereotypes import validate_applications
         try: issues.extend(validate_applications(self))
         except (NativeNotImplemented, UnsupportedSemanticsError):

@@ -28,6 +28,7 @@ jobs:
           cd "$RUNNER_TEMP"
           python smoke_install.py
       - run: python semantic_report.py && git diff --exit-code -- semantic-report.json
+      - run: python conformance_backlog.py && git diff --exit-code -- conformance-backlog.json CONFORMANCE_BACKLOG.md
       - name: Publish versioned download assets
         env:
           GH_TOKEN: ${{ github.token }}

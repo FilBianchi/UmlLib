@@ -41,3 +41,15 @@ class ReportCases(unittest.TestCase):
         self.assertEqual(records['Message.signature_is_operation_reply']['review'], 'partial')
         self.assertEqual(records['Node.internal_structure']['review'], 'source inconsistency')
         self.assertEqual(records['DeploymentTarget.deployedElement']['review'], 'partial')
+        self.assertEqual(records['prose:Message.reply_argument_types']['verification'], 'linked behavioral examples')
+        self.assertIn('prose:ObjectFlow.selection_types', records['ObjectFlow.input_and_output_parameter']['static_supplements'])
+
+    def test_known_gap_census_distinguishes_workstreams_and_implemented_supplements(self):
+        from conformance_backlog import backlog
+        result = backlog()
+        self.assertIn('not a complete UML requirement census', result['scope'])
+        limitations = {r['id']: r for r in result['known_limitations']}
+        self.assertEqual(limitations['ObjectFlow-transformation_behavior']['area'], 'behavior evidence')
+        self.assertEqual(limitations['DecisionNode-two_input_parameters']['area'], 'token-type evidence')
+        self.assertIn('prose:DeploymentTarget.resolved_elements', limitations['DeploymentTarget-deployedElement']['static_supplements'])
+        self.assertTrue(all(entry['tests'] for entry in result['supplemental_checks']))

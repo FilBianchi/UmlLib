@@ -323,3 +323,22 @@ Artifact della fonte: l'espansione delle istanze e dei nested artifact resta par
 Prossimo lavoro P0: decomporre i requisiti residui di prosa e contratti strutturali,
 poi chiudere le lacune statiche del core in ordine verificabile; le fasi di profili
 completi, adattatori, scambio XMI e UMLDI rimangono distinte e aperte.
+
+## Ottavo incremento: versione 0.10.0
+
+Censimento operativo delle limitazioni note generato in CONFORMANCE_BACKLOG.md e
+conformance-backlog.json: priorità, fonte, prossima azione, porzione già coperta dai
+controlli supplementari. Non è ancora il censimento completo della prosa normativa.
+CI e release verificano la riproducibilità del censimento e della matrice.
+
+Cinque requisiti statici supplementari sono integrati in validate(): tipi delle
+selezioni/trasformazioni, ordine e tipi degli input delle decisioni, valori delle
+reply e Component manifestati da deployment configurati di istanze di Artifact.
+Il resolver deployed_elements espande le manifestazioni dirette dei classificatori
+Artifact delle istanze; la derivazione XMI originale rimane separata e invariata.
+280 test passano; 763 record hanno esempi espliciti.
+
+Le evidenze mancanti sui tipi dei token restano unsupported. La purity dei Behavior,
+gli Artifact annidati/ereditati, gli slot e le copie runtime non sono provati da questi
+controlli. Prossimo P0: audit per famiglie dei contratti strutturali e decomposizione
+dei requisiti di prosa residui; le interpretazioni XMI/prosa restano da riconciliare.

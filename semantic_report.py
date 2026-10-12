@@ -9,6 +9,7 @@ from umltools import SPECIFICATIONS, REGISTRY
 from umltools.native import OPERATIONS, CONSTRAINTS, DERIVATIONS
 from umltools.specification import XMI, reference
 from umltools.contracts import SIGNATURE_INTERPRETATIONS, multiplicity
+from umltools.static_requirements import REQUIREMENTS, SUPPLEMENTAL_QUERIES
 
 
 AUDIT_LIMITS = {
@@ -87,21 +88,21 @@ PARTIAL = {
     'ProfileApplication-isStrict': 'The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.',
     'Stereotype': 'Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.',
     'ProtocolConformance': 'Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.',
-    'DeploymentTarget-deployedElement': 'The XMI selects Artifact objects and their direct manifestations only. Instances classified by Artifacts and nested-artifact deployment interpretation are not expanded; the query is not proof of all deployed runtime elements.',
-    'DeploymentSpecification-deployed_elements': 'The declared predicate checks the target deployedElement derivation. Its Artifact-only source filter can make configured artifact-instance deployments vacuously pass; complete runtime artifact-instance semantics remains open.',
+    'DeploymentTarget-deployedElement': 'The XMI query retains its Artifact-only filter. The supplemental deployed_elements resolver expands direct manifestations of modeled Artifact classifiers/instances. Nested-artifact, inherited-manifestation, slot and runtime-copy semantics remain open.',
+    'DeploymentSpecification-deployed_elements': 'The XMI predicate retains the Artifact-only derivation. validate() additionally checks prose:DeploymentSpecification.configured_instance_elements using modeled Artifact instances. Nested-artifact and runtime-copy semantics remain open.',
     'Continuation-same_name': 'Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.',
-    'Message-signature_is_operation_reply': 'The XMI checks the first operand only for nonempty Expression arguments; direct values pass vacuously. Python preserves this body, which does not prove all argument types in the broader prose.',
+    'Message-signature_is_operation_reply': 'The XMI predicate is preserved, including vacuous direct values. validate() additionally enforces prose:Message.reply_argument_types on direct typed values, first expression operands and wildcards; arbitrary expression evaluation remains outside this check.',
     'Message-sending_receiving_message_event': 'The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented.',
     'InteractionConstraint-dynamic_variables': 'Trusted reference facts are checked against represented covered lifeline roles/types, interaction parameters/context attributes and read-only Properties. Full runtime ownership/global/write-once semantics remains a project approximation.',
     'InteractionConstraint-global_data': 'Trusted reference facts and represented read-only Properties are supported. Arbitrary domain global/write-once storage semantics is not represented by core UML and is not proved.',
     'InteractionOperand-guard_contain_references': 'Trusted guard reference facts are checked against represented operand coverage/context. General domain-global and write-once facts remain incomplete.',
     'InteractionOperand-guard_directly_prior': 'Guard composite ownership is checked. Graphical placement immediately above a fragment requires UMLDI/layout semantics and is not proved.',
     'ObjectNode-input_output_parameter': 'Input/output counts, multiplicities and nominal type variance are checked (with a documented source-body correction). Absence of side effects of the selection Behavior is not proved.',
-    'ObjectFlow-input_and_output_parameter': 'The declared OCL parameter counts and input bounds are checked. Additional prose requirements for selection parameter types and absence of side effects remain open.',
-    'ObjectFlow-transformation_behavior': 'The declared OCL parameter counts are checked. Additional prose requirements for transformation input/output types and absence of side effects remain open.',
-    'DecisionNode-two_input_parameters': 'The declared OCL input count is checked. Corresponding token-type conformance from both incoming flows remains an additional prose obligation.',
-    'DecisionNode-incoming_control_one_input_parameter': 'The declared OCL input count is checked. Token-type conformance from decisionInputFlow remains an additional prose obligation.',
-    'DecisionNode-incoming_object_one_input_parameter': 'The declared OCL input count is checked. Token-type conformance from the incoming ObjectFlow remains an additional prose obligation.',
+    'ObjectFlow-input_and_output_parameter': 'The XMI count/bounds predicate is preserved. validate() additionally enforces selection input/output types through prose:ObjectFlow.selection_types. Behavior purity remains an external evidence obligation.',
+    'ObjectFlow-transformation_behavior': 'The XMI count predicate is preserved. validate() additionally enforces upstream/input and output/downstream conformance through prose:ObjectFlow.transformation_types. Behavior purity remains an external evidence obligation.',
+    'DecisionNode-two_input_parameters': 'The XMI count predicate is preserved. validate() additionally enforces ordered regular/decision-flow input types through prose:DecisionNode.input_types; unrepresented token types remain unsupported.',
+    'DecisionNode-incoming_control_one_input_parameter': 'The XMI count predicate is preserved. validate() additionally enforces decisionInputFlow token-type conformance through prose:DecisionNode.input_types; unrepresented types remain unsupported.',
+    'DecisionNode-incoming_object_one_input_parameter': 'The XMI count predicate is preserved. validate() additionally enforces the sole object input type through prose:DecisionNode.input_types; unrepresented types remain unsupported.',
 }
 
 
@@ -206,6 +207,12 @@ def report():
                                 association=node.get('association'), aggregation=node.get('aggregation', 'none'),
                                 subsets=[n.get(XMI+'idref') for n in node.findall('subsettedProperty')],
                                 redefines=[n.get(XMI+'idref') for n in node.findall('redefinedProperty')]))
+    for category, definitions in (('supplemental requirement', REQUIREMENTS), ('supplemental query', SUPPLEMENTAL_QUERIES)):
+        for identifier, definition in definitions.items():
+            records.append(dict(id=identifier, name=identifier, package=SPECIFICATIONS[definition['owner']].package,
+                                kind=category, status='native Python', descriptions=[definition['description']], expressions=[],
+                                normative_reference=definition['source'],
+                                implementation=definition['function'].__module__+'.'+definition['function'].__name__))
     counts = {category: dict(Counter(record['status'] for record in records if record['kind'] == category))
               for category in sorted({record['kind'] for record in records})}
     known = {key for record in records for key in (record.get('name'), record['id']) if key}
@@ -226,7 +233,9 @@ def report():
             record['review'], record['limitation'] = 'partial', PARTIAL[record['id']]
         if name in CONTEXT_LIMITS:
             record['review'], record['limitation'] = 'context dependent', CONTEXT_LIMITS[name]
-        record['source'] = 'umltools/data/UML.xmi#' + record['id']
+        record['source'] = 'umltools/data/UML.xmi#' + record.get('normative_reference', record['id'])
+        record['static_supplements'] = [identifier for identifier, definition in {**REQUIREMENTS, **SUPPLEMENTAL_QUERIES}.items()
+                                       if record['id'] in (definition['source'], *definition.get('additional_sources', ())) and identifier != record['id']]
         if source_id_counts.get(record['id'], 0) > 1:
             record['source_id_ambiguous'] = True
             record['source_disambiguation'] = record.get('name')

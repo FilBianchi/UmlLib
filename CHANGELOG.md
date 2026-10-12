@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.10.0
+
+Five supplemental static prose requirements are integrated into validate(), preserving
+the 449 declared XMI predicates. They check selection/transformation variance along
+control-node paths (including intervening transformations), ordered decision token
+inputs, direct reply argument types and configured Artifact-instance manifestations.
+Unknown token evidence is unsupported; failures use stable prose: identifiers.
+
+The additive deployed_elements resolver unions direct manifestations of Artifact
+objects and Artifact classifiers of modeled instances. Invalid deployed instances
+cannot make configured-instance validation pass vacuously. Source deployedElement
+behavior is preserved; nested/inherited artifacts, slots and runtime copies remain open.
+
+An operational census of known limitations is generated into CONFORMANCE_BACKLOG.md
+and conformance-backlog.json, with priority, source, next action and implemented
+supplemental links. CI and release builds check its reproducibility.
+280 tests pass; 763 definition records have examples, including five supplemental
+requirements and one resolver. Behavior purity and broader normative/structural
+requirements remain explicit work rather than inferred from static type checks.
+
 ## 0.9.0
 
 UseCases, Deployments and InformationFlows have examples for 18 invariants, two

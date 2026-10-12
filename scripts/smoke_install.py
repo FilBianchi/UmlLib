@@ -95,4 +95,18 @@ with ModelSession():
     artifact = Uml.Artifact(manifestation=[Uml.Manifestation(utilizedElement=component)])
     environment = Uml.ExecutionEnvironment(deployment=[Uml.Deployment(deployedArtifact=[artifact])])
     assert environment.deployedElement == [component]
+from umltools.static_requirements import deployed_elements
+with ModelSession():
+    wrong = Uml.Class()
+    artifact = Uml.Artifact(manifestation=[Uml.Manifestation(utilizedElement=wrong)])
+    instance = Uml.InstanceSpecification(classifier=[artifact])
+    configuration = Uml.DeploymentSpecification()
+    target = Uml.ExecutionEnvironment(deployment=[Uml.Deployment(deployedArtifact=[instance], configuration=[configuration])])
+    assert target.deployedElement == []
+    assert deployed_elements(target) == [wrong]
+    assert ('constraint', 'prose:DeploymentSpecification.configured_instance_elements') in configuration.validate()
+    signature = Uml.Operation(ownedParameter=[Uml.Parameter(type=wrong, direction=Uml.ParameterDirectionKind.return_)])
+    reply = Uml.Message(signature=signature, messageSort=Uml.MessageSort.reply, argument=[Uml.LiteralInteger(type=Uml.Class())])
+    assert check(reply, 'Message.signature_is_operation_reply')
+    assert ('constraint', 'prose:Message.reply_argument_types') in reply.validate()
 print('Installed UmlLib', version('UmlLib'))

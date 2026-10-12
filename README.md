@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.9.0/umllib-0.9.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.10.0/umllib-0.10.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -69,7 +69,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.9.0 suite has 273 tests.
+invariants, two queries and one derivation. The 0.10.0 suite has 280 tests.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -82,6 +82,28 @@ global/write-once storage semantics remain open obligations.
 Artifact-instance deployment semantics remains partial: the deployedElement query
 preserves the XMI's Artifact-only filter. Additional prose/structural requirements,
 source divergences, profiles, XMI model exchange and UMLDI remain separate conformance work.
+
+Five supplemental static prose checks now run automatically in `validate()`, with
+identifiers prefixed `prose:`: selection/transformation token types, ordered decision
+input types, reply argument types and configured Artifact-instance manifestations.
+Unknown token types produce `unsupported constraint` rather than a successful check.
+The 449 XMI predicates remain independently inspectable through `umltools.native.check`;
+a passing XMI predicate may still have a failing supplemental requirement.
+
+```python
+from umltools.static_requirements import check_static, deployed_elements
+
+issues = model.validate(recursive=True)  # Includes supplemental requirements.
+elements = deployed_elements(Uml.ExecutionEnvironment())
+```
+
+`deployed_elements(target)` unions direct manifestations of deployed Artifact objects
+and modeled instances' Artifact classifiers. It does not infer nested artifacts,
+inherited manifestations, slot overrides or runtime copies. The source-derived
+`target.deployedElement` retains the XMI's Artifact-only interpretation.
+`CONFORMANCE_BACKLOG.md` and `conformance-backlog.json` list known limitations,
+priorities and next actions. Regenerate them with `python conformance_backlog.py`;
+CI verifies reproducibility. This census does not replace decomposition of all normative prose.
 
 `validate()` returns `(category, specification_id)` issues: `multiplicity`,
 `constraint`, `invalid constraint`, `unsupported constraint`, `invalid derivation`,

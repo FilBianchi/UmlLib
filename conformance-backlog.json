@@ -1,0 +1,1315 @@
+{
+  "scope": "Known limitations explicitly recorded in the semantic matrix. Additional normative prose and structural metadata need separate requirement decomposition; this is not a complete UML requirement census.",
+  "priorities": {
+    "P0": 78,
+    "P1": 23
+  },
+  "known_limitations": [
+    {
+      "id": "ActionInputPin-no_control_or_object_flow",
+      "name": "ActionInputPin.no_control_or_object_flow",
+      "package": "Actions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source unions fromAction.incoming with the receiving pin outgoing. Python checks fromAction.outgoing as the producer-isolation prose requires.",
+      "source": "umltools/data/UML.xmi#ActionInputPin-no_control_or_object_flow",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ConditionalNode-clause_no_predecessor",
+      "name": "ConditionalNode.clause_no_predecessor",
+      "package": "Actions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source closure rejects ordinary acyclic predecessors within the same node. Python rejects predecessor cycles, preserving the project interpretation used for clause sequencing.",
+      "source": "umltools/data/UML.xmi#ConditionalNode-clause_no_predecessor",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "LinkEndCreationData-allPins",
+      "name": "LinkEndCreationData.allPins",
+      "package": "Actions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source including(insertAt) includes null when the optional insertion pin is absent. Python omits absent pins, matching the description and non-null result element contract.",
+      "source": "umltools/data/UML.xmi#LinkEndCreationData-allPins",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "LinkEndCreationData-insertAt_pin",
+      "name": "LinkEndCreationData.insertAt_pin",
+      "package": "Actions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source not isReplaceAll=false reverses the guard. Python requires an insertion pin when an ordered end is not replacing all values, according to the prose.",
+      "source": "umltools/data/UML.xmi#LinkEndCreationData-insertAt_pin",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "LinkEndDestructionData-allPins",
+      "name": "LinkEndDestructionData.allPins",
+      "package": "Actions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source including(destroyAt) includes null when the optional destruction pin is absent. Python omits absent pins, matching the description and non-null result element contract.",
+      "source": "umltools/data/UML.xmi#LinkEndDestructionData-allPins",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ActivityPartition-represents_property",
+      "name": "ActivityPartition.represents_property",
+      "package": "Activities",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source tests the partition owner against the represented classifier. Python tests the represented Property owner as required by the prose.",
+      "source": "umltools/data/UML.xmi#ActivityPartition-represents_property",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "DecisionNode-decision_input_flow_incoming",
+      "name": "DecisionNode.decision_input_flow_incoming",
+      "package": "Activities",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source requires incoming to contain null for an absent optional decisionInputFlow. Python applies the membership check only when that flow exists.",
+      "source": "umltools/data/UML.xmi#DecisionNode-decision_input_flow_incoming",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "DecisionNode-parameters",
+      "name": "DecisionNode.parameters",
+      "package": "Activities",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source counts non-return parameters. Python requires exactly one return parameter according to the prose.",
+      "source": "umltools/data/UML.xmi#DecisionNode-parameters",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Classifier-directlyUsedInterfaces",
+      "name": "Classifier.directlyUsedInterfaces",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The XMI traverses supplierDependency/clients; Python follows the Usage description and selects client Usage dependencies and Interface suppliers. Project interpretation remains a source divergence.",
+      "source": "umltools/data/UML.xmi#Classifier-directlyUsedInterfaces",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Operation-lower",
+      "name": "Operation.lower",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
+      "source": "umltools/data/UML.xmi#Operation-lower",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Operation-lower.1",
+      "name": "Operation.lower",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
+      "source": "umltools/data/UML.xmi#Operation-lower.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Operation-type",
+      "name": "Operation.type",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter or its type.",
+      "source": "umltools/data/UML.xmi#Operation-type",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Operation-type.1",
+      "name": "Operation.type",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter or its type.",
+      "source": "umltools/data/UML.xmi#Operation-type.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Operation-upper",
+      "name": "Operation.upper",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
+      "source": "umltools/data/UML.xmi#Operation-upper",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Operation-upper.1",
+      "name": "Operation.upper",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null without a return parameter.",
+      "source": "umltools/data/UML.xmi#Operation-upper.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ParameterSet-two_parameter_sets",
+      "name": "ParameterSet.two_parameter_sets",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The formula compares every pair including a set to itself and uses size on the object. Python compares distinct sets and their parameter memberships according to the description.",
+      "source": "umltools/data/UML.xmi#ParameterSet-two_parameter_sets",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Property-binding_to_attribute",
+      "name": "Property.binding_to_attribute",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The XMI casts ts.formal itself to Property although formal is a TemplateParameter. Python checks formal.parameteredElement against the attribute requirement.",
+      "source": "umltools/data/UML.xmi#Property-binding_to_attribute",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Property-isCompatibleWith",
+      "name": "Property.isCompatibleWith",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source refers to the nonexistent TypeElement; Python uses TypedElement.",
+      "source": "umltools/data/UML.xmi#Property-isCompatibleWith",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Property-isConsistentWith",
+      "name": "Property.isConsistentWith",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source upper-bound clause repeats lowerBound; Python uses upperBound according to the description.",
+      "source": "umltools/data/UML.xmi#Property-isConsistentWith",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Property-opposite",
+      "name": "Property.opposite",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null for a non-binary or absent association.",
+      "source": "umltools/data/UML.xmi#Property-opposite",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Property-opposite.1",
+      "name": "Property.opposite",
+      "package": "Classification",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The property is optional and the query returns null for a non-binary or absent association.",
+      "source": "umltools/data/UML.xmi#Property-opposite.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Behavior-behavioredClassifier-spec",
+      "name": "Behavior.behavioredClassifier.precondition",
+      "package": "CommonBehavior",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The precondition references the classifier-finding body rather than a Boolean predicate. Python implements the finder and its argument contract; the malformed precondition is not treated as a Boolean proof.",
+      "source": "umltools/data/UML.xmi#Behavior-behavioredClassifier-spec",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Behavior-feature_of_context_classifier",
+      "name": "Behavior.feature_of_context_classifier",
+      "package": "CommonBehavior",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The unguarded formula rejects absent specifications although the reference is optional. Python checks context membership only for specified methods.",
+      "source": "umltools/data/UML.xmi#Behavior-feature_of_context_classifier",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "FunctionBehavior-types_of_parameters",
+      "name": "FunctionBehavior.types_of_parameters",
+      "package": "CommonBehavior",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source requires exact DataType parameters, excluding PrimitiveType/Enumeration despite broader DataType wording. Python preserves isTypeOf; nested attributes use isKindOf as declared.",
+      "source": "umltools/data/UML.xmi#FunctionBehavior-types_of_parameters",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ElementImport-getName",
+      "name": "ElementImport.getName",
+      "package": "CommonStructure",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "Alias and the imported element name can both be absent; the body then returns null.",
+      "source": "umltools/data/UML.xmi#ElementImport-getName",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "NamedElement-allOwningPackages",
+      "name": "NamedElement.allOwningPackages",
+      "package": "CommonStructure",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "A source null in the non-Package branch is normalized to the empty collection required by its signature.",
+      "source": "umltools/data/UML.xmi#NamedElement-allOwningPackages",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "NamedElement-qualifiedName",
+      "name": "NamedElement.qualifiedName",
+      "package": "CommonStructure",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The derived property is optional and the body returns null for unnamed elements.",
+      "source": "umltools/data/UML.xmi#NamedElement-qualifiedName",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "NamedElement-qualifiedName.1",
+      "name": "NamedElement.qualifiedName",
+      "package": "CommonStructure",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The derived property is optional and the body returns null for unnamed elements.",
+      "source": "umltools/data/UML.xmi#NamedElement-qualifiedName.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Namespace-getNamesOfMember",
+      "name": "Namespace.getNamesOfMember",
+      "package": "CommonStructure",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The body creates Set{element.name}, which can contain an undefined name.",
+      "source": "umltools/data/UML.xmi#Namespace-getNamesOfMember",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Node-internal_structure",
+      "name": "Node.internal_structure",
+      "package": "Deployments",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source tests Property parts as Node objects, which rejects every actual part. Python checks part.type according to the Node internal-structure description.",
+      "source": "umltools/data/UML.xmi#Node-internal_structure",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "InformationFlow-sources_and_targets_kind",
+      "name": "InformationFlow.sources_and_targets_kind",
+      "package": "InformationFlows",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The unqualified kind tests in the source refer to the flow instead of the endpoint. Python tests each endpoint and excludes InstanceSpecifications classified by Relationships.",
+      "source": "umltools/data/UML.xmi#InformationFlow-sources_and_targets_kind",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "InformationItem-has_no",
+      "name": "InformationItem.has_no",
+      "package": "InformationFlows",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source checks features/generalizations but omits associations. Python also checks Association end types in the model extent according to the prose.",
+      "source": "umltools/data/UML.xmi#InformationItem-has_no",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "InformationItem-not_instantiable",
+      "name": "InformationItem.not_instantiable",
+      "package": "InformationFlows",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source checks isAbstract only. Python additionally rejects represented InstanceSpecifications classified by this item, according to the prose.",
+      "source": "umltools/data/UML.xmi#InformationItem-not_instantiable",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "InformationItem-sources_and_targets",
+      "name": "InformationItem.sources_and_targets",
+      "package": "InformationFlows",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "Python preserves the source direction: flows conveying a represented InformationItem must use subsets of the sources/targets of flows conveying self. The representation wording in the description is ambiguous and remains a source interpretation to resolve.",
+      "source": "umltools/data/UML.xmi#InformationItem-sources_and_targets",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Gate-getOperand",
+      "name": "Gate.getOperand",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The body explicitly returns null for gates that are not inside a CombinedFragment, despite a mandatory result signature.",
+      "source": "umltools/data/UML.xmi#Gate-getOperand",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Gate-isInsideCF",
+      "name": "Gate.isInsideCF",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source implication vacuously returns true without an opposite end or CombinedFragment. Python follows the query description and returns false when these prerequisites are absent.",
+      "source": "umltools/data/UML.xmi#Gate-isInsideCF",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Gate-isOutsideCF",
+      "name": "Gate.isOutsideCF",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source implication vacuously returns true without an opposite end or CombinedFragment. Python requires both and represented surrounding ownership, according to the query description.",
+      "source": "umltools/data/UML.xmi#Gate-isOutsideCF",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Gate-matches",
+      "name": "Gate.matches",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "Python parenthesizes the directional implications so that all name, message-sort and signature checks apply together, according to the query description.",
+      "source": "umltools/data/UML.xmi#Gate-matches",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Gate-outside_cf_gate_distinguishable",
+      "name": "Gate.outside_cf_gate_distinguishable",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source counts inside gates as well. Python compares outside gates only, as the prose requires; inside/outside pairs may share the matching name.",
+      "source": "umltools/data/UML.xmi#Gate-outside_cf_gate_distinguishable",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Gate-outside_cf_matched",
+      "name": "Gate.outside_cf_matched",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The alt branch does not use its operand variable and tests an enclosing-fragment relation that misses the operand. Python requires one matching inside gate per operand as the prose specifies.",
+      "source": "umltools/data/UML.xmi#Gate-outside_cf_matched",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Message-messageKind",
+      "name": "Message.messageKind",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source body recursively returns the property itself. Python derives complete/lost/found/unknown from represented send and receive ends.",
+      "source": "umltools/data/UML.xmi#Message-messageKind",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Message-messageKind.1",
+      "name": "Message.messageKind",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source body recursively returns the property itself. Python derives complete/lost/found/unknown from represented send and receive ends.",
+      "source": "umltools/data/UML.xmi#Message-messageKind.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Message-signature_is_operation_reply",
+      "name": "Message.signature_is_operation_reply",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "partial",
+      "limitation": "The XMI predicate is preserved, including vacuous direct values. validate() additionally enforces prose:Message.reply_argument_types on direct typed values, first expression operands and wildcards; arbitrary expression evaluation remains outside this check.",
+      "source": "umltools/data/UML.xmi#Message-signature_is_operation_reply",
+      "next_action": "Review the XMI/prose policy for reply argument representation; typed direct values, first expression operands and wildcards are checked by the supplement.",
+      "static_supplements": [
+        "prose:Message.reply_argument_types"
+      ]
+    },
+    {
+      "id": "Message-signature_is_signal",
+      "name": "Message.signature_is_signal",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source selects inheritedMember only. Python matches allAttributes including owned attributes according to the signal-signature description.",
+      "source": "umltools/data/UML.xmi#Message-signature_is_signal",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "MessageEnd-enclosingFragment",
+      "name": "MessageEnd.enclosingFragment",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source returns null for an unclassified Gate. Python returns an empty collection matching the result signature.",
+      "source": "umltools/data/UML.xmi#MessageEnd-enclosingFragment",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Package-containingProfile",
+      "name": "Package.containingProfile",
+      "package": "Packages",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The recursive XMI body has no root/null guard. Python returns null at an unowned non-Profile Package, matching the optional result signature.",
+      "source": "umltools/data/UML.xmi#Package-containingProfile",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Package-makesVisible",
+      "name": "Package.makesVisible",
+      "package": "Packages",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source compares importedElement to a VisibilityKind and uses notEmpty on Booleans. Python follows the prose and explicit public-import visibility; private imports are not reexported.",
+      "source": "umltools/data/UML.xmi#Package-makesVisible",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ProtocolStateMachine-deep_or_shallow_history",
+      "name": "ProtocolStateMachine.deep_or_shallow_history",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source checks top-level regions only. Python applies the machine-wide prohibition in the prose to nested owned regions as well.",
+      "source": "umltools/data/UML.xmi#ProtocolStateMachine-deep_or_shallow_history",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ProtocolStateMachine-entry_exit_do",
+      "name": "ProtocolStateMachine.entry_exit_do",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source checks top-level states only. Python checks states in every nested owned region according to the machine-wide prose.",
+      "source": "umltools/data/UML.xmi#ProtocolStateMachine-entry_exit_do",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ProtocolStateMachine-protocol_transitions",
+      "name": "ProtocolStateMachine.protocol_transitions",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source checks top-level regions only. Python checks exact ProtocolTransition types in every nested owned region.",
+      "source": "umltools/data/UML.xmi#ProtocolStateMachine-protocol_transitions",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Pseudostate-transitions_incoming",
+      "name": "Pseudostate.transitions_incoming",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.",
+      "source": "umltools/data/UML.xmi#Pseudostate-transitions_incoming",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Pseudostate-transitions_outgoing",
+      "name": "Pseudostate.transitions_outgoing",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.",
+      "source": "umltools/data/UML.xmi#Pseudostate-transitions_outgoing",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Region-belongsToPSM",
+      "name": "Region.belongsToPSM",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "An unowned region vacuously satisfies the implication in the body. Python requires a represented containing machine; missing ownership remains invalid.",
+      "source": "umltools/data/UML.xmi#Region-belongsToPSM",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Region-isRedefinitionContextValid",
+      "name": "Region.isRedefinitionContextValid",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source references nonexistent State.redefinedState. Python uses the inherited redefinedVertex link and checks that its target is a State.",
+      "source": "umltools/data/UML.xmi#Region-isRedefinitionContextValid",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "State-isConsistentWith",
+      "name": "Vertex.isConsistentWith",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The operation has duplicate State-prefixed XMI identifiers and refers to an undeclared redefinedElement. Python uses the redefiningElement argument and the represented owner redefinition relation.",
+      "source": "umltools/data/UML.xmi#State-isConsistentWith",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "StateMachine-LCAState",
+      "name": "StateMachine.LCAState",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The body explicitly returns null when no common enclosing State exists, despite a mandatory result signature.",
+      "source": "umltools/data/UML.xmi#StateMachine-LCAState",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "StateMachine-ancestor",
+      "name": "StateMachine.ancestor",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source top-level branch reverses the direction described in prose. Python tests whether s2 encloses s1, including equality.",
+      "source": "umltools/data/UML.xmi#StateMachine-ancestor",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Vertex-containingStateMachine",
+      "name": "Vertex.containingStateMachine",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source omits entry/exit points owned by composite States. Python follows the represented State owner to its containing machine.",
+      "source": "umltools/data/UML.xmi#Vertex-containingStateMachine",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Vertex-isContainedInRegion",
+      "name": "Vertex.isContainedInRegion",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source recursion tests the queried region instead of progressing through the vertex containers. Python walks the actual enclosing regions.",
+      "source": "umltools/data/UML.xmi#Vertex-isContainedInRegion",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "CollaborationUse-connectors",
+      "name": "CollaborationUse.connectors",
+      "package": "StructuredClassifiers",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The XMI chooses an arbitrary structuredClassifier association end. Python prefers the owning CollaborationUse classifier when represented, otherwise requires one shared context; ambiguous unowned uses remain unsupported.",
+      "source": "umltools/data/UML.xmi#CollaborationUse-connectors",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "ConnectorEnd-multiplicity",
+      "name": "ConnectorEnd.multiplicity",
+      "package": "StructuredClassifiers",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The unconditional formula passes an absent definingEnd to compatibleWith. Python follows the prose: an untyped connector has no association-end bound to constrain it.",
+      "source": "umltools/data/UML.xmi#ConnectorEnd-multiplicity",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Port-encapsulated_owner",
+      "name": "Port.encapsulated_owner",
+      "package": "StructuredClassifiers",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The null=null formula admits unowned ports. Python follows the ownership description and requires an EncapsulatedClassifier owner.",
+      "source": "umltools/data/UML.xmi#Port-encapsulated_owner",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "Actor-associations",
+      "name": "Actor.associations",
+      "package": "UseCases",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source uses the opposite Property.class attribute owner rather than its endpoint type. Python checks the opposite end type and preserves the source prohibition on Behavior endpoints.",
+      "source": "umltools/data/UML.xmi#Actor-associations",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "UseCase-no_association_to_use_case",
+      "name": "UseCase.no_association_to_use_case",
+      "package": "UseCases",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source subject cardinality does not rule out overlapping subject sets. Python rejects associations between distinct UseCases sharing any subject, according to the prose; cases with no subjects share none.",
+      "source": "umltools/data/UML.xmi#UseCase-no_association_to_use_case",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "DurationConstraint-firstEvent",
+      "name": "DurationConstraint.firstEvent",
+      "package": "Values",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source defaults to unordered and unique Boolean values. Repeated first-event flags collapse; ordered event-pair interpretation is unresolved.",
+      "source": "umltools/data/UML.xmi#DurationConstraint-firstEvent",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "DurationObservation-firstEvent",
+      "name": "DurationObservation.firstEvent",
+      "package": "Values",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The source defaults to unordered and unique Boolean values. Repeated first-event flags collapse; ordered event-pair interpretation is unresolved.",
+      "source": "umltools/data/UML.xmi#DurationObservation-firstEvent",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "LiteralString-stringValue",
+      "name": "LiteralString.stringValue",
+      "package": "Values",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "LiteralString.value is optional; its direct-value query may return null.",
+      "source": "umltools/data/UML.xmi#LiteralString-stringValue",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "OpaqueExpression-result",
+      "name": "OpaqueExpression.result",
+      "package": "Values",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The XMI body selects the first parameter, even if it is not the return parameter. This differs from the property description; XMI behavior is preserved.",
+      "source": "umltools/data/UML.xmi#OpaqueExpression-result",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "OpaqueExpression-result.1",
+      "name": "OpaqueExpression.result",
+      "package": "Values",
+      "priority": "P0",
+      "area": "source policy",
+      "status": "source inconsistency",
+      "limitation": "The XMI body selects the first parameter, even if it is not the return parameter. This differs from the property description; XMI behavior is preserved.",
+      "source": "umltools/data/UML.xmi#OpaqueExpression-result.1",
+      "next_action": "Compare the preserved body/description, document the chosen policy and resolve normative equivalence before a conformity claim.",
+      "static_supplements": []
+    },
+    {
+      "id": "DeploymentSpecification-deployed_elements",
+      "name": "DeploymentSpecification.deployed_elements",
+      "package": "Deployments",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "The XMI predicate retains the Artifact-only derivation. validate() additionally checks prose:DeploymentSpecification.configured_instance_elements using modeled Artifact instances. Nested-artifact and runtime-copy semantics remain open.",
+      "source": "umltools/data/UML.xmi#DeploymentSpecification-deployed_elements",
+      "next_action": "Resolve nested/inherited Artifact and slot-based manifestation requirements against normative sources; direct modeled Artifact instances are supported by the supplemental resolver.",
+      "static_supplements": [
+        "prose:DeploymentSpecification.configured_instance_elements"
+      ]
+    },
+    {
+      "id": "DeploymentTarget-deployedElement",
+      "name": "DeploymentTarget.deployedElement",
+      "package": "Deployments",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "The XMI query retains its Artifact-only filter. The supplemental deployed_elements resolver expands direct manifestations of modeled Artifact classifiers/instances. Nested-artifact, inherited-manifestation, slot and runtime-copy semantics remain open.",
+      "source": "umltools/data/UML.xmi#DeploymentTarget-deployedElement",
+      "next_action": "Resolve nested/inherited Artifact and slot-based manifestation requirements against normative sources; direct modeled Artifact instances are supported by the supplemental resolver.",
+      "static_supplements": [
+        "prose:DeploymentTarget.resolved_elements"
+      ]
+    },
+    {
+      "id": "Continuation-same_name",
+      "name": "Continuation.same_name",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.",
+      "source": "umltools/data/UML.xmi#Continuation-same_name",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionConstraint-dynamic_variables",
+      "name": "InteractionConstraint.dynamic_variables",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "Trusted reference facts are checked against represented covered lifeline roles/types, interaction parameters/context attributes and read-only Properties. Full runtime ownership/global/write-once semantics remains a project approximation.",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-dynamic_variables",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionConstraint-global_data",
+      "name": "InteractionConstraint.global_data",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "Trusted reference facts and represented read-only Properties are supported. Arbitrary domain global/write-once storage semantics is not represented by core UML and is not proved.",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-global_data",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionOperand-guard_contain_references",
+      "name": "InteractionOperand.guard_contain_references",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "Trusted guard reference facts are checked against represented operand coverage/context. General domain-global and write-once facts remain incomplete.",
+      "source": "umltools/data/UML.xmi#InteractionOperand-guard_contain_references",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionOperand-guard_directly_prior",
+      "name": "InteractionOperand.guard_directly_prior",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "Guard composite ownership is checked. Graphical placement immediately above a fragment requires UMLDI/layout semantics and is not proved.",
+      "source": "umltools/data/UML.xmi#InteractionOperand-guard_directly_prior",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "Message-sending_receiving_message_event",
+      "name": "Message.sending_receiving_message_event",
+      "package": "Interactions",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented.",
+      "source": "umltools/data/UML.xmi#Message-sending_receiving_message_event",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "ProtocolConformance",
+      "name": "ProtocolConformance",
+      "package": "StateMachines",
+      "priority": "P0",
+      "area": "static semantics",
+      "status": "partial",
+      "limitation": "Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.",
+      "source": "umltools/data/UML.xmi#ProtocolConformance",
+      "next_action": "Decompose the remaining limitation into represented static checks and external evidence; implement only the represented portion and preserve explicit unknowns.",
+      "static_supplements": []
+    },
+    {
+      "id": "ObjectFlow-input_and_output_parameter",
+      "name": "ObjectFlow.input_and_output_parameter",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "behavior evidence",
+      "status": "partial",
+      "limitation": "The XMI count/bounds predicate is preserved. validate() additionally enforces selection input/output types through prose:ObjectFlow.selection_types. Behavior purity remains an external evidence obligation.",
+      "source": "umltools/data/UML.xmi#ObjectFlow-input_and_output_parameter",
+      "next_action": "Define a trusted Behavior purity analyzer contract and deletion/extent lifecycle; type correspondence is already checked in the represented cases.",
+      "static_supplements": [
+        "prose:ObjectFlow.selection_types"
+      ]
+    },
+    {
+      "id": "ObjectFlow-transformation_behavior",
+      "name": "ObjectFlow.transformation_behavior",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "behavior evidence",
+      "status": "partial",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces upstream/input and output/downstream conformance through prose:ObjectFlow.transformation_types. Behavior purity remains an external evidence obligation.",
+      "source": "umltools/data/UML.xmi#ObjectFlow-transformation_behavior",
+      "next_action": "Define a trusted Behavior purity analyzer contract and deletion/extent lifecycle; type correspondence is already checked in the represented cases.",
+      "static_supplements": [
+        "prose:ObjectFlow.transformation_types"
+      ]
+    },
+    {
+      "id": "ObjectNode-input_output_parameter",
+      "name": "ObjectNode.input_output_parameter",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "behavior evidence",
+      "status": "partial",
+      "limitation": "Input/output counts, multiplicities and nominal type variance are checked (with a documented source-body correction). Absence of side effects of the selection Behavior is not proved.",
+      "source": "umltools/data/UML.xmi#ObjectNode-input_output_parameter",
+      "next_action": "Define a trusted Behavior purity analyzer contract and deletion/extent lifecycle; type correspondence is already checked in the represented cases.",
+      "static_supplements": []
+    },
+    {
+      "id": "ReduceAction-input_type_is_collection",
+      "name": "ReduceAction.input_type_is_collection",
+      "package": "Actions",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Multivalued pins represent token collections. A single token needs a registered domain collection type; missing collection-type evidence remains unsupported.",
+      "source": "umltools/data/UML.xmi#ReduceAction-input_type_is_collection",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "ObjectFlow-same_upper_bounds",
+      "name": "ObjectFlow.same_upper_bounds",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Represented UnlimitedNatural bounds are compared along object-flow paths through ControlNodes. Unknown numeric expressions require an evaluator; invalid computable literal kinds are diagnosed.",
+      "source": "umltools/data/UML.xmi#ObjectFlow-same_upper_bounds",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "ObjectFlow-target",
+      "name": "ObjectFlow.target",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Constant Integer weights are compared with downstream bounds. Unknown constancy requires analyzer facts; known nonconstant weights are outside this rule, while unevaluated constants remain unsupported.",
+      "source": "umltools/data/UML.xmi#ObjectFlow-target",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "TimeEvent-when_non_negative",
+      "name": "TimeEvent.when_non_negative",
+      "package": "CommonBehavior",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "TimeExpression has no integerValue override in the XMI. Python checks represented computable expr values; foreign expressions/observations require numeric evaluation evidence and remain unsupported. No clock or scheduler is executed.",
+      "source": "umltools/data/UML.xmi#TimeEvent-when_non_negative",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "Constraint-boolean_value",
+      "name": "Constraint.boolean_value",
+      "package": "CommonStructure",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.",
+      "source": "umltools/data/UML.xmi#Constraint-boolean_value",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "Constraint-no_side_effects",
+      "name": "Constraint.no_side_effects",
+      "package": "CommonStructure",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.",
+      "source": "umltools/data/UML.xmi#Constraint-no_side_effects",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "MultiplicityElement-value_specification_constant",
+      "name": "MultiplicityElement.value_specification_constant",
+      "package": "CommonStructure",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.",
+      "source": "umltools/data/UML.xmi#MultiplicityElement-value_specification_constant",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "MultiplicityElement-value_specification_no_side_effects",
+      "name": "MultiplicityElement.value_specification_no_side_effects",
+      "package": "CommonStructure",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Foreign expressions require trusted analyzer facts or a declared static Boolean type; execution is not verified.",
+      "source": "umltools/data/UML.xmi#MultiplicityElement-value_specification_no_side_effects",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "InformationFlow-must_conform",
+      "name": "InformationFlow.must_conform",
+      "package": "InformationFlows",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Nominal endpoint conformance, distinct undirected channel sides and directed activity/message channels are checked as a project interpretation of the prose-only rule. Gate endpoints require explicit mappings; external lost/found endpoints remain unsupported. Runtime delivery is not proved.",
+      "source": "umltools/data/UML.xmi#InformationFlow-must_conform",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionConstraint-maxint_greater_equal_minint",
+      "name": "InteractionConstraint.maxint_greater_equal_minint",
+      "package": "Interactions",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Represented Integer bounds are compared. Unknown numeric expressions require an evaluator and remain unsupported.",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-maxint_greater_equal_minint",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionConstraint-maxint_positive",
+      "name": "InteractionConstraint.maxint_positive",
+      "package": "Interactions",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-maxint_positive",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionConstraint-minint_non_negative",
+      "name": "InteractionConstraint.minint_non_negative",
+      "package": "Interactions",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Represented Integer values are checked. Unknown numeric expressions require an evaluator and remain unsupported; wrong computable literal kinds remain invalid.",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-minint_non_negative",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "InteractionUse-arguments_are_constants",
+      "name": "InteractionUse.arguments_are_constants",
+      "package": "Interactions",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Foreign expression constancy/references require trusted analyzer facts; no arbitrary language execution is supplied.",
+      "source": "umltools/data/UML.xmi#InteractionUse-arguments_are_constants",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "Message-arguments",
+      "name": "Message.arguments",
+      "package": "Interactions",
+      "priority": "P1",
+      "area": "context adapters",
+      "status": "context dependent",
+      "limitation": "Constants and represented wildcard values are checked. Foreign expression constancy/references require trusted analyzer facts.",
+      "source": "umltools/data/UML.xmi#Message-arguments",
+      "next_action": "Specify the required numeric, reference, purity, collection-type or endpoint evidence; keep unknowns unsupported and test adapter lifecycle.",
+      "static_supplements": []
+    },
+    {
+      "id": "PackageMerge",
+      "name": "PackageMerge",
+      "package": "Packages",
+      "priority": "P1",
+      "area": "profiles and package merge",
+      "status": "partial",
+      "limitation": "The model represents receiving/merged Package links. The normative reconciliation/merge algorithm is not implemented.",
+      "source": "umltools/data/UML.xmi#PackageMerge",
+      "next_action": "Implement the documented missing profile/tagged-value/strictness or merge contract with independent behavioral examples.",
+      "static_supplements": []
+    },
+    {
+      "id": "ProfileApplication-isStrict",
+      "name": "ProfileApplication.isStrict",
+      "package": "Packages",
+      "priority": "P1",
+      "area": "profiles and package merge",
+      "status": "partial",
+      "limitation": "The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.",
+      "source": "umltools/data/UML.xmi#ProfileApplication-isStrict",
+      "next_action": "Implement the documented missing profile/tagged-value/strictness or merge contract with independent behavioral examples.",
+      "static_supplements": []
+    },
+    {
+      "id": "Stereotype",
+      "name": "Stereotype",
+      "package": "Packages",
+      "priority": "P1",
+      "area": "profiles and package merge",
+      "status": "partial",
+      "limitation": "Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.",
+      "source": "umltools/data/UML.xmi#Stereotype",
+      "next_action": "Implement the documented missing profile/tagged-value/strictness or merge contract with independent behavioral examples.",
+      "static_supplements": []
+    },
+    {
+      "id": "DecisionNode-incoming_control_one_input_parameter",
+      "name": "DecisionNode.incoming_control_one_input_parameter",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "token-type evidence",
+      "status": "partial",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces decisionInputFlow token-type conformance through prose:DecisionNode.input_types; unrepresented types remain unsupported.",
+      "source": "umltools/data/UML.xmi#DecisionNode-incoming_control_one_input_parameter",
+      "next_action": "Preserve unsupported for untyped/cyclic-only paths and specify external token-type evidence if needed; represented ordered input types are implemented.",
+      "static_supplements": [
+        "prose:DecisionNode.input_types"
+      ]
+    },
+    {
+      "id": "DecisionNode-incoming_object_one_input_parameter",
+      "name": "DecisionNode.incoming_object_one_input_parameter",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "token-type evidence",
+      "status": "partial",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces the sole object input type through prose:DecisionNode.input_types; unrepresented types remain unsupported.",
+      "source": "umltools/data/UML.xmi#DecisionNode-incoming_object_one_input_parameter",
+      "next_action": "Preserve unsupported for untyped/cyclic-only paths and specify external token-type evidence if needed; represented ordered input types are implemented.",
+      "static_supplements": [
+        "prose:DecisionNode.input_types"
+      ]
+    },
+    {
+      "id": "DecisionNode-two_input_parameters",
+      "name": "DecisionNode.two_input_parameters",
+      "package": "Activities",
+      "priority": "P1",
+      "area": "token-type evidence",
+      "status": "partial",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces ordered regular/decision-flow input types through prose:DecisionNode.input_types; unrepresented token types remain unsupported.",
+      "source": "umltools/data/UML.xmi#DecisionNode-two_input_parameters",
+      "next_action": "Preserve unsupported for untyped/cyclic-only paths and specify external token-type evidence if needed; represented ordered input types are implemented.",
+      "static_supplements": [
+        "prose:DecisionNode.input_types"
+      ]
+    }
+  ],
+  "supplemental_checks": [
+    {
+      "id": "prose:ObjectFlow.selection_types",
+      "source": "umltools/data/UML.xmi#ObjectFlow-input_and_output_parameter",
+      "tests": [
+        "test_static_requirements.StaticRequirementCases.test_selection_input_contravariance_output_covariance_and_validation"
+      ],
+      "verification": "linked behavioral examples"
+    },
+    {
+      "id": "prose:ObjectFlow.transformation_types",
+      "source": "umltools/data/UML.xmi#ObjectFlow-transformation_behavior",
+      "tests": [
+        "test_static_requirements.StaticRequirementCases.test_transformation_path_types_through_cycles_and_downstream_adapters"
+      ],
+      "verification": "linked behavioral examples"
+    },
+    {
+      "id": "prose:DecisionNode.input_types",
+      "source": "umltools/data/UML.xmi#DecisionNode-two_input_parameters",
+      "tests": [
+        "test_static_requirements.StaticRequirementCases.test_decision_control_object_and_optional_input_modes",
+        "test_static_requirements.StaticRequirementCases.test_two_decision_inputs_have_distinct_corresponding_types"
+      ],
+      "verification": "linked behavioral examples"
+    },
+    {
+      "id": "prose:Message.reply_argument_types",
+      "source": "umltools/data/UML.xmi#Message-signature_is_operation_reply",
+      "tests": [
+        "test_static_requirements.StaticRequirementCases.test_direct_reply_values_wildcards_expression_operands_and_parameter_directions"
+      ],
+      "verification": "linked behavioral examples"
+    },
+    {
+      "id": "prose:DeploymentSpecification.configured_instance_elements",
+      "source": "umltools/data/UML.xmi#DeploymentSpecification-deployed_elements",
+      "tests": [
+        "test_static_requirements.StaticRequirementCases.test_artifact_instance_manifestations_union_and_configuration_cannot_pass_vacuously"
+      ],
+      "verification": "linked behavioral examples"
+    },
+    {
+      "id": "prose:DeploymentTarget.resolved_elements",
+      "source": "umltools/data/UML.xmi#DeploymentTarget-deployedElement",
+      "tests": [
+        "test_static_requirements.StaticRequirementCases.test_artifact_instance_manifestations_union_and_configuration_cannot_pass_vacuously"
+      ],
+      "verification": "linked behavioral examples"
+    }
+  ],
+  "remaining_workstreams": [
+    {
+      "priority": "P0",
+      "area": "structural contracts",
+      "action": "Audit the 549 stored properties and 328 association-owned ends by subset/redefinition/ownership families, including mutation, rollback, deletion and session boundaries."
+    },
+    {
+      "priority": "P0",
+      "area": "additional prose",
+      "action": "Decompose the 242 class descriptions and additional normative prose into atomic requirements; counts of XMI definitions alone cannot close this scope."
+    },
+    {
+      "priority": "P1",
+      "area": "profiles",
+      "action": "Complete typed tagged values, strict profile restrictions and user constraint integration."
+    },
+    {
+      "priority": "P1",
+      "area": "exchange",
+      "action": "Implement model XMI import/export after profile and adapter contracts stabilize."
+    },
+    {
+      "priority": "P2",
+      "area": "diagram exchange",
+      "action": "Implement StandardProfile/UMLDI and preserve diagram metadata separately from core model semantics."
+    }
+  ]
+}

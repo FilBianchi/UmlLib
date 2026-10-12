@@ -10,6 +10,33 @@ therefore remains a divergence to resolve, not an assertion of normative equival
 The expanded report preserves source descriptions and bodies so these choices can be
 reviewed independently; a complete decomposition of additional PDF prose is pending.
 
+## Supplemental static requirements (0.10.0)
+
+The new `prose:` checks run in validate() alongside the preserved XMI predicates.
+They do not silently replace source formulas. Their definitions, sources and examples
+are in the semantic matrix; known residual work is in the generated conformance backlog.
+
+- ObjectFlow selection input types accept source token types and output types conform
+  toward them. Transformation input/output types are checked against upstream/downstream
+  token types. Control-node traversal detects cycles and accounts for neighboring
+  transformation output/input signatures. Untyped or cyclic-only paths remain unsupported.
+  Counts, bounds and separate source constraints still apply; Behavior purity remains open.
+- DecisionNode input types correspond to the regular object flow first and the
+  decisionInputFlow second. A regular ControlFlow consumes no parameter; the decision
+  object flow then supplies the sole input. The source count predicates remain preserved.
+- Reply type checking additionally covers direct typed values. Wildcards are accepted;
+  nonempty Expression arguments retain the first-operand interpretation. Evaluation of
+  arbitrary expression bodies is not inferred from strings.
+- [UML 2.5.1](https://www.omg.org/spec/UML/2.5.1/PDF), 9.9.9.1, permits modeled Artifact
+  instances as DeployedArtifacts. The additive deployed_elements resolver unions direct
+  manifestations of their Artifact classifiers, allowing configured-instance checks to
+  reject manifested non-Components. This is a project interpretation supplementing the
+  source's Artifact-only derivation; it does not infer nested/inherited manifestations,
+  slots, runtime copies or actual deployment success.
+- Validation issues retain constraint/invalid constraint/unsupported constraint
+  categories; the prose: prefix identifies the additional obligation. An individually
+  successful XMI invariant is not a substitute for complete model validation.
+
 ## UseCases, Deployments and InformationFlows audit (0.9.0)
 
 18 invariants, two queries and one derivation have linked examples. All 14 packages
