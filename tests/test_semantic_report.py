@@ -17,7 +17,7 @@ class ReportCases(unittest.TestCase):
         vertex = next(r for r in result['definitions'] if r.get('name') == 'Vertex.isConsistentWith')
         self.assertTrue(vertex['source_id_ambiguous'])
         self.assertIn('redefinedElement.oclIsKindOf(Vertex)', vertex['body_conditions'][0]['expressions'][0]['body'])
-        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines'):
+        for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions'):
             self.assertEqual(result['package_audit'][package]['invariants'], result['package_audit'][package]['invariants_with_examples'])
             for category in ('operation', 'derived property', 'precondition'):
                 counts = result['package_audit'][package]['definitions'][category]
@@ -33,4 +33,7 @@ class ReportCases(unittest.TestCase):
                 module, cls, method = test.split('.')
                 imported = __import__(module)
                 self.assertTrue(callable(getattr(getattr(imported, cls), method)))
-        self.assertEqual(records['Activity.maximum_one_parameter_node']['verification'], 'no linked behavioral examples')
+        self.assertEqual(records['Activity.maximum_one_parameter_node']['verification'], 'linked behavioral examples')
+        self.assertEqual(records['ObjectFlow.target']['review'], 'context dependent')
+        self.assertEqual(records['ObjectFlow.transformation_behavior']['review'], 'partial')
+        self.assertEqual(records['ActionInputPin.no_control_or_object_flow']['review'], 'source inconsistency')

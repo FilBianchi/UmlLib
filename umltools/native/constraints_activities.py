@@ -1,5 +1,5 @@
 """Activity graph constraints including paths through intervening control nodes."""
-from . import invariant, kind, instances
+from . import invariant, kind, instances, NativeNotImplemented
 from .constraints_basic import predicates, required, enum
 from .constraints_actions import pins_match, conforms
 
@@ -50,7 +50,7 @@ predicates({
     'ObjectFlow.transformation_behavior': lambda s: s.transformation is None or len(s.transformation.inputParameters()) == len(s.transformation.outputParameters()) == 1,
     'ObjectFlow.selection_behavior': lambda s: s.selection is None or kind(s, s.source, 'ObjectNode'),
     'ObjectFlow.is_multicast_or_is_multireceive': lambda s: not (s.isMulticast and s.isMultireceive),
-    'ObjectNode.input_output_parameter': lambda s: s.selection is None or len(s.selection.inputParameters()) == 1 and all(not p.isUnique and p.is_(0, float('inf')) and conforms(s.type, p.type) for p in s.selection.inputParameters()) and len(s.selection.outputParameters()) == 1 and all(conforms(s.type, p.type) for p in s.selection.outputParameters()),
+    'ObjectNode.input_output_parameter': lambda s: s.selection is None or len(s.selection.inputParameters()) == 1 and all(not p.isUnique and p.is_(0, float('inf')) and conforms(s.type, p.type) for p in s.selection.inputParameters()) and len(s.selection.outputParameters()) == 1 and all(conforms(p.type, s.type) for p in s.selection.outputParameters()),
     'ObjectNode.selection_behavior': lambda s: (s.selection is not None) == (enum(s.ordering) == 'ordered'),
     'ObjectNode.object_flow_edges': lambda s: s.isControlType or all(kind(s, e, 'ObjectFlow') for e in list(s.incoming) + list(s.outgoing)),
 })
@@ -114,12 +114,24 @@ def flow_types(self):
 
 @invariant('ObjectFlow.same_upper_bounds')
 def flow_bounds(self):
-    return all(required(a.upperBound).unlimitedValue() == required(b.upperBound).unlimitedValue() for a in endpoints(self, True) for b in endpoints(self, False))
+    return all(object_bound(a) == object_bound(b) for a in endpoints(self, True) for b in endpoints(self, False))
+
+
+def object_bound(node):
+    expression = required(node.upperBound)
+    value = expression.unlimitedValue()
+    if value is not None: return value
+    if expression.isComputable(): raise ValueError('ObjectNode upperBound must denote UnlimitedNatural')
+    raise NativeNotImplemented('ObjectNode upperBound requires a numeric expression evaluator')
 
 
 @invariant('ObjectFlow.target')
 def flow_weight(self):
     if self.weight is None: return True
+    from ..expression_semantics import expression_fact
+    if not expression_fact(self.weight, 'constant'): return True
     weight = self.weight.integerValue()
-    if weight is None: return True  # A nonconstant weight is outside this conditional rule.
-    return all(required(n.upperBound).unlimitedValue() >= weight for n in endpoints(self, False))
+    if weight is None:
+        if self.weight.isComputable(): raise ValueError('ActivityEdge weight must denote Integer')
+        raise NativeNotImplemented('Constant ActivityEdge weight requires a numeric expression evaluator')
+    return all(object_bound(n) >= weight for n in endpoints(self, False))

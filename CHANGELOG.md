@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.7.0
+
+Activities and Actions have linked examples for all 205 declared invariants,
+31 query declarations (29 concrete and two abstract), and 9 derived properties.
+250 tests pass; 678 definition records now have explicitly linked examples.
+
+StructuralFeatureAction handles a scalar featuringClassifier correctly. ActionInputPin
+checks outgoing edges of its producer instead of the receiving pin. ObjectNode
+selection outputs conform toward the node type, allowing subtype outputs.
+ObjectFlow bound/constant-weight checks distinguish represented numbers, invalid
+literal kinds and unknown numeric/constancy evidence; unknowns no longer pass silently.
+
+Scenarios cover call direction/variance/bounds, signal acceptance/reply, variable
+scope, association-end bags/qualifiers/indices/visibility, structured boundaries,
+conditional clauses, loop variables, exception handlers and graph cycles.
+Source/prose conflicts and partial selection/transformation/decision prose checks
+are explicit in the matrix. This release audits static models, not token execution
+or arbitrary Behavior purity. Existing conformance obligations remain open.
+
 ## 0.6.0
 
 CommonBehavior and StateMachines have linked examples for all 54 declared invariants,

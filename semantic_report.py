@@ -41,8 +41,20 @@ AUDIT_LIMITS = {
     'Pseudostate.transitions_outgoing': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
     'Pseudostate.transitions_incoming': 'The source pairs a transition with itself. Python checks distinct transition pairs as the any-pair prose requires.',
     'Region.belongsToPSM': 'An unowned region vacuously satisfies the implication in the body. Python requires a represented containing machine; missing ownership remains invalid.',
+    'ActionInputPin.no_control_or_object_flow': 'The source unions fromAction.incoming with the receiving pin outgoing. Python checks fromAction.outgoing as the producer-isolation prose requires.',
+    'ObjectNode.input_output_parameter': 'The source repeats inputParameters in its final type check. Python checks output type conformance toward the ObjectNode type as required by the prose; this remains a source divergence.',
+    'DecisionNode.parameters': 'The source counts non-return parameters. Python requires exactly one return parameter according to the prose.',
+    'DecisionNode.decision_input_flow_incoming': 'The source requires incoming to contain null for an absent optional decisionInputFlow. Python applies the membership check only when that flow exists.',
+    'ActivityPartition.represents_property': 'The source tests the partition owner against the represented classifier. Python tests the represented Property owner as required by the prose.',
+    'LinkEndCreationData.insertAt_pin': 'The source not isReplaceAll=false reverses the guard. Python requires an insertion pin when an ordered end is not replacing all values, according to the prose.',
+    'ConditionalNode.clause_no_predecessor': 'The source closure rejects ordinary acyclic predecessors within the same node. Python rejects predecessor cycles, preserving the project interpretation used for clause sequencing.',
+    'LinkEndCreationData.allPins': 'The source including(insertAt) includes null when the optional insertion pin is absent. Python omits absent pins, matching the description and non-null result element contract.',
+    'LinkEndDestructionData.allPins': 'The source including(destroyAt) includes null when the optional destruction pin is absent. Python omits absent pins, matching the description and non-null result element contract.',
 }
 CONTEXT_LIMITS = {
+    'ObjectFlow.same_upper_bounds': 'Represented UnlimitedNatural bounds are compared along object-flow paths through ControlNodes. Unknown numeric expressions require an evaluator; invalid computable literal kinds are diagnosed.',
+    'ObjectFlow.target': 'Constant Integer weights are compared with downstream bounds. Unknown constancy requires analyzer facts; known nonconstant weights are outside this rule, while unevaluated constants remain unsupported.',
+    'ReduceAction.input_type_is_collection': 'Multivalued pins represent token collections. A single token needs a registered domain collection type; missing collection-type evidence remains unsupported.',
     'TimeEvent.when_non_negative': 'TimeExpression has no integerValue override in the XMI. Python checks represented computable expr values; foreign expressions/observations require numeric evaluation evidence and remain unsupported. No clock or scheduler is executed.',
 }
 CONTEXTUAL = {
@@ -54,6 +66,12 @@ PARTIAL = {
     'ProfileApplication-isStrict': 'The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.',
     'Stereotype': 'Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.',
     'ProtocolConformance': 'Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.',
+    'ObjectNode-input_output_parameter': 'Input/output counts, multiplicities and nominal type variance are checked (with a documented source-body correction). Absence of side effects of the selection Behavior is not proved.',
+    'ObjectFlow-input_and_output_parameter': 'The declared OCL parameter counts and input bounds are checked. Additional prose requirements for selection parameter types and absence of side effects remain open.',
+    'ObjectFlow-transformation_behavior': 'The declared OCL parameter counts are checked. Additional prose requirements for transformation input/output types and absence of side effects remain open.',
+    'DecisionNode-two_input_parameters': 'The declared OCL input count is checked. Corresponding token-type conformance from both incoming flows remains an additional prose obligation.',
+    'DecisionNode-incoming_control_one_input_parameter': 'The declared OCL input count is checked. Token-type conformance from decisionInputFlow remains an additional prose obligation.',
+    'DecisionNode-incoming_object_one_input_parameter': 'The declared OCL input count is checked. Token-type conformance from the incoming ObjectFlow remains an additional prose obligation.',
 }
 
 
@@ -183,7 +201,7 @@ def report():
             record['source_id_ambiguous'] = True
             record['source_disambiguation'] = record.get('name')
     package_audit = {}
-    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines'):
+    for package in ('CommonStructure', 'Values', 'Classification', 'SimpleClassifiers', 'Packages', 'StructuredClassifiers', 'CommonBehavior', 'StateMachines', 'Activities', 'Actions'):
         definitions = [r for r in records if r['package'] == package]
         counts_by_kind = {category: {'declared': sum(r['kind'] == category for r in definitions),
                                     'with_examples': sum(r['kind'] == category and bool(r['tests']) for r in definitions)}

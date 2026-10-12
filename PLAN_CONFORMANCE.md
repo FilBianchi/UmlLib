@@ -266,3 +266,22 @@ i corpi locali delle operazioni. Le divergenze fonte/prosa sono documentate.
 ProtocolConformance resta parziale sul piano della prova comportamentale; esecuzione
 generale, clock e scheduler sono fuori dall'audit statico. La fase 3 prosegue con
 Activities e Actions, mantenendo aperti gli obblighi già delimitati nei package precedenti.
+
+## Quinto incremento: versione 0.7.0
+
+Activities e Actions hanno esempi collegati a 205 invarianti, 31 dichiarazioni di query
+(29 concrete e 2 astratte) e 9 derivazioni. 250 test passano; 678 voci della matrice
+hanno esempi espliciti. Sono verificati confini dei nodi strutturati, firme delle
+chiamate, link e qualificatori, scope delle variabili, clausole, loop, eccezioni e
+percorsi dei flussi attraverso cicli di nodi di controllo.
+
+Correzioni: featuringClassifier scalare nelle StructuralFeatureAction, isolamento
+degli archi del produttore ActionInputPin, varianza dell'output delle selezioni,
+evidenze numeriche per upperBound/pesi costanti dei flussi. Valori opachi non valutabili
+rimangono unsupported; letterali di tipo errato restano invalid, senza falsi successi.
+
+Il rapporto distingue le divergenze fonte/prosa e i requisiti aggiuntivi ancora parziali:
+tipi dei token per decisionInput e selezioni/trasformazioni, prova di assenza di effetti
+collaterali, esecuzione dei token. L'audit degli invarianti dichiarati non completa
+questi obblighi. La fase 3 prosegue con Interactions, poi UseCases, Deployments e
+InformationFlows; restano aperti gli obblighi delle altre fasi e dei package precedenti.

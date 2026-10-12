@@ -30,15 +30,15 @@
     }
   },
   "verification_counts": {
-    "no linked behavioral examples": 1449,
-    "linked behavioral examples": 433
+    "linked behavioral examples": 678,
+    "no linked behavioral examples": 1204
   },
   "review_counts": {
-    "needs review": 1443,
-    "verified in linked examples": 387,
-    "source inconsistency": 43,
-    "partial": 4,
-    "context dependent": 5
+    "verified in linked examples": 615,
+    "needs review": 1198,
+    "source inconsistency": 51,
+    "partial": 10,
+    "context dependent": 8
   },
   "package_audit": {
     "CommonStructure": {
@@ -216,6 +216,50 @@
           "with_examples": 7
         }
       }
+    },
+    "Activities": {
+      "invariants": 50,
+      "invariants_with_examples": 50,
+      "definitions": {
+        "constraint": {
+          "declared": 50,
+          "with_examples": 50
+        },
+        "operation": {
+          "declared": 5,
+          "with_examples": 5
+        },
+        "derived property": {
+          "declared": 6,
+          "with_examples": 6
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
+        }
+      }
+    },
+    "Actions": {
+      "invariants": 155,
+      "invariants_with_examples": 155,
+      "definitions": {
+        "constraint": {
+          "declared": 155,
+          "with_examples": 155
+        },
+        "operation": {
+          "declared": 26,
+          "with_examples": 26
+        },
+        "derived property": {
+          "declared": 3,
+          "with_examples": 3
+        },
+        "precondition": {
+          "declared": 0,
+          "with_examples": 0
+        }
+      }
     }
   },
   "duplicate_source_ids": {
@@ -245,9 +289,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Activity-maximum_one_parameter_node"
     },
     {
@@ -266,9 +312,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.inout_nodes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Activity-maximum_two_parameter_nodes"
     },
     {
@@ -550,9 +598,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.consistent_node",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityEdge-isConsistentWith"
     },
     {
@@ -571,9 +621,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityEdge-source_and_target"
     },
     {
@@ -653,9 +705,11 @@
         "ActivityGroups containing the ActivityEdge."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityEdge-inGroup"
     },
     {
@@ -914,9 +968,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.group_activity",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-containingActivity"
     },
     {
@@ -935,9 +991,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-nodes_and_edges"
     },
     {
@@ -956,9 +1014,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.groups_disjoint",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-not_contained"
     },
     {
@@ -982,9 +1042,11 @@
         "ActivityEdges immediately contained in the ActivityGroup."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-containedEdge"
     },
     {
@@ -1008,9 +1070,11 @@
         "ActivityNodes immediately contained in the ActivityGroup."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-containedNode"
     },
     {
@@ -1064,9 +1128,11 @@
         "Other ActivityGroups immediately contained in this ActivityGroup."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-subgroup"
     },
     {
@@ -1092,9 +1158,11 @@
         "The ActivityGroup immediately containing this ActivityGroup, if it is directly owned by another ActivityGroup."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityGroup-superGroup"
     },
     {
@@ -1147,9 +1215,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.node_activity",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityNode-containingActivity"
     },
     {
@@ -1195,9 +1265,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.consistent_node",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityNode-isConsistentWith"
     },
     {
@@ -1249,9 +1321,11 @@
         "ActivityGroups containing the ActivityNode."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_unions_nested_ownership_and_foreign_edge_endpoints"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityNode-inGroup"
     },
     {
@@ -1450,9 +1524,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityParameterNode-no_outgoing_edges"
     },
     {
@@ -1471,9 +1547,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityParameterNode-has_parameters"
     },
     {
@@ -1492,9 +1570,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityParameterNode-same_type"
     },
     {
@@ -1513,9 +1593,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityParameterNode-no_incoming_edges"
     },
     {
@@ -1534,9 +1616,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_parameter_nodes_counts_directions_types_and_edge_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityParameterNode-no_edges"
     },
     {
@@ -1596,9 +1680,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.represented_classifier",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_classifier_property_and_external_siblings"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityPartition-represents_classifier"
     },
     {
@@ -1617,9 +1703,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_classifier_property_and_external_siblings"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityPartition-represents_property_and_is_contained"
     },
     {
@@ -1638,9 +1726,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_classifier_property_and_external_siblings"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source tests the partition owner against the represented classifier. Python tests the represented Property owner as required by the prose.",
       "source": "umltools/data/UML.xmi#ActivityPartition-represents_property"
     },
     {
@@ -1659,9 +1750,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_partition_classifier_property_and_external_siblings"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActivityPartition-dimension_not_contained"
     },
     {
@@ -1900,9 +1993,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ControlFlow-object_nodes"
     },
     {
@@ -1966,9 +2061,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DecisionNode-zero_input_parameters"
     },
     {
@@ -1987,9 +2084,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.decision_edges",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DecisionNode-edges"
     },
     {
@@ -2008,9 +2107,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source requires incoming to contain null for an absent optional decisionInputFlow. Python applies the membership check only when that flow exists.",
       "source": "umltools/data/UML.xmi#DecisionNode-decision_input_flow_incoming"
     },
     {
@@ -2029,9 +2131,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "partial",
+      "limitation": "The declared OCL input count is checked. Corresponding token-type conformance from both incoming flows remains an additional prose obligation.",
       "source": "umltools/data/UML.xmi#DecisionNode-two_input_parameters"
     },
     {
@@ -2050,9 +2155,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DecisionNode-incoming_outgoing_edges"
     },
     {
@@ -2071,9 +2178,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "partial",
+      "limitation": "The declared OCL input count is checked. Token-type conformance from decisionInputFlow remains an additional prose obligation.",
       "source": "umltools/data/UML.xmi#DecisionNode-incoming_control_one_input_parameter"
     },
     {
@@ -2092,9 +2202,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source counts non-return parameters. Python requires exactly one return parameter according to the prose.",
       "source": "umltools/data/UML.xmi#DecisionNode-parameters"
     },
     {
@@ -2113,9 +2226,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_decision_input_modes_and_return_direction"
+      ],
+      "review": "partial",
+      "limitation": "The declared OCL input count is checked. Token-type conformance from the incoming ObjectFlow remains an additional prose obligation.",
       "source": "umltools/data/UML.xmi#DecisionNode-incoming_object_one_input_parameter"
     },
     {
@@ -2201,9 +2317,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_exception_handler_pin_compatibility_and_closed_boundary"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExceptionHandler-handler_body_edges"
     },
     {
@@ -2222,9 +2340,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_exception_handler_pin_compatibility_and_closed_boundary"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExceptionHandler-output_pins"
     },
     {
@@ -2243,9 +2363,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_exception_handler_pin_compatibility_and_closed_boundary"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExceptionHandler-one_input"
     },
     {
@@ -2264,9 +2386,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_exception_handler_pin_compatibility_and_closed_boundary"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExceptionHandler-edge_source_target"
     },
     {
@@ -2285,9 +2409,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_exception_handler_pin_compatibility_and_closed_boundary"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExceptionHandler-handler_body_owner"
     },
     {
@@ -2306,9 +2432,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_exception_handler_pin_compatibility_and_closed_boundary"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExceptionHandler-exception_input_type"
     },
     {
@@ -2491,9 +2619,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#FinalNode-no_outgoing_edges"
     },
     {
@@ -2542,9 +2672,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.homogeneous",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ForkNode-edges"
     },
     {
@@ -2563,9 +2695,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ForkNode-one_incoming_edge"
     },
     {
@@ -2599,9 +2733,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InitialNode-no_incoming_edges"
     },
     {
@@ -2620,9 +2756,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InitialNode-control_edges"
     },
     {
@@ -2656,9 +2794,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_interrupting_edge_exits_region_but_not_activity"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InterruptibleActivityRegion-interrupting_edges"
     },
     {
@@ -2746,9 +2886,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#JoinNode-one_outgoing_edge"
     },
     {
@@ -2767,9 +2909,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#JoinNode-incoming_object_flow"
     },
     {
@@ -2857,9 +3001,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MergeNode-one_outgoing_edge"
     },
     {
@@ -2878,9 +3024,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.homogeneous",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_control_graph_and_mixed_object_flows"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#MergeNode-edges"
     },
     {
@@ -2914,9 +3062,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_selection_variance_multiplicities_and_transformation_signature"
+      ],
+      "review": "partial",
+      "limitation": "The declared OCL parameter counts and input bounds are checked. Additional prose requirements for selection parameter types and absence of side effects remain open.",
       "source": "umltools/data/UML.xmi#ObjectFlow-input_and_output_parameter"
     },
     {
@@ -2935,9 +3086,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_flow_paths_cycles_bounds_and_unknown_constant_evidence"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ObjectFlow-no_executable_nodes"
     },
     {
@@ -2956,9 +3109,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_selection_variance_multiplicities_and_transformation_signature"
+      ],
+      "review": "partial",
+      "limitation": "The declared OCL parameter counts are checked. Additional prose requirements for transformation input/output types and absence of side effects remain open.",
       "source": "umltools/data/UML.xmi#ObjectFlow-transformation_behavior"
     },
     {
@@ -2977,9 +3133,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_selection_variance_multiplicities_and_transformation_signature"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ObjectFlow-selection_behavior"
     },
     {
@@ -2998,9 +3156,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.flow_types",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_flow_paths_cycles_bounds_and_unknown_constant_evidence"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ObjectFlow-compatible_types"
     },
     {
@@ -3019,9 +3179,13 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.flow_bounds",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_flow_paths_cycles_bounds_and_unknown_constant_evidence",
+        "test_activities_audit.ActivityCases.test_wrong_numeric_literal_kinds_are_invalid_not_successful"
+      ],
+      "review": "context dependent",
+      "limitation": "Represented UnlimitedNatural bounds are compared along object-flow paths through ControlNodes. Unknown numeric expressions require an evaluator; invalid computable literal kinds are diagnosed.",
       "source": "umltools/data/UML.xmi#ObjectFlow-same_upper_bounds"
     },
     {
@@ -3040,9 +3204,13 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.flow_weight",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_flow_paths_cycles_bounds_and_unknown_constant_evidence",
+        "test_activities_audit.ActivityCases.test_wrong_numeric_literal_kinds_are_invalid_not_successful"
+      ],
+      "review": "context dependent",
+      "limitation": "Constant Integer weights are compared with downstream bounds. Unknown constancy requires analyzer facts; known nonconstant weights are outside this rule, while unevaluated constants remain unsupported.",
       "source": "umltools/data/UML.xmi#ObjectFlow-target"
     },
     {
@@ -3061,9 +3229,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_flow_paths_cycles_bounds_and_unknown_constant_evidence"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ObjectFlow-is_multicast_or_is_multireceive"
     },
     {
@@ -3201,9 +3371,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_selection_variance_multiplicities_and_transformation_signature"
+      ],
+      "review": "partial",
+      "limitation": "Input/output counts, multiplicities and nominal type variance are checked (with a documented source-body correction). Absence of side effects of the selection Behavior is not proved.",
       "source": "umltools/data/UML.xmi#ObjectNode-input_output_parameter"
     },
     {
@@ -3222,9 +3395,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_selection_variance_multiplicities_and_transformation_signature"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ObjectNode-selection_behavior"
     },
     {
@@ -3243,9 +3418,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_activities.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_activities_audit.ActivityCases.test_selection_variance_multiplicities_and_transformation_signature"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ObjectNode-object_flow_edges"
     },
     {
@@ -3440,9 +3617,12 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.accessible",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions",
+        "test_actions_audit.ActionCases.test_subtype_variance_and_private_visibility_from_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Variable-isAccessibleBy"
     },
     {
@@ -31540,9 +31720,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ValueSpecificationAction-multiplicity"
     },
     {
@@ -31561,9 +31743,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ValueSpecificationAction-compatible_type"
     },
     {
@@ -31653,9 +31837,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#VariableAction-scope_of_variable"
     },
     {
@@ -31715,9 +31901,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.write_access",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction",
+        "test_actions_audit.ActionCases.test_subtype_variance_and_private_visibility_from_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteLinkAction-allow_access"
     },
     {
@@ -31751,9 +31940,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteStructuralFeatureAction-multiplicity_of_result"
     },
     {
@@ -31772,9 +31963,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteStructuralFeatureAction-type_of_value"
     },
     {
@@ -31793,9 +31986,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteStructuralFeatureAction-multiplicity_of_value"
     },
     {
@@ -31814,9 +32009,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteStructuralFeatureAction-type_of_result"
     },
     {
@@ -31906,9 +32103,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteVariableAction-value_type"
     },
     {
@@ -31927,9 +32126,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#WriteVariableAction-multiplicity"
     },
     {
@@ -31991,9 +32192,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptCallAction-result_pins"
     },
     {
@@ -32012,9 +32215,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptCallAction-trigger_call_event"
     },
     {
@@ -32033,9 +32238,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptCallAction-unmarshall"
     },
     {
@@ -32097,9 +32304,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptEventAction-one_output_pin"
     },
     {
@@ -32118,9 +32327,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptEventAction-no_input_pins"
     },
     {
@@ -32139,9 +32350,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptEventAction-no_output_pins"
     },
     {
@@ -32160,9 +32373,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.unmarshall_signal",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptEventAction-unmarshall_signal_events"
     },
     {
@@ -32181,9 +32396,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.accept_type",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AcceptEventAction-conforming_type"
     },
     {
@@ -32318,9 +32535,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.action_context",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-context.1"
     },
     {
@@ -32358,9 +32577,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.single_action",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-allActions"
     },
     {
@@ -32398,9 +32619,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.action_nodes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-allOwnedNodes"
     },
     {
@@ -32436,9 +32659,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.containing_behavior",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-containingBehavior"
     },
     {
@@ -32462,9 +32687,11 @@
         "The context Classifier of the Behavior that contains this Action, or the Behavior itself if it has no context."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-context"
     },
     {
@@ -32490,9 +32717,11 @@
         "The ordered set of InputPins representing the inputs to the Action."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-input"
     },
     {
@@ -32600,9 +32829,11 @@
         "The ordered set of OutputPins representing outputs from the Action."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Action-output"
     },
     {
@@ -32636,9 +32867,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActionInputPin-input_pin"
     },
     {
@@ -32657,9 +32890,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ActionInputPin-one_output_pin"
     },
     {
@@ -32678,9 +32913,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source unions fromAction.incoming with the receiving pin outgoing. Python checks fromAction.outgoing as the producer-isolation prose requires.",
       "source": "umltools/data/UML.xmi#ActionInputPin-no_control_or_object_flow"
     },
     {
@@ -32742,9 +32980,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AddStructuralFeatureValueAction-required_value"
     },
     {
@@ -32763,9 +33003,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.insert_pin",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AddStructuralFeatureValueAction-insertAt_pin"
     },
     {
@@ -32853,9 +33095,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AddVariableValueAction-required_value"
     },
     {
@@ -32874,9 +33118,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.insert_pin",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#AddVariableValueAction-insertAt_pin"
     },
     {
@@ -32964,9 +33210,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BroadcastSignalAction-number_of_arguments"
     },
     {
@@ -32985,9 +33233,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BroadcastSignalAction-type_ordering_multiplicity"
     },
     {
@@ -33006,9 +33256,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#BroadcastSignalAction-no_onport"
     },
     {
@@ -33076,9 +33328,11 @@
       ],
       "body_conditions": [],
       "implementation": "umltools.native.activities_actions.abstract_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallAction-inputParameters"
     },
     {
@@ -33105,9 +33359,11 @@
       ],
       "body_conditions": [],
       "implementation": "umltools.native.activities_actions.abstract_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallAction-outputParameters"
     },
     {
@@ -33126,9 +33382,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces",
+        "test_actions_audit.ActionCases.test_subtype_variance_and_private_visibility_from_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallAction-argument_pins"
     },
     {
@@ -33147,9 +33406,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces",
+        "test_actions_audit.ActionCases.test_subtype_variance_and_private_visibility_from_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallAction-result_pins"
     },
     {
@@ -33168,9 +33430,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallAction-synchronous_call"
     },
     {
@@ -33277,9 +33541,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.behavior_outputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallBehaviorAction-outputParameters"
     },
     {
@@ -33317,9 +33583,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.behavior_inputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallBehaviorAction-inputParameters"
     },
     {
@@ -33338,9 +33606,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallBehaviorAction-no_onport"
     },
     {
@@ -33419,9 +33689,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.operation_outputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallOperationAction-outputParameters"
     },
     {
@@ -33459,9 +33731,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.operation_inputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallOperationAction-inputParameters"
     },
     {
@@ -33480,9 +33754,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.call_target",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_call_direction_order_covariance_and_target_port_interfaces"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CallOperationAction-type_target_pin"
     },
     {
@@ -33570,9 +33846,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Clause-body_output_pins"
     },
     {
@@ -33591,9 +33869,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Clause-decider_output"
     },
     {
@@ -33612,9 +33892,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Clause-test_and_body"
     },
     {
@@ -33804,9 +34086,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClearAssociationAction-multiplicity"
     },
     {
@@ -33825,9 +34109,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClearAssociationAction-same_type"
     },
     {
@@ -33915,9 +34201,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClearStructuralFeatureAction-type_of_result"
     },
     {
@@ -33936,9 +34224,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ClearStructuralFeatureAction-multiplicity_of_result"
     },
     {
@@ -34034,9 +34324,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.single_action",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConditionalNode-allActions"
     },
     {
@@ -34055,9 +34347,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConditionalNode-result_no_incoming"
     },
     {
@@ -34076,9 +34370,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConditionalNode-no_input_pins"
     },
     {
@@ -34097,9 +34393,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConditionalNode-one_clause_with_executable_node"
     },
     {
@@ -34118,9 +34416,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConditionalNode-matching_output_pins"
     },
     {
@@ -34139,9 +34439,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ConditionalNode-executable_nodes"
     },
     {
@@ -34160,9 +34462,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.clause_cycles",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_conditional_clause_membership_signatures_and_predecessor_cycles"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source closure rejects ordinary acyclic predecessors within the same node. Python rejects predecessor cycles, preserving the project interpretation used for clause sequencing.",
       "source": "umltools/data/UML.xmi#ConditionalNode-clause_no_predecessor"
     },
     {
@@ -34304,9 +34609,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateLinkAction-association_not_abstract"
     },
     {
@@ -34368,9 +34675,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateLinkObjectAction-multiplicity"
     },
     {
@@ -34389,9 +34698,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateLinkObjectAction-type_of_result"
     },
     {
@@ -34410,9 +34721,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateLinkObjectAction-association_class"
     },
     {
@@ -34474,9 +34787,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateObjectAction-classifier_not_abstract"
     },
     {
@@ -34495,9 +34810,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateObjectAction-multiplicity"
     },
     {
@@ -34516,9 +34833,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateObjectAction-classifier_not_association_class"
     },
     {
@@ -34537,9 +34856,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#CreateObjectAction-same_type"
     },
     {
@@ -34670,9 +34991,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DestroyObjectAction-multiplicity"
     },
     {
@@ -34691,9 +35014,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DestroyObjectAction-no_type"
     },
     {
@@ -34807,9 +35132,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structured_boundary_edges_and_expansion_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ExpansionNode-region_as_input_or_output"
     },
     {
@@ -34988,9 +35315,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structured_boundary_edges_and_expansion_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#InputPin-outgoing_edges_structured_only"
     },
     {
@@ -35112,9 +35441,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.link_association",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkAction-association"
     },
     {
@@ -35133,9 +35464,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkAction-same_pins"
     },
     {
@@ -35154,9 +35487,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkAction-same_association"
     },
     {
@@ -35175,9 +35510,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkAction-not_static"
     },
     {
@@ -35286,9 +35623,12 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.creation_pins",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source including(insertAt) includes null when the optional insertion pin is absent. Python omits absent pins, matching the description and non-null result element contract.",
       "source": "umltools/data/UML.xmi#LinkEndCreationData-allPins"
     },
     {
@@ -35307,9 +35647,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.insert_pin",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source not isReplaceAll=false reverses the guard. Python requires an insertion pin when an ordered end is not replacing all values, according to the prose.",
       "source": "umltools/data/UML.xmi#LinkEndCreationData-insertAt_pin"
     },
     {
@@ -35414,9 +35757,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.link_pins",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndData-allPins"
     },
     {
@@ -35435,9 +35780,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndData-same_type"
     },
     {
@@ -35456,9 +35803,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndData-multiplicity"
     },
     {
@@ -35477,9 +35826,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndData-end_object_input_pin"
     },
     {
@@ -35498,9 +35849,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndData-property_is_association_end"
     },
     {
@@ -35519,9 +35872,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndData-qualifiers"
     },
     {
@@ -35654,9 +36009,12 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.destruction_pins",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "source inconsistency",
+      "limitation": "The source including(destroyAt) includes null when the optional destruction pin is absent. Python omits absent pins, matching the description and non-null result element contract.",
       "source": "umltools/data/UML.xmi#LinkEndDestructionData-allPins"
     },
     {
@@ -35675,9 +36033,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LinkEndDestructionData-destroyAt_pin"
     },
     {
@@ -35782,9 +36142,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.single_action",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-allActions"
     },
     {
@@ -35822,9 +36184,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.loop_sources",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-sourceNodes"
     },
     {
@@ -35843,9 +36207,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-result_no_incoming"
     },
     {
@@ -35864,9 +36230,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-input_edges"
     },
     {
@@ -35885,9 +36253,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-executable_nodes"
     },
     {
@@ -35906,9 +36276,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-body_output_pins"
     },
     {
@@ -35927,9 +36299,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-setup_test_and_body"
     },
     {
@@ -35948,9 +36322,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-matching_output_pins"
     },
     {
@@ -35969,9 +36345,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.loop_variables",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-matching_loop_variables"
     },
     {
@@ -35990,9 +36368,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.loop_results",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-matching_result_pins"
     },
     {
@@ -36011,9 +36391,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_loop_variable_correspondence_parts_and_internal_targets"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#LoopNode-loop_variable_outgoing"
     },
     {
@@ -36287,9 +36669,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#OpaqueAction-language_body_size"
     },
     {
@@ -36431,9 +36815,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structured_boundary_edges_and_expansion_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#OutputPin-incoming_edges_structured_only"
     },
     {
@@ -36467,9 +36853,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pin-control_pins"
     },
     {
@@ -36488,9 +36876,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Pin-not_unique"
     },
     {
@@ -36550,9 +36940,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#QualifierValue-multiplicity_of_qualifier"
     },
     {
@@ -36571,9 +36963,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#QualifierValue-type_of_qualifier"
     },
     {
@@ -36592,9 +36986,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_link_end_bags_qualifiers_and_ordered_creation_destruction"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#QualifierValue-qualifier_attribute"
     },
     {
@@ -36723,9 +37119,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadExtentAction-type_is_classifier"
     },
     {
@@ -36744,9 +37142,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadExtentAction-multiplicity_of_result"
     },
     {
@@ -36834,9 +37234,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadIsClassifiedObjectAction-no_type"
     },
     {
@@ -36855,9 +37257,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadIsClassifiedObjectAction-multiplicity_of_output"
     },
     {
@@ -36876,9 +37280,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadIsClassifiedObjectAction-boolean_result"
     },
     {
@@ -36897,9 +37303,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadIsClassifiedObjectAction-multiplicity_of_input"
     },
     {
@@ -37060,9 +37468,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.open_ends",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkAction-openEnd"
     },
     {
@@ -37081,9 +37491,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkAction-type_and_ordering"
     },
     {
@@ -37102,9 +37514,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkAction-compatible_multiplicity"
     },
     {
@@ -37123,9 +37537,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.read_access",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads",
+        "test_actions_audit.ActionCases.test_subtype_variance_and_private_visibility_from_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkAction-visibility"
     },
     {
@@ -37144,9 +37561,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkAction-one_open_end"
     },
     {
@@ -37165,9 +37584,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkAction-navigable_open_end"
     },
     {
@@ -37229,9 +37650,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-property"
     },
     {
@@ -37250,9 +37673,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-multiplicity_of_object"
     },
     {
@@ -37271,9 +37696,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-ends_of_association"
     },
     {
@@ -37292,9 +37719,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-type_of_result"
     },
     {
@@ -37313,9 +37742,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-multiplicity_of_result"
     },
     {
@@ -37334,9 +37765,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-type_of_object"
     },
     {
@@ -37355,9 +37788,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndAction-association_of_association"
     },
     {
@@ -37473,9 +37908,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-multiplicity_of_object"
     },
     {
@@ -37494,9 +37931,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-type_of_object"
     },
     {
@@ -37515,9 +37954,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-multiplicity_of_qualifier"
     },
     {
@@ -37536,9 +37977,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-ends_of_association"
     },
     {
@@ -37557,9 +38000,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-multiplicity_of_result"
     },
     {
@@ -37578,9 +38023,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-same_type"
     },
     {
@@ -37599,9 +38046,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-association_of_association"
     },
     {
@@ -37620,9 +38069,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_open_link_end_navigation_and_association_class_qualifier_reads"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadLinkObjectEndQualifierAction-qualifier_attribute"
     },
     {
@@ -37738,9 +38189,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadSelfAction-contained"
     },
     {
@@ -37759,9 +38212,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadSelfAction-multiplicity"
     },
     {
@@ -37780,9 +38235,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadSelfAction-not_static"
     },
     {
@@ -37801,9 +38258,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadSelfAction-type"
     },
     {
@@ -37865,9 +38324,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadStructuralFeatureAction-multiplicity"
     },
     {
@@ -37886,9 +38347,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadStructuralFeatureAction-type_and_ordering"
     },
     {
@@ -37950,9 +38413,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadVariableAction-type_and_ordering"
     },
     {
@@ -37971,9 +38436,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReadVariableAction-compatible_multiplicity"
     },
     {
@@ -38035,9 +38502,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReclassifyObjectAction-input_pin"
     },
     {
@@ -38056,9 +38525,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReclassifyObjectAction-classifier_not_abstract"
     },
     {
@@ -38077,9 +38548,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReclassifyObjectAction-multiplicity"
     },
     {
@@ -38219,9 +38692,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.reducer_parameters",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReduceAction-reducer_inputs_output"
     },
     {
@@ -38240,9 +38715,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_remaining.collection_input",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "context dependent",
+      "limitation": "Multivalued pins represent token collections. A single token needs a registered domain collection type; missing collection-type evidence remains unsupported.",
       "source": "umltools/data/UML.xmi#ReduceAction-input_type_is_collection"
     },
     {
@@ -38261,9 +38739,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReduceAction-output_types_are_compatible"
     },
     {
@@ -38405,9 +38885,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.remove_pin",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RemoveStructuralFeatureValueAction-removeAt_and_value"
     },
     {
@@ -38495,9 +38977,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.remove_pin",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_variable_read_write_remove_and_ordered_insert"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#RemoveVariableValueAction-removeAt_and_value"
     },
     {
@@ -38585,9 +39069,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReplyAction-pins_match_parameter"
     },
     {
@@ -38606,9 +39092,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_accept_call_signal_change_and_reply"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ReplyAction-event_on_reply_to_call_trigger"
     },
     {
@@ -38724,9 +39212,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#SendObjectAction-type_target_pin"
     },
     {
@@ -38816,9 +39306,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#SendSignalAction-type_ordering_multiplicity"
     },
     {
@@ -38837,9 +39329,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#SendSignalAction-number_order"
     },
     {
@@ -38858,9 +39352,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_signal_arguments_and_port_membership"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#SendSignalAction-type_target_pin"
     },
     {
@@ -38991,9 +39487,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartClassifierBehaviorAction-multiplicity"
     },
     {
@@ -39012,9 +39510,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartClassifierBehaviorAction-type_has_classifier"
     },
     {
@@ -39095,9 +39595,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.object_outputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartObjectBehaviorAction-outputParameters"
     },
     {
@@ -39135,9 +39637,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.object_inputs",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartObjectBehaviorAction-inputParameters"
     },
     {
@@ -39175,9 +39679,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.object_behavior",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartObjectBehaviorAction-behavior"
     },
     {
@@ -39196,9 +39702,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartObjectBehaviorAction-multiplicity_of_object"
     },
     {
@@ -39217,9 +39725,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartObjectBehaviorAction-type_of_object"
     },
     {
@@ -39238,9 +39748,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_classifier_behavior_resolution_and_read_self_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StartObjectBehaviorAction-no_onport"
     },
     {
@@ -39302,9 +39814,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuralFeatureAction-multiplicity"
     },
     {
@@ -39323,9 +39837,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.structural_object",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuralFeatureAction-object_type"
     },
     {
@@ -39344,9 +39860,12 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.structural_visibility",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles",
+        "test_actions_audit.ActionCases.test_subtype_variance_and_private_visibility_from_context"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuralFeatureAction-visibility"
     },
     {
@@ -39365,9 +39884,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuralFeatureAction-not_static"
     },
     {
@@ -39386,9 +39907,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structural_feature_single_classifier_visibility_and_index_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuralFeatureAction-one_featuring_classifier"
     },
     {
@@ -39495,9 +40018,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.structured_actions",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-allActions"
     },
     {
@@ -39535,9 +40060,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.structured_nodes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-allOwnedNodes"
     },
     {
@@ -39575,9 +40102,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.source_nodes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-sourceNodes"
     },
     {
@@ -39615,9 +40144,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.target_nodes",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-targetNodes"
     },
     {
@@ -39655,9 +40186,11 @@
         }
       ],
       "implementation": "umltools.native.activities_actions.node_activity",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_nested_actions_context_variable_scope_and_exposed_pin_unions"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-containingActivity"
     },
     {
@@ -39676,9 +40209,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structured_boundary_edges_and_expansion_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-output_pin_edges"
     },
     {
@@ -39697,9 +40232,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.structured_edges",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structured_boundary_edges_and_expansion_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-edges"
     },
     {
@@ -39718,9 +40255,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_structured_boundary_edges_and_expansion_roles"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredActivityNode-input_pin_edges"
     },
     {
@@ -39951,9 +40490,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#TestIdentityAction-multiplicity"
     },
     {
@@ -39972,9 +40513,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#TestIdentityAction-no_type"
     },
     {
@@ -39993,9 +40536,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_object_creation_extent_identity_and_classification"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#TestIdentityAction-result_is_boolean"
     },
     {
@@ -40113,9 +40658,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UnmarshallAction-structural_feature"
     },
     {
@@ -40134,9 +40681,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UnmarshallAction-number_of_result"
     },
     {
@@ -40155,9 +40704,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UnmarshallAction-type_ordering_and_multiplicity"
     },
     {
@@ -40176,9 +40727,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UnmarshallAction-multiplicity_of_object"
     },
     {
@@ -40197,9 +40750,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_unmarshall_attribute_order_and_reduce_token_vs_collection_type"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#UnmarshallAction-object_type"
     },
     {
@@ -40315,9 +40870,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ValuePin-no_incoming_edges"
     },
     {
@@ -40336,9 +40893,11 @@
         }
       ],
       "implementation": "umltools.native.constraints_actions.<lambda>",
-      "verification": "no linked behavioral examples",
-      "tests": [],
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "tests": [
+        "test_actions_audit.ActionCases.test_computed_pins_forbid_producer_edges_and_value_pins_forbid_incoming"
+      ],
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#ValuePin-compatible_type"
     },
     {

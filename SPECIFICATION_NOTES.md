@@ -10,6 +10,39 @@ therefore remains a divergence to resolve, not an assertion of normative equival
 The expanded report preserves source descriptions and bodies so these choices can be
 reviewed independently; a complete decomposition of additional PDF prose is pending.
 
+## Activities and Actions audit (0.7.0)
+
+205 invariants, 31 query declarations and 9 derived properties have explicitly linked
+examples. Two CallAction queries are abstract declarations; explicit calls to those
+declarations remain unsupported while concrete subclasses provide parameter queries.
+The examples cover static model structure and native query/constraint behavior.
+
+- `StructuralFeatureAction.one_featuring_classifier` uses OCL collection lifting on
+  a possibly scalar derived featuringClassifier. Python normalizes scalar/absent values
+  before checking the cardinality; a valid owned Property no longer raises TypeError.
+- `ActionInputPin.no_control_or_object_flow` now checks the producer's outgoing edges.
+  The source mistakenly refers to the receiving pin's outgoing collection. This is a
+  project interpretation of the producer-isolation prose, not an OMG erratum.
+- `ObjectNode.input_output_parameter` checks output type conformance toward the node
+  type, accepting subtype outputs. The source repeats the input check; it is retained
+  as reference, with the divergent implementation and purity limitation in the matrix.
+- `ObjectFlow.same_upper_bounds` and `ObjectFlow.target` traverse ObjectFlows through
+  ControlNodes with cycle guards. Unknown numeric bounds remain unsupported;
+  computable literal kinds that cannot denote the required number remain invalid.
+  An unknown weight needs a constancy fact. A known nonconstant weight is outside the
+  conditional target rule; a known but unevaluated constant requires a numeric evaluator.
+- `LinkEndCreationData.allPins` and `LinkEndDestructionData.allPins` omit absent
+  optional index pins despite source including(null). Actual pins retain bag duplicates;
+  they are not silently deduplicated to make LinkAction.same_pins pass.
+- Existing project interpretations for DecisionNode return counts and optional flows,
+  ActivityPartition represented ownership, ordered link insertion guards and conditional
+  predecessor cycles are now explicitly classified in the matrix. Their source bodies
+  remain unchanged; linked examples do not remove these divergences.
+- The source OCL omits some selection/transformation token-type and purity requirements,
+  and some decisionInput token-type requirements stated in the descriptions. These
+  records are marked partial rather than claiming that count checks prove the prose.
+  There is no activity token scheduler or arbitrary Behavior execution/purity proof.
+
 ## CommonStructure and Values audit (0.3.0)
 
 - `NamedElement.qualifiedName`, `ElementImport.getName` and `LiteralString.stringValue`
