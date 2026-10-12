@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.12.0
+
+Runtime stereotype applications now expose typed tagged values with inherited/redefined
+properties, literal defaults, multiplicities, readonly construction values, enumerations
+and UML metaclass references. ProfileObject represents profile-defined Class/DataType
+instances distinctly from UML InstanceSpecification; DataType values are immutable.
+Binary navigable association ends synchronize atomically, with bounded inverses and
+composite ownership/cycle checks. Deletion and profile removal clean runtime references
+and composite descendants while preserving values accessible through other profiles.
+
+Strict profiles provide metaclass/element availability views and checked creation,
+including reference precedence, imports, extended subtypes and conflict rollback.
+User constraints accept trusted Boolean Python callbacks or computable Boolean literals.
+Callback mutation through public APIs is rejected; arbitrary OCL is not executed.
+313 tests pass. Custom value/derived/default evaluators, non-navigable runtime navigation,
+distinct repeated-link identities, non-UML adapters, CMOF and serialization remain open.
+Existing metaclass predicates and full-conformance limitations remain separately reported.
+
 ## 0.11.0
 
 The structural audit inventories 950 property/end declarations (549 stored, 73 derived,

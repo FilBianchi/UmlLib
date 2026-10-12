@@ -364,3 +364,20 @@ una violazione UML. Restano aperti la prova semantica per ogni estremo associati
 combinazioni complete di sottotipi/default, sequenze arbitrarie di mutazioni e prosa.
 Prossimo lavoro P0: decomporre e chiudere i requisiti normativi residui con evidenze
 puntuali, mantenendo distinti contratti dichiarativi, interpretazioni e obblighi esterni.
+
+## Decimo incremento: versione 0.12.0
+
+Valori degli stereotipi tipizzati: ereditarietà/ridefinizioni, default letterali,
+molteplicità, readonly, enumerazioni e riferimenti alle metaclassi. ProfileObject
+rappresenta istanze dei Class/DataType del profilo, distinte da InstanceSpecification.
+Associazioni binarie navigabili, composizione, rollback e cancellazione sono verificati;
+un tipo ancora accessibile da un altro profilo applicato conserva le proprie istanze.
+
+isStrict espone viste e creazione controllata, preservando il modello sottostante,
+con priorità dei riferimenti, import e conflitti. Vincoli utente tramite callback
+Python Boolean esplicite; le API pubbliche impediscono mutazioni durante la valutazione.
+313 test passano. Non vengono eseguite stringhe OCL. Restano adattatori per tipi/valori
+personalizzati, derivazioni/default non letterali, navigazione runtime non navigabile,
+identità dei link ripetuti e interoperabilità CMOF. La fase profili è avanzata ma
+non dichiarata esaustiva. Prossimo incremento: contratto di scambio XMI con round-trip
+del core e dei valori runtime supportati, mantenendo esplicite le estensioni non gestite.

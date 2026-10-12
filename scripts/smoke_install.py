@@ -131,4 +131,39 @@ foreign = Uml.Class()
 with ModelSession():
     dependency = Uml.Dependency(client=[foreign])
 assert ('cross session reference', 'Dependency-client') in dependency.validate()
+from umltools.stereotypes import apply_profile, apply_stereotype, unapply_profile
+from umltools.profile_values import ProfileObject, register_profile_constraint
+from umltools.profile_filtering import is_metaclass_available, create_profiled_element
+with ModelSession():
+    metaclass=Uml.Class(name='Class')
+    metamodel=Uml.Model(packagedElement=[metaclass])
+    integer=Uml.PrimitiveType(name='Integer')
+    stereotype=Uml.Stereotype(name='Tagged')
+    profile=Uml.Profile(packagedElement=[integer,stereotype],
+                        metaclassReference=[Uml.ElementImport(importedElement=metaclass)])
+    base=Uml.Property(name='base_Class',type=metaclass)
+    stereotype.ownedAttribute.append(base)
+    extension=Uml.Extension(memberEnd=[base],ownedEnd=Uml.ExtensionEnd(type=stereotype,
+                            aggregation=Uml.AggregationKind.composite,lowerValue=Uml.LiteralInteger(value=0)))
+    profile.packagedElement.append(extension)
+    count=Uml.Property(name='count',type=integer,defaultValue=Uml.LiteralInteger(value=2))
+    payload=Uml.Class(name='Payload'); profile.packagedElement.append(payload)
+    child=Uml.Property(name='child',type=payload,aggregation=Uml.AggregationKind.composite,
+                       lowerValue=Uml.LiteralInteger(value=0))
+    stereotype.ownedAttribute.extend([count,child])
+    model=Uml.Model(packagedElement=[Uml.Class()])
+    apply_profile(model,profile,is_strict=True)
+    assert is_metaclass_available(model,'Component')
+    assert not is_metaclass_available(model,'State')
+    assert isinstance(create_profiled_element(model,'Class'),Uml.Class)
+    value=ProfileObject(payload,model)
+    application=apply_stereotype(model.packagedElement[0],stereotype,values={'child':value})
+    assert application.get_value('count')==2
+    application.set_value('count',3)
+    constraint=Uml.Constraint(name='positive'); stereotype.ownedRule.append(constraint)
+    register_profile_constraint(constraint,lambda app:app.get_value('count')>0)
+    assert application.validate()==[]
+    unapply_profile(model,profile)
+    assert application.is_deleted and value.is_deleted
+    assert not model.packagedElement[0].is_deleted
 print('Installed UmlLib', version('UmlLib'))

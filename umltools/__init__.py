@@ -9,6 +9,7 @@ from .lifecycle import DeletedElementError, DeletionRestrictedError
 from .model_session import ModelSession, current_session
 from .native import NativeNotImplemented, check
 from .semantics import derive, operation
+from .evaluation_context import profile_evaluation
 
 SPECIFICATIONS, ENUMERATIONS = load()
 REGISTRY = {}
@@ -21,6 +22,7 @@ class UmlElement:
     __registry__ = REGISTRY
     __instances__ = WeakSet()
     def __init__(self, **values):
+        if profile_evaluation.get(): raise ValueError('Cannot create elements during constraint evaluation')
         if self.__spec__.abstract:
             raise TypeError(f'{type(self).__name__} is abstract')
         self._values = {}
@@ -86,6 +88,7 @@ class UmlElement:
     def __setattr__(self, name, value):
         if name.startswith('_'):
             return object.__setattr__(self, name, value)
+        if profile_evaluation.get(): raise ValueError('Cannot mutate the model during constraint evaluation')
         transaction = _mutation.get()
         root = transaction is None
         if root:

@@ -1174,9 +1174,9 @@
       "priority": "P1",
       "area": "profiles and package merge",
       "status": "partial",
-      "limitation": "The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.",
+      "limitation": "Strict availability views and checked creation support UML metaclass references, imported profiles, extended subtypes and conflicting filters. Direct constructors remain available for general model editing. Non-UML metaclasses need an adapter; UI presentation and CMOF interoperability remain open.",
       "source": "umltools/data/UML.xmi#ProfileApplication-isStrict",
-      "next_action": "Implement the documented missing profile/tagged-value/strictness or merge contract with independent behavioral examples.",
+      "next_action": "Extend implemented typed profile values, navigable binary links and strict views with explicit custom-value/derived-expression adapters, non-navigable runtime navigation, non-UML metaclasses and exchange contracts; preserve unsupported external languages.",
       "static_supplements": []
     },
     {
@@ -1186,9 +1186,9 @@
       "priority": "P1",
       "area": "profiles and package merge",
       "status": "partial",
-      "limitation": "Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.",
+      "limitation": "Runtime typed tags support effective inherited/redefined properties, literal defaults, bounds, readonly values, enumerations, profile Class/DataType objects, binary navigable inverses, composition and deletion. User constraints use trusted Python callbacks or Boolean literals, never arbitrary OCL execution. Custom primitive/derived/default evaluators, association-owned runtime navigation, full CMOF serialization and exhaustive profile semantics remain open.",
       "source": "umltools/data/UML.xmi#Stereotype",
-      "next_action": "Implement the documented missing profile/tagged-value/strictness or merge contract with independent behavioral examples.",
+      "next_action": "Extend implemented typed profile values, navigable binary links and strict views with explicit custom-value/derived-expression adapters, non-navigable runtime navigation, non-UML metaclasses and exchange contracts; preserve unsupported external languages.",
       "static_supplements": []
     },
     {
@@ -1299,7 +1299,7 @@
     {
       "priority": "P1",
       "area": "profiles",
-      "action": "Complete typed tagged values, strict profile restrictions and user constraint integration."
+      "action": "Typed tags, binary navigable associations, strict views and trusted user-constraint integration are implemented. Complete custom value/expression adapters, non-navigable navigation, non-UML metaclasses and CMOF/exchange semantics."
     },
     {
       "priority": "P1",

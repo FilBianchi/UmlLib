@@ -372,6 +372,23 @@ No Python evaluation path treats an untranslated definition as satisfied.
   applications are created by `apply_profile`; incremental manual profile construction
   reports omissions during validation. Direct edits to profileApplication collections
   do not run the removal API's lifecycle cleanup; `unapply_profile` performs cleanup.
+- Profile runtime values follow UML 2.5.1 sections 12.3.3.1.2-.3: instances of
+  profile-defined Classes/DataTypes are distinct runtime objects, not substituted
+  InstanceSpecifications. Typed tags use effective inherited/redefined attributes.
+  Binary navigable links and Class composition are implemented; non-navigable runtime
+  queries, link identities for repeated endpoints and CMOF exchange remain open.
+  Legacy explicit Stereotype-classified InstanceSpecifications remain supported as
+  application encodings by the separate base-link audit; they are not accepted as
+  values of profile-defined Class/DataType properties.
+- `ProfileApplication.isStrict` follows 12.3.3.1.1: applying a profile defines a
+  filtered view without deleting existing model elements. Explicit metaclassReference
+  overrides metamodelReference; references of imported profiles combine. Individually
+  applied nested profiles use their own references. Extended metaclass descendants are
+  available; explicit references alone use exact identities. The APIs expose this view
+  and checked creation; graphical presentation belongs to a future application.
+- User profile constraints use explicit trusted Python callbacks. Public mutation APIs
+  are blocked during evaluation, but this is not a Python sandbox or side-effect proof.
+  Unknown OCL/default/derived expressions remain unsupported rather than guessed.
 - Prose-only runtime/layout rules are checked to the extent represented by core UML.
   Missing language facts or occurrence mappings remain explicit unsupported obligations.
 - `Classifier-directlyUsedInterfaces`: the formula traverses supplierDependency and

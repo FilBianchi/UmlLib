@@ -6,6 +6,8 @@ describes their classifier. Their mutually exclusive base slots are read-only.
 from types import MappingProxyType
 from .native import kind, instances, NativeNotImplemented, check
 from .native.constraints_remaining import base_properties
+from .profile_values import ProfileObject, containing_package, cleanup_profile_values, _records
+from .evaluation_context import profile_evaluation
 
 
 def available_profiles(element):
@@ -24,6 +26,9 @@ def available_profiles(element):
         result.add(profile)
         pending.extend(p for p in profile.packagedElement if kind(element, p, 'Profile'))
         pending.extend(i.importedPackage for i in profile.packageImport if kind(element, i.importedPackage, 'Profile'))
+        from .profile_values import defining_profile
+        pending.extend(p for i in profile.elementImport if kind(element, i.importedElement, 'Stereotype')
+                       for p in [defining_profile(i.importedElement)] if p is not None)
     return result
 
 
@@ -48,7 +53,7 @@ def _conforms_to_base(element, prop):
 def _modeled_applications(element):
     result = []
     for candidate in instances(element, 'InstanceSpecification'):
-        for stereotype in candidate.classifier:
+        for stereotype in candidate._items(candidate.classifier):
             if not kind(element, stereotype, 'Stereotype'): continue
             props = base_properties(stereotype)
             if any(slot.definingFeature in props and any(kind(element, v, 'InstanceValue') and v.instance is element for v in slot.value) for slot in candidate.slot):
@@ -66,17 +71,25 @@ def applications(element):
 
 
 def _available_stereotypes(element):
-    return {s for profile in available_profiles(element) for s in profile.allOwnedElements() if kind(element, s, 'Stereotype')}
+    from .profile_filtering import applied_roots, visible_stereotypes
+    return {s for application in applied_roots(element) for s in visible_stereotypes(application.appliedProfile)}
 
 
-def apply_profile(package, profile, *, create_required=True):
+def apply_profile(package, profile, *, create_required=True, is_strict=None):
+    if is_strict is not None and type(is_strict) is not bool: raise TypeError('is_strict must be Boolean')
     if not kind(package, package, 'Package') or not kind(package, profile, 'Profile'):
         raise TypeError('Expected a Package and a Profile')
+    package._ensure_alive(); profile._ensure_alive()
     existing = next((a for a in package.profileApplication if a.appliedProfile is profile), None)
     application = existing or package.__registry__['ProfileApplication'](appliedProfile=profile)
+    previous_strict = application.isStrict
+    if is_strict is not None:
+        application.isStrict = is_strict
     created = []
     if existing is None: package.profileApplication.append(application)
     try:
+        from .profile_filtering import validate_strict_profiles
+        if validate_strict_profiles(application): raise ValueError('Conflicting strict profile filters')
         if create_required:
             for element in [package] + package.allOwnedElements():
                 stereotypes = _available_stereotypes(element)
@@ -94,10 +107,11 @@ def apply_profile(package, profile, *, create_required=True):
                         if len(props) != 1: raise ValueError('Required base property has an ambiguous redefinition')
                         created.append(apply_stereotype(element, concrete, base_property=props[0]))
     except Exception:
-        for app in created: app.detach()
+        for app in created: app.delete()
         if existing is None:
             package.profileApplication.remove(application)
             application.delete()
+        else: application.isStrict = previous_strict
         raise
     return application
 
@@ -140,15 +154,24 @@ def unapply_profile(package, profile):
         for slot in list(instance.slot):
             if slot.definingFeature is None or (defining_profile(slot.definingFeature) is not None and defining_profile(slot.definingFeature) not in available):
                 slot.delete()
+    cleanup_profile_values()
 
 
-class StereotypeApplication:
-    def __init__(self, stereotype, element, *, base_property=None):
+class StereotypeApplication(ProfileObject):
+    def __init__(self, stereotype, element, *, base_property=None, values=None):
         if not kind(stereotype, stereotype, 'Stereotype'): raise TypeError('Expected a Stereotype')
         self._stereotype = stereotype
         self._element = None
         self._base_property = None
+        self._init_values(stereotype, containing_package(element))
         self.rebind(element, base_property=base_property)
+        try:
+            self._update(values or {}, initializing=True)
+            self._register()
+        except Exception:
+            self._commit({})
+            self.detach()
+            raise
 
     @property
     def stereotype(self): return self._stereotype
@@ -161,12 +184,14 @@ class StereotypeApplication:
         return MappingProxyType({p: self._element if p is self._base_property else None for p in base_properties(self.stereotype)})
 
     def rebind(self, element, *, base_property=None):
+        if profile_evaluation.get(): raise ValueError('Cannot rebind during constraint evaluation')
+        self._ensure_alive()
         stereotype = self.stereotype
         if not hasattr(element, '__spec__'): raise TypeError('Expected a UML model element')
         stereotype._ensure_alive()
         element._ensure_alive()
         if stereotype.isAbstract: raise ValueError('An abstract stereotype cannot be instantiated')
-        if stereotype.profile not in available_profiles(element):
+        if stereotype.profile not in available_profiles(element) or stereotype not in _available_stereotypes(element):
             raise ValueError('Apply the containing profile to this element\'s package first')
         if stereotype.visibility is not None and stereotype.visibility.value != 'public':
             raise ValueError('Only public stereotypes of applied profiles are available')
@@ -194,9 +219,12 @@ class StereotypeApplication:
             old._stereotype_applications = {s: a for s, a in getattr(old, '_stereotype_applications', {}).items() if a is not self}
         self._element, self._base_property = element, base_property
         element._stereotype_applications = {**getattr(element, '_stereotype_applications', {}), stereotype: self}
+        self._package = containing_package(element)
+        if self in _records: self._register()
         return self
 
     def detach(self):
+        if profile_evaluation.get(): raise ValueError('Cannot detach during constraint evaluation')
         if self._element is not None:
             element = self._element
             element._stereotype_applications = {s: a for s, a in getattr(element, '_stereotype_applications', {}).items() if a is not self}
@@ -204,6 +232,7 @@ class StereotypeApplication:
         self._base_property = None
 
     def validate(self):
+        self._ensure_alive()
         issues = []
         if self.element is None: return [('stereotype application', 'Stereotype.base_instance')]
         slots = self.base_slots
@@ -221,17 +250,18 @@ class StereotypeApplication:
             issues.append(('stereotype application', 'Stereotype.duplicate_application'))
         for identifier in ('Stereotype.base_property_upper_bound', 'Stereotype.base_property_multiplicity_single_extension', 'Stereotype.base_property_multiplicity_multiple_extension'):
             if not check(self.stereotype, identifier): issues.append(('stereotype application', identifier))
+        issues.extend(self._validate_values())
         return issues
 
 
-def apply_stereotype(element, stereotype, *, base_property=None):
-    return StereotypeApplication(stereotype, element, base_property=base_property)
+def apply_stereotype(element, stereotype, *, base_property=None, values=None):
+    return StereotypeApplication(stereotype, element, base_property=base_property, values=values)
 
 
 def _validate_instance_applications(instance):
     """Validate applications explicitly modeled as InstanceSpecification/Slot."""
     result = []
-    for stereotype in instance.classifier:
+    for stereotype in instance._items(instance.classifier):
         if not kind(instance, stereotype, 'Stereotype'): continue
         props = base_properties(stereotype)
         populated = []
@@ -265,6 +295,11 @@ def _validate_instance_applications(instance):
 
 def validate_applications(element):
     result = [issue for app in applications(element) for issue in app.validate()]
+    if kind(element, element, 'Package'):
+        result.extend(issue for value in getattr(element, '_profile_instances', ())
+                      if not isinstance(value, StereotypeApplication) for issue in value.validate())
+    from .profile_filtering import validate_strict_profiles
+    result.extend(validate_strict_profiles(element))
     if kind(element, element, 'InstanceSpecification'):
         result.extend(_validate_instance_applications(element))
     available = _available_stereotypes(element)

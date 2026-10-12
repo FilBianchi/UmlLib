@@ -27,6 +27,8 @@ def backlog():
             action = 'Resolve nested/inherited Artifact and slot-based manifestation requirements against normative sources; direct modeled Artifact instances are supported by the supplemental resolver.'
         if record['id'] == 'Message-signature_is_operation_reply':
             priority, area, action = 'P0', 'source policy', 'Review the XMI/prose policy for reply argument representation; typed direct values, first expression operands and wildcards are checked by the supplement.'
+        if record['id'] in ('Stereotype','ProfileApplication-isStrict'):
+            action = 'Extend implemented typed profile values, navigable binary links and strict views with explicit custom-value/derived-expression adapters, non-navigable runtime navigation, non-UML metaclasses and exchange contracts; preserve unsupported external languages.'
         entries.append(dict(id=record['id'], name=record.get('name', record['id']), package=record['package'],
                             priority=priority, area=area, status=review, limitation=record['limitation'],
                             source=record['source'], next_action=action, static_supplements=record['static_supplements']))
@@ -39,7 +41,7 @@ def backlog():
                 remaining_workstreams=[
                     dict(priority='P0', area='structural contracts', action='Extend STRUCTURAL_AUDIT.md declaration sweeps/family scenarios to per-association/end semantics, subtype combinations and broader mutation sequences; cross-session references are allowed but diagnosed.'),
                     dict(priority='P0', area='additional prose', action='Decompose the 242 class descriptions and additional normative prose into atomic requirements; counts of XMI definitions alone cannot close this scope.'),
-                    dict(priority='P1', area='profiles', action='Complete typed tagged values, strict profile restrictions and user constraint integration.'),
+                    dict(priority='P1', area='profiles', action='Typed tags, binary navigable associations, strict views and trusted user-constraint integration are implemented. Complete custom value/expression adapters, non-navigable navigation, non-UML metaclasses and CMOF/exchange semantics.'),
                     dict(priority='P1', area='exchange', action='Implement model XMI import/export after profile and adapter contracts stabilize.'),
                     dict(priority='P2', area='diagram exchange', action='Implement StandardProfile/UMLDI and preserve diagram metadata separately from core model semantics.')])
 

@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.11.0/umllib-0.11.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.12.0/umllib-0.12.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -71,7 +71,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.11.0 suite has 291 tests.
+invariants, two queries and one derivation. The 0.12.0 suite has 313 tests.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -203,9 +203,89 @@ rejected. `unapply_profile` removes inaccessible applications while preserving m
 elements and applications still available through another applied profile.
 
 Applications modeled explicitly with `InstanceSpecification`, `Slot` and
-`InstanceValue` also receive base-binding and duplicate checks. The runtime API covers
-base links and profile availability; it does not execute stereotype OCL bodies or
-provide a generated Python class for each user-defined stereotype's tagged values.
+`InstanceValue` also receive base-binding and duplicate checks. Actual profile values
+use the runtime API below, distinct from UML instance specifications.
+
+### Typed tagged values and profile objects
+
+```python
+import Uml
+from umltools import ModelSession
+from umltools.stereotypes import apply_profile, apply_stereotype
+from umltools.profile_values import ProfileObject, register_profile_constraint
+
+with ModelSession():
+    metamodel = Uml.Model(name="UML")
+    metaclass = Uml.Class(name="Class"); metamodel.packagedElement.append(metaclass)
+    string = Uml.PrimitiveType(name="String")
+    stereotype = Uml.Stereotype(name="Documented")
+    profile = Uml.Profile(name="Documentation", packagedElement=[string, stereotype],
+                          metaclassReference=[Uml.ElementImport(importedElement=metaclass)])
+    base = Uml.Property(name="base_Class", type=metaclass)
+    stereotype.ownedAttribute.append(base)
+    extension = Uml.Extension(memberEnd=[base],
+                              ownedEnd=Uml.ExtensionEnd(type=stereotype,
+                                  aggregation=Uml.AggregationKind.composite,
+                                  lowerValue=Uml.LiteralInteger(value=0)))
+    profile.packagedElement.append(extension)
+    text = Uml.Property(name="text", type=string,
+                        lowerValue=Uml.LiteralInteger(value=0))
+    stereotype.ownedAttribute.append(text)
+    model = Uml.Model(packagedElement=[Uml.Class(name="Customer")])
+    apply_profile(model, profile)
+    application = apply_stereotype(model.packagedElement[0], stereotype,
+                                   values={"text": "Customer documentation"})
+    application.set_value(text, "Updated documentation")
+    assert application.get_value("text") == "Updated documentation"
+    assert application.tagged_values["text"] == "Updated documentation"
+```
+
+Keys are effective Property identities or unambiguous names. Inherited/redefined
+properties, Boolean/Integer/Real/String/UnlimitedNatural values, modeled enumeration
+literals and referenced UML metaclass instances are supported. `EnumValue` identifies
+an enumeration literal. `ProfileObject(classifier, package, values={...})` creates a
+profile-defined Class or structured DataType instance; an `InstanceSpecification`
+cannot substitute for it. DataType values are immutable after construction.
+
+`set_values` checks the whole update before applying it. Bounds and primitive types
+are checked; unique collections deduplicate, ordered collections retain order and
+nonunique ordinary tags preserve duplicates. Collection reads return immutable
+tuples; `tagged_values` and `values_by_property` are read-only views. Literal defaults
+are used when a value is absent. Missing required tags are validation errors; writes
+must satisfy lower bounds. Read-only tags can be supplied at construction.
+
+Binary associations synchronize navigable runtime opposite properties atomically.
+An occupied scalar opposite rejects a second link; clear it before rebinding.
+Composite Class values have one owner, reject cycles and are deleted with their owner.
+Removing a profile or deleting a base/schema clears inaccessible runtime values and
+references; values still accessible through another applied profile survive.
+`application.delete()` also detaches its base. `detach()` preserves its values for
+later `rebind()`. Packages retain runtime instances independently of Python variables.
+
+User-defined constraints can register `register_profile_constraint(constraint,
+lambda application: ...)`; predicates must return an exact Boolean. Inherited
+constraints are evaluated too. False, failed and unavailable evaluators receive
+distinct diagnostics. Normal model/value creation, mutation and deletion are blocked
+during callbacks. Callbacks are trusted Python code, not a sandbox or a proof of
+absence of external side effects. Arbitrary OCL text is never executed.
+
+Custom primitive types, derived tags and nonliteral defaults require future explicit
+value evaluators and report unsupported. Association-owned non-navigable runtime
+navigation, repeated links requiring distinct link identities, CMOF interoperability
+and runtime value serialization remain open; these examples do not prove exhaustive
+profile conformance.
+
+### Strict profile views
+
+`apply_profile(model, profile, is_strict=True)` activates metaclass filtering.
+`umltools.profile_filtering.is_metaclass_available(model, "Class")` and
+`is_element_available(element)` expose the view; `create_profiled_element(model,
+"Class", name="C")` checks it and creates an unowned object in the model's extent.
+Ordinary constructors remain available for general editing. Existing hidden objects
+are preserved. Explicit metaclass references override metamodel references; imported
+profiles and extended metaclass subtypes contribute to availability. Disjoint strict
+views are rejected by `apply_profile` and diagnosed by validation after direct edits.
+Public imports govern stereotype visibility. Non-UML metaclasses need an adapter.
 
 ## Interaction boundary mappings
 

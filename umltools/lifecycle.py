@@ -20,6 +20,8 @@ def delete(element, *, cascade=True, on_references='detach'):
     from . import UmlElement, _mutation
     from .stereotypes import applications, available_profiles
     from .native import kind
+    from .evaluation_context import profile_evaluation
+    if profile_evaluation.get(): raise ValueError('Cannot delete elements during constraint evaluation')
     if not isinstance(element, UmlElement): raise TypeError('Expected a UML model element')
     if on_references not in ('detach', 'restrict'): raise ValueError('Unknown reference policy')
     if type(cascade) is not bool: raise TypeError('cascade must be Boolean')
@@ -57,6 +59,13 @@ def delete(element, *, cascade=True, on_references='detach'):
             if classifiers and all(c in doomed for c in classifiers) and any(c.__spec__.name == 'Stereotype' for c in classifiers):
                 pending.append(candidate)
     if on_references == 'restrict':
+        from .profile_values import _records, EnumValue, plan_profile_cleanup
+        internal_values = plan_profile_cleanup(doomed)
+        for record in list(_records):
+            if record in internal_values: continue
+            for prop, values in record._values.items():
+                if prop in doomed or any(v in doomed or isinstance(v, EnumValue) and v.literal in doomed for v in values):
+                    raise DeletionRestrictedError('A runtime tagged value prevents deletion')
         for survivor in live:
             if survivor in doomed: continue
             for name, prop in survivor.properties().items():
@@ -90,6 +99,8 @@ def delete(element, *, cascade=True, on_references='detach'):
                         affected |= id(current) in transaction['snapshots']
                         current = current._container
                     if affected and app.stereotype.profile not in available_profiles(source): detach.append(app)
+        from .profile_values import plan_profile_cleanup
+        profile_doomed = plan_profile_cleanup(doomed, detach)
         for app in detach: app.detach()
     except Exception:
         UmlElement._rollback(transaction)
@@ -118,4 +129,7 @@ def delete(element, *, cascade=True, on_references='detach'):
         item.__instances__.discard(item)
         if item._extent is not None: item._extent.elements.discard(item)
         object.__setattr__(item, '_extent', None)
+    from .profile_values import _delete_records, _constraint_adapters
+    _delete_records(profile_doomed, doomed)
+    for item in doomed: _constraint_adapters.pop(item, None)
     return tuple(doomed)

@@ -36,8 +36,8 @@
     }
   },
   "verification_counts": {
-    "linked behavioral examples": 782,
-    "no linked behavioral examples": 1106
+    "linked behavioral examples": 784,
+    "no linked behavioral examples": 1104
   },
   "review_counts": {
     "verified in linked examples": 686,
@@ -17581,14 +17581,19 @@
         "Specifies that the Profile filtering rules for the metaclasses of the referenced metamodel shall be strictly applied."
       ],
       "expressions": [],
-      "tests": [],
+      "tests": [
+        "test_profile_values.ProfileValueCases.test_explicit_references_override_metamodel_and_disjoint_strict_filters_roll_back",
+        "test_profile_values.ProfileValueCases.test_invalid_strict_argument_leaves_no_application_or_extent_leak",
+        "test_profile_values.ProfileValueCases.test_metamodel_and_imported_stereotype_references_and_extended_subtypes",
+        "test_profile_values.ProfileValueCases.test_strict_view_does_not_delete_existing_elements_and_factory_rejects_hidden_types"
+      ],
       "structural_sweeps": [
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
-      "verification": "no linked behavioral examples",
+      "verification": "linked behavioral examples",
       "review": "partial",
-      "limitation": "The Boolean is stored, but strict metaclass/visibility restrictions of applied profiles are not enforced by the runtime.",
+      "limitation": "Strict availability views and checked creation support UML metaclass references, imported profiles, extended subtypes and conflicting filters. Direct constructors remain available for general model editing. Non-UML metaclasses need an adapter; UI presentation and CMOF interoperability remain open.",
       "source": "umltools/data/UML.xmi#ProfileApplication-isStrict",
       "static_supplements": []
     },
@@ -17943,10 +17948,29 @@
         "A stereotype defines how an existing metaclass may be extended, and enables the use of platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass."
       ],
       "expressions": [],
-      "tests": [],
-      "verification": "no linked behavioral examples",
+      "tests": [
+        "test_profile_values.ProfileValueCases.test_binary_associations_keep_both_navigable_ends_and_rollback_overflow",
+        "test_profile_values.ProfileValueCases.test_boolean_real_unlimited_natural_and_custom_primitive",
+        "test_profile_values.ProfileValueCases.test_callbacks_cannot_create_delete_or_modify_runtime_values",
+        "test_profile_values.ProfileValueCases.test_collections_order_uniqueness_bags_and_upper_bounds",
+        "test_profile_values.ProfileValueCases.test_composite_ownership_cycles_failure_rollback_and_profile_removal",
+        "test_profile_values.ProfileValueCases.test_enumeration_and_metaclass_references",
+        "test_profile_values.ProfileValueCases.test_opaque_defaults_and_derived_properties_are_explicit_obligations",
+        "test_profile_values.ProfileValueCases.test_package_validation_includes_profile_objects_and_rejects_profile_types_in_model",
+        "test_profile_values.ProfileValueCases.test_profile_objects_are_not_instance_specifications_and_datatypes_are_immutable",
+        "test_profile_values.ProfileValueCases.test_public_element_import_exposes_stereotype_but_private_package_import_does_not",
+        "test_profile_values.ProfileValueCases.test_readonly_initial_values_inherited_tags_and_redefinitions",
+        "test_profile_values.ProfileValueCases.test_rebind_preserves_values_and_failed_rebind_keeps_original_base",
+        "test_profile_values.ProfileValueCases.test_removing_one_importing_profile_preserves_shared_type_until_last_removed",
+        "test_profile_values.ProfileValueCases.test_restrict_deletion_accounts_for_runtime_tag_references",
+        "test_profile_values.ProfileValueCases.test_runtime_reference_cleanup_after_base_and_schema_deletion",
+        "test_profile_values.ProfileValueCases.test_scalar_defaults_types_required_values_and_atomic_bulk_update",
+        "test_profile_values.ProfileValueCases.test_schema_deletion_invalidates_runtime_values_without_losing_model",
+        "test_profile_values.ProfileValueCases.test_user_constraints_callbacks_boolean_contract_and_mutation_guard"
+      ],
+      "verification": "linked behavioral examples",
       "review": "partial",
-      "limitation": "Base bindings and declared invariants are implemented. A complete typed tagged-value API and arbitrary user-defined stereotype constraint execution are not implemented.",
+      "limitation": "Runtime typed tags support effective inherited/redefined properties, literal defaults, bounds, readonly values, enumerations, profile Class/DataType objects, binary navigable inverses, composition and deletion. User constraints use trusted Python callbacks or Boolean literals, never arbitrary OCL execution. Custom primitive/derived/default evaluators, association-owned runtime navigation, full CMOF serialization and exhaustive profile semantics remain open.",
       "source": "umltools/data/UML.xmi#Stereotype",
       "static_supplements": []
     },

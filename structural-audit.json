@@ -7377,7 +7377,12 @@
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
-      "definition_examples": [],
+      "definition_examples": [
+        "test_profile_values.ProfileValueCases.test_explicit_references_override_metamodel_and_disjoint_strict_filters_roll_back",
+        "test_profile_values.ProfileValueCases.test_invalid_strict_argument_leaves_no_application_or_extent_leak",
+        "test_profile_values.ProfileValueCases.test_metamodel_and_imported_stereotype_references_and_extended_subtypes",
+        "test_profile_values.ProfileValueCases.test_strict_view_does_not_delete_existing_elements_and_factory_rejects_hidden_types"
+      ],
       "family_examples": [],
       "evidence_scope": "Declaration sweeps check defaults, rejection of wrong types and one declared-type setter value. Family examples demonstrate representative relationships only; they do not certify every association/subset/redefinition/prose requirement."
     },
