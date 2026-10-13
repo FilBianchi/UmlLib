@@ -32,15 +32,15 @@
       "native Python": 1
     },
     "supplemental requirement": {
-      "native Python": 5
+      "native Python": 6
     }
   },
   "verification_counts": {
-    "linked behavioral examples": 784,
+    "linked behavioral examples": 785,
     "no linked behavioral examples": 1104
   },
   "review_counts": {
-    "verified in linked examples": 686,
+    "verified in linked examples": 687,
     "needs review": 1101,
     "source inconsistency": 68,
     "partial": 19,
@@ -18427,12 +18427,15 @@
       "implementation": "umltools.native.constraints_interactions.continuations",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_continuation_prose.ContinuationProseCases.test_nonliteral_selectors_unknown_not_equal_and_literal_counterexamples",
         "test_interactions_audit.InteractionCases.test_continuations_common_lifelines_and_operand_end_positions"
       ],
       "review": "partial",
-      "limitation": "Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.",
+      "limitation": "The XMI predicate retains context-owned peer traversal. validate() additionally checks prose:Continuation.same_context_lifelines across the whole session, including nested owned Interactions sharing context. Literal selector values and selector identity are supported; distinct nonliteral selectors report unsupported rather than comparing absent value fields as equal. Arbitrary selector equivalence remains context dependent.",
       "source": "umltools/data/UML.xmi#Continuation-same_name",
-      "static_supplements": []
+      "static_supplements": [
+        "prose:Continuation.same_context_lifelines"
+      ]
     },
     {
       "id": "Continuation-global",
@@ -53454,6 +53457,27 @@
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#DeploymentSpecification-deployed_elements",
+      "static_supplements": []
+    },
+    {
+      "id": "prose:Continuation.same_context_lifelines",
+      "name": "prose:Continuation.same_context_lifelines",
+      "package": "Interactions",
+      "kind": "supplemental requirement",
+      "status": "native Python",
+      "descriptions": [
+        "All same-named continuations in Interactions with the same context cover corresponding lifelines, including nested owned behaviors."
+      ],
+      "expressions": [],
+      "normative_reference": "Continuation-same_name",
+      "implementation": "umltools.static_requirements.continuation_context",
+      "tests": [
+        "test_continuation_prose.ContinuationProseCases.test_nested_behavior_peer_census_and_different_context",
+        "test_continuation_prose.ContinuationProseCases.test_nonliteral_selectors_unknown_not_equal_and_literal_counterexamples"
+      ],
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
+      "source": "umltools/data/UML.xmi#Continuation-same_name",
       "static_supplements": []
     },
     {

@@ -10,7 +10,10 @@ from pathlib import Path
 from urllib.parse import urljoin, urldefrag, urlparse, unquote, urlsplit, urlunsplit
 import copy
 import re
+import os
+import tempfile
 import xml.etree.ElementTree as ET
+from .document import DocumentEditing
 
 XMI_NS = 'http://www.omg.org/spec/XMI/20131001'
 UML_NS = 'http://www.omg.org/spec/UML/20161101'
@@ -129,7 +132,7 @@ class Diagnostic:
     severity: str = 'warning'
 
 
-class XmiDocument:
+class XmiDocument(DocumentEditing):
     def __init__(self, uri, session):
         self.uri, self.session = uri, session
         self.roots, self.ids, self.diagnostics = [], {}, []
@@ -149,7 +152,10 @@ class XmiDocument:
     def resolve(self, reference, *, uri=None):
         target, fragment = urldefrag(_absolute(uri or self.uri, reference if '#' in reference else '#'+reference))
         target=self.aliases.get(target,target)
-        try: return self.ids[target+'#'+fragment]
+        try:
+            value = self.ids[target+'#'+fragment]
+            if value.is_deleted: raise KeyError(target+'#'+fragment)
+            return value
         except KeyError as error: raise XmiReferenceError('Unresolved reference: '+target+'#'+fragment) from error
 
     def validate(self):
@@ -606,7 +612,7 @@ def load(path, *, strict=True,resources=None,external_objects=None,profile_bindi
     return reader.run(data)
 
 
-def dumps(model, *, bundle=True, external_references=None, target_version=None):
+def dumps(model, *, bundle=True, external_references=None, target_version=None, scope='document', roots=None):
     """Serialize a model/document. Bundling closes stored references and ownership.
 
     With bundle=False external targets require URI#id mappings or imported identities.
@@ -628,9 +634,11 @@ def dumps(model, *, bundle=True, external_references=None, target_version=None):
     if version is not None and version!=SEMANTIC_VERSION:
         if __package__=='umltools' and version=='2.4.1' and target_version in (None,'2.4.1'):
             from .version_backend import backend_241
-            return backend_241().xmi.dumps(model,bundle=bundle,external_references=external_references,target_version=target_version)
+            return backend_241().xmi.dumps(model,bundle=bundle,external_references=external_references,target_version=target_version,scope=scope,roots=roots)
         raise XmiUnsupportedError('Export does not migrate UML '+version+' to '+str(target_version or SEMANTIC_VERSION))
     require_target_version(SEMANTIC_VERSION if target_version is None else target_version)
+    if isinstance(model,XmiDocument): model=model.export_document(scope=scope,roots=roots)
+    elif scope!='document' or roots is not None: raise XmiError('Export scope options require a document')
     token=_exchange_query_cache.set({})
     try: return _dumps(model,bundle=bundle,external_references=external_references)
     finally: _exchange_query_cache.reset(token)
@@ -801,6 +809,13 @@ def _dumps(model, *, bundle=True, external_references=None):
 
 
 def dump(model,path,**options):
-    """Write UTF-8 XML after successful graph serialization."""
-    data=dumps(model,**options)
-    Path(path).write_text(data,encoding='utf-8')
+    """Serialize first, then atomically replace a file in its destination directory."""
+    data=dumps(model,**options).encode('utf-8')
+    path=Path(path).resolve()
+    descriptor,temporary=tempfile.mkstemp(prefix='.umllib-',suffix='.tmp',dir=path.parent)
+    try:
+        with os.fdopen(descriptor,'wb') as stream:
+            stream.write(data);stream.flush();os.fsync(stream.fileno())
+        os.replace(temporary,path)
+    finally:
+        if os.path.exists(temporary): os.unlink(temporary)

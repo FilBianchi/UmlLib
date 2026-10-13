@@ -3,7 +3,7 @@
 Identifiers use prose: to distinguish these requirements from declared XMI invariants.
 No expression language or Behavior is executed.
 """
-from .native import kind, NativeNotImplemented, unique
+from .native import kind, NativeNotImplemented, unique, instances
 from .native.constraints_basic import required, enum
 from .native.constraints_actions import conforms
 from .native.constraints_interactions import wildcard
@@ -158,3 +158,17 @@ SUPPLEMENTAL_QUERIES = {
 }
 REQUIREMENTS['prose:DecisionNode.input_types']['additional_sources'] = (
     'DecisionNode-incoming_control_one_input_parameter', 'DecisionNode-incoming_object_one_input_parameter')
+
+
+@requirement('prose:Continuation.same_context_lifelines', 'Continuation', 'Continuation-same_name',
+             'All same-named continuations in Interactions with the same context cover corresponding lifelines, including nested owned behaviors.')
+def continuation_context(self):
+    from .native.constraints_interactions import interaction_of, fragments, lifeline_equal
+    parent=interaction_of(self)
+    if parent is None or self.enclosingOperand is None: return False
+    peers=[i for i in instances(self,'Interaction') if i.context is parent.context]
+    candidates=[f for interaction in peers for f in fragments(interaction)
+                if kind(self,f,'Continuation') and f.name==self.name]
+    return all(all(sum(lifeline_equal(a,b) for b in c.covered)==1 for a in self.covered)
+               and all(sum(lifeline_equal(a,b) for b in self.covered)==1 for a in c.covered)
+               for c in candidates)

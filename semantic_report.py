@@ -90,7 +90,7 @@ PARTIAL = {
     'ProtocolConformance': 'Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented.',
     'DeploymentTarget-deployedElement': 'The XMI query retains its Artifact-only filter. The supplemental deployed_elements resolver expands direct manifestations of modeled Artifact classifiers/instances. Nested-artifact, inherited-manifestation, slot and runtime-copy semantics remain open.',
     'DeploymentSpecification-deployed_elements': 'The XMI predicate retains the Artifact-only derivation. validate() additionally checks prose:DeploymentSpecification.configured_instance_elements using modeled Artifact instances. Nested-artifact and runtime-copy semantics remain open.',
-    'Continuation-same_name': 'Peer traversal uses context-owned Interactions and role identity with literal selector kind/value. A complete census of every Interaction sharing context and arbitrary domain selector equivalence remains open.',
+    'Continuation-same_name': 'The XMI predicate retains context-owned peer traversal. validate() additionally checks prose:Continuation.same_context_lifelines across the whole session, including nested owned Interactions sharing context. Literal selector values and selector identity are supported; distinct nonliteral selectors report unsupported rather than comparing absent value fields as equal. Arbitrary selector equivalence remains context dependent.',
     'Message-signature_is_operation_reply': 'The XMI predicate is preserved, including vacuous direct values. validate() additionally enforces prose:Message.reply_argument_types on direct typed values, first expression operands and wildcards; arbitrary expression evaluation remains outside this check.',
     'Message-sending_receiving_message_event': 'The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented.',
     'InteractionConstraint-dynamic_variables': 'Trusted reference facts are checked against represented covered lifeline roles/types, interaction parameters/context attributes and read-only Properties. Full runtime ownership/global/write-once semantics remains a project approximation.',
@@ -263,4 +263,8 @@ def report():
 if __name__ == '__main__':
     result = report()
     Path(__file__).with_name('semantic-report.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    obligations = [{'owner':r['name'].split('.')[0], 'rule':r['name'], 'source':r['source'], 'limitation':r['limitation']}
+                   for r in result['definitions'] if r['review']=='partial']
+    (Path(__file__).parent/'umltools'/'data'/'validation-obligations.json').write_text(
+        json.dumps({'semantic_version':'2.5.1','requirements':obligations},indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result['counts']))

@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.20.0
+
+Public editable XmiDocument API for both backends: new/create/set_value, atomic
+move/detach, deletion, stable in-memory identities and reconciliation of direct
+legacy mutations. Document export retains detached objects and dependency roots;
+reachable-only export requires explicit roots. File writes atomically replace the
+target and clean temporary files on failure.
+
+Structured validation locates rules, features, paths and available causes, separating
+violations, evaluation failures, unsupported obligations and cross-session context
+warnings. The legacy tuple API remains compatible. The wheel packages the generated
+census of known partial 2.5.1 requirements; it is conservative by metaclass and not
+a complete normative prose audit.
+
+Supplemental Continuation checks cover nested Interactions sharing context. Unknown
+nonliteral selectors are unsupported rather than spuriously equal. Arbitrary
+selector evaluation, trace semantics and other documented requirements remain open.
+UML 2.4.1 keeps its unaudited-prose marker; the new 2.5.1 supplement is not silently
+enabled for the older normative wording.
+
 ## 0.19.0
 
 Enable native UML 2.4.1 runtime profiles/stereotypes and profile XMI exchange.

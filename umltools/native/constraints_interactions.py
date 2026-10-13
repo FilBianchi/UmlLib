@@ -29,7 +29,16 @@ def fragments(interaction):
 def lifeline_equal(a, b):
     if a.represents is not b.represents: return False
     if a.selector is None or b.selector is None: return a.selector is b.selector
-    return type(a.selector) is type(b.selector) and getattr(a.selector, 'value', None) == getattr(b.selector, 'value', None)
+    if a.selector is b.selector: return True
+    left,right=a.selector,b.selector
+    literals={'LiteralBoolean','LiteralInteger','LiteralReal','LiteralString','LiteralUnlimitedNatural','LiteralNull'}
+    if left.__spec__.name not in literals or right.__spec__.name not in literals:
+        raise NativeNotImplemented('Continuation selector equivalence requires an expression evaluator')
+    if left.__spec__.name != right.__spec__.name: return False
+    if left.__spec__.name == 'LiteralNull': return True
+    if left.value is None or right.value is None:
+        raise NativeNotImplemented('Continuation selector value is unspecified')
+    return left.value == right.value
 
 
 def operand_of_constraint(self): return single(reverse(self, 'InteractionOperand', 'guard'))

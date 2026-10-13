@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.19.0/umllib-0.19.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.20.0/umllib-0.20.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -13,6 +13,12 @@ Alternatively install from source: `python -m pip install git+https://github.com
 Pushing a `v` tag matching the version in `pyproject.toml` runs tests, builds the wheel
 and source archive, verifies the installed wheel, and publishes them with SHA-256 checksums.
 This initial version is alpha; semantic coverage and limitations are documented below.
+
+Since 0.20.0, `XmiDocument` provides public creation, atomic movement, detachment,
+deletion, identity reconciliation, explicit export scopes and atomic file saving.
+Structured validation locates issues and separates violations, evaluation errors,
+incomplete context and known partial requirements. See [DOCUMENT_API.md](DOCUMENT_API.md).
+The 0.20.0 suite has 441 tests; the Qt pilot additionally runs 14 integration tests.
 
 Python implementations of the UML 2.5.1 and 2.4.1 metamodels, generated from vendored OMG XMI.
 Each version contains 242 metaclasses and 13 enumerations. `Uml251`/`Uml` provide the
@@ -93,9 +99,12 @@ Artifact-instance deployment semantics remains partial: the deployedElement quer
 preserves the XMI's Artifact-only filter. Additional prose/structural requirements,
 source divergences, profiles, XMI model exchange and UMLDI remain separate conformance work.
 
-Five supplemental static prose checks now run automatically in `validate()`, with
+Six supplemental static prose checks now run automatically in `validate()`, with
 identifiers prefixed `prose:`: selection/transformation token types, ordered decision
-input types, reply argument types and configured Artifact-instance manifestations.
+input types, reply argument types, configured Artifact-instance manifestations and
+same-context Continuation peers across the whole extent, including nested owned
+Interactions. Distinct nonliteral Continuation selectors report missing evaluation
+semantics instead of being treated as equal through absent value fields.
 Unknown token types produce `unsupported constraint` rather than a successful check.
 The 449 XMI predicates remain independently inspectable through `umltools.native.check`;
 a passing XMI predicate may still have a failing supplemental requirement.

@@ -1,0 +1,119 @@
+{
+  "semantic_version": "2.5.1",
+  "requirements": [
+    {
+      "owner": "DecisionNode",
+      "rule": "DecisionNode.two_input_parameters",
+      "source": "umltools/data/UML.xmi#DecisionNode-two_input_parameters",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces ordered regular/decision-flow input types through prose:DecisionNode.input_types; unrepresented token types remain unsupported."
+    },
+    {
+      "owner": "DecisionNode",
+      "rule": "DecisionNode.incoming_control_one_input_parameter",
+      "source": "umltools/data/UML.xmi#DecisionNode-incoming_control_one_input_parameter",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces decisionInputFlow token-type conformance through prose:DecisionNode.input_types; unrepresented types remain unsupported."
+    },
+    {
+      "owner": "DecisionNode",
+      "rule": "DecisionNode.incoming_object_one_input_parameter",
+      "source": "umltools/data/UML.xmi#DecisionNode-incoming_object_one_input_parameter",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces the sole object input type through prose:DecisionNode.input_types; unrepresented types remain unsupported."
+    },
+    {
+      "owner": "ObjectFlow",
+      "rule": "ObjectFlow.input_and_output_parameter",
+      "source": "umltools/data/UML.xmi#ObjectFlow-input_and_output_parameter",
+      "limitation": "The XMI count/bounds predicate is preserved. validate() additionally enforces selection input/output types through prose:ObjectFlow.selection_types. Behavior purity remains an external evidence obligation."
+    },
+    {
+      "owner": "ObjectFlow",
+      "rule": "ObjectFlow.transformation_behavior",
+      "source": "umltools/data/UML.xmi#ObjectFlow-transformation_behavior",
+      "limitation": "The XMI count predicate is preserved. validate() additionally enforces upstream/input and output/downstream conformance through prose:ObjectFlow.transformation_types. Behavior purity remains an external evidence obligation."
+    },
+    {
+      "owner": "ObjectNode",
+      "rule": "ObjectNode.input_output_parameter",
+      "source": "umltools/data/UML.xmi#ObjectNode-input_output_parameter",
+      "limitation": "Input/output counts, multiplicities and nominal type variance are checked (with a documented source-body correction). Absence of side effects of the selection Behavior is not proved."
+    },
+    {
+      "owner": "ProtocolConformance",
+      "rule": "ProtocolConformance",
+      "source": "umltools/data/UML.xmi#ProtocolConformance",
+      "limitation": "Specific/general machine links are represented. Behavioral protocol-conformance proof is not implemented."
+    },
+    {
+      "owner": "PackageMerge",
+      "rule": "PackageMerge",
+      "source": "umltools/data/UML.xmi#PackageMerge",
+      "limitation": "The model represents receiving/merged Package links. The normative reconciliation/merge algorithm is not implemented."
+    },
+    {
+      "owner": "ProfileApplication",
+      "rule": "ProfileApplication.isStrict",
+      "source": "umltools/data/UML.xmi#ProfileApplication-isStrict",
+      "limitation": "Strict availability views and checked creation support UML metaclass references, imported profiles, extended subtypes and conflicting filters. Direct constructors remain available for general model editing. Non-UML metaclasses need an adapter; UI presentation and CMOF interoperability remain open."
+    },
+    {
+      "owner": "Stereotype",
+      "rule": "Stereotype",
+      "source": "umltools/data/UML.xmi#Stereotype",
+      "limitation": "Runtime typed tags support effective inherited/redefined properties, literal defaults, bounds, readonly values, enumerations, profile Class/DataType objects, binary navigable inverses, composition and deletion. Model-defined primitive lexical values retain exact type identity; Python semantics require explicit per-definition codecs. User constraints use trusted Python callbacks or Boolean literals, never arbitrary OCL execution. Derived/general default evaluators, association-owned runtime navigation, full CMOF serialization and exhaustive profile semantics remain open."
+    },
+    {
+      "owner": "Continuation",
+      "rule": "Continuation.same_name",
+      "source": "umltools/data/UML.xmi#Continuation-same_name",
+      "limitation": "The XMI predicate retains context-owned peer traversal. validate() additionally checks prose:Continuation.same_context_lifelines across the whole session, including nested owned Interactions sharing context. Literal selector values and selector identity are supported; distinct nonliteral selectors report unsupported rather than comparing absent value fields as equal. Arbitrary selector equivalence remains context dependent."
+    },
+    {
+      "owner": "InteractionConstraint",
+      "rule": "InteractionConstraint.dynamic_variables",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-dynamic_variables",
+      "limitation": "Trusted reference facts are checked against represented covered lifeline roles/types, interaction parameters/context attributes and read-only Properties. Full runtime ownership/global/write-once semantics remains a project approximation."
+    },
+    {
+      "owner": "InteractionConstraint",
+      "rule": "InteractionConstraint.global_data",
+      "source": "umltools/data/UML.xmi#InteractionConstraint-global_data",
+      "limitation": "Trusted reference facts and represented read-only Properties are supported. Arbitrary domain global/write-once storage semantics is not represented by core UML and is not proved."
+    },
+    {
+      "owner": "InteractionOperand",
+      "rule": "InteractionOperand.guard_contain_references",
+      "source": "umltools/data/UML.xmi#InteractionOperand-guard_contain_references",
+      "limitation": "Trusted guard reference facts are checked against represented operand coverage/context. General domain-global and write-once facts remain incomplete."
+    },
+    {
+      "owner": "InteractionOperand",
+      "rule": "InteractionOperand.guard_directly_prior",
+      "source": "umltools/data/UML.xmi#InteractionOperand-guard_directly_prior",
+      "limitation": "Guard composite ownership is checked. Graphical placement immediately above a fragment requires UMLDI/layout semantics and is not proved."
+    },
+    {
+      "owner": "Message",
+      "rule": "Message.sending_receiving_message_event",
+      "source": "umltools/data/UML.xmi#Message-sending_receiving_message_event",
+      "limitation": "The check uses represented ordered fragment containment with nested fragments visited before following siblings. A full partial-order semantics for parallel/alternative operands and GeneralOrdering is not implemented."
+    },
+    {
+      "owner": "Message",
+      "rule": "Message.signature_is_operation_reply",
+      "source": "umltools/data/UML.xmi#Message-signature_is_operation_reply",
+      "limitation": "The XMI predicate is preserved, including vacuous direct values. validate() additionally enforces prose:Message.reply_argument_types on direct typed values, first expression operands and wildcards; arbitrary expression evaluation remains outside this check."
+    },
+    {
+      "owner": "DeploymentSpecification",
+      "rule": "DeploymentSpecification.deployed_elements",
+      "source": "umltools/data/UML.xmi#DeploymentSpecification-deployed_elements",
+      "limitation": "The XMI predicate retains the Artifact-only derivation. validate() additionally checks prose:DeploymentSpecification.configured_instance_elements using modeled Artifact instances. Nested-artifact and runtime-copy semantics remain open."
+    },
+    {
+      "owner": "DeploymentTarget",
+      "rule": "DeploymentTarget.deployedElement",
+      "source": "umltools/data/UML.xmi#DeploymentTarget-deployedElement",
+      "limitation": "The XMI query retains its Artifact-only filter. The supplemental deployed_elements resolver expands direct manifestations of modeled Artifact classifiers/instances. Nested-artifact, inherited-manifestation, slot and runtime-copy semantics remain open."
+    }
+  ]
+}

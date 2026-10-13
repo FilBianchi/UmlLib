@@ -1,5 +1,21 @@
 """Run from outside the checkout after installing its distribution."""
 import Uml
+from umltools.xmi import XmiDocument,loads as load_document
+for semantic_version in ('2.4.1','2.5.1'):
+    document=XmiDocument.new('Installed',semantic_version=semantic_version)
+    parent=document.roots[0]
+    child=document.create('Class',owner=parent,feature='packagedElement',name='C')
+    identifier=document.identity(child)
+    document.detach(child)
+    restored=load_document(document.dumps(),semantic_version='auto')
+    assert len(restored.session.elements)==2 and restored.semantic_version==semantic_version
+    document.move(child,owner=parent,feature='packagedElement')
+    assert document.resolve(identifier) is child
+    report=document.validation_report()
+    assert report.semantic_version==semantic_version and report.checked_elements==2
+    assert 'issues' in report.to_dict()
+    document.delete(child)
+    assert child.is_deleted
 from umltools import OperationResultError, ModelSession, DeletedElementError
 from umltools.native import instances
 from umltools.native import check

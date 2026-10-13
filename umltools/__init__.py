@@ -247,18 +247,25 @@ class UmlElement:
     def _items(value):
         return list(value) if isinstance(value, (list, tuple, UmlCollection)) else [] if value is None else [value]
 
-    def validate(self, recursive=False):
+    def validate_detailed(self, recursive=False):
+        """Return located issues with violations separate from incomplete checks."""
+        from .validation import validate_element
+        return validate_element(self, recursive=recursive)
+
+    def validate(self, recursive=False, *, _causes=None):
         """Report structural failures and every unevaluated semantic obligation."""
         self._ensure_alive()
         issues = []
         for name, prop in self.properties().items():
             if prop.flags.get('isDerived') == 'true':
                 try: value = getattr(self, name)
-                except (UnsupportedSemanticsError, RecursionError):
+                except (UnsupportedSemanticsError, RecursionError) as error:
                     issues.append(('unsupported', prop.id))
+                    if _causes is not None: _causes[('unsupported',prop.id)] = str(error)
                     continue
-                except (ValueError, TypeError, AttributeError, IndexError, ZeroDivisionError):
+                except (ValueError, TypeError, AttributeError, IndexError, ZeroDivisionError) as error:
                     issues.append(('invalid derivation', prop.id))
+                    if _causes is not None: _causes[('invalid derivation',prop.id)] = str(error)
                     continue
             else: value = getattr(self, name)
             if prop.flags.get('isDerived') != 'true' and any(isinstance(target, UmlElement) and target._extent is not self._extent for target in self._items(value)):
@@ -273,18 +280,22 @@ class UmlElement:
                     identifier = f'{spec.name}.{name}'
                     try:
                         if not check(self, identifier): issues.append(('constraint', identifier))
-                    except (NativeNotImplemented, UnsupportedSemanticsError, RecursionError):
+                    except (NativeNotImplemented, UnsupportedSemanticsError, RecursionError) as error:
                         issues.append(('unsupported constraint', identifier))
-                    except (TypeError, ValueError, AttributeError, IndexError, ZeroDivisionError):
+                        if _causes is not None: _causes[('unsupported constraint',identifier)] = str(error)
+                    except (TypeError, ValueError, AttributeError, IndexError, ZeroDivisionError) as error:
                         issues.append(('invalid constraint', identifier))
+                        if _causes is not None: _causes[('invalid constraint',identifier)] = str(error)
         from .static_requirements import validate_static
         issues.extend(validate_static(self))
         from .stereotypes import validate_applications
         try: issues.extend(validate_applications(self))
-        except (NativeNotImplemented, UnsupportedSemanticsError):
+        except (NativeNotImplemented, UnsupportedSemanticsError) as error:
             issues.append(('unsupported stereotype application', 'Stereotype.application'))
-        except (ValueError, TypeError, AttributeError):
+            if _causes is not None: _causes[('unsupported stereotype application','Stereotype.application')] = str(error)
+        except (ValueError, TypeError, AttributeError) as error:
             issues.append(('invalid stereotype application', 'Stereotype.application'))
+            if _causes is not None: _causes[('invalid stereotype application','Stereotype.application')] = str(error)
         if recursive:
             for child in self.ownedElement:
                 issues.extend(child.validate(recursive=True))
