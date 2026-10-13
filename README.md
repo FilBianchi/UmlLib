@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.14.0/umllib-0.14.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.15.0/umllib-0.15.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -14,8 +14,11 @@ Pushing a `v` tag matching the version in `pyproject.toml` runs tests, builds th
 and source archive, verifies the installed wheel, and publishes them with SHA-256 checksums.
 This initial version is alpha; semantic coverage and limitations are documented below.
 
-Python implementation of the UML 2.5.1 metamodel, generated from the vendored OMG XMI.
-The library contains 242 metaclasses and 13 enumerations in 14 specification packages.
+Python implementations of the UML 2.5.1 and 2.4.1 metamodels, generated from vendored OMG XMI.
+Each version contains 242 metaclasses and 13 enumerations. `Uml251`/`Uml` provide the
+existing 2.5.1 API; `Uml241` provides independent 2.4.1 classes, organized in familiar
+convenience groups. The 2.4.1 semantic implementation is still partial; see
+[UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md) for precise coverage and isolation.
 Python 3.10 or later is required. The library does not require Qt.
 
 ```python
@@ -71,7 +74,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.14.0 suite has 343 tests.
+invariants, two queries and one derivation. The 0.15.0 suite has 356 tests across both versions.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -415,8 +418,10 @@ Eclipse UML2 implementation namespaces are not interpreted as exact UML versions
 an explicit unsupported error; relabeling a namespace would not perform a conversion.
 The target versions are 2.4.1 and 2.5.1; 2.5 is not an implementation target.
 The normative declaration comparison is recorded in [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md).
-Next work is explicit migration/validation policies. Independent 2.3/2.4.1 rule sets and UML 1.x are not
-implemented. The public corpus remains a compatibility check, not a multi-version
+Uml241 now provides a separate structural metamodel, isolated sessions and explicitly
+reviewed base semantics; see [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md).
+Full 2.4.1 semantic validation, XMI exchange and migration policies remain open.
+2.3 and UML 1.x are not implemented. The public corpus remains a compatibility check, not a multi-version
 conformance claim.
 
 The reader rejects DTD/entity declarations and has configurable byte, element and

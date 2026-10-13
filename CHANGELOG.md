@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.15.0
+
+Uml241 and Uml251 provide separate version namespaces. Uml/UML remain 2.5.1 aliases.
+Uml241 has all 242 classes and 13 enumerations generated from the OMG merged 2.4.1
+metamodel, with its own signatures, multiplicities, defaults and inheritance.
+The engine source is shared while registries, relationship maps, transactions,
+instances, sessions and semantic tables are independent. Mixed-version references,
+enum assignments and use of the wrong native semantic backend are rejected.
+
+The 2.4.1 branch enables 28 reviewed ownership/literal/bound queries and two ownership
+invariants. Other translations are explicitly unsupported until audited; generic
+structural union/ownership navigation remains available. Profile runtime application,
+supplemental prose validation and XMI exchange are not yet enabled for 2.4.1.
+This is an independent structural metamodel, not a full 2.4.1 conformance claim.
+The familiar package groups in Uml241 are convenience API groups: the normative
+merged source is flat. Both APIs ship in the same wheel using one maintained engine.
+356 tests pass; CI checks regeneration and installed use of both versions.
+
 ## 0.14.0
 
 PrimitiveValue represents model-defined primitive values by exact type identity and

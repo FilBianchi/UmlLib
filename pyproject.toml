@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "UmlLib"
-version = "0.14.0"
-description = "UML 2.5.1 metamodel and explicit Python model semantics"
+version = "0.15.0"
+description = "Independent UML 2.4.1 and 2.5.1 metamodels with explicit Python semantics"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Filippo Bianchi"}]
@@ -26,7 +26,7 @@ Releases = "https://github.com/FilBianchi/UmlLib/releases"
 py-modules = ["UML"]
 
 [tool.setuptools.packages.find]
-include = ["Uml", "Uml.*", "umltools", "umltools.*"]
+include = ["Uml", "Uml.*", "Uml241", "Uml241.*", "Uml251", "umltools", "umltools.*"]
 namespaces = false
 
 [tool.setuptools.package-data]

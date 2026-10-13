@@ -2,7 +2,7 @@
 import xml.etree.ElementTree as ET
 from contextvars import ContextVar
 from .specification import PROPERTY_RELATIONS
-from .native import invoke, DERIVATIONS, NativeNotImplemented, unique
+from .native import invoke, DERIVATIONS, NativeNotImplemented, unique, require_version
 from .contracts import validate_parameter, validate_result
 
 # Import-only memoization after the core graph is linked. Normal mutable model
@@ -23,6 +23,7 @@ def _cached_query(key, function):
 
 
 def operation(self, owner, name, args=(), kwargs=None):
+    require_version(self)
     self._ensure_alive()
     return _cached_query(('operation', self, owner, name, tuple(args), tuple(sorted((kwargs or {}).items()))),
                          lambda: _operation(self, owner, name, args, kwargs))
@@ -51,6 +52,7 @@ def _operation(self, owner, name, args=(), kwargs=None):
 
 
 def derive(self, prop):
+    require_version(self)
     self._ensure_alive()
     return _cached_query(('derive', self, prop.id), lambda: _derive(self, prop))
 

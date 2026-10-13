@@ -2,7 +2,9 @@
 
 Il supporto versionato previsto per UmlLib riguarda **2.4.1 e 2.5.1**.
 UML 2.5 non è un obiettivo di implementazione. Il runtime attuale resta 2.5.1:
-questo audit non introduce ancora un metamodel, un validatore o un exporter 2.4.1.
+Questo audit descrive il confronto iniziale. Dalla 0.15.0 esiste un metamodel
+strutturale indipendente Uml241, descritto in [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md);
+validazione semantica completa ed exporter 2.4.1 restano da implementare.
 
 ## Fonti e riproducibilità
 

@@ -13,6 +13,12 @@ OPERATIONS = {}
 CONSTRAINTS = {}
 DERIVATIONS = {}
 _queries = ContextVar('uml_native_queries', default=frozenset())
+SEMANTIC_VERSION = '2.5.1'
+
+
+def require_version(element):
+    if getattr(element,'__semantic_version__',SEMANTIC_VERSION)!=SEMANTIC_VERSION:
+        raise TypeError('Use the semantic backend for UML '+element.__semantic_version__)
 
 
 def register(table, *identifiers):
@@ -30,6 +36,7 @@ def derived(*identifiers): return register(DERIVATIONS, *identifiers)
 
 
 def invoke(self, identifier, variables):
+    require_version(self)
     self._ensure_alive()
     function = OPERATIONS.get(identifier)
     if function is None: raise NativeNotImplemented(f'Python operation not implemented: {identifier}')
@@ -42,6 +49,7 @@ def invoke(self, identifier, variables):
 
 
 def check(self, identifier):
+    require_version(self)
     self._ensure_alive()
     function = CONSTRAINTS.get(identifier)
     if function is None: raise NativeNotImplemented(f'Python invariant not implemented: {identifier}')
@@ -51,8 +59,11 @@ def check(self, identifier):
 
 
 def unique(values): return list(dict.fromkeys(values))
-def kind(self, value, name): return isinstance(value, self.__registry__[name])
+def kind(self, value, name):
+    require_version(self)
+    return isinstance(value, self.__registry__[name])
 def instances(self, name):
+    require_version(self)
     self._ensure_alive()
     extent = self.__instances__ if self._extent is None else self._extent.elements
     return [value for value in extent if not value.is_deleted and value._extent is self._extent and value.__registry__ is self.__registry__ and kind(self, value, name)]

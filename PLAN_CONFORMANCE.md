@@ -416,3 +416,22 @@ un URI. Le versioni obiettivo sono 2.4.1 e 2.5.1; 2.5 è esclusa dall'implementa
 Il censimento dichiarativo è completato in UML_VERSION_COMPARISON.md e nel report
 JSON riproducibile. Seguono contratti versionati, policy di conversione, revisione
 delle regole/prosa e fixture nelle due versioni; UML 1.x rimane un ambito separato.
+
+## Tredicesimo incremento: versione 0.15.0
+
+Uml241 e Uml251 offrono namespace distinti, con tutte le classi e le enumerazioni
+delle rispettive fonti normative. Il codice del motore è condiviso, mentre registri,
+mappe strutturali, sessioni, istanze, transazioni e tabelle semantiche sono isolati.
+Il wheel distribuisce entrambe le API; non occorre duplicare il codice né creare
+due repository per ottenere questo isolamento. Uml/UML conservano il significato 2.5.1.
+
+Uml241 rispetta le dichiarazioni strutturali 2.4.1, comprese le differenze di Vertex,
+loopVariable e molteplicità. Sono abilitate 28 query di base e due vincoli di ownership
+verificati; le altre traduzioni non vengono copiate come se fossero conformi.
+La validazione segnala le obbligazioni ancora unsupported. Applicazioni runtime di
+profili, prosa supplementare ed exchange 2.4.1 richiedono ancora l'audit.
+356 test passano, inclusi isolamento, rifiuto degli incroci, rollback e cancellazione
+nelle due versioni; le pipeline verificano entrambe le generazioni e l'installazione.
+
+Il prossimo audit 2.4.1 è CommonStructure/Values: nomi, namespace, import e derivazioni,
+poi Classification e StateMachines. Dettagli in UML_VERSION_BACKENDS.md.

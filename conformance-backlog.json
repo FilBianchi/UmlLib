@@ -1309,7 +1309,7 @@
     {
       "priority": "P1",
       "area": "UML versions",
-      "action": "2.4.1/2.5.1 declaration comparison is recorded in UML_VERSION_COMPARISON.md. Implement explicit version contracts, loss-aware migrations and independent rule review/fixtures; 2.5 is not a target. Validation/export remain 2.5.1 and namespaces alone are not proof of version conformance."
+      "action": "Uml241/Uml251 provide independent metamodels and isolated backend state. Audit the remaining 2.4.1 native rules, derived properties and prose, then profile/XMI contracts and loss-aware migration fixtures; 2.5 is not a target. Full semantic validation/export remain available only for the declared 2.5.1 scope."
     },
     {
       "priority": "P2",

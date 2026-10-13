@@ -191,4 +191,25 @@ with ModelSession():
     unapply_profile(model,profile)
     assert application.is_deleted and value.is_deleted
     assert not model.packagedElement[0].is_deleted
+import Uml241 as old
+import Uml251 as new
+assert len(old._classes.__all__)==255 and new.Class is Uml.Class
+assert files('umltools.data').joinpath('UML-2.4.1.xmi').is_file()
+assert old.Class().semantic_version=='2.4.1'
+assert new.Class().semantic_version=='2.5.1'
+assert old.LiteralInteger(value=7).integerValue()==7
+assert old.StateMachine.State is old.State
+with old.ModelSession() as old_session, new.ModelSession() as new_session:
+    old_class,new_class=old.Class(),new.Class()
+    assert old_session.elements=={old_class} and new_session.elements=={new_class}
+    try:old.Property(type=new_class)
+    except TypeError:pass
+    else:raise AssertionError('Mixed UML versions were accepted')
+    old_pin,new_pin=old.OutputPin(),new.OutputPin()
+    old_loop,new_loop=old.LoopNode(loopVariable=[old_pin]),new.LoopNode(loopVariable=[new_pin])
+    old_loop.delete();new_loop.delete()
+    assert not old_pin.is_deleted and new_pin.is_deleted
+try:old.Class().allParents()
+except old.UnsupportedSemanticsError:pass
+else:raise AssertionError('Unaudited 2.4.1 semantics were evaluated')
 print('Installed UmlLib', version('UmlLib'))

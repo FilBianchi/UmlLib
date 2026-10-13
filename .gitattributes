@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Preserve the original normative artifact, including its OCL whitespace.
+umltools/data/UML-2.4.1.xmi -text whitespace=-blank-at-eol

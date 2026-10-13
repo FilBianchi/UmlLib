@@ -19,6 +19,7 @@ class UnsupportedSemanticsError(NotImplementedError):
     pass
 
 class UmlElement:
+    __semantic_version__ = '2.5.1'
     __registry__ = REGISTRY
     __instances__ = WeakSet()
     def __init__(self, **values):
@@ -74,6 +75,9 @@ class UmlElement:
         """Invoke a specifically declared query when UML property names collide."""
         try: return operation(self, owner, name, args, kwargs)
         except NativeNotImplemented as error: raise UnsupportedSemanticsError(str(error)) from error
+
+    @property
+    def semantic_version(self): return self.__semantic_version__
 
     @property
     def is_deleted(self): return self._deleted
