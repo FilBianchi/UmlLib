@@ -78,9 +78,44 @@ Local verification passed for both versions on Python 3.14.
 
 ## Remaining priority
 
-Extend these independent boundary oracles to operation signatures, additional
-subsetting contexts and connector part/port constraints, then to the other UML packages.
+Extend these independent boundary oracles to additional subsetting contexts and
+connector part/port constraints, then to the other UML packages.
 Obtain native interchange evidence from another complete UML tool and enlarge
 the external fixture to multi-resource models and profiles. The bounded grids
 and fixed edit sequences here do not exhaust arbitrary graph mutations or the
 normative prose requirements listed in `CONFORMANCE_BACKLOG.md`.
+
+## Operation signature increment
+
+`tests/test_operation_conformance_matrix.py` adds the following authored oracles
+for both semantic versions, anchored to `Operation-isConsistentWith`, its `-pre`
+condition, `Operation-returnResult`, `Operation-at_most_one_return` and the
+Operation type/lower/upper/isOrdered/isUnique derivations:
+
+- 256 combinations per version: four original directions, four replacement
+  directions, same/subtype/supertype/unrelated type, equal/wider/narrower/unbounded
+  multiplicity intervals. The original interval is 1..2.
+- 16 ordering/uniqueness combinations per version; different parameter names
+  alone do not invalidate this consistency query.
+- Empty and unequal-length signatures, two distinct positional parameter types,
+  reversed order, missing type and removed generalization, followed by repair.
+- Return-direction mutation, multiple-return constraint violation and repair,
+  and XMI roundtrip preserving an unlimited upper bound, return type identity,
+  parameter ownership and the redefinedOperation reference.
+
+The 2.4.1 consistency query requires matching parameter counts and covariance
+of each corresponding replacement type. It does not add the 2.5.1 tests for
+direction, ordering, uniqueness or multiplicity. Its source OCL mistakenly uses
+`at(1)` for every replacement parameter; the existing implementation follows
+the accompanying prose about corresponding parameters. The positional test
+locks down that interpretation rather than reproducing the source typo.
+
+The 2.5.1 query requires identical directions/flags and types conforming in at
+least one direction. Input multiplicities may widen; output/return multiplicities
+may narrow; inout multiplicities must be compatible both ways. This query's
+success alone does not assert that all other constraints on the operation or
+its surrounding model hold.
+
+Run: `python -m unittest discover -s tests -p test_operation_conformance_matrix.py -v`.
+All 544 grid combinations and the mutation/roundtrip examples passed locally.
+No runtime correction was needed for these cases.

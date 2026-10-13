@@ -31533,7 +31533,10 @@
       "implementation": "umltools.native.classification.operation_consistency",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_redefinition_input_output_and_inout_multiplicities"
+        "test_classification_audit.ClassificationCases.test_operation_redefinition_input_output_and_inout_multiplicities",
+        "test_operation_conformance_matrix.OperationMatrix.test_arity_corresponding_parameter_order_and_context_repair",
+        "test_operation_conformance_matrix.OperationMatrix.test_direction_type_and_multiplicity_grid",
+        "test_operation_conformance_matrix.OperationMatrix.test_ordering_uniqueness_flags_and_parameter_names"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isConsistentWith",
@@ -31554,7 +31557,8 @@
         }
       ],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_redefinition_input_output_and_inout_multiplicities"
+        "test_classification_audit.ClassificationCases.test_operation_redefinition_input_output_and_inout_multiplicities",
+        "test_operation_conformance_matrix.OperationMatrix.test_arity_corresponding_parameter_order_and_context_repair"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -31598,7 +31602,8 @@
       "implementation": "umltools.native.classification.ordered_result",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isOrdered.1",
@@ -31641,7 +31646,8 @@
       "implementation": "umltools.native.classification.unique_result",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-isUnique.1",
@@ -31684,7 +31690,8 @@
       "implementation": "umltools.native.classification.lower_result",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "source inconsistency",
       "limitation": "The property is optional and the query returns null without a return parameter.",
@@ -31728,7 +31735,8 @@
       "implementation": "umltools.native.classification.return_parameters",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-returnResult",
@@ -31771,7 +31779,8 @@
       "implementation": "umltools.native.classification.result_type",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "source inconsistency",
       "limitation": "The property is optional and the query returns null without a return parameter or its type.",
@@ -31815,7 +31824,8 @@
       "implementation": "umltools.native.classification.upper_result",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "source inconsistency",
       "limitation": "The property is optional and the query returns null without a return parameter.",
@@ -31840,7 +31850,8 @@
       "implementation": "umltools.native.constraints_basic.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Operation-at_most_one_return",
@@ -32030,7 +32041,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -32090,7 +32102,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -32119,7 +32132,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "verification": "linked behavioral examples",
       "review": "source inconsistency",
@@ -32349,7 +32363,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "verification": "linked behavioral examples",
       "review": "source inconsistency",
@@ -32379,7 +32394,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "verification": "linked behavioral examples",
       "review": "source inconsistency",
