@@ -92,7 +92,7 @@ class Xmi241Cases(unittest.TestCase):
         tags=ET.fromstring(dumps(again)).findall('{http://www.omg.org/spec/MOF/20100901}Tag')
         self.assertEqual(len(tags),4)
         self.assertEqual({node.get('element') for node in tags},{'_0','Boolean','Integer','Real'})
-        self.assertTrue(any('Unknown XML namespace' in d.message for d in doc.diagnostics))
+        self.assertTrue(any('http://www.omg.org/spec/MOF/20100901' in d.message for d in doc.diagnostics))
 
     def test_profile_definitions_remain_structural_without_applying_runtime_tags(self):
         profile=U.Profile(name='Domain',URI='urn:domain',packagedElement=[U.Stereotype(name='Tagged')])
@@ -170,7 +170,7 @@ class Xmi241Cases(unittest.TestCase):
         restored=loads(dumps(doc),strict=False)
         self.assertEqual(ET.fromstring(dumps(restored)).find('{urn:domain}Tagged').get('custom'),'42')
         self.assertFalse(restored.complete)
-        with self.assertRaises(XmiUnsupportedError):loads(xml('<u:Model/>'),profile_bindings={'urn:domain':U.Profile()})
+        self.assertTrue(loads(xml('<u:Model/>'),profile_bindings={'urn:domain':U.Profile()}).complete)
 
     def test_permissive_extensions_and_unknown_old_features_are_retained(self):
         source=xml('<u:State x:id="s" redefinedVertex="other"><x:Extension extender="Vendor"><v:note>before<v:part/> after</v:note></x:Extension></u:State>',extra='xmlns:v="urn:vendor"')

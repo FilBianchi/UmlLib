@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.18.0/umllib-0.18.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.19.0/umllib-0.19.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -21,7 +21,7 @@ convenience groups. All 14 core 2.4.1 families now have a first declaration/sema
 audit: 150 operations, 433 invariants, 74 derivations and 952 property/end records.
 Representative semantic scenarios and sweeps of 549 effective stored setters are
 recorded in [UML241_AUDIT.md](UML241_AUDIT.md). Registration is not conformance
-certification; broader prose, execution, runtime profiles and migration remain
+certification; broader prose, execution, additional profile adapters and migration remain
 separate obligations. See
 [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md) for precise coverage and isolation.
 Python 3.10 or later is required. The library does not require Qt.
@@ -79,7 +79,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.18.0 suite has 409 tests across both versions.
+invariants, two queries and one derivation. The 0.19.0 suite has 430 tests across both versions.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -372,8 +372,9 @@ tags; inline profile Class composition and separate shared runtime instances are
 supported. Explicit empty values preserve the distinction from literal defaults.
 An XMI Extension named UmlLib records the exact metamodel version and, in 2.5.1,
 profile namespace bindings and package contexts for runtime Class/DataType objects.
-Other tools may need an adapter for this metadata. Runtime profile applications
-remain unsupported in 2.4.1 and are diagnosed/retained as opaque data in permissive mode.
+Other tools may need an adapter for this metadata. Both versions now support typed
+runtime profile applications. See [PROFILE_RUNTIME_241.md](PROFILE_RUNTIME_241.md)
+for 2.4.1 API isolation, normative differences, runtime checks and remaining limits.
 User-defined Python callbacks and analyzer/gate mappings are not serialized. OCL text
 is retained as text and never executed. Unknown primitive semantics, derived runtime
 tags and arbitrary default evaluators remain explicit validation limitations.
@@ -435,7 +436,7 @@ The target versions are 2.4.1 and 2.5.1; 2.5 is not an implementation target.
 The normative declaration comparison is recorded in [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md).
 Uml241 now provides a separate structural metamodel, isolated sessions and explicitly
 reviewed base semantics; see [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md).
-Core XMI 2.4.1 is implemented; broader prose, execution, runtime profiles and
+Core/profile XMI and typed runtime profiles 2.4.1 are implemented; broader prose, execution, additional profile adapters and
 migration policies remain open.
 2.3 and UML 1.x are not implemented. The public corpus remains a compatibility check, not a multi-version
 conformance claim.

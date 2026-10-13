@@ -88,3 +88,7 @@ CI e pubblicazione della release rigenerano il report e verificano che non cambi
 Aggiornamento 0.18.0: il contratto core import/export XMI è ora implementato e
 verificato separatamente in [XMI241_SUPPORT.md](XMI241_SUPPORT.md). Restano aperti
 runtime dei profili, prosa globale, esecuzione/protocolli e migrazione.
+
+Aggiornamento 0.19.0: le applicazioni runtime dei profili e i tag tipizzati sono
+disponibili con registri isolati e round-trip XMI in PROFILE_RUNTIME_241.md.
+I controlli runtime della prosa non alterano i 433 invarianti dichiarati.

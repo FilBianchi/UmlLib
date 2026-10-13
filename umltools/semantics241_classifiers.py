@@ -137,6 +137,9 @@ def install(engine,operations,constraints,derivations):
         'Connector.compatible':compatible_connector,
         'StructuredClassifier.multiplicities':connector_multiplicities,
         'Port.port_destroyed':port_destroyed,
+        # In 2.4.1 Property.opposite deliberately excludes association-owned
+        # ends; this ownership rule still refers to the other association end.
+        'Stereotype.associationEndOwnership':lambda self:all(any(other is not p and other.owner is p.association for other in p.association.memberEnd) for p in self.ownedAttribute if p.association is not None and not kind(self,p.association,'Extension') and not kind(self,p.type,'Stereotype')),
     })
     native.DERIVATIONS['Feature-featuringClassifier']=lambda self:[c for c in native.instances(self,'Classifier') if self in c.feature]
     native.DERIVATIONS['ExtensionEnd-lower']=lambda self:self.lowerBound()

@@ -10,6 +10,15 @@ from .profile_values import ProfileObject, containing_package, cleanup_profile_v
 from .evaluation_context import profile_evaluation
 
 
+def _definition_issues(stereotype):
+    if stereotype.__semantic_version__=='2.4.1':
+        from .semantics241_profiles import definition_issues
+        return definition_issues(stereotype)
+    return [identifier for identifier in ('Stereotype.base_property_upper_bound',
+        'Stereotype.base_property_multiplicity_single_extension',
+        'Stereotype.base_property_multiplicity_multiple_extension') if not check(stereotype,identifier)]
+
+
 def available_profiles(element):
     direct, seen = [], set()
     current = element
@@ -67,6 +76,8 @@ def _present_stereotypes(element):
 
 
 def applications(element):
+    from .native import require_version
+    require_version(element)
     return tuple(getattr(element, '_stereotype_applications', {}).values())
 
 
@@ -119,6 +130,11 @@ def apply_profile(package, profile, *, create_required=True, is_strict=None):
 def unapply_profile(package, profile):
     if not kind(package, package, 'Package') or not kind(package, profile, 'Profile'):
         raise TypeError('Expected a Package and a Profile')
+    package._ensure_alive();profile._ensure_alive()
+    if package.__semantic_version__=='2.4.1':
+        from .profile_filtering import applied_roots,profile_closure
+        if any(a.appliedProfile is profile for a in package.profileApplication) and any(a.appliedProfile is not profile and profile in profile_closure(a.appliedProfile) for a in applied_roots(package)):
+            raise ValueError('Remove applied dependent profiles first (UML 2.4.1 ProfileApplication)')
     elements = [package] + package.allOwnedElements()
     modeled = {instance for element in elements for instance, _ in _modeled_applications(element)}
     modeled.update(e for e in elements if kind(package, e, 'InstanceSpecification'))
@@ -196,8 +212,8 @@ class StereotypeApplication(ProfileObject):
         if stereotype.visibility is not None and stereotype.visibility.value != 'public':
             raise ValueError('Only public stereotypes of applied profiles are available')
         props = base_properties(stereotype)
-        for identifier in ('Stereotype.base_property_upper_bound', 'Stereotype.base_property_multiplicity_single_extension', 'Stereotype.base_property_multiplicity_multiple_extension'):
-            if not check(stereotype, identifier): raise ValueError(f'Invalid definition: {identifier}')
+        issues=_definition_issues(stereotype)
+        if issues:raise ValueError('Invalid definition: '+', '.join(issues))
         candidates = [p for p in props if _conforms_to_base(element, p)]
         if isinstance(base_property, str):
             named = [p for p in props if p.name == base_property]
@@ -248,8 +264,8 @@ class StereotypeApplication(ProfileObject):
             issues.append(('stereotype application', 'Stereotype.abstract_instance'))
         if any(app is not self and _families(self.stereotype) & _families(app.stereotype) for app in applications(self.element)):
             issues.append(('stereotype application', 'Stereotype.duplicate_application'))
-        for identifier in ('Stereotype.base_property_upper_bound', 'Stereotype.base_property_multiplicity_single_extension', 'Stereotype.base_property_multiplicity_multiple_extension'):
-            if not check(self.stereotype, identifier): issues.append(('stereotype application', identifier))
+        try:issues.extend(('stereotype application',identifier) for identifier in _definition_issues(self.stereotype))
+        except NativeNotImplemented:issues.append(('unsupported stereotype application','prose:Stereotype.base_link_bounds'))
         issues.extend(self._validate_values())
         return issues
 
@@ -269,7 +285,8 @@ def _validate_instance_applications(instance):
             slots = [slot for slot in instance.slot if slot.definingFeature is prop]
             values = [value for slot in slots for value in slot.value if not kind(instance, value, 'LiteralNull')]
             if len(slots) > 1 or len(values) > 1:
-                result.append(('stereotype application', 'Stereotype.base_property_upper_bound'))
+                identifier='prose:Stereotype.base_link_upper_bound' if instance.__semantic_version__=='2.4.1' else 'Stereotype.base_property_upper_bound'
+                result.append(('stereotype application',identifier))
             for value in values:
                 if not kind(instance, value, 'InstanceValue') or value.instance is None:
                     result.append(('stereotype application', 'Stereotype.base_instance'))
@@ -283,6 +300,7 @@ def _validate_instance_applications(instance):
         if len(populated) != 1:
             rule = ('Stereotype.base_property_multiplicity_multiple_extension' if len(props) > 1
                     else 'Stereotype.base_property_multiplicity_single_extension')
+            if instance.__semantic_version__=='2.4.1':rule='prose:Stereotype.exclusive_base_instance'
             result.append(('stereotype application', rule))
         else:
             target = populated[0]

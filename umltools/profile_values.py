@@ -16,6 +16,13 @@ _records = WeakSet()
 _constraint_adapters = WeakKeyDictionary()
 
 
+def bounds(prop):
+    lower,upper=prop.lowerBound(),prop.upperBound()
+    if lower is None or upper is None:raise NativeNotImplemented('Profile multiplicity requires numeric evidence')
+    if lower<0 or upper<lower:raise ValueError('Invalid profile multiplicity')
+    return lower,upper
+
+
 def defining_profile(classifier):
     current, seen = classifier.owner, set()
     while current is not None:
@@ -161,7 +168,7 @@ class ProfileObject:
         raise TypeError('Expected a runtime profile-defined value, not an InstanceSpecification')
 
     def _normalize(self, prop, value, *, check_lower=True):
-        upper, lower = prop.upperBound(), prop.lowerBound()
+        lower,upper=bounds(prop)
         many = upper > 1
         if many:
             if not isinstance(value, (tuple, list)): raise TypeError('Multivalued tag requires list or tuple')
@@ -193,13 +200,14 @@ class ProfileObject:
             if value is None:
                 if expression.isComputable(): raise ValueError('Default does not denote the declared type')
                 raise NativeNotImplemented('Default expression requires a language evaluator')
-        return self._normalize(prop, [value] if prop.upperBound() > 1 and value is not None else ([] if prop.upperBound()>1 else value), check_lower=False)
+        many=bounds(prop)[1]>1
+        return self._normalize(prop, [value] if many and value is not None else ([] if many else value), check_lower=False)
 
     def get_value(self, key):
         prop = self._property(key)
         if prop.isDerived: raise NativeNotImplemented('Derived tagged value requires an evaluator')
         values = self._values[prop] if prop in self._values else self._default(prop)
-        return tuple(values) if prop.upperBound() > 1 else (values[0] if values else None)
+        return tuple(values) if bounds(prop)[1]>1 else (values[0] if values else None)
 
     @property
     def tagged_values(self):
@@ -251,8 +259,9 @@ class ProfileObject:
                     if target in after:
                         if source not in values: values.append(source)
                     else: values = [v for v in values if v is not source]
-                    normalized = target._normalize(opposite, values if opposite.upperBound()>1 else (values[0] if len(values)==1 else None), check_lower=False)
-                    if len(values) > opposite.upperBound(): raise ValueError('Opposite tag multiplicity violated')
+                    upper=bounds(opposite)[1]
+                    normalized = target._normalize(opposite, values if upper>1 else (values[0] if len(values)==1 else None), check_lower=False)
+                    if len(values) > upper: raise ValueError('Opposite tag multiplicity violated')
                     if target in processed and normalized != target_plan.get(opposite, ()):
                         raise ValueError('Conflicting simultaneous association updates')
                     target_plan[opposite] = normalized
@@ -299,7 +308,7 @@ class ProfileObject:
         if profile_evaluation.get(): raise ValueError('Cannot change tags during constraint evaluation')
         prop = self._property(key)
         if prop.isDerived or prop.isReadOnly or kind(self._classifier, self._classifier, 'DataType'): raise ValueError('Property is read-only')
-        if len(self._default(prop)) < prop.lowerBound(): raise ValueError('Required tag has no default')
+        if len(self._default(prop)) < bounds(prop)[0]: raise ValueError('Required tag has no default')
         staged = dict(self._values); staged.pop(prop, None)
         self._commit(staged)
         return self

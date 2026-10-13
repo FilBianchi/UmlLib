@@ -34,6 +34,7 @@ and stable known-graph export/reimport. Their Eclipse namespace is not proof of
 the producer's exact UML release. Reproduce with
 `python -m scripts.verify_xmi_corpus --fetch --semantic-version 2.4.1`;
 the report is `report-2.4.1.json` in the same cache. The workflow uploads both reports.
-The complex runtime-profile corpus remains a 2.5.1 check; profiles are retained
-opaque by the 2.4.1 reader. A pinned original OMG PrimitiveTypes fixture is tested
+Since 0.19.0, `--complex --semantic-version 2.4.1` also checks represented runtime
+profiles against the explicitly selected old backend. Exact producer-version
+attribution and gaps remain separate from this compatibility check. A pinned original OMG PrimitiveTypes fixture is tested
 offline in `tests/fixtures/xmi241`, including its four unimplemented MOF extension tags.

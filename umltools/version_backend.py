@@ -94,17 +94,11 @@ def backend_241():
             # errors from either isolated reader.
             for exception in ('XmiError','XmiReferenceError','XmiUnsupportedError','XmiVersionError'):
                 setattr(exchange,exception,getattr(shared_exchange,exception))
-            for module_name in ('static_requirements','stereotypes'):
-                module=__import__(name+'.'+module_name,fromlist=['*'])
-                def unavailable(*args,**kwargs):
-                    raise package.UnsupportedSemanticsError('UML 2.4.1 semantic/exchange contract is not yet audited')
-                if module_name=='static_requirements':
-                    module.check_static=unavailable
-                    module.validate_static=lambda model:[('unsupported version contract','UML2.4.1.prose')]
-                elif module_name=='stereotypes':
-                    module.apply_profile=unavailable
-                    module.apply_stereotype=unavailable
-                    module.validate_applications=lambda model:[]
+            static=__import__(name+'.static_requirements',fromlist=['*'])
+            def unavailable(*args,**kwargs):
+                raise package.UnsupportedSemanticsError('Generic UML 2.4.1 supplemental prose is not yet audited')
+            static.check_static=unavailable
+            static.validate_static=lambda model:[('unsupported version contract','UML2.4.1.prose')]
             return package
         except Exception:
             for module_name in list(sys.modules):

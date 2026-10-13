@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.19.0
+
+Enable native UML 2.4.1 runtime profiles/stereotypes and profile XMI exchange.
+Public isolated APIs support profile application/removal, required/abstract extensions,
+typed tags, inherited/redefined and readonly properties, profile Class/DataType values,
+binary navigable links, composition, lifecycle cleanup, strict views and trusted
+constraint/primitive codecs. Callbacks and arbitrary OCL remain outside XML execution.
+
+Old base-link requirements are separate prose runtime checks, preserving the 433
+declared 2.4.1 invariants rather than adding the three 2.5.1 base-property rules.
+Removal checks applied dependent profiles before mutation. The old association-end
+ownership predicate navigates memberEnd directly, respecting old opposite semantics.
+Unknown bounds remain unsupported. XMI respects nearest-profile namespaces, normalizes
+runtime construction errors and rolls back external applications after failed imports.
+
+430 tests pass, including 21 independent 2.4.1 profile cases. Installed-wheel checks
+cover applied tags and export/reimport. Contract, interpretations and remaining
+derived/default, non-navigable, non-UML metaclass and CMOF gaps are in PROFILE_RUNTIME_241.md.
+
 ## 0.18.0
 
 Implement native UML 2.4.1 core XMI import/export through Uml241.xmi, using public

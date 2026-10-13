@@ -17,6 +17,7 @@ include UML241_COMMON_VALUES_AUDIT.md
 include uml241-audit.json
 include uml241-common-values-audit.json
 include XMI241_SUPPORT.md
+include PROFILE_RUNTIME_241.md
 include XMI_CORPUS.md
 recursive-include scripts *.py
 recursive-include tests *.py

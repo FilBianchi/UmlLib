@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m scripts.verify_xmi_corpus --fetch --complex
-      - run: python -m scripts.verify_xmi_corpus --semantic-version 2.4.1
+      - run: python -m scripts.verify_xmi_corpus --complex --semantic-version 2.4.1
       - uses: actions/upload-artifact@v6
         if: always()
         with:

@@ -241,4 +241,25 @@ assert read24(write_auto(old_document)).resolve(old_document.roots[0]._xmi_id).n
 try:read24(dumps(Uml.Model()))
 except XmiVersionError:pass
 else:raise AssertionError('XMI silently migrated across metamodels')
+from Uml241.stereotypes import apply_profile as apply24,apply_stereotype as stereotype24,unapply_profile as unapply24
+from Uml241.profile_values import ProfileObject as Object24
+from Uml241.primitive_values import PrimitiveValue as Primitive24
+legacy_profile=old.Profile(name='Domain',URI='urn:smoke:241')
+legacy_stereo=old.Stereotype(name='Tagged');legacy_meta=old.Class(name='Class')
+legacy_profile.packagedElement.append(legacy_stereo)
+legacy_profile.metaclassReference.append(old.ElementImport(importedElement=legacy_meta))
+legacy_base=old.Property(name='base_Class',type=legacy_meta)
+legacy_end=old.ExtensionEnd(type=legacy_stereo,aggregation=old.AggregationKind.composite)
+legacy_profile.packagedElement.append(old.Extension(ownedEnd=legacy_end,memberEnd=[legacy_base,legacy_end]))
+legacy_stereo.ownedAttribute.append(legacy_base)
+legacy_string=old.PrimitiveType(name='String');legacy_profile.packagedElement.append(legacy_string)
+legacy_stereo.ownedAttribute.append(old.Property(name='label',type=legacy_string))
+apply24(old_model,legacy_profile)
+legacy_application=stereotype24(old_model.packagedElement[0],legacy_stereo,values={'label':'typed'})
+assert legacy_application.validate()==[]
+legacy_restored=read24(write24(old_model))
+assert legacy_restored.complete and len(legacy_restored.runtime_values)==1
+assert legacy_restored.runtime_values[0].get_value('label')=='typed'
+unapply24(old_model,legacy_profile)
+assert legacy_application.is_deleted and not old_model.packagedElement[0].is_deleted
 print('Installed UmlLib', version('UmlLib'))

@@ -69,12 +69,13 @@ class BackendCases(unittest.TestCase):
         issues=old.Class().validate()
         self.assertIn(('unsupported version contract','UML2.4.1.prose'),issues)
 
-    def test_incomplete_profile_contract_and_versioned_exchange_are_explicit(self):
+    def test_versioned_profile_and_exchange_contracts_are_enabled(self):
         from Uml241._runtime import engine
         document=engine.xmi.loads(engine.xmi.dumps(old.Model()))
         self.assertIsInstance(document.roots[0],old.Model)
         self.assertEqual(document.semantic_version,'2.4.1')
-        with self.assertRaises(old.UnsupportedSemanticsError):engine.stereotypes.apply_profile(old.Model(),old.Profile())
+        application=engine.stereotypes.apply_profile(old.Model(),old.Profile())
+        self.assertIsInstance(application,old.ProfileApplication)
         from umltools.native import check
         from umltools.semantics import derive
         with self.assertRaises(TypeError):check(old.Class(),'Element.has_owner')

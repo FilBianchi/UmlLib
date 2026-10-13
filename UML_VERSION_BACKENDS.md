@@ -83,10 +83,11 @@ di owner/ownedElement e delle union è condivisa. `validate()` segnala ancora
 
 Dalla 0.18.0 load/dump XMI 2.4.1 usa il backend nativo isolato; API, selezione
 automatica, grafi e limiti sono descritti in [XMI241_SUPPORT.md](XMI241_SUPPORT.md).
-Le applicazioni runtime di profili restano disabilitate; definizioni strutturali
-Profile/Stereotype e ProfileApplication sono scambiabili. I tag applicati sono
-diagnosticati e, in modalità permissiva, conservati come XML opaco. Non è ancora
-implementata una conversione tra i due metamodel.
+Dalla 0.19.0 anche applicazioni runtime, tag tipizzati e valori Class/DataType sono
+disponibili e scambiabili, con registri/callback isolati e contratti specifici:
+[PROFILE_RUNTIME_241.md](PROFILE_RUNTIME_241.md). Profili sconosciuti e valori
+non supportati restano diagnosticati/opachi. Non è ancora implementata una conversione
+tra i due metamodel.
 
 ## Rigenerazione e lavoro successivo
 
@@ -99,6 +100,6 @@ Uml241. Le pipeline rigenerano entrambe le versioni e verificano l'installazione
 
 Il primo audit delle famiglie e delle dichiarazioni strutturali è concluso nella
 0.17.0; non è una certificazione. Restano prosa globale, esecuzione/protocolli,
-PackageMerge, profili runtime, ulteriori adattatori XMI e migrazione, seguendo
+PackageMerge, ulteriori adattatori profili/XMI e migrazione, seguendo
 [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md). Questi sono contratti distinti
 e non vengono abilitati semplicemente cambiando un namespace XML.

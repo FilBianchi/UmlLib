@@ -167,10 +167,14 @@ class _Reader:
         if any(not isinstance(value,(UmlElement,ProfileObject)) for value in self.external.values()):
             raise XmiError('External objects must belong to the selected semantic backend')
         for value in self.external.values():value._ensure_alive()
-        if self.doc.semantic_version=='2.4.1' and profile_bindings:
-            raise XmiUnsupportedError('Runtime profile bindings are not supported for UML 2.4.1')
         self.doc.ids.update(self.external)
         self.bindings = dict(profile_bindings or {})
+        for namespace,binding in self.bindings.items():
+            if not isinstance(namespace,str):raise XmiError('Profile namespaces must be strings')
+            if isinstance(binding,tuple):
+                if len(binding)!=2 or not all(isinstance(item,str) for item in binding):raise XmiError('Profile binding needs (resource URI, profile ID)')
+            elif not isinstance(binding,UmlElement) or not isinstance(binding,binding.__registry__['Profile']):
+                raise XmiError('Profile bindings must use Profiles from the selected backend')
         self.limits = max_bytes, max_elements, max_depth
         self.local_root = local_root
         self.trees, self.scopes, self.bases, self.nodes, self.runtime_nodes = {}, {}, {}, {}, []
@@ -412,19 +416,18 @@ class _Reader:
             if not equal: self.problem('structure',uri,node,feature,'Explicit links conflict with ownership, opposites or subset/redefinition semantics')
 
     def runtime(self):
-        if self.doc.semantic_version=='2.4.1':
-            for node,uri,parent,feature in self.runtime_nodes:
-                namespace,name=self.class_name(node)
-                application=any(key.startswith('base_') for key in node.attrib) or namespace in self.bindings
-                self.problem('unsupported',uri,node,feature,'Runtime profile applications are not yet supported for UML 2.4.1' if application else 'Unknown XML namespace retained as opaque data: '+namespace)
-                self.opaque(uri,parent,node)
-            return
         from .native import kind
-        from .profile_values import ProfileObject, containing_package
+        from .profile_values import ProfileObject, containing_package, defining_profile, bounds
         from .stereotypes import StereotypeApplication
         # Bind serialized profile namespaces after core profile links are complete.
         for namespace,binding in list(self.bindings.items()):
-            if isinstance(binding,tuple): self.bindings[namespace] = self.reference(binding[1],binding[0],self.trees[binding[0]])
+            if isinstance(binding,tuple):
+                self.bindings[namespace] = self.reference(binding[1],binding[0],self.trees.get(binding[0],self.trees[self.doc.uri]))
+            profile=self.bindings[namespace]
+            from . import UmlElement
+            if not isinstance(profile,UmlElement) or not kind(profile,profile,'Profile'):
+                self.problem('unsupported',self.doc.uri,self.trees[self.doc.uri],namespace,'Profile binding does not identify a Profile')
+                self.bindings.pop(namespace,None)
         profiles = [o for o in self.created if kind(o,o,'Profile')]
         for profile in profiles:
             if profile.URI: self.bindings.setdefault(profile.URI,profile)
@@ -445,7 +448,7 @@ class _Reader:
             profile = self.bindings.get(namespace)
             if profile is None:
                 self.problem('unsupported',uri,node,feature,'Unknown profile namespace: '+namespace); self.opaque(uri,parent,node); continue
-            candidates = [o for o in profile.allOwnedElements() if kind(o,o,'Classifier') and o.name == name]
+            candidates = [o for o in profile.allOwnedElements() if kind(o,o,'Classifier') and o.name == name and defining_profile(o) is profile]
             if len(candidates)!=1:
                 self.problem('unsupported',uri,node,feature,'Profile type name must identify one classifier: '+name); self.opaque(uri,parent,node); continue
             classifier = candidates[0]
@@ -460,14 +463,20 @@ class _Reader:
                 if len(bases)!=1: self.problem('structure',uri,node,None,'Stereotype application needs exactly one populated base property'); continue
                 base = self.reference(node.get(bases[0].name),uri,node)
                 if base is None: continue
-                value = StereotypeApplication(classifier,base,base_property=bases[0])
+                try:value = StereotypeApplication(classifier,base,base_property=bases[0])
+                except (ValueError,TypeError,NotImplementedError) as error:
+                    self.problem('unsupported' if isinstance(error,NotImplementedError) else 'structure',uri,node,None,str(error))
+                    self.opaque(uri,parent,node);continue
                 package = containing_package(base)
             else:
                 if package is None:
                     packages = [o for o in self.doc.resource_roots[uri] if kind(o,o,'Package') and not kind(o,o,'Profile')]
                     if len(packages)==1: package = packages[0]
                 if package is None: self.problem('structure',uri,node,None,'Profile instance requires an unambiguous package context'); continue
-                value = ProfileObject(classifier,package)
+                try:value = ProfileObject(classifier,package)
+                except (ValueError,TypeError,NotImplementedError) as error:
+                    self.problem('unsupported' if isinstance(error,NotImplementedError) else 'structure',uri,node,None,str(error))
+                    self.opaque(uri,parent,node);continue
             self.nodes[node] = value; self.doc.runtime_values.append(value)
             if identifier:
                 key=uri+'#'+identifier
@@ -511,12 +520,13 @@ class _Reader:
                         if form=='object': result.append(text); continue
                         if kind(classifier,prop.type,'PrimitiveType'):
                             from .primitive_values import PrimitiveValue,STANDARD_NAMES
-                            tokens=text.split() if form=='attribute' and prop.upperBound()>1 and prop.type.name!='String' else [text]
+                            tokens=text.split() if form=='attribute' and bounds(prop)[1]>1 and prop.type.name!='String' else [text]
                             result.extend(self.scalar(t,prop.type.name,classifier.__registry__) if prop.type.name in STANDARD_NAMES else PrimitiveValue(prop.type,t) for t in tokens)
-                        elif kind(classifier,prop.type,'Enumeration'): result.extend(text.split() if form=='attribute' and prop.upperBound()>1 else [text])
+                        elif kind(classifier,prop.type,'Enumeration'): result.extend(text.split() if form=='attribute' and bounds(prop)[1]>1 else [text])
                         else: result.extend(self.reference(t,uri,node) for t in (text.split() if form=='attribute' else [text]))
-                    if prop.upperBound()<=1 and len(result)>1: raise XmiError('Multiple runtime scalar values: '+name)
-                    raw=result if prop.upperBound()>1 else (result[0] if result else None)
+                    upper=bounds(prop)[1]
+                    if upper<=1 and len(result)>1: raise XmiError('Multiple runtime scalar values: '+name)
+                    raw=result if upper>1 else (result[0] if result else None)
                     value._normalize(prop,raw,check_lower=False)
                     values[prop]=raw
                 except (ValueError,TypeError,NotImplementedError) as error:
@@ -534,7 +544,7 @@ class _Reader:
             except (ValueError,TypeError,NotImplementedError) as error: self.problem('structure',uri,node,None,str(error))
         for value,prop,expected,uri,node in runtime_explicit:
             actual=value._values.get(prop,())
-            equal=actual==expected if prop.isOrdered or prop.upperBound()<=1 else set(actual)==set(expected)
+            equal=actual==expected if prop.isOrdered or bounds(prop)[1]<=1 else set(actual)==set(expected)
             if not equal:
                 self.problem('structure',uri,node,prop.name,'Explicit runtime association ends conflict')
 
@@ -630,7 +640,7 @@ def _dumps(model, *, bundle=True, external_references=None):
     from . import UmlElement
     from .native import kind
     from .specification import property_redefines,property_refines
-    from .profile_values import ProfileObject,EnumValue
+    from .profile_values import ProfileObject,EnumValue,defining_profile,bounds
     from .primitive_values import PrimitiveValue
     from .stereotypes import StereotypeApplication,applications
     document=model if isinstance(model,XmiDocument) else None
@@ -669,7 +679,6 @@ def _dumps(model, *, bundle=True, external_references=None):
                     elif isinstance(target,PrimitiveValue) and bundle and target.classifier not in seen: pending.append(target.classifier)
     identities,used={},set()
     from .versions import SEMANTIC_VERSION
-    if SEMANTIC_VERSION=='2.4.1' and records:raise XmiUnsupportedError('Runtime profile values cannot be exported as supported UML 2.4.1 applications')
     for obj in objects+records:
         candidate=getattr(obj,'_xmi_id',None) or 'id'+str(len(identities)+1)
         if not re.fullmatch(r'[^\W\d][\w.-]*',candidate): candidate='id'+str(len(identities)+1)
@@ -743,7 +752,7 @@ def _dumps(model, *, bundle=True, external_references=None):
         for profile,namespace in profile_namespaces.items(): ET.SubElement(metadata,'lib:profile',{'namespace':namespace,'profile':reference(profile)})
     for record in sorted(records,key=lambda r:identities[r]):
         classifier=record.classifier
-        matches=[o for o in record._profile.allOwnedElements() if kind(o,o,'Classifier') and o.name==classifier.name]
+        matches=[o for o in record._profile.allOwnedElements() if kind(o,o,'Classifier') and o.name==classifier.name and defining_profile(o) is record._profile]
         if len(matches)!=1 or not classifier.name or not re.fullmatch(r'[^\W\d][\w.-]*',classifier.name): raise XmiUnsupportedError('Profile classifier must have one unambiguous XML-compatible name')
         node=ET.SubElement(root,prefix(profile_namespaces[record._profile])+':'+classifier.name,{'xmi:id':identities[record]})
         if isinstance(record,StereotypeApplication):
@@ -754,11 +763,11 @@ def _dumps(model, *, bundle=True, external_references=None):
             if prop not in record._properties(): raise XmiError('Obsolete runtime tag cannot be exported')
             if not prop.name or not re.fullmatch(r'[^\W\d][\w.-]*',prop.name): raise XmiUnsupportedError('Tag name must be XML-compatible')
             if not values:
-                ET.SubElement(node,prop.name,{'lib:empty':'true'} if prop.upperBound()>1 else {'xsi:nil':'true'})
+                ET.SubElement(node,prop.name,{'lib:empty':'true'} if bounds(prop)[1]>1 else {'xsi:nil':'true'})
             for value in values:
                 if isinstance(value,(UmlElement,ProfileObject)):
                     ref=reference(value); ET.SubElement(node,prop.name,{'href':ref} if '#' in ref else {'xmi:idref':ref})
-                elif prop.upperBound()>1: ET.SubElement(node,prop.name).text=text(value)
+                elif bounds(prop)[1]>1: ET.SubElement(node,prop.name).text=text(value)
                 else: node.set(prop.name,text(value))
     ET.indent(root)
     if document:

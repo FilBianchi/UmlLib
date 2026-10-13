@@ -98,7 +98,7 @@ def audit():
             'Generic supplemental normative prose remains unsupported (UML2.4.1.prose); execution traces, PackageMerge reconciliation and behavioral protocol-conformance proof are not supplied.',
             'Opaque expression evaluation, foreign lexical default representations and domain collection types require explicit adapters/facts.',
             'Activity autonomy, relative TimeEvent starting times, conditional trigger assignment and transformation Behavior purity require trusted facts when the model cannot establish them.',
-            'Core XMI 2.4.1 exchange is implemented in 0.18.0 (XMI241_SUPPORT.md); runtime profile applications, CMOF/vendor adapters and migration remain separate unsupported contracts.',
+            'Core/profile XMI 2.4.1 and typed runtime profiles are implemented (PROFILE_RUNTIME_241.md); derived/general default evaluators, non-navigable runtime navigation, CMOF/vendor adapters, non-UML metaclass mapping and migration remain separate obligations.',
             'Implicit region/machine extension preserves original structure by reference; it does not clone inherited composite members into the extension.',
             'Connector feature compatibility is the documented nominal/signature interpretation; trace conformance and arbitrary execution are not proved.',
         ],shared_reference_caveats={key:value for key,value in PARTIAL.items() if key.split('-')[0] in engine.SPECIFICATIONS and key not in ('DeploymentTarget-deployedElement','DeploymentSpecification-deployed_elements')},

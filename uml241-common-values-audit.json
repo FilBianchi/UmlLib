@@ -51,7 +51,7 @@
   ],
   "limitations": [
     "Registration is not exhaustive semantic conformance. Remaining package audits are recorded in UML241_AUDIT.md; general expression evaluation requires explicit evidence.",
-    "Generic supplemental prose validation, runtime profile application and migration are still unsupported for 2.4.1; core XMI exchange is documented in XMI241_SUPPORT.md.",
+    "Generic supplemental prose validation and migration remain unsupported for 2.4.1; typed runtime profiles and XMI exchange are documented in PROFILE_RUNTIME_241.md and XMI241_SUPPORT.md.",
     "Malformed/pseudo-body formulas are interpreted through their normative ownedComment; decisions are listed in UML241_COMMON_VALUES_AUDIT.md."
   ],
   "enabled_operations": 150,

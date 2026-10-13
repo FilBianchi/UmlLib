@@ -1,4 +1,4 @@
-# XMI UML 2.4.1 — 0.18.0
+# XMI UML 2.4.1 — 0.19.0
 
 `Uml241.xmi` importa ed esporta modelli usando le classi pubbliche, enum,
 associazioni, subset/redefinition e composizione del backend isolato 2.4.1.
@@ -75,9 +75,10 @@ sono controllati anche nella fase di selezione automatica.
 ## Profili ed estensioni
 
 Le definizioni strutturali Profile, Stereotype, Extension e ProfileApplication
-possono essere lette/scritte. L'applicazione runtime dei profili e i valori dei tag
-2.4.1 sono ancora un contratto separato: strict=True li rifiuta; strict=False li
-conserva come XML opaco, senza creare istanze applicate o dichiararli validati.
+possono essere lette/scritte. Dalla 0.19.0 anche applicazioni runtime e valori dei tag
+tipizzati sono supportati: [PROFILE_RUNTIME_241.md](PROFILE_RUNTIME_241.md).
+I profili sconosciuti e i valori non supportati sono rifiutati da strict=True e
+conservati come XML opaco con diagnostiche da strict=False.
 I MOF extension Tag del file OMG PrimitiveTypes vengono conservati con diagnostiche,
 non interpretati come tag runtime di un profilo UML.
 
@@ -92,7 +93,7 @@ I modelli incompleti possono essere decodificati: validate resta una verifica di
 
 ## Evidenze
 
-La suite completa contiene 409 test. I 17 casi XMI 2.4.1 includono uno sweep di
+La suite completa contiene 430 test. I 17 casi XMI 2.4.1 includono uno sweep di
 tutti i 549 setter osservabili con export/import e confronto della rappresentazione
 normalizzata, oltre a grafi indipendenti, vincoli di versione, rollback e sicurezza.
 
@@ -109,4 +110,4 @@ python -m scripts.verify_xmi_corpus --fetch --semantic-version 2.4.1
 ```
 
 L'audit dichiarativo resta in UML241_AUDIT.md; XMI non chiude gli obblighi di prosa
-generale, esecuzione/protocolli, PackageMerge, profili runtime o migrazione tra versioni.
+generale, esecuzione/protocolli, PackageMerge, ulteriori adattatori profili o migrazione tra versioni.

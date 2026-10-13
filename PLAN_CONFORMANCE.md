@@ -483,3 +483,14 @@ Le verifiche comprendono proprietà specifiche delle due versioni, identità, ow
 riferimenti tra risorse, rollback e sicurezza. XMI241_SUPPORT.md documenta il
 contratto. Seguono profili runtime 2.4.1, poi migrazione esplicita con perdite segnalate;
 CMOF, layout vendor, prosa e semantica di esecuzione rimangono ambiti distinti.
+
+## Diciassettesimo incremento: versione 0.19.0
+
+Profili/stereotipi runtime 2.4.1 implementati con API isolate, tag tipizzati, valori
+Class/DataType, ereditarietà/ridefinizione, strict view, vincoli fidati, composizione,
+cancellazione e scambio XMI. I controlli runtime delle basi non aggiungono invarianti
+2.5.1 alla fonte vecchia; i profili dipendenti vanno rimossi prima del profilo importato.
+430 test passano, inclusi 21 scenari autonomi di profili 2.4.1. Contratto e limiti in
+PROFILE_RUNTIME_241.md. Il prossimo lavoro per una beta utilizzabile è stabilizzazione
+dell'API, test delle sequenze di modifica e misure di tempi/memoria in un'app pilota;
+restano evaluator, CMOF, navigazione non navigabile e migrazione esplicita.

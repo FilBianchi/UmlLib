@@ -15,7 +15,6 @@ def main():
     parser.add_argument('--semantic-version',choices=('2.4.1','2.5.1'),default='2.5.1',help='Select actual Python metamodel semantics; Eclipse dialect URIs alone are ambiguous.')
     parser.add_argument('--cache',type=Path,default=Path('.build-tmp/xmi-corpus'))
     options=parser.parse_args()
-    if options.complex and options.semantic_version=='2.4.1':parser.error('The complex runtime-profile corpus is only supported by the 2.5.1 backend')
     exchange=import_module('Uml241.xmi' if options.semantic_version=='2.4.1' else 'Uml251.xmi')
     load,loads,dumps=exchange.load,exchange.loads,exchange.dumps
     report_name='report.json' if options.semantic_version=='2.5.1' else 'report-2.4.1.json'
