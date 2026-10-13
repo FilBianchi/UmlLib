@@ -198,6 +198,13 @@ assert files('umltools.data').joinpath('UML-2.4.1.xmi').is_file()
 assert old.Class().semantic_version=='2.4.1'
 assert new.Class().semantic_version=='2.5.1'
 assert old.LiteralInteger(value=7).integerValue()==7
+old_model=old.Model(name='Old',packagedElement=[old.Class(name='Customer')])
+assert old_model.packagedElement[0].qualifiedName=='Old::Customer'
+assert old.Property(lowerValue=old.OpaqueExpression()).lowerBound() is None
+assert old.Property().includesCardinality(1)
+from Uml241.native import check as old_check
+opaque=old.OpaqueExpression(behavior=old.OpaqueBehavior(ownedParameter=[old.Parameter(direction=old.ParameterDirectionKind.in_)]))
+assert not old_check(opaque,'OpaqueExpression.only_return_result_parameters')
 assert old.StateMachine.State is old.State
 with old.ModelSession() as old_session, new.ModelSession() as new_session:
     old_class,new_class=old.Class(),new.Class()

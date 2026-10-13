@@ -69,11 +69,11 @@ per ogni associazione. I test coprono i casi distintivi trovati nell'audit:
 ereditarietà di Vertex, featuringClassifier, guard obbligatorio, proprietà di State
 e loopVariable senza composizione, oltre a isolamento e rollback.
 
-Sono abilitate 28 query parameterless: ownership di Element/Package, valori e
-computabilità dei literal, query base di ValueSpecification, limiti e molteplicità
-di MultiplicityElement e limite inferiore di ExtensionEnd. Sono abilitati i due
-vincoli Element.has_owner/not_own_self. Le interpretazioni dei risultati continuano
-a essere verificate contro le firme del metamodel 2.4.1.
+Dalla 0.16.0 l'audit CommonStructure/Values abilita 64 operazioni native complessive
+e 30 vincoli. Le 63 operazioni e 16 derivazioni del suo ambito sono inventariate in
+[UML241_COMMON_VALUES_AUDIT.md](UML241_COMMON_VALUES_AUDIT.md), incluse interpretazioni
+dei refusi normativi e dipendenze ancora aperte. I risultati sono verificati contro
+le firme 2.4.1. Non tutte le configurazioni di Classification sono ancora calcolabili.
 
 Le altre operazioni, derivazioni specializzate e invarianti non usano automaticamente
 le traduzioni 2.5.1. Sollevano UnsupportedSemanticsError oppure compaiono come
@@ -95,9 +95,9 @@ python generate_uml.py --version all
 Il generatore predefinito continua a produrre 2.5.1; `--version 2.4.1` genera soltanto
 Uml241. Le pipeline rigenerano entrambe le versioni e verificano l'installazione.
 
-Il prossimo lavoro è l'audit CommonStructure/Values per 2.4.1: nomi e namespace,
-import, proprietà derivate e query non ancora abilitate. Seguono Classification e
-StateMachines, con fixture che dimostrino le differenze tra versioni. Le regole
+CommonStructure/Values è auditato nella 0.16.0. Il prossimo lavoro è Classification
+e SimpleClassifiers, poi StateMachines, con fixture che dimostrino le differenze
+tra versioni. Le regole
 verificate possono condividere la stessa funzione Python; quelle differenti devono
 avere implementazioni separate. XMI 2.4.1 e migrazione saranno aggiunti dopo questi
 contratti, seguendo [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md).

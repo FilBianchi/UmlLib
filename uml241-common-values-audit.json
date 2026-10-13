@@ -1,0 +1,1651 @@
+{
+  "version": "2.4.1",
+  "scope": [
+    "Abstraction",
+    "Comment",
+    "Constraint",
+    "Dependency",
+    "DirectedRelationship",
+    "Duration",
+    "DurationConstraint",
+    "DurationInterval",
+    "DurationObservation",
+    "Element",
+    "ElementImport",
+    "Expression",
+    "Interval",
+    "IntervalConstraint",
+    "LiteralBoolean",
+    "LiteralInteger",
+    "LiteralNull",
+    "LiteralReal",
+    "LiteralSpecification",
+    "LiteralString",
+    "LiteralUnlimitedNatural",
+    "MultiplicityElement",
+    "NamedElement",
+    "Namespace",
+    "Observation",
+    "OpaqueExpression",
+    "Package",
+    "PackageImport",
+    "PackageableElement",
+    "ParameterableElement",
+    "Realization",
+    "Relationship",
+    "StringExpression",
+    "TemplateBinding",
+    "TemplateParameter",
+    "TemplateParameterSubstitution",
+    "TemplateSignature",
+    "TemplateableElement",
+    "TimeConstraint",
+    "TimeExpression",
+    "TimeInterval",
+    "TimeObservation",
+    "Type",
+    "TypedElement",
+    "Usage",
+    "ValueSpecification",
+    "VisibilityKind"
+  ],
+  "limitations": [
+    "Registration is not exhaustive semantic conformance; Classification overrides/inherited members and general expression evaluation remain separate dependencies.",
+    "Generic supplemental prose validation, runtime profile application, XMI and migration are still unsupported for 2.4.1.",
+    "Malformed/pseudo-body formulas are interpreted through their normative ownedComment; decisions are listed in UML241_COMMON_VALUES_AUDIT.md."
+  ],
+  "enabled_operations": 64,
+  "enabled_constraints": 30,
+  "records": [
+    {
+      "kind": "constraint",
+      "identifier": "Constraint.boolean_value",
+      "source": "umltools/data/UML-2.4.1.xmi#Constraint-boolean_value",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "true"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Constraint.no_side_effects",
+      "source": "umltools/data/UML-2.4.1.xmi#Constraint-no_side_effects",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "true"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Constraint.not_apply_to_self",
+      "source": "umltools/data/UML-2.4.1.xmi#Constraint-not_apply_to_self",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "not constrainedElement->includes(self)"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Constraint.value_specification_boolean",
+      "source": "umltools/data/UML-2.4.1.xmi#Constraint-value_specification_boolean",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.specification().booleanValue().isOclKindOf(Boolean)"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "DirectedRelationship-source",
+      "source": "umltools/data/UML-2.4.1.xmi#DirectedRelationship-source",
+      "implementation": "structural union"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "DirectedRelationship-target",
+      "source": "umltools/data/UML-2.4.1.xmi#DirectedRelationship-target",
+      "implementation": "structural union"
+    },
+    {
+      "kind": "constraint",
+      "identifier": "DurationConstraint.first_event_multiplicity",
+      "source": "umltools/data/UML-2.4.1.xmi#DurationConstraint-first_event_multiplicity",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "if (constrainedElement->size() =2)\n  then (firstEvent->size() = 2) else (firstEvent->size() = 0)"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "DurationObservation.first_event_multiplicity",
+      "source": "umltools/data/UML-2.4.1.xmi#DurationObservation-first_event_multiplicity",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "if (event->size() = 2)\n  then (firstEvent->size() = 2) else (firstEvent->size() = 0)"
+        ]
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Element.allOwnedElements",
+      "source": "umltools/data/UML-2.4.1.xmi#Element-allOwnedElements",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = ownedElement->union(ownedElement->collect(e | e.allOwnedElements()))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Element.mustBeOwned",
+      "source": "umltools/data/UML-2.4.1.xmi#Element-mustBeOwned",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Element.has_owner",
+      "source": "umltools/data/UML-2.4.1.xmi#Element-has_owner",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.mustBeOwned() implies owner->notEmpty()"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Element.not_own_self",
+      "source": "umltools/data/UML-2.4.1.xmi#Element-not_own_self",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "not self.allOwnedElements()->includes(self)"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Element-ownedElement",
+      "source": "umltools/data/UML-2.4.1.xmi#Element-ownedElement",
+      "implementation": "structural intrinsic"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Element-owner",
+      "source": "umltools/data/UML-2.4.1.xmi#Element-owner",
+      "implementation": "structural intrinsic"
+    },
+    {
+      "kind": "operation",
+      "identifier": "ElementImport.getName",
+      "source": "umltools/data/UML-2.4.1.xmi#ElementImport-getName",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if self.alias->notEmpty() then\n  self.alias\nelse\n  self.importedElement.name\nendif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "ElementImport.imported_element_is_public",
+      "source": "umltools/data/UML-2.4.1.xmi#ElementImport-imported_element_is_public",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.importedElement.visibility.notEmpty() implies self.importedElement.visibility = #public"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "ElementImport.visibility_public_or_private",
+      "source": "umltools/data/UML-2.4.1.xmi#ElementImport-visibility_public_or_private",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.visibility = #public or self.visibility = #private"
+        ]
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralBoolean.booleanValue",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralBoolean-booleanValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = value"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralBoolean.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralBoolean-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralInteger.integerValue",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralInteger-integerValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = value"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralInteger.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralInteger-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralNull.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralNull-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralNull.isNull",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralNull-isNull",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralReal.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralReal-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralReal.realValue",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralReal-realValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = value"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralString.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralString-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralString.stringValue",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralString-stringValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = value"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralUnlimitedNatural.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralUnlimitedNatural-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "LiteralUnlimitedNatural.unlimitedValue",
+      "source": "umltools/data/UML-2.4.1.xmi#LiteralUnlimitedNatural-unlimitedValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = value"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.compatibleWith",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-compatibleWith",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = Integer.allInstances()->forAll(i : Integer | self.includesCardinality(i) implies other.includesCardinality(i))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.includesCardinality",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-includesCardinality",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "upperBound()->notEmpty() and lowerBound()->notEmpty()"
+            ]
+          ]
+        },
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = (lowerBound() <= C) and (upperBound() >= C)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.includesMultiplicity",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-includesMultiplicity",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "self.upperBound()->notEmpty() and self.lowerBound()->notEmpty() and M.upperBound()->notEmpty() and M.lowerBound()->notEmpty()"
+            ]
+          ]
+        },
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = (self.lowerBound() <= M.lowerBound()) and (self.upperBound() >= M.upperBound())"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.is",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-is",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = (lowerbound = self.lowerbound and upperbound = self.upperbound)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.isMultivalued",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-isMultivalued",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "upperBound()->notEmpty()"
+            ]
+          ]
+        },
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = upperBound() > 1"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.lower",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-lower.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = lowerBound()"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.lowerBound",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-lowerBound",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if lowerValue->isEmpty() then 1 else lowerValue.integerValue() endif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.upper",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-upper.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = upperBound()"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "MultiplicityElement.upperBound",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-upperBound",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if upperValue->isEmpty() then 1 else upperValue.unlimitedValue() endif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "MultiplicityElement.upper_ge_lower",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-upper_ge_lower",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "(upperBound()->notEmpty() and lowerBound()->notEmpty()) implies upperBound() >= lowerBound()"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "MultiplicityElement.lower_ge_0",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-lower_ge_0",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "lowerBound()->notEmpty() implies lowerBound() >= 0"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "MultiplicityElement.value_specification_no_side_effects",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-value_specification_no_side_effects",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "true"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "MultiplicityElement.value_specification_constant",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-value_specification_constant",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "true"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "MultiplicityElement-lower",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-lower",
+      "implementation": "query"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "MultiplicityElement-upper",
+      "source": "umltools/data/UML-2.4.1.xmi#MultiplicityElement-upper",
+      "implementation": "query"
+    },
+    {
+      "kind": "operation",
+      "identifier": "NamedElement.allNamespaces",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-allNamespaces",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if self.namespace->isEmpty()\nthen Sequence{}\nelse self.namespace.allNamespaces()->prepend(self.namespace)\nendif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "NamedElement.allOwningPackages",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-allOwningPackages",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = self.namespace->select(p | p.oclIsKindOf(Package))->union(p.allOwningPackages())"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "NamedElement.isDistinguishableFrom",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-isDistinguishableFrom",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType)\nthen ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()\nelse true\nendif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "NamedElement.namespace",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-namespace.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "NamedElement.qualifiedName",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-qualifiedName.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()\nthen \n    self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))\nelse\n    Set{}\nendif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "NamedElement.separator",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-separator",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = '::'"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "NamedElement.visibility_needs_ownership",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-visibility_needs_ownership",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "namespace->isEmpty() implies visibility->isEmpty()"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "NamedElement.has_qualified_name",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-has_qualified_name",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "(self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) implies\n  self.qualifiedName = self.allNamespaces()->iterate( ns : Namespace; result: String = self.name | ns.name->union(self.separator())->union(result))"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "NamedElement.has_no_qualified_name",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-has_no_qualified_name",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())\n  implies self.qualifiedName->isEmpty()"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "NamedElement-namespace",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-namespace",
+      "implementation": "structural intrinsic"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "NamedElement-qualifiedName",
+      "source": "umltools/data/UML-2.4.1.xmi#NamedElement-qualifiedName",
+      "implementation": "native Python"
+    },
+    {
+      "kind": "operation",
+      "identifier": "Namespace.excludeCollisions",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-excludeCollisions",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = imps->reject(imp1 | imps.exists(imp2 | not imp1.isDistinguishableFrom(imp2, self)))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Namespace.getNamesOfMember",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-getNamesOfMember",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if self.ownedMember ->includes(element)\nthen Set{}->include(element.name)\nelse let elementImports: ElementImport = self.elementImport->select(ei | ei.importedElement = element) in\n  if elementImports->notEmpty()\n  then elementImports->collect(el | el.getName())\n  else self.packageImport->select(pi | pi.importedPackage.visibleMembers()->includes(element))-> collect(pi | pi.importedPackage.getNamesOfMember(element))\n  endif\nendif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Namespace.importMembers",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-importMembers",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = self.excludeCollisions(imps)->select(imp | self.ownedMember->forAll(mem |\nmem.imp.isDistinguishableFrom(mem, self)))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Namespace.importedMember",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-importedMember.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = self.importMembers(self.elementImport.importedElement.asSet()-\n>union(self.packageImport.importedPackage->collect(p | p.visibleMembers())))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Namespace.membersAreDistinguishable",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-membersAreDistinguishable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = self.member->forAll( memb |\nself.member->excluding(memb)->forAll(other |\nmemb.isDistinguishableFrom(other, self)))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Namespace.ownedMember",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-ownedMember.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Namespace.members_distinguishable",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-members_distinguishable",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "membersAreDistinguishable()"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Namespace-importedMember",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-importedMember",
+      "implementation": "query"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Namespace-member",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-member",
+      "implementation": "native Python"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Namespace-ownedMember",
+      "source": "umltools/data/UML-2.4.1.xmi#Namespace-ownedMember",
+      "implementation": "structural union"
+    },
+    {
+      "kind": "operation",
+      "identifier": "OpaqueExpression.isIntegral",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-isIntegral",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "OpaqueExpression.isNonNegative",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-isNonNegative",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "self.isIntegral()"
+            ]
+          ]
+        },
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "OpaqueExpression.isPositive",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-isPositive",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        },
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "self.isIntegral()"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "OpaqueExpression.result",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-result.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "OpaqueExpression.value",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-value",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "self.isIntegral()"
+            ]
+          ]
+        },
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "OpaqueExpression.language_body_size",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-language_body_size",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "language->notEmpty() implies (body->size() = language->size())"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "OpaqueExpression.one_return_result_parameter",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-one_return_result_parameter",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.behavior.notEmpty() implies\n  self.behavior.ownedParameter->select(p | p.direction=#return)->size() = 1"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "OpaqueExpression.only_return_result_parameters",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-only_return_result_parameters",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.behavior.notEmpty() implies\n  self.behavior.ownedParameters->select(p | p.direction<>#return)->isEmpty()"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "OpaqueExpression-result",
+      "source": "umltools/data/UML-2.4.1.xmi#OpaqueExpression-result",
+      "implementation": "query"
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.allApplicableStereotypes",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-allApplicableStereotypes",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = \nself.ownedStereotype->union(self.ownedMember->\n\tselect(oclIsKindOf(Package)).oclAsType(Package).allApplicableStereotypes()->flatten())->asSet()"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.containingProfile",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-containingProfile",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result =\nif self.oclIsKindOf(Profile) then \n\tself.oclAsType(Profile)\nelse\n\tself.namespace.oclAsType(Package).containingProfile()\nendif"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.makesVisible",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-makesVisible",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "pre",
+          "expressions": [
+            [
+              "OCL",
+              "self.member->includes(el)"
+            ]
+          ]
+        },
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = (ownedMember->includes(el)) or\n(elementImport->select(ei|ei.importedElement = #public)->collect(ei|ei.importedElement)->includes(el)) or\n(packageImport->select(pi|pi.visibility = #public)->collect(pi|pi.importedPackage.member->includes(el))->notEmpty())"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.mustBeOwned",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-mustBeOwned",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.nestedPackage",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-nestedPackage.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.ownedStereotype",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-ownedStereotype.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.ownedType",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-ownedType.1",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Package.visibleMembers",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-visibleMembers",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = member->select( m | self.makesVisible(m))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "Package.elements_public_or_private",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-elements_public_or_private",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.ownedElements->forAll(e | e.visibility->notEmpty() implies e.visbility = #public or e.visibility = #private)"
+        ]
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Package-nestedPackage",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-nestedPackage",
+      "implementation": "query"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Package-ownedStereotype",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-ownedStereotype",
+      "implementation": "query"
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Package-ownedType",
+      "source": "umltools/data/UML-2.4.1.xmi#Package-ownedType",
+      "implementation": "query"
+    },
+    {
+      "kind": "constraint",
+      "identifier": "PackageImport.public_or_private",
+      "source": "umltools/data/UML-2.4.1.xmi#PackageImport-public_or_private",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "self.visibility = #public or self.visibility = #private"
+        ]
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ParameterableElement.isCompatibleWith",
+      "source": "umltools/data/UML-2.4.1.xmi#ParameterableElement-isCompatibleWith",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = p->oclIsKindOf(self.oclType)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ParameterableElement.isTemplateParameter",
+      "source": "umltools/data/UML-2.4.1.xmi#ParameterableElement-isTemplateParameter",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = templateParameter->notEmpty()"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "derived property",
+      "identifier": "Relationship-relatedElement",
+      "source": "umltools/data/UML-2.4.1.xmi#Relationship-relatedElement",
+      "implementation": "structural union"
+    },
+    {
+      "kind": "operation",
+      "identifier": "StringExpression.stringValue",
+      "source": "umltools/data/UML-2.4.1.xmi#StringExpression-stringValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = if subExpression->notEmpty()\nthen subExpression->iterate(se; stringValue = | stringValue.concat(se.stringValue()))\nelse operand->iterate()(op; stringValue =  | stringValue.concat(op.value))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "StringExpression.operands",
+      "source": "umltools/data/UML-2.4.1.xmi#StringExpression-operands",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "operand->forAll (op | op.oclIsKindOf (LiteralString))"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "StringExpression.subexpressions",
+      "source": "umltools/data/UML-2.4.1.xmi#StringExpression-subexpressions",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "if subExpression->notEmpty() then operand->isEmpty() else operand->notEmpty()"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "TemplateBinding.parameter_substitution_formal",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateBinding-parameter_substitution_formal",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "parameterSubstitution->forAll(b | template.parameter->includes(b.formal))"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "TemplateBinding.one_parameter_substitution",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateBinding-one_parameter_substitution",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "template.parameter->forAll(p | parameterSubstitution->select(b | b.formal = p)->size() <= 1)"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "TemplateParameter.must_be_compatible",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateParameter-must_be_compatible",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "default->notEmpty() implies default->isCompatibleWith(parameteredElement)"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "TemplateParameterSubstitution.must_be_compatible",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateParameterSubstitution-must_be_compatible",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "actual->forAll(a | a.isCompatibleWith(formal.parameteredElement))"
+        ]
+      ]
+    },
+    {
+      "kind": "constraint",
+      "identifier": "TemplateSignature.own_elements",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateSignature-own_elements",
+      "implementation": "native Python",
+      "expressions": [
+        [
+          "OCL",
+          "templatedElement.ownedElement->includesAll(parameter.parameteredElement - parameter.ownedParameteredElement)"
+        ]
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "TemplateableElement.isTemplate",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateableElement-isTemplate",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = ownedTemplateSignature->notEmpty()"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "TemplateableElement.parameterableElements",
+      "source": "umltools/data/UML-2.4.1.xmi#TemplateableElement-parameterableElements",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = allOwnedElements->select(oclIsKindOf(ParameterableElement))"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "Type.conformsTo",
+      "source": "umltools/data/UML-2.4.1.xmi#Type-conformsTo",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.booleanValue",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-booleanValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = Set{}"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.integerValue",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-integerValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = Set{}"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.isCompatibleWith",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-isCompatibleWith",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = p->oclIsKindOf(self.oclType) and self.type.conformsTo(p.oclAsType(TypedElement).type)"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.isComputable",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-isComputable",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.isNull",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-isNull",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = false"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.realValue",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-realValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = Set{}"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.stringValue",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-stringValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = Set{}"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "operation",
+      "identifier": "ValueSpecification.unlimitedValue",
+      "source": "umltools/data/UML-2.4.1.xmi#ValueSpecification-unlimitedValue",
+      "implementation": "native Python",
+      "conditions": [
+        {
+          "name": "spec",
+          "expressions": [
+            [
+              "OCL",
+              "result = Set{}"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

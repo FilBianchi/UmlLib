@@ -1309,7 +1309,7 @@
     {
       "priority": "P1",
       "area": "UML versions",
-      "action": "Uml241/Uml251 provide independent metamodels and isolated backend state. Audit the remaining 2.4.1 native rules, derived properties and prose, then profile/XMI contracts and loss-aware migration fixtures; 2.5 is not a target. Full semantic validation/export remain available only for the declared 2.5.1 scope."
+      "action": "Uml241/Uml251 provide independent metamodels and isolated state. CommonStructure/Values 2.4.1 is audited in UML241_COMMON_VALUES_AUDIT.md; next audit Classification/SimpleClassifiers and remaining families/prose, then profile/XMI contracts and loss-aware migration fixtures. 2.5 is not a target."
     },
     {
       "priority": "P2",

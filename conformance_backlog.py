@@ -43,7 +43,7 @@ def backlog():
                     dict(priority='P0', area='additional prose', action='Decompose the 242 class descriptions and additional normative prose into atomic requirements; counts of XMI definitions alone cannot close this scope.'),
                     dict(priority='P1', area='profiles', action='Typed tags, binary navigable associations, strict views and trusted user-constraint integration are implemented. Complete custom value/expression adapters, non-navigable navigation, non-UML metaclasses and CMOF/exchange semantics.'),
                     dict(priority='P1', area='exchange', action='Core/profile graph exchange and generic typed lexical primitive values are implemented. Extend MIWG samples, default/derived evaluators, CMOF and vendor reference/layout adapters; keep decoding distinct from UML validation.'),
-                    dict(priority='P1', area='UML versions', action='Uml241/Uml251 provide independent metamodels and isolated backend state. Audit the remaining 2.4.1 native rules, derived properties and prose, then profile/XMI contracts and loss-aware migration fixtures; 2.5 is not a target. Full semantic validation/export remain available only for the declared 2.5.1 scope.'),
+                    dict(priority='P1', area='UML versions', action='Uml241/Uml251 provide independent metamodels and isolated state. CommonStructure/Values 2.4.1 is audited in UML241_COMMON_VALUES_AUDIT.md; next audit Classification/SimpleClassifiers and remaining families/prose, then profile/XMI contracts and loss-aware migration fixtures. 2.5 is not a target.'),
                     dict(priority='P2', area='diagram exchange', action='Implement StandardProfile/UMLDI and preserve diagram metadata separately from core model semantics.')])
 
 

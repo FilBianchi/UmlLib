@@ -435,3 +435,15 @@ nelle due versioni; le pipeline verificano entrambe le generazioni e l'installaz
 
 Il prossimo audit 2.4.1 è CommonStructure/Values: nomi, namespace, import e derivazioni,
 poi Classification e StateMachines. Dettagli in UML_VERSION_BACKENDS.md.
+
+## Quattordicesimo incremento: versione 0.16.0
+
+Audit CommonStructure/Values 2.4.1 e dipendenze Package per gli import: 63 operazioni,
+30 vincoli e 16 derivazioni inventariate; 64 operazioni native abilitate complessivamente.
+Implementazioni separate per catena dei namespace, visibilità radice, compatibilità
+e comportamento opaque return-only. I limiti presenti ma non calcolabili restano
+undefined. Refusi/segnaposto della fonte sono interpretati secondo le ownedComment
+normative e documentati. 367 test passano, con scenari di differenza tra versioni.
+Il report rigenerabile è verificato dalle pipeline. Restano override/dipendenze di
+Classification, valutazione generale delle espressioni, prosa globale, profili,
+exchange e migrazione 2.4.1. Prossimo audit: Classification/SimpleClassifiers.

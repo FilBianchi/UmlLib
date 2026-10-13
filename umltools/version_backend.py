@@ -37,6 +37,7 @@ def backend_241():
             # The 2.5.1 hand translations are not evidence for 2.4.1 semantics.
             native=sys.modules[name+'.native']
             native.SEMANTIC_VERSION='2.4.1'
+            source_constraints=dict(native.CONSTRAINTS)
             common=native.common_structure
             values=native.values
             reviewed_operations={
@@ -65,6 +66,8 @@ def backend_241():
             native.CONSTRAINTS.clear()
             native.CONSTRAINTS.update({'Element.has_owner':common.has_owner,'Element.not_own_self':common.not_own_self})
             native.DERIVATIONS.clear()
+            from .semantics241_common_values import install
+            install(package,source_constraints)
             for cls in package.REGISTRY.values(): cls.__semantic_version__='2.4.1'
             for module_name in ('static_requirements','stereotypes','xmi'):
                 module=__import__(name+'.'+module_name,fromlist=['*'])

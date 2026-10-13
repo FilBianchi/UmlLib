@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.16.0
+
+UML 2.4.1 CommonStructure/Values and supporting Package import queries are audited:
+63 declared operations, 30 invariants and 16 derived properties have explicit
+implementations/mechanisms. The 2.4.1 backend enables 64 operations overall.
+Names, aliases, import collisions/shadowing, public/private reexport, templates,
+expression facts, cardinalities and value constraints have independent examples.
+Version differences in namespace chains, root visibility, compatibility direction
+and opaque return-only behaviors remain separate from 2.5.1. Undefined explicit
+bounds are preserved; default 1 only applies to absent bound expressions.
+Malformed/pseudo-body formulas and their normative-prose interpretations are
+documented in UML241_COMMON_VALUES_AUDIT.md with a regenerable declaration report.
+367 tests pass. Classification overrides, general expression evaluation, broader
+prose, runtime profiles, XMI and migration remain separate 2.4.1 work.
+
 ## 0.15.0
 
 Uml241 and Uml251 provide separate version namespaces. Uml/UML remain 2.5.1 aliases.
