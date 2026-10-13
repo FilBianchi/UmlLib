@@ -1309,7 +1309,7 @@
     {
       "priority": "P1",
       "area": "UML versions",
-      "action": "Compare normative 2.4.1/2.5/2.5.1 metamodels before adding migrations or independent rule sets. Source dialect/version candidates are recorded; validation/export remain 2.5.1 and namespaces alone are not proof of version conformance."
+      "action": "2.4.1/2.5.1 declaration comparison is recorded in UML_VERSION_COMPARISON.md. Implement explicit version contracts, loss-aware migrations and independent rule review/fixtures; 2.5 is not a target. Validation/export remain 2.5.1 and namespaces alone are not proof of version conformance."
     },
     {
       "priority": "P2",

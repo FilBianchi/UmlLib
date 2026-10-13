@@ -413,8 +413,9 @@ Eclipse UML2 implementation namespaces are not interpreted as exact UML versions
 
 `dumps(document, target_version="2.5.1")` is supported. Other target versions raise
 an explicit unsupported error; relabeling a namespace would not perform a conversion.
-The planned next version work is comparison of normative 2.x metamodels and explicit
-migration/validation policies. Independent 2.3/2.4.1 rule sets and UML 1.x are not
+The target versions are 2.4.1 and 2.5.1; 2.5 is not an implementation target.
+The normative declaration comparison is recorded in [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md).
+Next work is explicit migration/validation policies. Independent 2.3/2.4.1 rule sets and UML 1.x are not
 implemented. The public corpus remains a compatibility check, not a multi-version
 conformance claim.
 

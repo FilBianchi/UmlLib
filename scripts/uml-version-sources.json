@@ -1,0 +1,44 @@
+[
+  {
+    "name": "PrimitiveTypes-2.4.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi",
+    "sha256": "9a801ec8aef75343cdd37ef31960a80804e30a9655b9278f32d33e1863fda95a",
+    "bytes": 2675
+  },
+  {
+    "name": "PrimitiveTypes-2.5.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20161101/PrimitiveTypes.xmi",
+    "sha256": "62d12217fcd26037fc917709e2a896600af574efd6412c110e2a711395a69849",
+    "bytes": 2880
+  },
+  {
+    "name": "StandardProfile-2.5.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20161101/StandardProfile.xmi",
+    "sha256": "b505ebdee791f857da838b5be3394ebd9a857fd044a89625cb71f56badb867bc",
+    "bytes": 29801
+  },
+  {
+    "name": "StandardProfileL2-2.4.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20100901/StandardProfileL2.xmi",
+    "sha256": "536dba31130c6d684f75b9d9411a9a2df1594baf8f71d1bbb13fb78298af687f",
+    "bytes": 46963
+  },
+  {
+    "name": "StandardProfileL3-2.4.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20100901/StandardProfileL3.xmi",
+    "sha256": "8aa3f7806f8f51d60c41ed6b79bca8d1140b25d850e3f50c8c7c339e3ae09716",
+    "bytes": 3467
+  },
+  {
+    "name": "UML-2.4.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20100901/UML.xmi",
+    "sha256": "b78905ef2671aa7a1c7155cf2fa2dc625d798555b8c29398eff01c906914e0e4",
+    "bytes": 1380288
+  },
+  {
+    "name": "UML-2.5.1.xmi",
+    "url": "https://www.omg.org/spec/UML/20161101/UML.xmi",
+    "sha256": "e8166c91f51b8a0c015a90101b83d2249d03252e9f9a500a6511654347804f21",
+    "bytes": 1901856
+  }
+]

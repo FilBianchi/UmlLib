@@ -412,5 +412,7 @@ Le versioni sono separate in formato/namespace sorgente, versioni possibili e ru
 semantico 2.5.1. Il namespace 20131001 è usato anche dalla fonte normativa 2.5.1 e non
 identifica una release esatta. Per supportare altre versioni occorrono confronti dei
 metamodel ufficiali, migrazioni e regole di validazione versionate: non basta cambiare
-un URI. Prossimo lavoro di versione: censimento delle differenze 2.4.1/2.5/2.5.1,
-policy di conversione e fixture MIWG; UML 1.x rimane un ambito successivo separato.
+un URI. Le versioni obiettivo sono 2.4.1 e 2.5.1; 2.5 è esclusa dall'implementazione.
+Il censimento dichiarativo è completato in UML_VERSION_COMPARISON.md e nel report
+JSON riproducibile. Seguono contratti versionati, policy di conversione, revisione
+delle regole/prosa e fixture nelle due versioni; UML 1.x rimane un ambito separato.
