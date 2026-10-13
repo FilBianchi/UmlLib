@@ -36,12 +36,12 @@
     }
   },
   "verification_counts": {
-    "linked behavioral examples": 785,
-    "no linked behavioral examples": 1104
+    "linked behavioral examples": 787,
+    "no linked behavioral examples": 1102
   },
   "review_counts": {
-    "verified in linked examples": 687,
-    "needs review": 1101,
+    "verified in linked examples": 689,
+    "needs review": 1099,
     "source inconsistency": 68,
     "partial": 19,
     "context dependent": 14
@@ -9110,6 +9110,7 @@
       "implementation": "umltools.native.structured_classifiers.ends",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "review": "verified in linked examples",
@@ -9138,6 +9139,7 @@
       ],
       "expressions": [],
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "verification": "linked behavioral examples",
@@ -9304,6 +9306,7 @@
       "implementation": "umltools.native.constraints_basic.connector_types",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_type_conformance_arity_missing_role_and_repair",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "review": "verified in linked examples",
@@ -9328,6 +9331,7 @@
       "implementation": "umltools.native.constraints_basic.connector_roles",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_type_conformance_arity_missing_role_and_repair",
         "test_structured_classifiers_audit.StructuredCases.test_delegation_behavior_ports_parts_and_valid_role_contexts"
       ],
       "review": "verified in linked examples",
@@ -9544,6 +9548,7 @@
       "implementation": "umltools.native.structured_classifiers.defining_end",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "review": "verified in linked examples",
@@ -9669,6 +9674,7 @@
       ],
       "expressions": [],
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "verification": "linked behavioral examples",
@@ -9881,6 +9887,7 @@
       "implementation": "umltools.native.structured_classifiers.provided",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
       ],
       "review": "verified in linked examples",
@@ -9924,6 +9931,7 @@
       "implementation": "umltools.native.structured_classifiers.required",
       "verification": "linked behavioral examples",
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
       ],
       "review": "verified in linked examples",
@@ -10235,6 +10243,7 @@
       ],
       "expressions": [],
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
       ],
       "verification": "linked behavioral examples",
@@ -10297,6 +10306,7 @@
       ],
       "expressions": [],
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
       ],
       "verification": "linked behavioral examples",
@@ -10431,13 +10441,15 @@
         "The Properties owned by the StructuredClassifier."
       ],
       "expressions": [],
-      "tests": [],
+      "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_move_failure_transfer_detach_reattach_has_independent_expected_owners"
+      ],
       "structural_sweeps": [
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#StructuredClassifier-ownedAttribute",
       "static_supplements": []
     },
@@ -29112,6 +29124,7 @@
       "verification": "linked behavioral examples",
       "tests": [
         "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_diamond_inheritance_mutate_remove_and_repair",
         "test_native.NativeInheritanceTests.test_cycles_terminate_and_fail_invariant",
         "test_native.NativeInheritanceTests.test_diamond_inheritance_and_visibility"
       ],
@@ -29455,7 +29468,8 @@
       "implementation": "umltools.native.classification.inherited_members",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_diamond_inheritance_mutate_remove_and_repair"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Classifier-inheritedMember.1",
@@ -29978,6 +29992,7 @@
       "verification": "linked behavioral examples",
       "tests": [
         "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_missing_general_diagnostics_are_repaired_without_false_success",
         "test_native.NativeInheritanceTests.test_final_parent_and_redefinition_bounds"
       ],
       "review": "verified in linked examples",
@@ -30003,6 +30018,7 @@
       "verification": "linked behavioral examples",
       "tests": [
         "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_diamond_inheritance_mutate_remove_and_repair",
         "test_native.NativeInheritanceTests.test_cycles_terminate_and_fail_invariant"
       ],
       "review": "verified in linked examples",
@@ -30193,7 +30209,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_diamond_inheritance_mutate_remove_and_repair"
       ],
       "verification": "linked behavioral examples",
       "review": "verified in linked examples",
@@ -30897,13 +30914,15 @@
         "The general classifier in the Generalization relationship."
       ],
       "expressions": [],
-      "tests": [],
+      "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_missing_general_diagnostics_are_repaired_without_false_success"
+      ],
       "structural_sweeps": [
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
-      "verification": "no linked behavioral examples",
-      "review": "needs review",
+      "verification": "linked behavioral examples",
+      "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Generalization-general",
       "static_supplements": []
     },
@@ -33153,7 +33172,8 @@
       "implementation": "umltools.native.classification.property_compatible",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_property_metaclass_direction_is_version_specific"
       ],
       "review": "source inconsistency",
       "limitation": "The source refers to the nonexistent TypeElement; Python uses TypedElement.",
@@ -33251,6 +33271,7 @@
       "verification": "linked behavioral examples",
       "tests": [
         "test_classification_audit.ClassificationCases.test_redefinition_context_leaf_status_and_property_bounds",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_redefinition_bounds_type_and_composition_grid",
         "test_native.NativeInheritanceTests.test_final_parent_and_redefinition_bounds"
       ],
       "review": "source inconsistency",
@@ -33317,7 +33338,8 @@
       "implementation": "umltools.native.classification.navigable",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_association_ownership_and_navigation_grid"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-isNavigable",
@@ -33360,7 +33382,8 @@
       "implementation": "umltools.native.classification.opposite",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_association_ownership_and_navigation_grid"
       ],
       "review": "source inconsistency",
       "limitation": "The property is optional and the query returns null for a non-binary or absent association.",
@@ -33428,7 +33451,8 @@
       "implementation": "umltools.native.constraints_basic.subsetting_contexts",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_subsetting_type_upper_bound_name_and_context_grid"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsetting_context_conforms",
@@ -33524,7 +33548,8 @@
       "implementation": "umltools.native.constraints_basic.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_subsetting_type_upper_bound_name_and_context_grid"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsetting_rules",
@@ -33621,7 +33646,8 @@
       "implementation": "umltools.native.constraints_basic.<lambda>",
       "verification": "linked behavioral examples",
       "tests": [
-        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding"
+        "test_classification_audit.ClassificationCases.test_subsets_unions_and_attribute_template_binding",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_subsetting_type_upper_bound_name_and_context_grid"
       ],
       "review": "verified in linked examples",
       "source": "umltools/data/UML.xmi#Property-subsetted_property_names",
@@ -33798,6 +33824,7 @@
       ],
       "expressions": [],
       "tests": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_move_failure_transfer_detach_reattach_has_independent_expected_owners",
         "test_structural_contracts.StructuralContractCases.test_composite_reparenting_aliases_cycle_and_constructor_rollback"
       ],
       "structural_sweeps": [
@@ -34054,7 +34081,8 @@
       ],
       "expressions": [],
       "tests": [
-        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_association_ownership_and_navigation_grid"
       ],
       "verification": "linked behavioral examples",
       "review": "source inconsistency",

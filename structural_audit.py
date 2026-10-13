@@ -65,7 +65,7 @@ def write_audit():
     for kind, count in result['counts'].items(): lines.append(f'| {kind} | {count} |')
     lines.extend(['', 'The 549 stored declarations receive default/wrong-type and declared-type assignment sweeps. Metadata diagnostics: '+str(len(result['declaration_diagnostics']))+'.', '',
                   'Family examples cover uniqueness/order/bags, bounds, composites, inverse rebinding, subset witnesses, stored redefinitions, rollback, derived-write protection, cross-session links and cached collections after deletion.', '',
-                  result['session_policy'], '', 'Detailed per-definition links and their evidence scope are in `structural-audit.json`. Regenerate with `python structural_audit.py`.', '', result['remaining']])
+                  result['session_policy'], '', 'Selected version-specific boundary grids, edit sequences and independent adapted interchange are documented in [CONFORMANCE_MATRIX.md](CONFORMANCE_MATRIX.md). These do not turn the declaration sweeps into exhaustive behavioral evidence.', '', 'Detailed per-definition links and their evidence scope are in `structural-audit.json`. Regenerate with `python structural_audit.py`.', '', result['remaining']])
     root.joinpath('STRUCTURAL_AUDIT.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
     print(json.dumps(dict(counts=result['counts'], declaration_diagnostics=len(result['declaration_diagnostics']))))
 

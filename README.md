@@ -486,6 +486,8 @@ Mappings are rechecked when models change. They are runtime annotations and are 
 currently serialized to XMI.
 
 See [SEMANTIC_COVERAGE.md](SEMANTIC_COVERAGE.md) for remaining requirements.
+See [CONFORMANCE_MATRIX.md](CONFORMANCE_MATRIX.md) for version-specific boundary
+oracles, edit sequences and adapted interchange with a pinned independent reader.
 [semantic-report.json](semantic-report.json) inventories Python translations and
 explicit rule/test links. Registration counts are not conformance guarantees; a
 definition without linked examples may still have older tests not yet annotated.

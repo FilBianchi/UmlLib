@@ -3849,6 +3849,7 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "family_examples": [
@@ -4091,6 +4092,7 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_connector_end_order_types_multiplicity_and_missing_association"
       ],
       "family_examples": [
@@ -4305,6 +4307,7 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
       ],
       "family_examples": [
@@ -4366,6 +4369,7 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_connector_order_conjugation_delete_and_xmi_identity",
         "test_structured_classifiers_audit.StructuredCases.test_port_type_interfaces_conjugation_default_values_and_owner"
       ],
       "family_examples": [
@@ -4402,7 +4406,9 @@
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
-      "definition_examples": [],
+      "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_move_failure_transfer_detach_reattach_has_independent_expected_owners"
+      ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_composite_reparenting_aliases_cycle_and_constructor_rollback",
         "test_structural_contracts.StructuralContractCases.test_cross_session_reference_diagnostics_inverse_links_and_deletion",
@@ -12443,7 +12449,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles"
+        "test_classification_audit.ClassificationCases.test_inheritance_visibility_redefinition_templates_and_cycles",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_diamond_inheritance_mutate_remove_and_repair"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_cross_session_reference_diagnostics_inverse_links_and_deletion",
@@ -12919,7 +12926,9 @@
         "test_structural_contracts.StructuralContractCases.test_all_effective_stored_declarations_defaults_and_wrong_types",
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
-      "definition_examples": [],
+      "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_missing_general_diagnostics_are_repaired_without_false_success"
+      ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_cross_session_reference_diagnostics_inverse_links_and_deletion",
         "test_structural_contracts.StructuralContractCases.test_multiple_subset_witnesses_superset_removal_and_failure_rollback",
@@ -14145,6 +14154,7 @@
         "test_structural_contracts.StructuralContractCases.test_all_stored_setters_accept_values_of_the_declared_type"
       ],
       "definition_examples": [
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_move_failure_transfer_detach_reattach_has_independent_expected_owners",
         "test_structural_contracts.StructuralContractCases.test_composite_reparenting_aliases_cycle_and_constructor_rollback"
       ],
       "family_examples": [
@@ -14365,7 +14375,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers"
+        "test_classification_audit.ClassificationCases.test_attribute_and_association_navigation_composition_and_qualifiers",
+        "test_classifier_conformance_matrix.ClassifierMatrix.test_association_ownership_and_navigation_grid"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_cross_session_reference_diagnostics_inverse_links_and_deletion",

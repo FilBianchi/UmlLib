@@ -1,0 +1,7 @@
+# Test-only dependencies. Never included in UmlLib's runtime requirements.
+pyuml2 @ git+https://github.com/pyecore/pyuml2.git@bbea7442b2f4ba0870c42c15e4738e86ba90ea49
+pyecore==0.15.2
+ordered-set==4.1.0
+restrictedpython==8.5
+future-fstrings==1.2.0
+lxml==6.1.3
