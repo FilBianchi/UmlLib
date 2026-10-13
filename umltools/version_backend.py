@@ -83,7 +83,18 @@ def backend_241():
                 'constraints':sorted(k for k,v in native.CONSTRAINTS.items() if v is source_constraints.get(k)),
             }
             for cls in package.REGISTRY.values(): cls.__semantic_version__='2.4.1'
-            for module_name in ('static_requirements','stereotypes','xmi'):
+            versions=__import__(name+'.versions',fromlist=['*'])
+            versions.SEMANTIC_VERSION='2.4.1'
+            exchange=__import__(name+'.xmi',fromlist=['*'])
+            exchange.UML_NS='http://www.omg.org/spec/UML/20110701'
+            exchange.XMI_NS='http://www.omg.org/spec/XMI/20110701'
+            exchange.XMI_VERSION='2.4.1'
+            shared_exchange=__import__('umltools.xmi',fromlist=['*'])
+            # Exception types carry no backend state; generic callers can catch
+            # errors from either isolated reader.
+            for exception in ('XmiError','XmiReferenceError','XmiUnsupportedError','XmiVersionError'):
+                setattr(exchange,exception,getattr(shared_exchange,exception))
+            for module_name in ('static_requirements','stereotypes'):
                 module=__import__(name+'.'+module_name,fromlist=['*'])
                 def unavailable(*args,**kwargs):
                     raise package.UnsupportedSemanticsError('UML 2.4.1 semantic/exchange contract is not yet audited')
@@ -94,8 +105,6 @@ def backend_241():
                     module.apply_profile=unavailable
                     module.apply_stereotype=unavailable
                     module.validate_applications=lambda model:[]
-                else:
-                    for function in ('load','loads','dump','dumps'): setattr(module,function,unavailable)
             return package
         except Exception:
             for module_name in list(sys.modules):

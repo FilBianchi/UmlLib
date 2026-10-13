@@ -5,5 +5,19 @@ include SEMANTIC_COVERAGE.md
 include SPECIFICATION_NOTES.md
 include NOTICE.md
 include CHANGELOG.md
+include conformance_backlog.py
+include conformance-backlog.json
+include CONFORMANCE_BACKLOG.md
+include structural_audit.py
+include structural-audit.json
+include STRUCTURAL_AUDIT.md
+include UML_VERSION_BACKENDS.md
+include UML241_AUDIT.md
+include UML241_COMMON_VALUES_AUDIT.md
+include uml241-audit.json
+include uml241-common-values-audit.json
+include XMI241_SUPPORT.md
+include XMI_CORPUS.md
 recursive-include scripts *.py
 recursive-include tests *.py
+recursive-include tests/fixtures *.xmi *.json

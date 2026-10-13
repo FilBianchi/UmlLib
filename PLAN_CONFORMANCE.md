@@ -468,3 +468,18 @@ Questo chiude l'incremento di audit dichiarativo e degli scenari per famiglia.
 Il lavoro successivo è distinto: prosa globale, semantica di esecuzione/protocolli,
 PackageMerge, applicazione runtime dei profili, XMI 2.4.1 e migrazione. La copertura
 di registrazione e i test non equivalgono a piena conformità UML.
+
+## Sedicesimo incremento: versione 0.18.0
+
+Import/export XMI core 2.4.1 implementato sul backend nativo, senza conversioni
+tramite namespace. API versionate e selezione automatica esplicita distinguono
+versione semantica e trasporto; ambiguità e conflitti richiedono scelte o errori,
+anche nelle dipendenze e in modalità permissiva. Profili strutturali sono scambiabili;
+i valori runtime applicati restano XML opaco con diagnostiche.
+
+409 test passano, con 549 setter effettivi sottoposti a round-trip, fixture OMG
+originale con hash fissato e cinque modelli pubblici Spring nel backend 2.4.1.
+Le verifiche comprendono proprietà specifiche delle due versioni, identità, ownership,
+riferimenti tra risorse, rollback e sicurezza. XMI241_SUPPORT.md documenta il
+contratto. Seguono profili runtime 2.4.1, poi migrazione esplicita con perdite segnalate;
+CMOF, layout vendor, prosa e semantica di esecuzione rimangono ambiti distinti.

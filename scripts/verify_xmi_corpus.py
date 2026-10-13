@@ -5,15 +5,20 @@ import hashlib
 import json
 from pathlib import Path
 import urllib.request
-from umltools.xmi import load,loads,dumps
+from importlib import import_module
 
 
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--fetch',action='store_true')
     parser.add_argument('--complex',action='store_true',help='Include Eclipse with its Ecore/Standard dependencies; unsupported vendor values are diagnosed and retained.')
+    parser.add_argument('--semantic-version',choices=('2.4.1','2.5.1'),default='2.5.1',help='Select actual Python metamodel semantics; Eclipse dialect URIs alone are ambiguous.')
     parser.add_argument('--cache',type=Path,default=Path('.build-tmp/xmi-corpus'))
     options=parser.parse_args()
+    if options.complex and options.semantic_version=='2.4.1':parser.error('The complex runtime-profile corpus is only supported by the 2.5.1 backend')
+    exchange=import_module('Uml241.xmi' if options.semantic_version=='2.4.1' else 'Uml251.xmi')
+    load,loads,dumps=exchange.load,exchange.loads,exchange.dumps
+    report_name='report.json' if options.semantic_version=='2.5.1' else 'report-2.4.1.json'
     manifest=json.loads(Path(__file__).with_name('xmi-corpus.json').read_text())
     options.cache.mkdir(parents=True,exist_ok=True)
     for entry in manifest:
@@ -45,14 +50,14 @@ def main():
         assert len(doc.runtime_values)==len(restored.runtime_values),name+': runtime instance count changed'
         known=dumps(restored.roots)
         assert known==dumps(loads(known,strict=not permissive).roots),name+': known graph changed during round trip'
-        row=dict(name=name,mode='permissive' if permissive else 'strict',objects=sum(counts.values()),
+        row=dict(name=name,semantic_version=doc.semantic_version,mode='permissive' if permissive else 'strict',objects=sum(counts.values()),
                  metaclasses=dict(sorted(counts.items())),runtime_values=len(doc.runtime_values),complete=doc.complete,
                  diagnostics=[dict(code=d.code,feature=d.feature,message=d.message) for d in doc.diagnostics],
                  source=next(e for e in manifest if e['name']==name))
         result.append(row)
-        (cache/'report.json').write_text(json.dumps(result,indent=2)+'\n')
+        (cache/report_name).write_text(json.dumps(result,indent=2)+'\n')
         print(f'{name}: {row["objects"]} UML objects, {row["runtime_values"]} profile values, {len(row["diagnostics"])} diagnostics; round trip passed',flush=True)
-    print('Public corpus verified; details in '+str(cache/'report.json'))
+    print('Public corpus verified; details in '+str(cache/report_name))
 
 
 if __name__=='__main__': main()

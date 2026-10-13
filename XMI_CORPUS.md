@@ -27,3 +27,13 @@ python -m scripts.verify_xmi_corpus --fetch --complex
 Without `--fetch`, the verifier requires an existing cache and checks all hashes. Without `--complex`, it verifies the five strict Spring entry files. The Showcase file is pinned for future profile-adapter work; its Papyrus ActionLanguage profile dependency is not in the current decoded suite.
 
 The current UML XMI implementation supports represented core/profile graph exchange and model-defined primitive lexical values. CMOF, EMF positional/name fragments, XPointer, general expression adapters and vendor diagram semantics remain open.
+
+Since 0.18.0, the five strict Spring cases also pass using the explicit native
+2.4.1 backend with the same object counts, zero diagnostics, reference identity
+and stable known-graph export/reimport. Their Eclipse namespace is not proof of
+the producer's exact UML release. Reproduce with
+`python -m scripts.verify_xmi_corpus --fetch --semantic-version 2.4.1`;
+the report is `report-2.4.1.json` in the same cache. The workflow uploads both reports.
+The complex runtime-profile corpus remains a 2.5.1 check; profiles are retained
+opaque by the 2.4.1 reader. A pinned original OMG PrimitiveTypes fixture is tested
+offline in `tests/fixtures/xmi241`, including its four unimplemented MOF extension tags.

@@ -98,9 +98,12 @@ class PrimitiveCases(unittest.TestCase):
     def test_source_version_candidates_and_export_guard(self):
         def source(namespace):return f'<u:Model xmlns:u="{namespace}" xmlns:x="{XMI_NS}" x:id="m"/>'
         for namespace,expected in [(UML_NS,('2.5.1',)),('http://www.omg.org/spec/UML/20131001',('2.5','2.5.1')),
-                                   ('http://www.omg.org/spec/UML/20110701',('2.4.1',)),('http://www.eclipse.org/uml2/5.0.0/UML',())]:
+                                   ('http://www.eclipse.org/uml2/5.0.0/UML',())]:
             doc=loads(source(namespace))
             self.assertEqual(doc.semantic_version,'2.5.1')
             self.assertEqual(doc.source_dialects[doc.uri][0].possible_versions,expected)
             with self.assertRaises(XmiUnsupportedError):dumps(doc,target_version='2.4.1')
             self.assertIn(UML_NS,dumps(doc,target_version='2.5.1'))
+        with self.assertRaises(XmiUnsupportedError):loads(source('http://www.omg.org/spec/UML/20110701'))
+        legacy=loads(source('http://www.omg.org/spec/UML/20110701'),semantic_version='auto')
+        self.assertEqual(legacy.semantic_version,'2.4.1')

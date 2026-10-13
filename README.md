@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.17.0/umllib-0.17.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.18.0/umllib-0.18.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -21,7 +21,7 @@ convenience groups. All 14 core 2.4.1 families now have a first declaration/sema
 audit: 150 operations, 433 invariants, 74 derivations and 952 property/end records.
 Representative semantic scenarios and sweeps of 549 effective stored setters are
 recorded in [UML241_AUDIT.md](UML241_AUDIT.md). Registration is not conformance
-certification; broader prose, execution, runtime profiles and XMI 2.4.1 remain
+certification; broader prose, execution, runtime profiles and migration remain
 separate obligations. See
 [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md) for precise coverage and isolation.
 Python 3.10 or later is required. The library does not require Qt.
@@ -79,7 +79,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.17.0 suite has 392 tests across both versions.
+invariants, two queries and one derivation. The 0.18.0 suite has 409 tests across both versions.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -298,6 +298,13 @@ Public imports govern stereotype visibility. Non-UML metaclasses need an adapter
 
 ## XMI import and export
 
+Both native versions support core graph exchange: `Uml241.xmi` uses 2.4.1 and
+`Uml251.xmi` uses 2.5.1. The generic `umltools.xmi` reader defaults to 2.5.1;
+pass `semantic_version="auto"` to select from unambiguous namespaces or explicit
+UmlLib metamodel metadata. Ambiguous dialects need a selected version. Its exporter
+uses the actual model version. Version conflicts never perform an implicit migration.
+See [XMI241_SUPPORT.md](XMI241_SUPPORT.md) for the 2.4.1 contract and evidence.
+
 ```python
 from umltools.xmi import load, loads, dump, dumps
 
@@ -338,8 +345,9 @@ bytes/text or Paths; `external_objects` maps absolute `URI#id` references to exi
 UML objects. URI aliases mapped to the same physical Path share object identities.
 Namespaces are resolved from XML declarations, including QName-valued `xmi:type`
 and `xsi:type` and nested prefix rebinding. Common OMG UML and Eclipse UML2 namespace
-forms are accepted for features represented by the 2.5.1 metadata; this is not a
-general migration guarantee for older metamodels. EMF positional/named URI fragments,
+forms are checked against the selected metamodel; known incompatible versions are
+rejected even in permissive mode. Eclipse dialects require an explicit choice for
+automatic attribution. EMF positional/named URI fragments,
 XPointer, CMOF documents and arbitrary non-UML metamodels remain unsupported.
 
 Strict mode is the default: unknown classes/features, missing references, illegal
@@ -362,8 +370,10 @@ This preserves external links; it is not an automatic rewrite of a multi-file pr
 Profile applications use namespaced stereotype elements with base links and typed
 tags; inline profile Class composition and separate shared runtime instances are
 supported. Explicit empty values preserve the distinction from literal defaults.
-An XMI Extension named UmlLib records profile namespace bindings and package contexts
-for runtime Class/DataType objects. Other tools may need an adapter for this metadata.
+An XMI Extension named UmlLib records the exact metamodel version and, in 2.5.1,
+profile namespace bindings and package contexts for runtime Class/DataType objects.
+Other tools may need an adapter for this metadata. Runtime profile applications
+remain unsupported in 2.4.1 and are diagnosed/retained as opaque data in permissive mode.
 User-defined Python callbacks and analyzer/gate mappings are not serialized. OCL text
 is retained as text and never executed. Unknown primitive semantics, derived runtime
 tags and arbitrary default evaluators remain explicit validation limitations.
@@ -412,20 +422,21 @@ representations remain built in; custom codecs do not override them.
 
 ### UML versions
 
-`document.semantic_version` is currently `2.5.1` for the Python metamodel and its
+`document.semantic_version` is `2.4.1` or `2.5.1` for the selected Python metamodel and
 validation rules. `document.source_dialects` records the actual namespaces per resource,
 format and possible UML versions. This distinguishes transport compatibility from
 version-specific semantics. `20131001` is intentionally ambiguous between 2.5 and
 2.5.1: the normative 2.5.1 metamodel vendored in this repository declares it too.
 Eclipse UML2 implementation namespaces are not interpreted as exact UML versions.
 
-`dumps(document, target_version="2.5.1")` is supported. Other target versions raise
-an explicit unsupported error; relabeling a namespace would not perform a conversion.
+`dumps(document)` preserves the selected version. target_version can explicitly name
+that same version; another version raises an error without converting the model.
 The target versions are 2.4.1 and 2.5.1; 2.5 is not an implementation target.
 The normative declaration comparison is recorded in [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md).
 Uml241 now provides a separate structural metamodel, isolated sessions and explicitly
 reviewed base semantics; see [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md).
-Full 2.4.1 semantic validation, XMI exchange and migration policies remain open.
+Core XMI 2.4.1 is implemented; broader prose, execution, runtime profiles and
+migration policies remain open.
 2.3 and UML 1.x are not implemented. The public corpus remains a compatibility check, not a multi-version
 conformance claim.
 

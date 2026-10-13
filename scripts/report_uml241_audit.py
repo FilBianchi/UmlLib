@@ -33,7 +33,7 @@ def main():
                 source='umltools/data/UML-2.4.1.xmi#'+prop.id,implementation=mechanism))
     report=dict(version='2.4.1',scope=names,limitations=[
         'Registration is not exhaustive semantic conformance. Remaining package audits are recorded in UML241_AUDIT.md; general expression evaluation requires explicit evidence.',
-        'Generic supplemental prose validation, runtime profile application, XMI and migration are still unsupported for 2.4.1.',
+        'Generic supplemental prose validation, runtime profile application and migration are still unsupported for 2.4.1; core XMI exchange is documented in XMI241_SUPPORT.md.',
         'Malformed/pseudo-body formulas are interpreted through their normative ownedComment; decisions are listed in UML241_COMMON_VALUES_AUDIT.md.'],
         enabled_operations=len(engine.native.OPERATIONS),enabled_constraints=len(engine.native.CONSTRAINTS),records=records)
     Path('uml241-common-values-audit.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')

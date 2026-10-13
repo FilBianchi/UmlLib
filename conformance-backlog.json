@@ -1309,7 +1309,7 @@
     {
       "priority": "P1",
       "area": "UML versions",
-      "action": "Uml241/Uml251 provide independent metamodels and isolated state. All 14 core 2.4.1 families and structural declarations have a first audit in UML241_AUDIT.md: 150 operation declarations, 433 invariants, 74 derivations, 952 property/end records. Registration is not conformance certification. Broader prose, execution/protocol proof, runtime profile/XMI contracts and loss-aware migration fixtures remain separate work. 2.5 is not a target."
+      "action": "Uml241/Uml251 provide independent metamodels and isolated state. All 14 core 2.4.1 families and structural declarations have a first audit in UML241_AUDIT.md: 150 operation declarations, 433 invariants, 74 derivations, 952 property/end records. Native 2.4.1 XMI exchange and explicit/auto attribution are implemented in XMI241_SUPPORT.md. Registration is not conformance certification. Broader prose, execution/protocol proof, runtime profiles and loss-aware migration fixtures remain separate work. 2.5 is not a target."
     },
     {
       "priority": "P2",

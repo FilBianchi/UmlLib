@@ -81,10 +81,12 @@ unsupported nella validazione. La navigazione strutturale generica
 di owner/ownedElement e delle union è condivisa. `validate()` segnala ancora
 `('unsupported version contract', 'UML2.4.1.prose')`: la prosa non è ancora auditata.
 
-Applicazioni runtime di profili e load/dump XMI 2.4.1 restano disabilitati con errore
-esplicito. Le classi Profile/Stereotype e le loro dichiarazioni strutturali sono
-presenti. Il parser della specifica usato per generarle non è un importer XMI di
-modelli utente. Non è ancora implementata una conversione tra i due metamodel.
+Dalla 0.18.0 load/dump XMI 2.4.1 usa il backend nativo isolato; API, selezione
+automatica, grafi e limiti sono descritti in [XMI241_SUPPORT.md](XMI241_SUPPORT.md).
+Le applicazioni runtime di profili restano disabilitate; definizioni strutturali
+Profile/Stereotype e ProfileApplication sono scambiabili. I tag applicati sono
+diagnosticati e, in modalità permissiva, conservati come XML opaco. Non è ancora
+implementata una conversione tra i due metamodel.
 
 ## Rigenerazione e lavoro successivo
 
@@ -97,6 +99,6 @@ Uml241. Le pipeline rigenerano entrambe le versioni e verificano l'installazione
 
 Il primo audit delle famiglie e delle dichiarazioni strutturali è concluso nella
 0.17.0; non è una certificazione. Restano prosa globale, esecuzione/protocolli,
-PackageMerge, profili runtime, XMI 2.4.1 e migrazione, seguendo
+PackageMerge, profili runtime, ulteriori adattatori XMI e migrazione, seguendo
 [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md). Questi sono contratti distinti
 e non vengono abilitati semplicemente cambiando un namespace XML.

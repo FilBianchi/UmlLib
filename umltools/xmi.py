@@ -14,10 +14,11 @@ import xml.etree.ElementTree as ET
 
 XMI_NS = 'http://www.omg.org/spec/XMI/20131001'
 UML_NS = 'http://www.omg.org/spec/UML/20161101'
+XMI_VERSION = '2.5.1'
 LIB_NS = 'urn:umllib:xmi:1'
 XSI_NS = 'http://www.w3.org/2001/XMLSchema-instance'
-XMI_NAMESPACES = {XMI_NS, 'http://www.omg.org/XMI', 'http://www.omg.org/spec/XMI/20110701', 'http://www.omg.org/spec/XMI/20161101'}
-UML_NAMESPACES = {UML_NS, 'http://www.omg.org/spec/UML/20131001', 'http://www.omg.org/spec/UML/20110701',
+XMI_NAMESPACES = {XMI_NS, 'http://www.omg.org/XMI', 'http://www.omg.org/spec/XMI/20100901', 'http://www.omg.org/spec/XMI/20110701', 'http://www.omg.org/spec/XMI/20161101'}
+UML_NAMESPACES = {UML_NS, 'http://www.omg.org/spec/UML/20131001', 'http://www.omg.org/spec/UML/20110701', 'http://www.omg.org/spec/UML/20100901',
                   'http://www.omg.org/spec/UML/20090901', 'http://www.eclipse.org/uml2/3.0.0/UML',
                   'http://www.eclipse.org/uml2/4.0.0/UML', 'http://www.eclipse.org/uml2/5.0.0/UML'}
 
@@ -44,6 +45,78 @@ def _absolute(uri, reference):
 class XmiError(ValueError): pass
 class XmiReferenceError(XmiError): pass
 class XmiUnsupportedError(XmiError): pass
+class XmiVersionError(XmiUnsupportedError): pass
+
+
+def _xml_data(data, max_bytes):
+    if isinstance(data,str): data=data.encode('utf-8')
+    if not isinstance(data,(bytes,bytearray)): raise XmiError('Expected XML bytes or text')
+    if len(data)>max_bytes: raise XmiError('Resource byte limit exceeded')
+    declarations=re.sub(br'<!\[CDATA\[.*?\]\]>|<!--.*?-->',b'',data.replace(b'\x00',b''),flags=re.S)
+    if re.search(br'<!\s*(?:DOCTYPE|ENTITY)\b',declarations,re.I): raise XmiError('DTD/entity declarations are not supported')
+    return data
+
+
+def _declared_version(root):
+    versions={node.get('version') for extension in root if _split(extension.tag)[0] in XMI_NAMESPACES and _split(extension.tag)[1]=='Extension' and extension.get('extender')=='UmlLib' for node in extension if node.tag=='{'+LIB_NS+'}metamodel'}
+    if len(versions)>1: raise XmiVersionError('Conflicting UML metamodel versions')
+    version=next(iter(versions),None)
+    if versions and version not in ('2.4.1','2.5.1'): raise XmiVersionError('Unsupported declared UML version: '+str(version))
+    return version
+
+
+def detect_version(data, *, max_bytes=64*1024*1024,max_elements=500000,max_depth=256):
+    """Attribute a primary resource; transport xmi:version is not a UML version.
+
+    Ambiguous namespaces require a selected backend or UmlLib metamodel metadata.
+    External resources are independently checked when imported.
+    """
+    from .versions import describe_namespace
+    data=_xml_data(data,max_bytes)
+    stack=[];pending=[];ignored=[];depth=0;count=0;namespaces=set()
+    try:
+        parser=ET.iterparse(BytesIO(data),events=('start-ns','start','end'))
+        for event,node in parser:
+            if event=='start-ns':pending.append(node);continue
+            if event=='end':stack.pop();ignored.pop();depth-=1;continue
+            depth+=1;count+=1
+            if depth>max_depth or count>max_elements:raise XmiError('XML depth/element limit exceeded')
+            scope=dict(stack[-1]) if stack else {};scope.update(pending);pending.clear();stack.append(scope)
+            ns,local=_split(node.tag)
+            skip=bool(ignored and ignored[-1]) or ns in XMI_NAMESPACES and local in ('Extension','Documentation') or not ns and local=='eAnnotations'
+            ignored.append(skip)
+            if skip:continue
+            type_=_meta(node,'type') or node.get('{'+XSI_NS+'}type')
+            if type_:
+                prefix,sep,name=type_.partition(':');ns=scope.get(prefix if sep else '', '')
+            if ns in UML_NAMESPACES:namespaces.add(ns)
+    except ET.ParseError as error:raise XmiError('Invalid XML: '+str(error)) from error
+    declared=_declared_version(parser.root)
+    candidates=None
+    for namespace in namespaces:
+        versions=set(describe_namespace(namespace).possible_versions)
+        # An Eclipse namespace identifies its dialect, not an exact UML release.
+        if not versions:
+            if declared is None:raise XmiUnsupportedError('Ambiguous UML version; select semantic_version explicitly')
+            continue
+        candidates=versions if candidates is None else candidates & versions
+    if declared is not None:
+        if candidates is not None and declared not in candidates:raise XmiUnsupportedError('Declared UML version conflicts with namespaces')
+        return declared
+    if candidates is None or len(candidates)!=1:raise XmiUnsupportedError('Ambiguous or conflicting UML versions; select semantic_version explicitly')
+    version=next(iter(candidates))
+    if version not in ('2.4.1','2.5.1'):raise XmiUnsupportedError('Unsupported UML version: '+version)
+    return version
+
+
+def _selected_exchange(data, version, limits):
+    from .versions import SEMANTIC_VERSION
+    if version=='auto':version=detect_version(data,**limits)
+    if version is None or version==SEMANTIC_VERSION:return None
+    if __package__!='umltools' or version not in ('2.4.1','2.5.1'):
+        raise XmiUnsupportedError('This exchange backend cannot import UML '+str(version))
+    from .version_backend import backend_241
+    return backend_241().xmi
 
 
 @dataclass(frozen=True)
@@ -65,6 +138,7 @@ class XmiDocument:
         self.namespaces = {}
         self.aliases = {}
         self.source_dialects = {}
+        self.source_versions = {}
         from .versions import SEMANTIC_VERSION
         self.semantic_version = SEMANTIC_VERSION
 
@@ -88,6 +162,13 @@ class _Reader:
         self.doc = XmiDocument(uri, ModelSession())
         self.strict, self.resources = strict, resources or {}
         self.external = external_objects or {}
+        from . import UmlElement
+        from .profile_values import ProfileObject
+        if any(not isinstance(value,(UmlElement,ProfileObject)) for value in self.external.values()):
+            raise XmiError('External objects must belong to the selected semantic backend')
+        for value in self.external.values():value._ensure_alive()
+        if self.doc.semantic_version=='2.4.1' and profile_bindings:
+            raise XmiUnsupportedError('Runtime profile bindings are not supported for UML 2.4.1')
         self.doc.ids.update(self.external)
         self.bindings = dict(profile_bindings or {})
         self.limits = max_bytes, max_elements, max_depth
@@ -110,11 +191,9 @@ class _Reader:
         self.problem(code, uri, node, None, 'XML retained without interpreting its semantics', fatal=False)
 
     def parse(self, data, uri):
-        if isinstance(data, str): data = data.encode('utf-8')
+        data=_xml_data(data,self.limits[0])
         self.loaded_bytes += len(data)
         if self.loaded_bytes > self.limits[0]: raise XmiError('Resource byte limit exceeded')
-        declarations=re.sub(br'<!\[CDATA\[.*?\]\]>|<!--.*?-->',b'',data.replace(b'\x00',b''),flags=re.S)
-        if re.search(br'<!\s*(?:DOCTYPE|ENTITY)\b', declarations, re.I): raise XmiError('DTD/entity declarations are not supported')
         stack, base_stack, pending, depth = [], [], [], 0
         try:
             parser = ET.iterparse(BytesIO(data), events=('start-ns','start','end'))
@@ -133,6 +212,9 @@ class _Reader:
             root = parser.root
         except ET.ParseError as error: raise XmiError('Invalid XML: '+str(error)) from error
         self.trees[uri] = root
+        declared=_declared_version(root)
+        if declared is not None and declared!=self.doc.semantic_version:raise XmiVersionError('Resource declares UML '+declared+' but selected backend is '+self.doc.semantic_version)
+        self.doc.source_versions[uri]=declared
         self.doc.resource_roots[uri] = []
         children = list(root) if _split(root.tag)[0] in XMI_NAMESPACES and _split(root.tag)[1] == 'XMI' else [root]
         for child in children:
@@ -141,6 +223,7 @@ class _Reader:
                 for metadata in child:
                     if metadata.tag == '{'+LIB_NS+'}profile': self.bindings[metadata.get('namespace')] = (uri, metadata.get('profile'))
                     elif metadata.tag == '{'+LIB_NS+'}context': self.contexts[uri+'#'+metadata.get('instance','')] = (uri, metadata.get('package'))
+                    elif metadata.tag == '{'+LIB_NS+'}metamodel': pass
                     else: self.opaque(uri,None,metadata)
             elif namespace in XMI_NAMESPACES and name in ('Extension','Documentation'):
                 self.opaque(uri,None,child,'documentation' if name=='Documentation' else 'extension')
@@ -155,12 +238,15 @@ class _Reader:
 
     def scan(self, node, uri, parent=None, feature=None):
         from . import UmlElement
-        import Uml
+        from importlib import import_module
+        facade=import_module('Uml241' if self.doc.semantic_version=='2.4.1' else 'Uml')
         if _meta(node, 'idref') is not None or node.get('href') is not None: return
         namespace, name = self.class_name(node)
         if namespace in UML_NAMESPACES:
             from .versions import describe_namespace
             dialect=describe_namespace(namespace)
+            if dialect.possible_versions and self.doc.semantic_version not in dialect.possible_versions:
+                raise XmiVersionError('UML namespace '+namespace+' is incompatible with selected '+self.doc.semantic_version+' backend; no implicit migration')
             dialects=self.doc.source_dialects.setdefault(uri,[])
             if dialect not in dialects: dialects.append(dialect)
         if not namespace and parent is not None and feature is not None:
@@ -172,7 +258,7 @@ class _Reader:
                 return
             self.problem('unsupported',uri,node,feature,'Expected a supported UML namespace and metaclass')
             self.opaque(uri,parent,node); return
-        cls = Uml.Model.__registry__.get(name)
+        cls = facade.Model.__registry__.get(name)
         if cls is None or not isinstance(cls,type) or not issubclass(cls,UmlElement):
             self.problem('unsupported',uri,node,feature,'Unknown UML metaclass: '+str(name)); self.opaque(uri,parent,node); return
         try: obj = cls()
@@ -298,6 +384,7 @@ class _Reader:
             obj,feature,raw,uri,node = self.tasks[index]; index += 1
             try: values = self.value(raw,obj,feature,uri,node)
             except (ValueError,TypeError) as error:
+                if isinstance(error,XmiVersionError):raise
                 if isinstance(error,XmiError) and self.strict: raise
                 self.problem('value',uri,node,feature,str(error)); continue
             grouped.setdefault((obj,feature),(uri,node,[]))[2].extend(values)
@@ -325,6 +412,13 @@ class _Reader:
             if not equal: self.problem('structure',uri,node,feature,'Explicit links conflict with ownership, opposites or subset/redefinition semantics')
 
     def runtime(self):
+        if self.doc.semantic_version=='2.4.1':
+            for node,uri,parent,feature in self.runtime_nodes:
+                namespace,name=self.class_name(node)
+                application=any(key.startswith('base_') for key in node.attrib) or namespace in self.bindings
+                self.problem('unsupported',uri,node,feature,'Runtime profile applications are not yet supported for UML 2.4.1' if application else 'Unknown XML namespace retained as opaque data: '+namespace)
+                self.opaque(uri,parent,node)
+            return
         from .native import kind
         from .profile_values import ProfileObject, containing_package
         from .stereotypes import StereotypeApplication
@@ -480,32 +574,53 @@ class _Reader:
         finally: current_session.reset(session_token); _mutation.reset(mutation_token)
 
 
-def loads(data, *, uri='memory:/model.xmi', strict=True, resources=None, external_objects=None, profile_bindings=None,
+def loads(data, *, uri='memory:/model.xmi', strict=True, resources=None, external_objects=None, profile_bindings=None, semantic_version=None,
           max_bytes=64*1024*1024,max_elements=500000,max_depth=256):
     """Import XML bytes/text. External HTTP/pathmap resources require explicit maps."""
+    exchange=_selected_exchange(data,semantic_version,dict(max_bytes=max_bytes,max_elements=max_elements,max_depth=max_depth))
+    if exchange is not None:return exchange.loads(data,uri=uri,strict=strict,resources=resources,external_objects=external_objects,profile_bindings=profile_bindings,max_bytes=max_bytes,max_elements=max_elements,max_depth=max_depth)
     return _Reader(uri,strict=strict,resources=resources,external_objects=external_objects,profile_bindings=profile_bindings,
                    max_bytes=max_bytes,max_elements=max_elements,max_depth=max_depth).run(data)
 
 
-def load(path, *, strict=True,resources=None,external_objects=None,profile_bindings=None,
+def load(path, *, strict=True,resources=None,external_objects=None,profile_bindings=None,semantic_version=None,
          max_bytes=64*1024*1024,max_elements=500000,max_depth=256):
     """Import a file and relative sibling resources within its directory, offline."""
     path=Path(path).resolve()
     if path.stat().st_size>max_bytes: raise XmiError('Resource byte limit exceeded')
+    data=path.read_bytes()
+    exchange=_selected_exchange(data,semantic_version,dict(max_bytes=max_bytes,max_elements=max_elements,max_depth=max_depth))
+    if exchange is not None:return exchange.load(path,strict=strict,resources=resources,external_objects=external_objects,profile_bindings=profile_bindings,max_bytes=max_bytes,max_elements=max_elements,max_depth=max_depth)
     reader=_Reader(path.as_uri(),strict=strict,resources=resources,external_objects=external_objects,profile_bindings=profile_bindings,
                    max_bytes=max_bytes,max_elements=max_elements,max_depth=max_depth,local_root=path.parent)
-    return reader.run(path.read_bytes())
+    return reader.run(data)
 
 
-def dumps(model, *, bundle=True, external_references=None, target_version='2.5.1'):
+def dumps(model, *, bundle=True, external_references=None, target_version=None):
     """Serialize a model/document. Bundling closes stored references and ownership.
 
     With bundle=False external targets require URI#id mappings or imported identities.
     UmlLib profile namespace/context metadata is an explicit XMI extension.
     """
     from .semantics import _exchange_query_cache
-    from .versions import require_target_version
-    require_target_version(target_version)
+    from .versions import require_target_version, SEMANTIC_VERSION
+    # The generic facade can export the version of an auto-imported document.
+    # Explicit version facades still refuse to migrate objects.
+    version=getattr(model,'semantic_version',None)
+    if version is None:
+        from . import UmlElement
+        if not isinstance(model,UmlElement):
+            try:model=list(model)
+            except TypeError as error:raise XmiError('Expected one or more UML roots') from error
+            versions={getattr(root,'semantic_version',None) for root in model}
+            if len(versions)>1:raise XmiError('Mixed UML versions cannot be exported together')
+            version=next(iter(versions),None)
+    if version is not None and version!=SEMANTIC_VERSION:
+        if __package__=='umltools' and version=='2.4.1' and target_version in (None,'2.4.1'):
+            from .version_backend import backend_241
+            return backend_241().xmi.dumps(model,bundle=bundle,external_references=external_references,target_version=target_version)
+        raise XmiUnsupportedError('Export does not migrate UML '+version+' to '+str(target_version or SEMANTIC_VERSION))
+    require_target_version(SEMANTIC_VERSION if target_version is None else target_version)
     token=_exchange_query_cache.set({})
     try: return _dumps(model,bundle=bundle,external_references=external_references)
     finally: _exchange_query_cache.reset(token)
@@ -553,6 +668,8 @@ def _dumps(model, *, bundle=True, external_references=None):
                     elif isinstance(target,EnumValue) and bundle and target.literal not in seen: pending.append(target.literal)
                     elif isinstance(target,PrimitiveValue) and bundle and target.classifier not in seen: pending.append(target.classifier)
     identities,used={},set()
+    from .versions import SEMANTIC_VERSION
+    if SEMANTIC_VERSION=='2.4.1' and records:raise XmiUnsupportedError('Runtime profile values cannot be exported as supported UML 2.4.1 applications')
     for obj in objects+records:
         candidate=getattr(obj,'_xmi_id',None) or 'id'+str(len(identities)+1)
         if not re.fullmatch(r'[^\W\d][\w.-]*',candidate): candidate='id'+str(len(identities)+1)
@@ -577,7 +694,10 @@ def _dumps(model, *, bundle=True, external_references=None):
         if profile is None: raise XmiError('Runtime classifier is no longer in a Profile')
         namespace=profile.URI or getattr(profile,'_xmi_namespace',None) or 'urn:umllib:profile:'+reference(profile)
         profile_namespaces[profile]=namespace; prefix(namespace)
-    root=ET.Element('xmi:XMI',{'xmi:version':'2.5.1'})
+    root=ET.Element('xmi:XMI',{'xmi:version':XMI_VERSION})
+    metadata=ET.SubElement(root,'xmi:Extension',{'extender':'UmlLib'})
+    from .versions import SEMANTIC_VERSION
+    ET.SubElement(metadata,'lib:metamodel',{'version':SEMANTIC_VERSION})
     containers={}
     for obj in objects:
         for name,prop in properties(obj):
@@ -619,9 +739,7 @@ def _dumps(model, *, bundle=True, external_references=None):
         if obj not in containers: emit(obj,root)
     for obj in objects:
         if obj not in emitted: raise XmiError('Containment graph has no serializable root')
-    metadata=None
     if records:
-        metadata=ET.SubElement(root,'xmi:Extension',{'extender':'UmlLib'})
         for profile,namespace in profile_namespaces.items(): ET.SubElement(metadata,'lib:profile',{'namespace':namespace,'profile':reference(profile)})
     for record in sorted(records,key=lambda r:identities[r]):
         classifier=record.classifier

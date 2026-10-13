@@ -231,4 +231,14 @@ legacy_port=old.Port()
 legacy_connector=old.Connector(end=[old.ConnectorEnd(role=legacy_port)])
 legacy_port.delete()
 assert legacy_connector.is_deleted
+from Uml241.xmi import loads as read24,dumps as write24
+from umltools.xmi import loads as read_auto,dumps as write_auto,XmiVersionError
+old_document=read_auto(write24(old_model),semantic_version='auto')
+assert old_document.semantic_version=='2.4.1'
+assert isinstance(old_document.roots[0],old.Model)
+assert old_document.complete
+assert read24(write_auto(old_document)).resolve(old_document.roots[0]._xmi_id).name=='Old'
+try:read24(dumps(Uml.Model()))
+except XmiVersionError:pass
+else:raise AssertionError('XMI silently migrated across metamodels')
 print('Installed UmlLib', version('UmlLib'))

@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.18.0
+
+Implement native UML 2.4.1 core XMI import/export through Uml241.xmi, using public
+2.4.1 classes and isolated structural semantics. State redefinitions, structured
+activity ownership, noncomposite loop variables, references, identities, scalar
+values, enums, model-defined types and resource graphs round-trip correctly.
+
+Generic load/loads retain the 2.5.1 default and add explicit/auto semantic_version
+selection. Namespace and exact UmlLib metamodel metadata are checked independently
+from xmi:version; ambiguous dialects require a choice. Known conflicting versions
+are rejected even in permissive mode and dependent resources. Generic export follows
+the model's actual version; the versioned facades refuse implicit migration. Shared
+XMI exception types permit generic callers to catch errors from either reader.
+
+409 tests pass, including 17 native 2.4.1 cases and all 549 effective stored-feature
+round-trips. Five pinned public state-machine cases pass with the explicit 2.4.1
+backend. The original OMG primitive library is checksum-verified offline; MOF tags
+and unsupported applied-profile XML are retained with diagnostics. Structural profile
+definitions remain exchangeable; runtime profile application and migration are
+separate work. Contract and attribution details are in XMI241_SUPPORT.md.
+
 ## 0.17.0
 
 Complete the first UML 2.4.1 audit across all 14 core families and structural

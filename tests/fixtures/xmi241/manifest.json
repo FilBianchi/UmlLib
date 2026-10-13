@@ -1,0 +1,7 @@
+{
+  "source": "https://www.omg.org/spec/UML/20100901/PrimitiveTypes.xmi",
+  "catalog": "https://www.omg.org/spec/UML/2.4.1",
+  "sha256": "9a801ec8aef75343cdd37ef31960a80804e30a9655b9278f32d33e1863fda95a",
+  "bytes": 2675,
+  "attribution": "OMG UML 2.4/2.4.1 shared PrimitiveTypes artifact; 20100901 alone is ambiguous. Explicit 2.4.1 backend; MOF extension tags remain opaque."
+}
