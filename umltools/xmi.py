@@ -64,6 +64,9 @@ class XmiDocument:
         self.runtime_values = []
         self.namespaces = {}
         self.aliases = {}
+        self.source_dialects = {}
+        from .versions import SEMANTIC_VERSION
+        self.semantic_version = SEMANTIC_VERSION
 
     @property
     def complete(self):
@@ -155,6 +158,11 @@ class _Reader:
         import Uml
         if _meta(node, 'idref') is not None or node.get('href') is not None: return
         namespace, name = self.class_name(node)
+        if namespace in UML_NAMESPACES:
+            from .versions import describe_namespace
+            dialect=describe_namespace(namespace)
+            dialects=self.doc.source_dialects.setdefault(uri,[])
+            if dialect not in dialects: dialects.append(dialect)
         if not namespace and parent is not None and feature is not None:
             spec = parent.properties()[feature]
             name, namespace = spec.type, UML_NS
@@ -408,7 +416,9 @@ class _Reader:
                         if form=='null': result.append(None); continue
                         if form=='object': result.append(text); continue
                         if kind(classifier,prop.type,'PrimitiveType'):
-                            result.extend(self.scalar(t,prop.type.name,classifier.__registry__) for t in (text.split() if form=='attribute' and prop.upperBound()>1 and prop.type.name!='String' else [text]))
+                            from .primitive_values import PrimitiveValue,STANDARD_NAMES
+                            tokens=text.split() if form=='attribute' and prop.upperBound()>1 and prop.type.name!='String' else [text]
+                            result.extend(self.scalar(t,prop.type.name,classifier.__registry__) if prop.type.name in STANDARD_NAMES else PrimitiveValue(prop.type,t) for t in tokens)
                         elif kind(classifier,prop.type,'Enumeration'): result.extend(text.split() if form=='attribute' and prop.upperBound()>1 else [text])
                         else: result.extend(self.reference(t,uri,node) for t in (text.split() if form=='attribute' else [text]))
                     if prop.upperBound()<=1 and len(result)>1: raise XmiError('Multiple runtime scalar values: '+name)
@@ -487,13 +497,15 @@ def load(path, *, strict=True,resources=None,external_objects=None,profile_bindi
     return reader.run(path.read_bytes())
 
 
-def dumps(model, *, bundle=True, external_references=None):
+def dumps(model, *, bundle=True, external_references=None, target_version='2.5.1'):
     """Serialize a model/document. Bundling closes stored references and ownership.
 
     With bundle=False external targets require URI#id mappings or imported identities.
     UmlLib profile namespace/context metadata is an explicit XMI extension.
     """
     from .semantics import _exchange_query_cache
+    from .versions import require_target_version
+    require_target_version(target_version)
     token=_exchange_query_cache.set({})
     try: return _dumps(model,bundle=bundle,external_references=external_references)
     finally: _exchange_query_cache.reset(token)
@@ -504,6 +516,7 @@ def _dumps(model, *, bundle=True, external_references=None):
     from .native import kind
     from .specification import property_redefines,property_refines
     from .profile_values import ProfileObject,EnumValue
+    from .primitive_values import PrimitiveValue
     from .stereotypes import StereotypeApplication,applications
     document=model if isinstance(model,XmiDocument) else None
     roots=list(document.roots) if document else [model] if isinstance(model,UmlElement) else list(model)
@@ -538,6 +551,7 @@ def _dumps(model, *, bundle=True, external_references=None):
                     if isinstance(target,ProfileObject) and target not in records: records.append(target)
                     elif isinstance(target,UmlElement) and bundle and target not in seen: pending.append(target)
                     elif isinstance(target,EnumValue) and bundle and target.literal not in seen: pending.append(target.literal)
+                    elif isinstance(target,PrimitiveValue) and bundle and target.classifier not in seen: pending.append(target.classifier)
     identities,used={},set()
     for obj in objects+records:
         candidate=getattr(obj,'_xmi_id',None) or 'id'+str(len(identities)+1)
@@ -576,6 +590,7 @@ def _dumps(model, *, bundle=True, external_references=None):
     def text(value):
         if isinstance(value,Enum): return value.value
         if isinstance(value,EnumValue): return value.name
+        if isinstance(value,PrimitiveValue): return value.lexical
         if type(value) is bool: return 'true' if value else 'false'
         if type(value) is float and value==float('inf'): return '*'
         return str(value)

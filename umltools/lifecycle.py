@@ -60,11 +60,12 @@ def delete(element, *, cascade=True, on_references='detach'):
                 pending.append(candidate)
     if on_references == 'restrict':
         from .profile_values import _records, EnumValue, plan_profile_cleanup
+        from .primitive_values import PrimitiveValue
         internal_values = plan_profile_cleanup(doomed)
         for record in list(_records):
             if record in internal_values: continue
             for prop, values in record._values.items():
-                if prop in doomed or any(v in doomed or isinstance(v, EnumValue) and v.literal in doomed for v in values):
+                if prop in doomed or any(v in doomed or isinstance(v, EnumValue) and v.literal in doomed or isinstance(v,PrimitiveValue) and v.classifier in doomed for v in values):
                     raise DeletionRestrictedError('A runtime tagged value prevents deletion')
         for survivor in live:
             if survivor in doomed: continue
@@ -132,4 +133,6 @@ def delete(element, *, cascade=True, on_references='detach'):
     from .profile_values import _delete_records, _constraint_adapters
     _delete_records(profile_doomed, doomed)
     for item in doomed: _constraint_adapters.pop(item, None)
+    from .primitive_values import _codecs
+    for item in doomed: _codecs.pop(item,None)
     return tuple(doomed)

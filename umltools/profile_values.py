@@ -10,6 +10,7 @@ from .native import kind, NativeNotImplemented
 from .native.constraints_remaining import base_properties
 from .contracts import validate_item
 from .evaluation_context import profile_evaluation
+from .primitive_values import PrimitiveValue
 
 _records = WeakSet()
 _constraint_adapters = WeakKeyDictionary()
@@ -125,6 +126,12 @@ class ProfileObject:
         if type_ is None: raise ValueError('Tag property has no type')
         type_._ensure_alive()
         if kind(type_, type_, 'PrimitiveType'):
+            if isinstance(value,PrimitiveValue):
+                if value.classifier is not type_: raise TypeError('Primitive value must use the declared type definition')
+                value.classifier._ensure_alive()
+                if value.has_semantics: value.to_python()
+                if type_.name in ('Boolean','Integer','Real','String','UnlimitedNatural'): return value.to_python()
+                return value
             if type_.name not in ('Boolean','Integer','Real','String','UnlimitedNatural'):
                 raise NativeNotImplemented('Custom primitive type requires a value adapter')
             validate_item(type_, value, type_.name)
@@ -172,6 +179,8 @@ class ProfileObject:
         expression = prop.defaultValue
         if expression is None: return ()
         if expression.isNull(): value = None
+        elif prop.type is not None and kind(prop,prop.type,'PrimitiveType') and prop.type.name not in ('Boolean','Integer','Real','String','UnlimitedNatural') and kind(prop,expression,'LiteralString') and expression.type is prop.type:
+            value=PrimitiveValue(prop.type,expression.value)
         elif kind(prop, expression, 'InstanceValue'):
             value = expression.instance
             if value is not None and not kind(prop, value, 'EnumerationLiteral'):
@@ -307,7 +316,9 @@ class ProfileObject:
             key = 'Profile.tag:'+ (prop.name or '<unnamed>')
             try:
                 value = self.get_value(prop)
-                self._normalize(prop, value)
+                normalized=self._normalize(prop, value)
+                if any(isinstance(v,PrimitiveValue) and not v.has_semantics for v in normalized):
+                    issues.append(('unsupported stereotype application',key))
             except NativeNotImplemented: issues.append(('unsupported stereotype application',key))
             except (ValueError, TypeError): issues.append(('stereotype application',key))
         for classifier in [self._classifier] + self._classifier.allParents():
@@ -353,7 +364,8 @@ def _delete_records(doomed, model_doomed=()):
     for record in list(_records):
         for prop, values in list(record._values.items()):
             kept = tuple(v for v in values if v not in doomed and v not in model_doomed
-                         and not (isinstance(v, EnumValue) and v.literal in model_doomed))
+                         and not (isinstance(v, EnumValue) and v.literal in model_doomed)
+                         and not (isinstance(v,PrimitiveValue) and v.classifier in model_doomed))
             if prop in model_doomed: kept = ()
             if record in doomed: kept = ()
             if kept != values or prop in model_doomed:

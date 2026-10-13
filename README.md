@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.13.0/umllib-0.13.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.14.0/umllib-0.14.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -71,7 +71,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.13.0 suite has 336 tests.
+invariants, two queries and one derivation. The 0.14.0 suite has 343 tests.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional
@@ -269,8 +269,9 @@ distinct diagnostics. Normal model/value creation, mutation and deletion are blo
 during callbacks. Callbacks are trusted Python code, not a sandbox or a proof of
 absence of external side effects. Arbitrary OCL text is never executed.
 
-Custom primitive types, derived tags and nonliteral defaults require future explicit
-value evaluators and report unsupported. Association-owned non-navigable runtime
+Custom primitive types use PrimitiveValue as described below; their unknown semantics,
+derived tags and nonliteral defaults remain explicit validation obligations.
+Association-owned non-navigable runtime
 navigation, repeated links requiring distinct link identities and CMOF interoperability
 remain open. XMI exchange covers supported runtime values as described below;
 these examples do not prove exhaustive profile conformance.
@@ -356,8 +357,66 @@ supported. Explicit empty values preserve the distinction from literal defaults.
 An XMI Extension named UmlLib records profile namespace bindings and package contexts
 for runtime Class/DataType objects. Other tools may need an adapter for this metadata.
 User-defined Python callbacks and analyzer/gate mappings are not serialized. OCL text
-is retained as text and never executed. Custom primitive adapters such as Ecore EString,
-derived runtime tags and arbitrary default evaluators remain explicit limitations.
+is retained as text and never executed. Unknown primitive semantics, derived runtime
+tags and arbitrary default evaluators remain explicit validation limitations.
+
+### Values of model-defined primitive types
+
+```python
+from umltools.primitive_values import PrimitiveValue
+
+# money_type is the UML PrimitiveType definition read from the model.
+value = PrimitiveValue(money_type, "0012.30")
+application.set_value("price", value)
+application.set_value("price", value.with_lexical("17.50"))
+```
+
+PrimitiveValue keeps the exact definition object and immutable lexical text. It does
+not infer Python semantics from custom names such as Money, Date, EString or EInt.
+XMI automatically creates these values for custom primitive tags; they can be read,
+edited, exported and reimported in strict mode. Distinct definitions sharing a name
+remain distinct types. Collection bounds/order/uniqueness and readonly/composition
+rules still apply. Custom multivalued XML attributes use whitespace-separated lexical
+tokens; child elements preserve individual values including whitespace and empty text.
+Explicitly typed LiteralString defaults (expression.type is the custom PrimitiveType)
+can also provide lexical defaults. Other default expressions require an evaluator.
+
+Unknown primitive semantics are reported during profile/value validation, separately
+from successful decoding. `value.to_python()` requires an explicitly registered codec:
+
+```python
+from decimal import Decimal
+from umltools.primitive_values import register_primitive_codec
+
+register_primitive_codec(money_type, decode=Decimal,
+    encode=lambda number: format(number, "f"),
+    validate=lambda number: isinstance(number, Decimal) and number >= 0)
+value = PrimitiveValue.from_python(money_type, Decimal("12.30"))
+assert value.to_python() == Decimal("12.30")
+```
+
+Codecs are keyed by type identity, never registered globally by name. Callbacks are
+trusted Python code, must obey the Boolean/string result contracts and cannot mutate
+the model through public APIs during evaluation. Codecs are not serialized or inferred
+from OCL text. Imported definitions need their own registration. Deleting a definition
+cleans its values and codec registration. The five existing standard primitive
+representations remain built in; custom codecs do not override them.
+
+### UML versions
+
+`document.semantic_version` is currently `2.5.1` for the Python metamodel and its
+validation rules. `document.source_dialects` records the actual namespaces per resource,
+format and possible UML versions. This distinguishes transport compatibility from
+version-specific semantics. `20131001` is intentionally ambiguous between 2.5 and
+2.5.1: the normative 2.5.1 metamodel vendored in this repository declares it too.
+Eclipse UML2 implementation namespaces are not interpreted as exact UML versions.
+
+`dumps(document, target_version="2.5.1")` is supported. Other target versions raise
+an explicit unsupported error; relabeling a namespace would not perform a conversion.
+The planned next version work is comparison of normative 2.x metamodels and explicit
+migration/validation policies. Independent 2.3/2.4.1 rule sets and UML 1.x are not
+implemented. The public corpus remains a compatibility check, not a multi-version
+conformance claim.
 
 The reader rejects DTD/entity declarations and has configurable byte, element and
 depth limits. Model queries are memoized only during stable exchange phases; ordinary

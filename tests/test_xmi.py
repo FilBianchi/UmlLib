@@ -261,15 +261,19 @@ class XmiCases(unittest.TestCase):
         self.assertIsNone(_exchange_query_cache.get())
 
     @verifies('Stereotype')
-    def test_unsupported_custom_primitive_tag_is_retained_in_permissive_mode(self):
+    def test_custom_primitive_tag_is_managed_without_name_based_conversion(self):
         app=self.profile()
         custom=Uml.PrimitiveType(name='Money');self.profile.packagedElement.append(custom)
         app.stereotype.ownedAttribute.append(Uml.Property(name='price',type=custom))
         data=dumps(self.model)
         tree=ET.fromstring(data);tree.set('xmlns:uml',UML_NS)
         node=next(n for n in tree if n.tag.endswith('Tagged'));node.set('price','12.30')
-        with self.assertRaises(XmiUnsupportedError):loads(ET.tostring(tree))
-        doc=loads(ET.tostring(tree),strict=False)
-        self.assertFalse(doc.complete)
-        self.assertTrue(any(d.code=='unsupported' and d.feature=='price' for d in doc.diagnostics))
-        self.assertIn('price="12.30"',dumps(doc))
+        doc=loads(ET.tostring(tree))
+        self.assertTrue(doc.complete)
+        from umltools.primitive_values import PrimitiveValue
+        restored=next(v for v in doc.runtime_values if hasattr(v,'element'))
+        value=restored.get_value('price')
+        self.assertIsInstance(value,PrimitiveValue)
+        self.assertEqual(value.classifier.name,'Money'); self.assertEqual(value.lexical,'12.30')
+        restored.set_value('price',value.with_lexical('17.50'))
+        self.assertIn('price="17.50"',dumps(doc))

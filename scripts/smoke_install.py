@@ -172,6 +172,22 @@ with ModelSession():
     assert restored_application.get_value('child').classifier.name=='Payload'
     assert restored_model.profileApplication[0].isStrict
     assert any(category=='unsupported stereotype application' for category,_ in restored_application.validate())
+    from umltools.primitive_values import PrimitiveValue, register_primitive_codec
+    from decimal import Decimal
+    money=Uml.PrimitiveType(name='Money'); profile.packagedElement.append(money)
+    stereotype.ownedAttribute.append(Uml.Property(name='price',type=money,
+                                  lowerValue=Uml.LiteralInteger(value=0)))
+    register_primitive_codec(money,decode=Decimal,encode=str,
+                             validate=lambda value:isinstance(value,Decimal) and value>=0)
+    application.set_value('price',PrimitiveValue.from_python(money,Decimal('12.50')))
+    assert application.get_value('price').to_python()==Decimal('12.50')
+    exchanged=loads(dumps(model,target_version='2.5.1'))
+    restored_model=next(root for root in exchanged.roots if root.__spec__.name=='Model' and root.profileApplication)
+    restored_application=applications(restored_model.packagedElement[0])[0]
+    restored_price=restored_application.get_value('price')
+    assert restored_price.lexical=='12.50' and restored_price.classifier.name=='Money'
+    assert not restored_price.has_semantics
+    assert exchanged.semantic_version=='2.5.1' and exchanged.source_dialects
     unapply_profile(model,profile)
     assert application.is_deleted and value.is_deleted
     assert not model.packagedElement[0].is_deleted

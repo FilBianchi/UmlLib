@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.14.0
+
+PrimitiveValue represents model-defined primitive values by exact type identity and
+immutable lexical text. Custom XMI tags are decoded, edited and round-tripped without
+special-casing Eclipse names or guessing Python types. Unknown semantic validation
+remains explicit. Optional per-definition codecs convert and validate trusted Python
+values with guarded callbacks; they are not serialized. Bounds/uniqueness, readonly
+construction, typed literal defaults and definition deletion are covered.
+
+Source namespace/dialect/version candidates are recorded separately from the 2.5.1
+semantic runtime. The 20131001 namespace is ambiguous (the normative 2.5.1 metamodel
+also uses it); implementation namespace versions are not guessed. Export target
+versions other than 2.5.1 are rejected until actual migrations/rule sets exist.
+343 tests pass. Multi-version semantic validation, arbitrary default/derived evaluators,
+CMOF and vendor diagram/reference adapters remain open.
+
 ## 0.13.0
 
 UML XMI load/loads and dump/dumps support isolated graph import, resource-scoped IDs,

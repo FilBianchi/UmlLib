@@ -401,6 +401,14 @@ No Python evaluation path treats an untranslated definition as satisfied.
   it is not claimed to be a portable substitute for every tool's profile machinery.
   Opaque XML is retained without understanding vendor references/layout. Generic
   reference remapping inside unknown extensions remains an external adapter obligation.
+- Model-defined primitive values preserve definition identity and lexical text.
+  Unknown value semantics are a validation obligation, not a reason to hide values
+  as opaque XML or infer an Eclipse/Python alias. Explicit per-definition codecs are
+  trusted application input and are not transported in XMI.
+- Version attribution uses possible versions rather than namespace dates as proof.
+  The vendored normative 2.5.1 UML.xmi still declares UML/20131001, also used by 2.5.
+  Source dialects are recorded; Python validation uses 2.5.1. Older rule sets and
+  conversions need separate normative comparison before compatibility claims.
 - `Classifier-directlyUsedInterfaces`: the formula traverses supplierDependency and
   returns clients. Python follows the Usage definition (the client requires the supplier)
   and traverses Usage dependencies whose client is the classifier, returning Interface

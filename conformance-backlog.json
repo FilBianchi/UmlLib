@@ -1186,7 +1186,7 @@
       "priority": "P1",
       "area": "profiles and package merge",
       "status": "partial",
-      "limitation": "Runtime typed tags support effective inherited/redefined properties, literal defaults, bounds, readonly values, enumerations, profile Class/DataType objects, binary navigable inverses, composition and deletion. User constraints use trusted Python callbacks or Boolean literals, never arbitrary OCL execution. Custom primitive/derived/default evaluators, association-owned runtime navigation, full CMOF serialization and exhaustive profile semantics remain open.",
+      "limitation": "Runtime typed tags support effective inherited/redefined properties, literal defaults, bounds, readonly values, enumerations, profile Class/DataType objects, binary navigable inverses, composition and deletion. Model-defined primitive lexical values retain exact type identity; Python semantics require explicit per-definition codecs. User constraints use trusted Python callbacks or Boolean literals, never arbitrary OCL execution. Derived/general default evaluators, association-owned runtime navigation, full CMOF serialization and exhaustive profile semantics remain open.",
       "source": "umltools/data/UML.xmi#Stereotype",
       "next_action": "Extend implemented typed profile values, navigable binary links and strict views with explicit custom-value/derived-expression adapters, non-navigable runtime navigation, non-UML metaclasses and exchange contracts; preserve unsupported external languages.",
       "static_supplements": []
@@ -1304,7 +1304,12 @@
     {
       "priority": "P1",
       "area": "exchange",
-      "action": "Core/profile graph XMI exchange is implemented in the declared round-trip scenarios. Extend pinned integration samples and implement EMF URI fragments, custom value adapters, CMOF and vendor reference/layout adapters; keep decoding distinct from UML validation."
+      "action": "Core/profile graph exchange and generic typed lexical primitive values are implemented. Extend MIWG samples, default/derived evaluators, CMOF and vendor reference/layout adapters; keep decoding distinct from UML validation."
+    },
+    {
+      "priority": "P1",
+      "area": "UML versions",
+      "action": "Compare normative 2.4.1/2.5/2.5.1 metamodels before adding migrations or independent rule sets. Source dialect/version candidates are recorded; validation/export remain 2.5.1 and namespaces alone are not proof of version conformance."
     },
     {
       "priority": "P2",

@@ -397,3 +397,20 @@ vendor/UMLDI. Le estensioni opache conservate non ricevono una riscrittura gener
 riferimenti proprietari. I callback Python non sono trasportati. La validazione UML
 rimane separata dalla decodifica XML. Prossimo lavoro: adattatori Ecore mirati e ulteriori
 fixture MIWG per consolidare l'interoperabilità prima dell'ambito UMLDI.
+
+## Dodicesimo incremento: versione 0.14.0
+
+La priorità è stata corretta verso i tipi definiti nei modelli, senza trattamenti
+speciali Eclipse. PrimitiveValue conserva identità della PrimitiveType e testo
+lessicale; i valori sono accessibili, modificabili e scambiabili anche quando non
+conosciamo la semantica. Codec Python opzionali per definizione, con contratti e
+guardie di mutazione, forniscono conversione/validazione esplicite. I callback non
+sono serializzati. Default LiteralString esplicitamente tipizzati e cleanup della
+definizione sono verificati. 343 test passano.
+
+Le versioni sono separate in formato/namespace sorgente, versioni possibili e runtime
+semantico 2.5.1. Il namespace 20131001 è usato anche dalla fonte normativa 2.5.1 e non
+identifica una release esatta. Per supportare altre versioni occorrono confronti dei
+metamodel ufficiali, migrazioni e regole di validazione versionate: non basta cambiare
+un URI. Prossimo lavoro di versione: censimento delle differenze 2.4.1/2.5/2.5.1,
+policy di conversione e fixture MIWG; UML 1.x rimane un ambito successivo separato.
