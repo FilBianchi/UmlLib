@@ -13402,7 +13402,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_redefinition_stored_superset_and_derived_union_write_protection"
@@ -13449,7 +13450,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_redefinition_stored_superset_and_derived_union_write_protection"
@@ -13474,7 +13476,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_redefinition_stored_superset_and_derived_union_write_protection"
@@ -13703,7 +13706,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_cross_session_reference_diagnostics_inverse_links_and_deletion",
@@ -13731,7 +13735,8 @@
       "redefines": [],
       "declaration_sweeps": [],
       "definition_examples": [
-        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction"
+        "test_classification_audit.ClassificationCases.test_operation_signature_derived_properties_and_overload_distinction",
+        "test_operation_conformance_matrix.OperationMatrix.test_return_signature_mutation_and_xmi_identity"
       ],
       "family_examples": [
         "test_structural_contracts.StructuralContractCases.test_redefinition_stored_superset_and_derived_union_write_protection"
