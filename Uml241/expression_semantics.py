@@ -5,3 +5,5 @@ _module=import_module(engine.__name__+'.expression_semantics')
 ExpressionFacts=_module.ExpressionFacts
 register_expression_facts=_module.register_expression_facts
 expression_fact=_module.expression_fact
+register_collection_type=_module.register_collection_type
+is_collection_type=_module.is_collection_type

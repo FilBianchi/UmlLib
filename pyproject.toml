@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "UmlLib"
-version = "0.16.0"
+version = "0.17.0"
 description = "Independent UML 2.4.1 and 2.5.1 metamodels with explicit Python semantics"
 readme = "README.md"
 requires-python = ">=3.10"

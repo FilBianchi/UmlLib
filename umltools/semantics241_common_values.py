@@ -29,7 +29,7 @@ def install(engine, source_constraints):
     def lower_bound(self):return 1 if self.lowerValue is None else self.lowerValue.integerValue()
     def upper_bound(self):return 1 if self.upperValue is None else self.upperValue.unlimitedValue()
     def bounds(self):
-        low,high=self.lowerBound(),self.upperBound()
+        low,high=lower_bound(self),upper_bound(self)
         if low is None or high is None:raise ValueError('Undefined multiplicity bound')
         return low,high
     def includes_cardinality(self,C):
@@ -41,7 +41,7 @@ def install(engine, source_constraints):
         low,high=bounds(self);other_low,other_high=bounds(other)
         return low>high or other_low<=low and high<=other_high
     def multivalued(self):
-        upper=self.upperBound()
+        upper=upper_bound(self)
         if upper is None:raise ValueError('Undefined upper bound')
         return upper>1
     def opaque_result(self):
@@ -74,13 +74,13 @@ def install(engine, source_constraints):
         'Type.conformsTo':common.type_conforms,
         'MultiplicityElement.lowerBound':lower_bound,
         'MultiplicityElement.upperBound':upper_bound,
-        'MultiplicityElement.lower':lambda self:self.lowerBound(),
-        'MultiplicityElement.upper':lambda self:self.upperBound(),
+        'MultiplicityElement.lower':lower_bound,
+        'MultiplicityElement.upper':upper_bound,
         'MultiplicityElement.isMultivalued':multivalued,
         'MultiplicityElement.includesCardinality':includes_cardinality,
         'MultiplicityElement.includesMultiplicity':includes_multiplicity,
         'MultiplicityElement.compatibleWith':compatible_multiplicity,
-        'MultiplicityElement.is':lambda self,lowerbound,upperbound:self.lowerBound()==lowerbound and self.upperBound()==upperbound,
+        'MultiplicityElement.is':lambda self,lowerbound,upperbound:lower_bound(self)==lowerbound and upper_bound(self)==upperbound,
         'ValueSpecification.isCompatibleWith':compatible_value,
         'OpaqueExpression.isIntegral':extra.opaque_integral,
         'OpaqueExpression.isNonNegative':extra.opaque_sign,
@@ -100,6 +100,9 @@ def install(engine, source_constraints):
         owner,name=identifier.split('.')
         if name not in engine.SPECIFICATIONS[owner].operations:raise RuntimeError('Undeclared query '+identifier)
         native.OPERATIONS[identifier]=function
+    native.values.lower_bound=lower_bound
+    native.values.upper_bound=upper_bound
+    native.constraints_actions.upper_bound=upper_bound
     reused_constraints=(
         'ElementImport.imported_element_is_public','ElementImport.visibility_public_or_private',
         'PackageImport.public_or_private','Namespace.members_distinguishable',
@@ -117,8 +120,8 @@ def install(engine, source_constraints):
     native.CONSTRAINTS.update({
         'NamedElement.visibility_needs_ownership':lambda self:self.namespace is not None or self.visibility is None,
         'Constraint.value_specification_boolean':lambda self:type(required(self.specification).booleanValue()) is bool,
-        'MultiplicityElement.upper_ge_lower':lambda self:self.upperBound() is None or self.lowerBound() is None or self.upperBound()>=self.lowerBound(),
-        'MultiplicityElement.lower_ge_0':lambda self:self.lowerBound() is None or self.lowerBound()>=0,
+        'MultiplicityElement.upper_ge_lower':lambda self:upper_bound(self) is None or lower_bound(self) is None or upper_bound(self)>=lower_bound(self),
+        'MultiplicityElement.lower_ge_0':lambda self:lower_bound(self) is None or lower_bound(self)>=0,
         'OpaqueExpression.only_return_result_parameters':lambda self:self.behavior is None or all(p.direction is not None and p.direction.value=='return' for p in self.behavior.ownedParameter),
     })
     native.DERIVATIONS.update({'NamedElement-qualifiedName':common.qualified_name,

@@ -31,6 +31,7 @@ jobs:
       - run: python conformance_backlog.py && git diff --exit-code -- conformance-backlog.json CONFORMANCE_BACKLOG.md
       - run: python structural_audit.py && git diff --exit-code -- structural-audit.json STRUCTURAL_AUDIT.md
       - run: python -m scripts.report_uml241_audit && git diff --exit-code -- uml241-common-values-audit.json
+      - run: python -m scripts.report_uml241_complete_audit && git diff --exit-code -- uml241-audit.json
       - name: Publish versioned download assets
         env:
           GH_TOKEN: ${{ github.token }}

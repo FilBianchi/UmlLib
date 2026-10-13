@@ -20,6 +20,8 @@ class UnsupportedSemanticsError(NotImplementedError):
 
 class UmlElement:
     __semantic_version__ = '2.5.1'
+    __supplemental_operations__ = {}
+    __derived_composite_witnesses__ = frozenset()
     __registry__ = REGISTRY
     __instances__ = WeakSet()
     def __init__(self, **values):
@@ -56,6 +58,15 @@ class UmlElement:
     def __getattr__(self, name):
         prop = self.properties().get(name)
         if prop is None:
+            # Version-specific implementation helpers, explicitly outside the
+            # normative operation inventory. Most-specific metaclass wins.
+            from types import MethodType
+            for base in type(self).__mro__:
+                spec = base.__dict__.get('__spec__')
+                helper = self.__supplemental_operations__.get((spec.name,name)) if spec else None
+                if helper is not None:
+                    self._ensure_alive()
+                    return MethodType(helper,self)
             raise AttributeError(name)
         self._ensure_alive()
         if prop.flags.get('isDerived') == 'true':
@@ -160,7 +171,7 @@ class UmlElement:
                 if child._container is not None and child._container is not self:
                     raise ValueError('Element already has a composite owner; detach it first')
                 for other_name, other_prop in self.properties().items():
-                    if other_name != name and other_prop.flags.get('aggregation') == 'composite' and other_prop.flags.get('isDerived') != 'true' and child in self._items(self._values.get(other_name)) and not (property_refines(prop.id, other_prop.id) or property_refines(other_prop.id, prop.id) or any(property_refines(witness.id, prop.id) and property_refines(witness.id, other_prop.id) and child in self._items(self._values.get(witness_name)) for witness_name, witness in self.properties().items())):
+                    if other_name != name and other_prop.flags.get('aggregation') == 'composite' and other_prop.flags.get('isDerived') != 'true' and child in self._items(self._values.get(other_name)) and not (property_refines(prop.id, other_prop.id) or property_refines(other_prop.id, prop.id) or any(property_refines(witness.id, prop.id) and property_refines(witness.id, other_prop.id) and (child in self._items(self._values.get(witness_name)) or witness.id in self.__derived_composite_witnesses__ and isinstance(child,self.__registry__[witness.type])) for witness_name, witness in self.properties().items())):
                         raise ValueError('Element already occupies another composite property')
             for child in values:
                 self._snapshot(child)

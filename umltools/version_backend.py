@@ -38,6 +38,8 @@ def backend_241():
             native=sys.modules[name+'.native']
             native.SEMANTIC_VERSION='2.4.1'
             source_constraints=dict(native.CONSTRAINTS)
+            source_operations=dict(native.OPERATIONS)
+            source_derivations=dict(native.DERIVATIONS)
             common=native.common_structure
             values=native.values
             reviewed_operations={
@@ -68,6 +70,18 @@ def backend_241():
             native.DERIVATIONS.clear()
             from .semantics241_common_values import install
             install(package,source_constraints)
+            from .semantics241_classifiers import install as install_classifiers
+            install_classifiers(package,source_operations,source_constraints,source_derivations)
+            from .semantics241_behavior import install as install_behavior
+            install_behavior(package,source_operations,source_constraints)
+            from .semantics241_activities import install as install_activities
+            install_activities(package,source_operations,source_constraints)
+            from .semantics241_interactions_rest import install as install_rest
+            install_rest(package,source_operations,source_constraints)
+            package.AUDIT_REUSE={
+                'operations':sorted(k for k,v in native.OPERATIONS.items() if v is source_operations.get(k)),
+                'constraints':sorted(k for k,v in native.CONSTRAINTS.items() if v is source_constraints.get(k)),
+            }
             for cls in package.REGISTRY.values(): cls.__semantic_version__='2.4.1'
             for module_name in ('static_requirements','stereotypes','xmi'):
                 module=__import__(name+'.'+module_name,fromlist=['*'])

@@ -97,5 +97,6 @@ un interprete generale per espressioni temporali o numeriche opache.
 Resta il marker generale UML2.4.1.prose per la prosa supplementare non ancora
 decomposta integralmente. Questo audit tratta le descrizioni delle regole del suo
 ambito, non ogni frase dei PDF. Restano anche profili runtime, XMI e migrazione 2.4.1.
-Il prossimo audit è Classification e SimpleClassifiers, necessario per chiudere
-ereditarietà, inheritedMember, conformance e gli override delle query dei template.
+Dalla 0.17.0 Classification/SimpleClassifiers e le altre famiglie sono incluse
+nell'audit complessivo [UML241_AUDIT.md](UML241_AUDIT.md), comprese ereditarietà,
+inheritedMember, conformance e gli override delle query dei template.

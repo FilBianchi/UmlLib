@@ -50,6 +50,10 @@ def delete(element, *, cascade=True, on_references='detach'):
             raise DeletionRestrictedError('The element owns composite children; use cascade=True')
         doomed.add(current)
         pending.extend(children)
+        if current.__semantic_version__=='2.4.1' and kind(current,current,'Port'):
+            # UML 2.4.1 Port.port_destroyed is an event obligation.
+            pending.extend(candidate for candidate in live if kind(current,candidate,'Connector')
+                           and any(end._values.get('role') is current for end in candidate._values.get('end',())))
         # Modeled stereotype instances cannot retain an application to a deleted base.
         pending.extend(modeled_bases.get(current, ()))
         for candidate in live:

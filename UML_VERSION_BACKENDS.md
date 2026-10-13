@@ -1,6 +1,6 @@
 # Due metamodel indipendenti, un motore condiviso
 
-UmlLib 0.15.0 distribuisce due API Python:
+UmlLib distribuisce due API Python, introdotte nella 0.15.0:
 
 ```python
 import Uml241 as uml24
@@ -64,21 +64,21 @@ in package al vecchio documento normativo.
 
 Sono disponibili costruzione, lettura/scrittura dei valori strutturali, molteplicità,
 tipi, subset/redefinition, composizione, inversi memorizzati, ownership, transazioni
-e cancellazione secondo le dichiarazioni 2.4.1. La verifica è iniziale, non esaustiva
-per ogni associazione. I test coprono i casi distintivi trovati nell'audit:
+e cancellazione secondo le dichiarazioni 2.4.1. La verifica è un primo audit, non
+esaustiva per ogni associazione o sequenza di modifiche. I test coprono i casi distintivi:
 ereditarietà di Vertex, featuringClassifier, guard obbligatorio, proprietà di State
 e loopVariable senza composizione, oltre a isolamento e rollback.
 
-Dalla 0.16.0 l'audit CommonStructure/Values abilita 64 operazioni native complessive
-e 30 vincoli. Le 63 operazioni e 16 derivazioni del suo ambito sono inventariate in
-[UML241_COMMON_VALUES_AUDIT.md](UML241_COMMON_VALUES_AUDIT.md), incluse interpretazioni
-dei refusi normativi e dipendenze ancora aperte. I risultati sono verificati contro
-le firme 2.4.1. Non tutte le configurazioni di Classification sono ancora calcolabili.
+Dalla 0.17.0 tutte le 14 famiglie hanno un primo audit: 150 operazioni, 433 invarianti,
+74 derivazioni e 952 record strutturali. 549 setter osservabili sono attraversati
+con default, tipi errati e valori del tipo dichiarato. Le traduzioni condivise sono
+abilitate esplicitamente dopo il confronto; le differenze mantengono funzioni
+separate. Fonte, interpretazioni ed evidenze sono in [UML241_AUDIT.md](UML241_AUDIT.md)
+e `uml241-audit.json`. CommonStructure/Values conserva il suo rapporto dettagliato.
 
-Le altre operazioni, derivazioni specializzate e invarianti non usano automaticamente
-le traduzioni 2.5.1. Sollevano UnsupportedSemanticsError oppure compaiono come
-obbligazioni unsupported nella validazione. La navigazione strutturale generica
-di owner/ownedElement e delle union è condivisa. `validate()` segnala anche
+Fatti mancanti sulle espressioni o sull'esecuzione compaiono come obbligazioni
+unsupported nella validazione. La navigazione strutturale generica
+di owner/ownedElement e delle union è condivisa. `validate()` segnala ancora
 `('unsupported version contract', 'UML2.4.1.prose')`: la prosa non è ancora auditata.
 
 Applicazioni runtime di profili e load/dump XMI 2.4.1 restano disabilitati con errore
@@ -86,7 +86,7 @@ esplicito. Le classi Profile/Stereotype e le loro dichiarazioni strutturali sono
 presenti. Il parser della specifica usato per generarle non è un importer XMI di
 modelli utente. Non è ancora implementata una conversione tra i due metamodel.
 
-## Rigenerazione e prossimo audit
+## Rigenerazione e lavoro successivo
 
 ```console
 python generate_uml.py --version all
@@ -95,9 +95,8 @@ python generate_uml.py --version all
 Il generatore predefinito continua a produrre 2.5.1; `--version 2.4.1` genera soltanto
 Uml241. Le pipeline rigenerano entrambe le versioni e verificano l'installazione.
 
-CommonStructure/Values è auditato nella 0.16.0. Il prossimo lavoro è Classification
-e SimpleClassifiers, poi StateMachines, con fixture che dimostrino le differenze
-tra versioni. Le regole
-verificate possono condividere la stessa funzione Python; quelle differenti devono
-avere implementazioni separate. XMI 2.4.1 e migrazione saranno aggiunti dopo questi
-contratti, seguendo [UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md).
+Il primo audit delle famiglie e delle dichiarazioni strutturali è concluso nella
+0.17.0; non è una certificazione. Restano prosa globale, esecuzione/protocolli,
+PackageMerge, profili runtime, XMI 2.4.1 e migrazione, seguendo
+[UML_VERSION_COMPARISON.md](UML_VERSION_COMPARISON.md). Questi sono contratti distinti
+e non vengono abilitati semplicemente cambiando un namespace XML.

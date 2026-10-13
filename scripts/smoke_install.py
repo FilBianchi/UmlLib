@@ -216,7 +216,19 @@ with old.ModelSession() as old_session, new.ModelSession() as new_session:
     old_loop,new_loop=old.LoopNode(loopVariable=[old_pin]),new.LoopNode(loopVariable=[new_pin])
     old_loop.delete();new_loop.delete()
     assert not old_pin.is_deleted and new_pin.is_deleted
-try:old.Class().allParents()
-except old.UnsupportedSemanticsError:pass
-else:raise AssertionError('Unaudited 2.4.1 semantics were evaluated')
+assert old.Class().allParents()==[]
+assert len(old._engine.native.OPERATIONS)==150
+assert len(old._engine.native.CONSTRAINTS)==433
+legacy_parent=old.Class(name='Base')
+legacy_child=old.Class(generalization=[old.Generalization(general=legacy_parent)])
+assert legacy_child.allParents()==[legacy_parent]
+legacy_region=old.Region(subvertex=[old.State()])
+assert not legacy_region.isConsistentWith(old.Region())
+assert legacy_region.isConsistentWith(old.Region(extendedRegion=legacy_region))
+from Uml241.semantic_facts import register_semantic_facts
+register_semantic_facts(old.OpaqueBehavior(),pure=True)
+legacy_port=old.Port()
+legacy_connector=old.Connector(end=[old.ConnectorEnd(role=legacy_port)])
+legacy_port.delete()
+assert legacy_connector.is_deleted
 print('Installed UmlLib', version('UmlLib'))

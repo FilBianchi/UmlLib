@@ -64,11 +64,10 @@ class BackendCases(unittest.TestCase):
         self.assertEqual(old.LiteralInteger(value=7).integerValue(),7)
         self.assertEqual(old.Property().lowerBound(),1)
         self.assertEqual(old.Property(upperValue=old.LiteralUnlimitedNatural(value=float('inf'))).upperBound(),float('inf'))
-        with self.assertRaises(old.UnsupportedSemanticsError):old.Class().allParents()
+        self.assertEqual(old.Class().allParents(),[])
         self.assertEqual(new.Class().allParents(),[])
         issues=old.Class().validate()
         self.assertIn(('unsupported version contract','UML2.4.1.prose'),issues)
-        self.assertTrue(any(category=='unsupported constraint' for category,_ in issues))
 
     def test_incomplete_profile_and_exchange_contracts_are_explicit(self):
         from Uml241._runtime import engine

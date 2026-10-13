@@ -447,3 +447,24 @@ normative e documentati. 367 test passano, con scenari di differenza tra version
 Il report rigenerabile è verificato dalle pipeline. Restano override/dipendenze di
 Classification, valutazione generale delle espressioni, prosa globale, profili,
 exchange e migrazione 2.4.1. Prossimo audit: Classification/SimpleClassifiers.
+
+## Quindicesimo incremento: versione 0.17.0
+
+Concluso il primo audit delle 14 famiglie 2.4.1 e dei contratti strutturali,
+continuando da Classification fino a InformationFlows senza fermarsi tra famiglie.
+Sono censite e registrate 150 operazioni, 433 invarianti e 74 derivazioni; tutti
+i 952 record di proprietà/estremi hanno metadati verificati senza diagnostiche.
+I 549 setter osservabili ricevono sweep di default, rifiuto di tipo e assegnazione
+del tipo dichiarato; una dichiarazione è nascosta da una ridefinizione concreta.
+392 test passano. Report, interpretazioni e limiti in UML241_AUDIT.md.
+
+La cancellazione delle Port aggiorna atomicamente i connector. La vecchia derivata
+Activity.structuredNode funge da testimone di composizione per node/group; i limiti
+dei Pin non collidono più con ObjectNode.upperBound. Le differenze nelle query
+di ereditarietà, firme, interfacce, stati, pin e deployment restano versionate.
+L'assenza di fatti di esecuzione produce unsupported, non un esito positivo.
+
+Questo chiude l'incremento di audit dichiarativo e degli scenari per famiglia.
+Il lavoro successivo è distinto: prosa globale, semantica di esecuzione/protocolli,
+PackageMerge, applicazione runtime dei profili, XMI 2.4.1 e migrazione. La copertura
+di registrazione e i test non equivalgono a piena conformità UML.

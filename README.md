@@ -3,7 +3,7 @@
 Install a versioned wheel directly from GitHub Releases:
 
 ```console
-python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.16.0/umllib-0.16.0-py3-none-any.whl
+python -m pip install https://github.com/FilBianchi/UmlLib/releases/download/v0.17.0/umllib-0.17.0-py3-none-any.whl
 ```
 
 The latest downloadable version is listed at
@@ -17,7 +17,12 @@ This initial version is alpha; semantic coverage and limitations are documented 
 Python implementations of the UML 2.5.1 and 2.4.1 metamodels, generated from vendored OMG XMI.
 Each version contains 242 metaclasses and 13 enumerations. `Uml251`/`Uml` provide the
 existing 2.5.1 API; `Uml241` provides independent 2.4.1 classes, organized in familiar
-convenience groups. The 2.4.1 semantic implementation is still partial; see
+convenience groups. All 14 core 2.4.1 families now have a first declaration/semantic
+audit: 150 operations, 433 invariants, 74 derivations and 952 property/end records.
+Representative semantic scenarios and sweeps of 549 effective stored setters are
+recorded in [UML241_AUDIT.md](UML241_AUDIT.md). Registration is not conformance
+certification; broader prose, execution, runtime profiles and XMI 2.4.1 remain
+separate obligations. See
 [UML_VERSION_BACKENDS.md](UML_VERSION_BACKENDS.md) for precise coverage and isolation.
 Python 3.10 or later is required. The library does not require Qt.
 
@@ -65,7 +70,7 @@ identifiers. The library never falls back to interpreting OCL. An untranslated q
 raises `UnsupportedSemanticsError`; untranslated invariants are reported explicitly.
 The XMI supplies structural metadata, signatures and reference formulas.
 
-The inventory covers all 203 concrete operations, two abstract operation declarations,
+For UML 2.5.1, the inventory covers all 203 concrete operations, two abstract operation declarations,
 449 class invariants and 73 derived properties. This is implementation coverage, not
 a certification of UML conformance. Opaque expressions need facts from their own
 language analyser; validation reports missing facts instead of assuming success.
@@ -74,7 +79,7 @@ Activities and Actions now have explicitly linked examples for their 205 invaria
 31 query declarations (including two abstract queries) and 9 derived properties.
 Interactions has linked examples for 49 invariants, 14 queries, one derivation and
 three preconditions. UseCases, Deployments and InformationFlows add 18 audited
-invariants, two queries and one derivation. The 0.16.0 suite has 367 tests across both versions.
+invariants, two queries and one derivation. The 0.17.0 suite has 392 tests across both versions.
 All 14 core packages have a first audit with explicitly linked examples for every
 declared invariant, operation, derivation and precondition. These audits check static model semantics: they supply
 no token execution engine. Selection/transformation purity and some additional

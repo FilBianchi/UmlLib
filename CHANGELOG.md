@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.17.0
+
+Complete the first UML 2.4.1 audit across all 14 core families and structural
+declarations: 150 operations, 433 invariants, 74 derivations and 952 property/end
+records. Reviewed shared translations are enabled explicitly; old signatures,
+inheritance, default/opposite rules, state contexts, pin equality and activity
+parameter limits retain their separate 2.4.1 behavior.
+
+Port deletion now atomically removes its connectors in 2.4.1. Derived
+Activity.structuredNode witnesses permit consistent node/group ownership transfers.
+Multiplicity queries on Pins no longer collide with ObjectNode.upperBound.
+Trusted execution facts report missing evidence for autonomy, starting time,
+trigger-parameter assignment and transformation purity instead of assuming success.
+Region/state/machine extension predicates replace source placeholder results.
+Deployment resolution includes modeled Artifact instances according to the prose.
+
+392 tests pass, including representative scenarios for every family and sweeps of
+549 effective stored setters (the 550th declaration is hidden by a concrete
+redefinition). UML241_AUDIT.md and a CI-regenerated JSON report state the exact
+evidence and source interpretations. This is not conformance certification:
+broader prose, execution/protocol proof, PackageMerge, runtime profiles, XMI 2.4.1
+and migration remain separate obligations.
+
 ## 0.16.0
 
 UML 2.4.1 CommonStructure/Values and supporting Package import queries are audited:
